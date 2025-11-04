@@ -191,4 +191,124 @@ All colors MUST be HSL.
       box-shadow: 0 0 40px rgba(19, 185, 253, 0.6);
     }
   }
+
+    /* Enhanced animations for agenda section */
+    .animate-fade-in {
+        animation: fade-in 0.6s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        animation: slide-up 0.6s ease-out forwards;
+    }
+
+    .animate-scale-in {
+        animation: scale-in 0.4s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scale-in {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Stagger animation utility - can be used with inline styles */
+    .stagger-animation {
+        animation-fill-mode: both;
+    }
+
+    /* Smooth hover lift effect */
+    .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -8px rgba(2, 86, 155, 0.15);
+    }
+
+    /* Glowing border animation */
+    .glow-border {
+        position: relative;
+    }
+
+    .glow-border::after {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, hsl(207 98% 30%), hsl(197 98% 54%));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+        filter: blur(8px);
+    }
+
+    .glow-border:hover::after {
+        opacity: 0.6;
+    }
+
+    /* Breathing animation for active elements */
+    .breathe {
+        animation: breathe 3s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+    }
+
+    /* Ripple effect on click */
+    .ripple {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ripple::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .ripple:active::after {
+        width: 300px;
+        height: 300px;
+    }
 }
