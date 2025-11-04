@@ -339,11 +339,10 @@ export const SpeakersPartnersSection = () => {
             </p>
           </div>
 
-            {/* Premium Partners (Platinum & Gold) - Larger Cards */}
+            {/* Partners & Sponsors - Redesigned with Uniform Cards */}
             {premiumPartners.length > 0 && (
-                <div className="mb-12">
-                    <div
-                        className="flex flex-wrap justify-center items-stretch gap-8 max-w-5xl mx-auto">
+                <div className="mb-8">
+                    <div className="flex flex-wrap justify-center items-stretch gap-6 max-w-7xl mx-auto">
                         {premiumPartners.map((partner, index) => {
                             const tierStyles = getTierStyles(partner.tier);
 
@@ -355,100 +354,90 @@ export const SpeakersPartnersSection = () => {
                                     onClick={() => openPartnerDialog(partner)}
                                 >
                                     <div
-                                        className={`group relative rounded-3xl p-10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[320px]`}>
-                                        {/* Tier badge - TOP RIGHT */}
+                                        className={`group relative rounded-3xl p-8 transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[340px] h-[420px] flex flex-col`}>
+                                        {/* Tier badge - TOP LEFT like reference */}
                                         <div
-                                            className={`absolute top-4 right-4 px-3 py-1 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg z-20 animate-pulse`}>
-                                            {partner.tier}
+                                            className={`absolute top-6 left-6 px-4 py-2 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg z-20`}>
+                                            ⭐ {partner.tier}
                                         </div>
 
                                         {/* Shine effect */}
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"/>
 
-                                        {/* Logo Image Container */}
-                                        <div className="relative mb-6">
-                                            <div
-                                                className="w-32 h-32 mx-auto rounded-2xl overflow-hidden bg-white shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border-4 border-white/20">
-                                                <img
-                                                    src={partner.logo}
-                                                    alt={`${partner.name} logo`}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                            {/* Floating glow */}
-                                            <div
-                                                className="absolute inset-0 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"
-                                                style={{
-                                                    background: tierStyles.badge
-                                                        .replace('bg-gradient-to-r', 'linear-gradient(to right,')
-                                                        .replace('from-', '')
-                                                        .replace('to-', '') + ')'
-                                                }}
-                                            />
-                                        </div>
+                                      {/* Large Logo Image Container - Center Focus */}
+                                      <div className="relative flex-1 flex items-center justify-center mb-6 mt-8">
+                                          <div className="relative w-full h-48 flex items-center justify-center">
+                                              <img
+                                                  src={partner.logo}
+                                                  alt={`${partner.name} logo`}
+                                                  className="max-w-[200px] max-h-[180px] w-auto h-auto object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl"
+                                              />
+                                              {/* Floating glow behind logo */}
+                                              <div
+                                                  className="absolute inset-0 blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 animate-pulse"
+                                                  style={{
+                                                      background: tierStyles.badge
+                                                          .replace('bg-gradient-to-r', 'linear-gradient(to right,')
+                                                          .replace('from-', '')
+                                                          .replace('to-', '') + ')'
+                                                  }}
+                                              />
+                                          </div>
+                                      </div>
 
-                                        {/* Content */}
-                                        <div className="text-center relative z-10">
-                                            <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
-                                                {partner.name}
-                                                <ChevronRight
-                                                    className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
-                                            </h3>
-                                            <p className="text-lg font-semibold mb-4 bg-clip-text text-transparent bg-gradient-hero">
-                                                {partner.role}
-                                            </p>
+                                      {/* Content at Bottom */}
+                                      <div className="text-center relative z-10 space-y-3">
+                                          <h3 className="text-2xl font-bold group-hover:scale-105 transition-transform duration-300">
+                                              {partner.name}
+                                          </h3>
+                                          <div
+                                              className="inline-block px-4 py-1.5 rounded-full bg-gradient-subtle border border-border">
+                                              <p className="text-sm font-semibold text-primary">
+                                                  {partner.role}
+                                              </p>
+                                          </div>
 
-                                            {/* Short description */}
-                                            {partner.description && (
-                                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                                                    {partner.description.length > 80
-                                                        ? `${partner.description.substring(0, 80)}...`
-                                                        : partner.description}
-                                                </p>
-                                            )}
+                                          {/* Social icons preview */}
+                                          <div
+                                              className="flex justify-center gap-2 pt-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                              {partner.website && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Globe className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.linkedin && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Linkedin className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.facebook && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Facebook className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                          </div>
 
-                                            {/* Social icons preview */}
-                                            <div
-                                                className="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                                {partner.website && (
-                                                    <div
-                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                        <Globe className="w-4 h-4"/>
-                                                    </div>
-                                                )}
-                                                {partner.linkedin && (
-                                                    <div
-                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                        <Linkedin className="w-4 h-4"/>
-                                                    </div>
-                                                )}
-                                                {partner.facebook && (
-                                                    <div
-                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                        <Facebook className="w-4 h-4"/>
-                                                    </div>
-                                                )}
-                                            </div>
+                                          {/* Click hint */}
+                                          <p className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-1">
+                                              Click for details →
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          );
+                      })}
+                  </div>
+              </div>
+          )}
 
-                                            {/* Click hint */}
-                                            <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                Click to learn more
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-
-            {/* Other Partners (Silver, Bronze, Community, Media) - Smaller Grid */}
+            {/* Other Partners - Same Size Cards */}
             {otherPartners.length > 0 && (
                 <div className="mb-12">
-                    <div
-                        className="flex flex-wrap justify-center items-stretch gap-6 max-w-6xl mx-auto">
+                    <div className="flex flex-wrap justify-center items-stretch gap-6 max-w-7xl mx-auto">
                         {otherPartners.map((partner, index) => {
                             const tierStyles = getTierStyles(partner.tier);
 
@@ -460,68 +449,79 @@ export const SpeakersPartnersSection = () => {
                                     onClick={() => openPartnerDialog(partner)}
                                 >
                                     <div
-                                        className={`group relative rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[240px]`}>
-                                        {/* Tier badge - TOP RIGHT - smaller */}
+                                        className={`group relative rounded-3xl p-8 transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[340px] h-[420px] flex flex-col`}>
+                                        {/* Tier badge - TOP LEFT */}
                                         <div
-                                            className={`absolute top-3 right-3 px-2 py-0.5 ${tierStyles.badge} text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-md z-20`}>
-                                            {partner.tier}
+                                            className={`absolute top-6 left-6 px-4 py-2 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg z-20`}>
+                                            {partner.tier === 'community' && '🤝'}
+                                            {partner.tier === 'media' && '📰'}
+                                            {partner.tier === 'silver' && '🥈'}
+                                            {partner.tier === 'bronze' && '🥉'}
+                                            {' '}{partner.tier}
                                         </div>
 
                                         {/* Shine effect */}
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
 
-                                        {/* Logo Image */}
-                                        <div className="relative mb-4">
-                                            <div
-                                                className="w-20 h-20 mx-auto rounded-xl overflow-hidden bg-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border-2 border-white/20">
-                                                <img
-                                                    src={partner.logo}
-                                                    alt={`${partner.name} logo`}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                        </div>
+                                      {/* Large Logo Image Container - Center Focus */}
+                                      <div className="relative flex-1 flex items-center justify-center mb-6 mt-8">
+                                          <div className="relative w-full h-48 flex items-center justify-center">
+                                              <img
+                                                  src={partner.logo}
+                                                  alt={`${partner.name} logo`}
+                                                  className="max-w-[200px] max-h-[180px] w-auto h-auto object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl"
+                                              />
+                                          </div>
+                                      </div>
 
-                                        {/* Content */}
-                                        <div className="text-center relative z-10">
-                                            <h4 className="text-lg font-bold mb-1 group-hover:scale-105 transition-transform duration-300">
-                                                {partner.name}
-                                            </h4>
-                                            <p className="text-sm font-semibold text-primary mb-2">
-                                                {partner.role}
-                                            </p>
+                                      {/* Content at Bottom */}
+                                      <div className="text-center relative z-10 space-y-3">
+                                          <h4 className="text-2xl font-bold group-hover:scale-105 transition-transform duration-300">
+                                              {partner.name}
+                                          </h4>
+                                          <div
+                                              className="inline-block px-4 py-1.5 rounded-full bg-gradient-subtle border border-border">
+                                              <p className="text-sm font-semibold text-primary">
+                                                  {partner.role}
+                                              </p>
+                                          </div>
 
-                                            {/* Social icons preview - compact */}
-                                            <div
-                                                className="flex justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                                {partner.website && (
-                                                    <div
-                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
-                                                        <Globe className="w-3 h-3"/>
-                                                    </div>
-                                                )}
-                                                {partner.linkedin && (
-                                                    <div
-                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
-                                                        <Linkedin className="w-3 h-3"/>
-                                                    </div>
-                                                )}
-                                                {partner.facebook && (
-                                                    <div
-                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
-                                                        <Facebook className="w-3 h-3"/>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
+                                          {/* Social icons preview */}
+                                          <div
+                                              className="flex justify-center gap-2 pt-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                              {partner.website && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                      <Globe className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.linkedin && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                      <Linkedin className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.facebook && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                      <Facebook className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                          </div>
+
+                                          {/* Click hint */}
+                                          <p className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-1">
+                                              Click for details →
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          );
+                      })}
+                  </div>
+              </div>
+          )}
 
             <div
                 className="glass-card rounded-3xl p-8 sm:p-12 text-center border-2 border-border/50 hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl animate-fade-in-up">
