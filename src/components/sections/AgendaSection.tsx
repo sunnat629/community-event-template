@@ -12,7 +12,11 @@ import {
     Download,
     Bell,
     Share2,
-    X
+    X,
+    User,
+    Mail,
+    Linkedin,
+    Twitter
 } from "lucide-react";
 import {useState} from "react";
 import {
@@ -27,6 +31,32 @@ import {Badge} from "@/components/ui/badge";
 
 // Import agenda data from centralized content
 import {agendaItems, tracks} from "@/content";
+
+// Speaker details interface
+interface SpeakerDetails {
+    name: string;
+    title: string;
+    topic: string;
+    bio: string;
+    image: string;
+    social?: {
+        twitter?: string;
+        linkedin?: string;
+        email?: string;
+    };
+}
+
+// Mock speaker database (in real app, this would come from content files)
+const speakerDatabase: Record<string, SpeakerDetails> = {
+    "TBA": {
+        name: "To Be Announced",
+        title: "Stay tuned for speaker announcement",
+        topic: "Exciting topics coming soon!",
+        bio: "We're currently finalizing our amazing speaker lineup. Check back soon for updates!",
+        image: "👤",
+        social: {}
+    }
+};
 
 const getTypeStyles = (type: string) => {
   switch (type) {
@@ -79,6 +109,8 @@ export const AgendaSection = () => {
     const [selectedTrack, setSelectedTrack] = useState("all");
     const [selectedItem, setSelectedItem] = useState<typeof agendaItems[0] | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [selectedSpeaker, setSelectedSpeaker] = useState<SpeakerDetails | null>(null);
+    const [isSpeakerDialogOpen, setIsSpeakerDialogOpen] = useState(false);
 
     const filteredItems = agendaItems.filter(
         item => selectedTrack === "all" || item.track === selectedTrack || item.track === "all"
@@ -86,7 +118,6 @@ export const AgendaSection = () => {
 
     // Function to download agenda as ICS file
     const downloadAgenda = () => {
-        // Create ICS content
         const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Flutter Guild Connect//Event Agenda//EN
@@ -96,8 +127,7 @@ X-WR-CALNAME:Flutter Guild Connect Event
 X-WR-TIMEZONE:Asia/Dhaka
 X-WR-CALDESC:Flutter Guild Connect Event Schedule
 ${agendaItems.map(item => {
-            // For demo, using a sample date (you would replace with actual event date)
-            const eventDate = "20250315"; // YYYYMMDD format
+            const eventDate = "20250315";
             const startTime = item.time.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
             const endTime = item.endTime.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
 
@@ -115,7 +145,6 @@ END:VEVENT`;
         }).join('\n')}
 END:VCALENDAR`;
 
-        // Create blob and download
         const blob = new Blob([icsContent], {type: 'text/calendar'});
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -133,21 +162,30 @@ END:VCALENDAR`;
         setIsDialogOpen(true);
     };
 
+    // Function to open speaker details
+    const openSpeakerDetails = (speakerName: string, e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent opening agenda item dialog
+        const speaker = speakerDatabase[speakerName] || speakerDatabase["TBA"];
+        setSelectedSpeaker(speaker);
+        setIsSpeakerDialogOpen(true);
+    };
+
     return (
     <section id="agenda" className="section-padding bg-gradient-subtle relative overflow-hidden">
-        {/* Enhanced background decorations */}
+        {/* Enhanced background decorations with animation */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"/>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"
              style={{animationDelay: "1s"}}/>
         <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl"/>
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl animate-pulse"
+            style={{animationDuration: "4s"}}/>
       
       <div className="section-container relative z-10">
           {/* Section header with enhanced styling */}
           <div className="text-center mb-12 animate-fade-in-up">
               <div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                  <Calendar className="w-4 h-4 text-primary"/>
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 hover:scale-105 transition-transform duration-300">
+                  <Calendar className="w-4 h-4 text-primary animate-pulse"/>
                   <span className="text-sm font-semibold text-primary">Full Day Event</span>
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero">
@@ -157,44 +195,49 @@ END:VCALENDAR`;
                   A carefully curated day of learning, building, and connecting with the Flutter community
           </p>
 
-            {/* Download Agenda Button */}
+              {/* Download Agenda Button with enhanced animation */}
             <Button
                 onClick={downloadAgenda}
-                className="bg-gradient-hero text-white hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
+                className="bg-gradient-hero text-white hover:shadow-glow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1"
                 size="lg"
             >
-                <Download className="w-4 h-4 mr-2"/>
+                <Download className="w-4 h-4 mr-2 animate-bounce"/>
                 Download Full Agenda
             </Button>
         </div>
 
-          {/* Track filter tabs with improved design */}
+          {/* Track filter tabs with improved animation */}
           <div className="flex flex-wrap justify-center gap-3 mb-16 animate-fade-in-up"
                style={{animationDelay: "100ms"}}>
-              {tracks.map((track) => (
+              {tracks.map((track, idx) => (
                   <button
                       key={track.id}
                       onClick={() => setSelectedTrack(track.id)}
                       className={`
                 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300
-                border-2 backdrop-blur-sm
+                border-2 backdrop-blur-sm hover:-translate-y-1
                 ${selectedTrack === track.id
                   ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
                   : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
               }
               `}
+                      style={{animationDelay: `${idx * 50}ms`}}
             >
                 {track.label}
             </button>
           ))}
         </div>
 
-          {/* Enhanced timeline with better visual hierarchy */}
+          {/* Enhanced timeline */}
           <div className="max-w-6xl mx-auto">
           <div className="relative">
-              {/* Enhanced vertical timeline line with gradient */}
+              {/* Animated vertical timeline line */}
               <div
-                  className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-[0_0_10px_rgba(2,86,155,0.3)]"/>
+                  className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-[0_0_10px_rgba(2,86,155,0.3)] overflow-hidden">
+                  <div
+                      className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent animate-pulse"
+                      style={{animationDuration: "3s"}}/>
+              </div>
 
               <div className="space-y-8">
                   {filteredItems.map((item, index) => {
@@ -205,65 +248,82 @@ END:VCALENDAR`;
                   <div 
                     key={index}
                     className="relative animate-fade-in-up group"
-                    style={{animationDelay: `${index * 80}ms`}}
+                    style={{
+                        animationDelay: `${index * 80}ms`,
+                        animationFillMode: 'both'
+                    }}
                   >
-                      {/* Desktop layout */}
+                      {/* Desktop layout with enhanced animations */}
                       <div className="hidden md:flex gap-8 items-start">
-                          {/* Time badge - enhanced design */}
+                          {/* Enhanced time badge */}
                           <div className="flex-shrink-0 relative z-10">
                               <div className={`
                           w-24 h-24 rounded-2xl flex flex-col items-center justify-center
                           border-4 border-background shadow-xl
-                          transition-all duration-500 group-hover:scale-110 group-hover:rotate-3
+                          transition-all duration-500 
+                          group-hover:scale-125 group-hover:rotate-6
                           ${styles.badge}
                         `}>
-                            <Icon className="w-8 h-8 mb-1"/>
-                            <span className="text-xs font-bold opacity-80">{item.duration}</span>
+                                  <Icon
+                                      className="w-8 h-8 mb-1 group-hover:scale-110 transition-transform duration-300"/>
+                                  <span className="text-xs font-bold opacity-90">{item.duration}</span>
                         </div>
+                              {/* Pulse ring effect on hover */}
+                              <div
+                                  className="absolute inset-0 rounded-2xl bg-current opacity-0 group-hover:opacity-20 group-hover:scale-150 transition-all duration-700 pointer-events-none"/>
                       </div>
 
-                        {/* Content card - enhanced with more details */}
+                          {/* Enhanced content card */}
                         <div
                             onClick={() => openItemDetails(item)}
                             className={`
                           flex-1 glass-card rounded-3xl p-8
                           border-2 transition-all duration-500
                           ${styles.card} ${styles.glow}
-                          hover:scale-[1.02] hover:-translate-y-1
-                          cursor-pointer
+                          hover:scale-[1.03] hover:-translate-y-2
+                          cursor-pointer relative overflow-hidden
                         `}>
-                            <div className="flex items-start justify-between gap-6 mb-4">
+                            {/* Shine effect on hover */}
+                            <div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
+
+                            <div className="flex items-start justify-between gap-6 mb-4 relative z-10">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
                                         <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                                             {item.title}
                                         </h3>
                                         <ChevronRight
-                                            className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1"/>
+                                            className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-2"/>
                                     </div>
                                     <p className="text-muted-foreground text-lg leading-relaxed mb-4">
                                         {item.description}
                                     </p>
 
-                              {/* Additional metadata */}
+                                    {/* Enhanced metadata with speaker clickability */}
                               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                                   {item.speaker && (
-                                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                          <Users className="w-4 h-4"/>
+                                      <button
+                                          onClick={(e) => openSpeakerDetails(item.speaker!, e)}
+                                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30 hover:bg-primary/20 hover:text-primary hover:scale-105 transition-all duration-300 border border-transparent hover:border-primary/30"
+                                      >
+                                          <User className="w-4 h-4"/>
                                           <span className="font-medium">{item.speaker}</span>
-                                </div>
+                                          <ChevronRight className="w-3 h-3"/>
+                                      </button>
                               )}
-                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
+                                  <div
+                                      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30 hover:scale-105 transition-transform duration-300">
                                     <MapPin className="w-4 h-4"/>
                                     <span>{item.location}</span>
                                 </div>
                             </div>
                           </div>
 
-                            {/* Time display - improved visibility */}
+                                {/* Enhanced time display */}
                             <div className="flex flex-col items-end flex-shrink-0">
                                 <div
-                                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-md">
+                                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
                                     <Clock className="w-5 h-5"/>
                                     <div className="text-right">
                                         <div className="font-bold text-lg">{item.time}</div>
@@ -275,20 +335,20 @@ END:VCALENDAR`;
                       </div>
                     </div>
 
-                      {/* Mobile layout - improved */}
+                      {/* Enhanced mobile layout */}
                       <div className="md:hidden">
                           <div
                               onClick={() => openItemDetails(item)}
                               className={`
                           glass-card rounded-2xl p-6 border-2 transition-all duration-300
                           ${styles.card}
-                          hover:scale-[1.01] cursor-pointer
+                          hover:scale-[1.02] cursor-pointer
                         `}>
-                              {/* Header with icon and time */}
                               <div className="flex items-start gap-4 mb-4">
                           <div className={`
                             w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0
                             ${styles.badge}
+                            hover:scale-110 transition-transform duration-300
                           `}>
                               <Icon className="w-7 h-7"/>
                           </div>
@@ -302,27 +362,27 @@ END:VCALENDAR`;
                             </div>
                         </div>
 
-                          {/* Description */}
                           <p className="text-muted-foreground mb-4 leading-relaxed">
                               {item.description}
                           </p>
 
-                          {/* Metadata */}
                           <div className="flex flex-wrap gap-2 text-sm">
                               {item.speaker && (
-                                  <div
-                                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
-                                      <Users className="w-3.5 h-3.5"/>
+                                  <button
+                                      onClick={(e) => openSpeakerDetails(item.speaker!, e)}
+                                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground hover:bg-primary/20 hover:text-primary transition-colors duration-300"
+                                  >
+                                      <User className="w-3.5 h-3.5"/>
                                       <span>{item.speaker}</span>
-                                  </div>
+                                  </button>
                               )}
                               <div
                                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
                                   <MapPin className="w-3.5 h-3.5"/>
                                   <span>{item.location}</span>
                               </div>
-                            <div
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
+                              <div
+                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
                                 <Clock className="w-3.5 h-3.5"/>
                                 <span>{item.duration}</span>
                             </div>
@@ -335,16 +395,16 @@ END:VCALENDAR`;
             </div>
           </div>
 
-            {/* Call to action footer */}
+              {/* Enhanced CTA footer */}
             <div className="mt-16 text-center animate-fade-in-up" style={{animationDelay: "600ms"}}>
                 <div
-                    className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 rounded-3xl bg-gradient-hero text-white shadow-glow-lg">
+                    className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 rounded-3xl bg-gradient-hero text-white shadow-glow-lg hover:shadow-glow hover:scale-105 transition-all duration-500">
                     <div className="flex-1 text-left">
                         <h3 className="text-2xl font-bold mb-2">Don't Miss Out!</h3>
                         <p className="text-white/90">Register now to secure your spot at this incredible event</p>
                     </div>
                     <button
-                        className="px-8 py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl whitespace-nowrap">
+                        className="px-8 py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-xl whitespace-nowrap">
                         Register Now
                     </button>
             </div>
@@ -354,7 +414,7 @@ END:VCALENDAR`;
 
         {/* Agenda Item Detail Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in">
                 {selectedItem && (
                     <>
                         <DialogHeader>
@@ -364,7 +424,7 @@ END:VCALENDAR`;
                                     const styles = getTypeStyles(selectedItem.type);
                                     return (
                                         <div
-                                            className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 ${styles.badge}`}>
+                                            className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 ${styles.badge} animate-scale-in`}>
                                             <Icon className="w-8 h-8"/>
                                         </div>
                                     );
@@ -382,23 +442,36 @@ END:VCALENDAR`;
                         </DialogHeader>
 
                         <DialogDescription className="text-base text-foreground space-y-6">
-                            {/* Description */}
                             <div>
                                 <h4 className="font-bold text-lg mb-2 text-foreground">About This Session</h4>
                                 <p className="text-muted-foreground leading-relaxed">{selectedItem.description}</p>
                             </div>
 
-                            {/* Details Grid */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {selectedItem.speaker && (
-                                    <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
-                                        <Users className="w-5 h-5 text-primary mt-0.5"/>
+                                    <button
+                                        onClick={() => {
+                                            setIsDialogOpen(false);
+                                            setTimeout(() => {
+                                                const mockEvent = {
+                                                    stopPropagation: () => {
+                                                    }
+                                                } as React.MouseEvent<HTMLButtonElement>;
+                                                openSpeakerDetails(selectedItem.speaker!, mockEvent);
+                                            }, 300);
+                                        }}
+                                        className="flex items-start gap-3 p-4 rounded-xl bg-muted/30 hover:bg-primary/10 hover:scale-105 transition-all duration-300 text-left border border-transparent hover:border-primary/30"
+                                    >
+                                        <User className="w-5 h-5 text-primary mt-0.5"/>
                                         <div>
                                             <div className="font-semibold text-sm text-muted-foreground mb-1">Speaker
                                             </div>
-                                            <div className="font-bold text-foreground">{selectedItem.speaker}</div>
+                                            <div className="font-bold text-foreground flex items-center gap-1">
+                                                {selectedItem.speaker}
+                                                <ChevronRight className="w-4 h-4"/>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </button>
                                 )}
 
                                 <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
@@ -427,28 +500,19 @@ END:VCALENDAR`;
                                 </div>
                             </div>
 
-                            {/* Action Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                                <Button
-                                    className="flex-1 bg-gradient-hero text-white hover:shadow-glow"
-                                    size="lg"
-                                >
+                                <Button className="flex-1 bg-gradient-hero text-white hover:shadow-glow" size="lg">
                                     <Bell className="w-4 h-4 mr-2"/>
                                     Set Reminder
                                 </Button>
-                                <Button
-                                    variant="outline"
-                                    className="flex-1 border-2"
-                                    size="lg"
-                                >
+                                <Button variant="outline" className="flex-1 border-2" size="lg">
                                     <Share2 className="w-4 h-4 mr-2"/>
                                     Share
                                 </Button>
                             </div>
 
-                            {/* Tips Section (conditional based on session type) */}
                             {selectedItem.type === 'workshop' && (
-                                <div className="p-4 rounded-xl bg-accent/10 border-2 border-accent/20">
+                                <div className="p-4 rounded-xl bg-accent/10 border-2 border-accent/20 animate-fade-in">
                                     <h4 className="font-bold text-accent mb-2 flex items-center gap-2">
                                         <Zap className="w-4 h-4"/>
                                         Workshop Tips
@@ -461,6 +525,79 @@ END:VCALENDAR`;
                                     </ul>
                                 </div>
                             )}
+                        </DialogDescription>
+                    </>
+                )}
+            </DialogContent>
+        </Dialog>
+
+        {/* Speaker Details Dialog - New floating window */}
+        <Dialog open={isSpeakerDialogOpen} onOpenChange={setIsSpeakerDialogOpen}>
+            <DialogContent className="max-w-lg animate-scale-in">
+                {selectedSpeaker && (
+                    <>
+                        <DialogHeader>
+                            <div className="flex flex-col items-center text-center mb-6">
+                                {/* Speaker avatar with glow effect */}
+                                <div className="relative mb-6">
+                                    <div
+                                        className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl shadow-2xl animate-float">
+                                        {selectedSpeaker.image}
+                                    </div>
+                                    <div
+                                        className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl animate-pulse"/>
+                                </div>
+
+                                <DialogTitle className="text-3xl mb-2">{selectedSpeaker.name}</DialogTitle>
+                                <p className="text-primary font-semibold text-lg">{selectedSpeaker.title}</p>
+                            </div>
+                        </DialogHeader>
+
+                        <DialogDescription className="text-base text-foreground space-y-6">
+                            {/* Speaking topic */}
+                            <div className="p-4 rounded-xl bg-gradient-subtle border-2 border-primary/20">
+                                <p className="text-sm text-muted-foreground mb-1">Speaking on:</p>
+                                <p className="font-bold text-lg text-foreground">{selectedSpeaker.topic}</p>
+                            </div>
+
+                            {/* Bio */}
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-foreground">About</h4>
+                                <p className="text-muted-foreground leading-relaxed">{selectedSpeaker.bio}</p>
+                            </div>
+
+                            {/* Social links */}
+                            {selectedSpeaker.social && Object.keys(selectedSpeaker.social).length > 0 && (
+                                <div>
+                                    <h4 className="font-bold text-lg mb-3 text-foreground">Connect</h4>
+                                    <div className="flex gap-3">
+                                        {selectedSpeaker.social.twitter && (
+                                            <Button variant="outline" size="sm" className="flex-1">
+                                                <Twitter className="w-4 h-4 mr-2"/>
+                                                Twitter
+                                            </Button>
+                                        )}
+                                        {selectedSpeaker.social.linkedin && (
+                                            <Button variant="outline" size="sm" className="flex-1">
+                                                <Linkedin className="w-4 h-4 mr-2"/>
+                                                LinkedIn
+                                            </Button>
+                                        )}
+                                        {selectedSpeaker.social.email && (
+                                            <Button variant="outline" size="sm" className="flex-1">
+                                                <Mail className="w-4 h-4 mr-2"/>
+                                                Email
+                                            </Button>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Action button */}
+                            <Button className="w-full bg-gradient-hero text-white hover:shadow-glow-lg" size="lg">
+                                <User className="w-4 h-4 mr-2"/>
+                                View Full Profile
+                            </Button>
                         </DialogDescription>
                     </>
                 )}
