@@ -1,5 +1,29 @@
-import {Clock, Coffee, Code, Users, Presentation, Award, Zap, MapPin, Calendar, ChevronRight} from "lucide-react";
+import {
+    Clock,
+    Coffee,
+    Code,
+    Users,
+    Presentation,
+    Award,
+    Zap,
+    MapPin,
+    Calendar,
+    ChevronRight,
+    Download,
+    Bell,
+    Share2,
+    X
+} from "lucide-react";
 import {useState} from "react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import {Button} from "@/components/ui/button";
+import {Badge} from "@/components/ui/badge";
 
 const agendaItems = [
   {
@@ -165,10 +189,61 @@ const getTypeStyles = (type: string) => {
 
 export const AgendaSection = () => {
     const [selectedTrack, setSelectedTrack] = useState("all");
+    const [selectedItem, setSelectedItem] = useState<typeof agendaItems[0] | null>(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const filteredItems = agendaItems.filter(
         item => selectedTrack === "all" || item.track === selectedTrack || item.track === "all"
     );
+
+    // Function to download agenda as ICS file
+    const downloadAgenda = () => {
+        // Create ICS content
+        const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Flutter Guild Connect//Event Agenda//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Flutter Guild Connect Event
+X-WR-TIMEZONE:Asia/Dhaka
+X-WR-CALDESC:Flutter Guild Connect Event Schedule
+${agendaItems.map(item => {
+            // For demo, using a sample date (you would replace with actual event date)
+            const eventDate = "20250315"; // YYYYMMDD format
+            const startTime = item.time.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
+            const endTime = item.endTime.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
+
+            return `BEGIN:VEVENT
+UID:${item.title.replace(/\s+/g, '-').toLowerCase()}@flutterguildconnect.com
+DTSTAMP:${eventDate}T${startTime.padStart(6, '0')}00Z
+DTSTART:${eventDate}T${startTime.padStart(6, '0')}00Z
+DTEND:${eventDate}T${endTime.padStart(6, '0')}00Z
+SUMMARY:${item.title}
+DESCRIPTION:${item.description}
+LOCATION:${item.location}
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT`;
+        }).join('\n')}
+END:VCALENDAR`;
+
+        // Create blob and download
+        const blob = new Blob([icsContent], {type: 'text/calendar'});
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'flutter-guild-connect-agenda.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+    };
+
+    // Function to open agenda item details
+    const openItemDetails = (item: typeof agendaItems[0]) => {
+        setSelectedItem(item);
+        setIsDialogOpen(true);
+    };
 
     return (
     <section id="agenda" className="section-padding bg-gradient-subtle relative overflow-hidden">
@@ -190,9 +265,19 @@ export const AgendaSection = () => {
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero">
                   Event Agenda
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
                   A carefully curated day of learning, building, and connecting with the Flutter community
           </p>
+
+            {/* Download Agenda Button */}
+            <Button
+                onClick={downloadAgenda}
+                className="bg-gradient-hero text-white hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
+                size="lg"
+            >
+                <Download className="w-4 h-4 mr-2"/>
+                Download Full Agenda
+            </Button>
         </div>
 
           {/* Track filter tabs with improved design */}
@@ -206,15 +291,15 @@ export const AgendaSection = () => {
                 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300
                 border-2 backdrop-blur-sm
                 ${selectedTrack === track.id
-                          ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
-                          : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
-                      }
+                  ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
+                  : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
+              }
               `}
-                  >
-                      {track.label}
-                  </button>
-              ))}
-          </div>
+            >
+                {track.label}
+            </button>
+          ))}
+        </div>
 
           {/* Enhanced timeline with better visual hierarchy */}
           <div className="max-w-6xl mx-auto">
@@ -244,19 +329,21 @@ export const AgendaSection = () => {
                           transition-all duration-500 group-hover:scale-110 group-hover:rotate-3
                           ${styles.badge}
                         `}>
-                                  <Icon className="w-8 h-8 mb-1"/>
-                                  <span className="text-xs font-bold opacity-80">{item.duration}</span>
-                              </div>
+                            <Icon className="w-8 h-8 mb-1"/>
+                            <span className="text-xs font-bold opacity-80">{item.duration}</span>
+                        </div>
                       </div>
 
                         {/* Content card - enhanced with more details */}
-                        <div className={`
-                        flex-1 glass-card rounded-3xl p-8
-                        border-2 transition-all duration-500
-                        ${styles.card} ${styles.glow}
-                        hover:scale-[1.02] hover:-translate-y-1
-                        cursor-pointer
-                      `}>
+                        <div
+                            onClick={() => openItemDetails(item)}
+                            className={`
+                          flex-1 glass-card rounded-3xl p-8
+                          border-2 transition-all duration-500
+                          ${styles.card} ${styles.glow}
+                          hover:scale-[1.02] hover:-translate-y-1
+                          cursor-pointer
+                        `}>
                             <div className="flex items-start justify-between gap-6 mb-4">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
@@ -270,59 +357,61 @@ export const AgendaSection = () => {
                                         {item.description}
                                     </p>
 
-                                    {/* Additional metadata */}
-                                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                                        {item.speaker && (
-                                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                                <Users className="w-4 h-4"/>
-                                                <span className="font-medium">{item.speaker}</span>
-                                            </div>
-                                        )}
-                                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                            <MapPin className="w-4 h-4"/>
-                                            <span>{item.location}</span>
-                                        </div>
-                                    </div>
+                              {/* Additional metadata */}
+                              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                                  {item.speaker && (
+                                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
+                                          <Users className="w-4 h-4"/>
+                                          <span className="font-medium">{item.speaker}</span>
                                 </div>
-
-                                {/* Time display - improved visibility */}
-                                <div className="flex flex-col items-end flex-shrink-0">
-                                    <div
-                                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-md">
-                                        <Clock className="w-5 h-5"/>
-                                        <div className="text-right">
-                                            <div className="font-bold text-lg">{item.time}</div>
-                                            <div className="text-xs opacity-90">{item.endTime}</div>
-                                        </div>
-                                    </div>
+                              )}
+                                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
+                                    <MapPin className="w-4 h-4"/>
+                                    <span>{item.location}</span>
                                 </div>
                             </div>
+                          </div>
+
+                            {/* Time display - improved visibility */}
+                            <div className="flex flex-col items-end flex-shrink-0">
+                                <div
+                                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-md">
+                                    <Clock className="w-5 h-5"/>
+                                    <div className="text-right">
+                                        <div className="font-bold text-lg">{item.time}</div>
+                                        <div className="text-xs opacity-90">{item.endTime}</div>
+                                    </div>
+                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
 
                       {/* Mobile layout - improved */}
                       <div className="md:hidden">
-                          <div className={`
-                        glass-card rounded-2xl p-6 border-2 transition-all duration-300
-                        ${styles.card}
-                        hover:scale-[1.01]
-                      `}>
+                          <div
+                              onClick={() => openItemDetails(item)}
+                              className={`
+                          glass-card rounded-2xl p-6 border-2 transition-all duration-300
+                          ${styles.card}
+                          hover:scale-[1.01] cursor-pointer
+                        `}>
                               {/* Header with icon and time */}
                               <div className="flex items-start gap-4 mb-4">
-                                  <div className={`
+                          <div className={`
                             w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0
                             ${styles.badge}
                           `}>
-                                      <Icon className="w-7 h-7"/>
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                      <div
-                                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-hero text-white inline-flex mb-2 shadow-md">
-                                          <Clock className="w-4 h-4"/>
-                                          <span className="font-bold text-sm">{item.time} - {item.endTime}</span>
-                                      </div>
-                                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                                  </div>
+                              <Icon className="w-7 h-7"/>
+                          </div>
+                            <div className="flex-1 min-w-0">
+                                <div
+                                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-hero text-white inline-flex mb-2 shadow-md">
+                                    <Clock className="w-4 h-4"/>
+                                    <span className="font-bold text-sm">{item.time} - {item.endTime}</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                            </div>
                         </div>
 
                           {/* Description */}
@@ -343,13 +432,13 @@ export const AgendaSection = () => {
                                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
                                   <MapPin className="w-3.5 h-3.5"/>
                                   <span>{item.location}</span>
-                              </div>
-                              <div
-                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
-                                  <Clock className="w-3.5 h-3.5"/>
-                                  <span>{item.duration}</span>
-                              </div>
                           </div>
+                            <div
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
+                                <Clock className="w-3.5 h-3.5"/>
+                                <span>{item.duration}</span>
+                            </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -370,10 +459,125 @@ export const AgendaSection = () => {
                         className="px-8 py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl whitespace-nowrap">
                         Register Now
                     </button>
-                </div>
             </div>
+          </div>
         </div>
       </div>
+
+        {/* Agenda Item Detail Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                {selectedItem && (
+                    <>
+                        <DialogHeader>
+                            <div className="flex items-start gap-4 mb-4">
+                                {(() => {
+                                    const Icon = selectedItem.icon;
+                                    const styles = getTypeStyles(selectedItem.type);
+                                    return (
+                                        <div
+                                            className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 ${styles.badge}`}>
+                                            <Icon className="w-8 h-8"/>
+                                        </div>
+                                    );
+                                })()}
+                                <div className="flex-1">
+                                    <DialogTitle className="text-2xl mb-2">{selectedItem.title}</DialogTitle>
+                                    <div className="flex items-center gap-2 text-muted-foreground">
+                                        <Clock className="w-4 h-4"/>
+                                        <span
+                                            className="font-semibold">{selectedItem.time} - {selectedItem.endTime}</span>
+                                        <span className="text-sm">({selectedItem.duration})</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </DialogHeader>
+
+                        <DialogDescription className="text-base text-foreground space-y-6">
+                            {/* Description */}
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-foreground">About This Session</h4>
+                                <p className="text-muted-foreground leading-relaxed">{selectedItem.description}</p>
+                            </div>
+
+                            {/* Details Grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {selectedItem.speaker && (
+                                    <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
+                                        <Users className="w-5 h-5 text-primary mt-0.5"/>
+                                        <div>
+                                            <div className="font-semibold text-sm text-muted-foreground mb-1">Speaker
+                                            </div>
+                                            <div className="font-bold text-foreground">{selectedItem.speaker}</div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
+                                    <MapPin className="w-5 h-5 text-primary mt-0.5"/>
+                                    <div>
+                                        <div className="font-semibold text-sm text-muted-foreground mb-1">Location</div>
+                                        <div className="font-bold text-foreground">{selectedItem.location}</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
+                                    <Clock className="w-5 h-5 text-primary mt-0.5"/>
+                                    <div>
+                                        <div className="font-semibold text-sm text-muted-foreground mb-1">Duration</div>
+                                        <div className="font-bold text-foreground">{selectedItem.duration}</div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/30">
+                                    <Calendar className="w-5 h-5 text-primary mt-0.5"/>
+                                    <div>
+                                        <div className="font-semibold text-sm text-muted-foreground mb-1">Session Type
+                                        </div>
+                                        <div className="font-bold text-foreground capitalize">{selectedItem.type}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                                <Button
+                                    className="flex-1 bg-gradient-hero text-white hover:shadow-glow"
+                                    size="lg"
+                                >
+                                    <Bell className="w-4 h-4 mr-2"/>
+                                    Set Reminder
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    className="flex-1 border-2"
+                                    size="lg"
+                                >
+                                    <Share2 className="w-4 h-4 mr-2"/>
+                                    Share
+                                </Button>
+                            </div>
+
+                            {/* Tips Section (conditional based on session type) */}
+                            {selectedItem.type === 'workshop' && (
+                                <div className="p-4 rounded-xl bg-accent/10 border-2 border-accent/20">
+                                    <h4 className="font-bold text-accent mb-2 flex items-center gap-2">
+                                        <Zap className="w-4 h-4"/>
+                                        Workshop Tips
+                                    </h4>
+                                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                                        <li>Bring your laptop with Flutter SDK installed</li>
+                                        <li>Ensure you have a stable internet connection</li>
+                                        <li>Download required packages beforehand</li>
+                                        <li>Arrive 10 minutes early for setup</li>
+                                    </ul>
+                                </div>
+                            )}
+                        </DialogDescription>
+                    </>
+                )}
+            </DialogContent>
+        </Dialog>
     </section>
   );
 };
