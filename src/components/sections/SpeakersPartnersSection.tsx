@@ -159,11 +159,11 @@ export const SpeakersPartnersSection = () => {
                                         {/* Avatar with glow */}
                                         <div className="relative mb-6">
                                             <div
-                                                className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                                                className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl group-hover:border-primary/60 transition-all duration-500">
                                                 <img
                                                     src={speaker.image}
                                                     alt={speaker.name}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                    className="w-full h-full object-cover"
                                                 />
                                             </div>
                                             {/* Floating glow ring */}
@@ -253,20 +253,20 @@ export const SpeakersPartnersSection = () => {
                                 onClick={() => openSpeakerDialog(speaker)}
                             >
                                 <div
-                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-card to-secondary/5 relative">
+                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden">
                                     {/* Shine effect */}
                                     <div
-                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
+                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                     <div className="flex items-start gap-4 mb-4 relative z-10">
-                                        {/* Avatar */}
+                                        {/* Avatar - removed scale and rotate to prevent hover jumping */}
                                         <div className="relative flex-shrink-0">
                                             <div
-                                                className="w-20 h-20 rounded-xl overflow-hidden border-2 border-secondary/30 shadow-lg group-hover:border-secondary/60 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                                                className="w-20 h-20 rounded-xl overflow-hidden border-2 border-secondary/30 shadow-lg group-hover:border-secondary/60 transition-colors duration-300">
                                                 <img
                                                     src={speaker.image}
                                                     alt={speaker.name}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                    className="w-full h-full object-cover"
                                                 />
                                             </div>
                                         </div>
