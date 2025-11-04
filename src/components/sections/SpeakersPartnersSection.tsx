@@ -244,7 +244,7 @@ export const SpeakersPartnersSection = () => {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                         {otherSpeakers.map((speaker, index) => (
                             <div
                                 key={speaker.name}
@@ -253,7 +253,7 @@ export const SpeakersPartnersSection = () => {
                                 onClick={() => openSpeakerDialog(speaker)}
                             >
                                 <div
-                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden">
+                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-colors duration-300 shadow-lg bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden">
                                     {/* Shine effect */}
                                     <div
                                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
