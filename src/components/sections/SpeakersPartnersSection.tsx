@@ -392,12 +392,15 @@ export const SpeakersPartnersSection = () => {
                                           <h3 className="text-2xl font-bold group-hover:scale-105 transition-transform duration-300">
                                               {partner.name}
                                           </h3>
-                                          <div
-                                              className="inline-block px-4 py-1.5 rounded-full bg-gradient-subtle border border-border">
-                                              <p className="text-sm font-semibold text-primary">
-                                                  {partner.role}
+
+                                          {/* Short description */}
+                                          {partner.description && (
+                                              <p className="text-sm text-muted-foreground leading-relaxed px-2">
+                                                  {partner.description.length > 100
+                                                      ? `${partner.description.substring(0, 100)}...`
+                                                      : partner.description}
                                               </p>
-                                          </div>
+                                          )}
 
                                           {/* Social icons preview */}
                                           <div
@@ -481,12 +484,15 @@ export const SpeakersPartnersSection = () => {
                                           <h4 className="text-2xl font-bold group-hover:scale-105 transition-transform duration-300">
                                               {partner.name}
                                           </h4>
-                                          <div
-                                              className="inline-block px-4 py-1.5 rounded-full bg-gradient-subtle border border-border">
-                                              <p className="text-sm font-semibold text-primary">
-                                                  {partner.role}
+
+                                          {/* Short description */}
+                                          {partner.description && (
+                                              <p className="text-sm text-muted-foreground leading-relaxed px-2">
+                                                  {partner.description.length > 100
+                                                      ? `${partner.description.substring(0, 100)}...`
+                                                      : partner.description}
                                               </p>
-                                          </div>
+                                          )}
 
                                           {/* Social icons preview */}
                                           <div
