@@ -354,7 +354,11 @@ export const SpeakersPartnersSection = () => {
                                             style={{animationDelay: `${index * 150}ms`}}
                                         >
                                             <div
-                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
+                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
+
+                                                {/* Shine effect on hover */}
+                                                <div
+                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                                 {/* Logo Container */}
                                                 <div
@@ -362,7 +366,7 @@ export const SpeakersPartnersSection = () => {
                                                     <img
                                                         src={partner.logo}
                                                         alt={`${partner.name} logo`}
-                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                                                     />
                                                     {/* Tier badge overlay */}
                                                     <div
@@ -388,7 +392,7 @@ export const SpeakersPartnersSection = () => {
                                                     <Button
                                                         variant="outline"
                                                         size="sm"
-                                                        className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300"
+                                                        className="w-full border-2 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold"
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             openPartnerDialog(partner);
@@ -421,7 +425,11 @@ export const SpeakersPartnersSection = () => {
                                             style={{animationDelay: `${(premiumPartners.length + index) * 100}ms`}}
                                         >
                                             <div
-                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
+                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
+
+                                                {/* Shine effect on hover */}
+                                                <div
+                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                                 {/* Logo Container */}
                                                 <div
@@ -429,7 +437,7 @@ export const SpeakersPartnersSection = () => {
                                                     <img
                                                         src={partner.logo}
                                                         alt={`${partner.name} logo`}
-                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                                                     />
                                                     {/* Tier badge overlay */}
                                                     <div
@@ -455,7 +463,7 @@ export const SpeakersPartnersSection = () => {
                                                     <Button
                                                         variant="outline"
                                                         size="sm"
-                                                        className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300"
+                                                        className="w-full border-2 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold"
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             openPartnerDialog(partner);
