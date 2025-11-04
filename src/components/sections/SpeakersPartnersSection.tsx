@@ -253,7 +253,7 @@ export const SpeakersPartnersSection = () => {
                                 onClick={() => openSpeakerDialog(speaker)}
                             >
                                 <div
-                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl bg-gradient-to-br from-card to-secondary/5 relative">
+                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-card to-secondary/5 relative">
                                     {/* Shine effect */}
                                     <div
                                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
