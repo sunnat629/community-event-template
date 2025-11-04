@@ -46,16 +46,21 @@ All colors MUST be HSL.
     --gradient-hero: linear-gradient(135deg, hsl(207 98% 30%) 0%, hsl(197 98% 54%) 100%);
     --gradient-accent: linear-gradient(90deg, hsl(197 98% 54%) 0%, hsl(207 98% 45%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 15% 98%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 15% 99%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(197 98% 54% / 0.15) 0%, transparent 60%);
 
     /* Shadows */
     --shadow-sm: 0 2px 4px rgba(2, 86, 155, 0.05);
     --shadow-md: 0 4px 12px rgba(2, 86, 155, 0.1);
     --shadow-lg: 0 8px 24px rgba(2, 86, 155, 0.15);
+    --shadow-xl: 0 16px 48px rgba(2, 86, 155, 0.2);
     --shadow-glow: 0 0 40px rgba(19, 185, 253, 0.3);
+    --shadow-glow-lg: 0 0 60px rgba(19, 185, 253, 0.4);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .dark {
@@ -126,16 +131,64 @@ All colors MUST be HSL.
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02];
+  }
+
+  .card-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .card-glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: var(--gradient-glow);
+  }
+
+  .card-glow:hover::before {
+    @apply opacity-100;
   }
 
   .btn-glow {
     box-shadow: var(--shadow-glow);
-    transition: var(--transition-smooth);
+    transition: var(--transition-spring);
   }
 
   .btn-glow:hover {
-    box-shadow: 0 0 60px rgba(19, 185, 253, 0.5);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-lg);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-card/80 border border-border/50;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(19, 185, 253, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(19, 185, 253, 0.6);
+    }
   }
 }
