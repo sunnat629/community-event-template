@@ -24,10 +24,5 @@ export const partners: Partner[] = [
         name: "Cheq",
         role: "Gold Sponsor",
         icon: Star
-    },
-    {
-        name: "Flutter Bangladesh",
-        role: "Co-Organizer",
-        icon: Users
     }
 ];

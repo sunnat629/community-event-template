@@ -15,6 +15,7 @@ src/content/
 ├── eventDetails.ts     # Event date, venue, format
 ├── agenda.ts           # Event schedule & timeline
 ├── speakers.ts         # Speaker information
+├── organizers.ts       # Event organizers
 ├── partners.ts         # Partners & sponsors
 └── ctaUrls.ts          # All CTA URLs in one place
 ```
@@ -198,7 +199,41 @@ export const otherSpeakers: Speaker[] = [
 
 ---
 
-### 5. Partners & Sponsors (`partners.ts`)
+### 5. Organizers (`organizers.ts`)
+
+Update event organizers:
+
+```typescript
+export const organizers: Organizer[] = [
+  {
+    name: "Sunnat629 Labs",                    // ← Organizer name
+    description: "Innovation lab focused...",  // ← Description
+    icon: Rocket                               // ← Icon from lucide-react
+  },
+  {
+    name: "Flutter Bangladesh",
+    description: "Bangladesh's largest...",
+    icon: Users
+  }
+  // ... add more organizers
+];
+```
+
+**Available Icons:**
+
+- `Rocket` - Tech companies/labs
+- `Users` - Communities
+- `Building2` - Organizations
+- `Award` - Special organizers
+
+**What This Updates:**
+
+- Organized By section
+- All organizer cards displayed dynamically
+
+---
+
+### 6. Partners & Sponsors (`partners.ts`)
 
 Update partners and sponsors:
 
@@ -228,7 +263,7 @@ export const partners: Partner[] = [
 
 ---
 
-### 6. CTA URLs (`ctaUrls.ts`)
+### 7. CTA URLs (`ctaUrls.ts`)
 
 Central location for all button/link URLs:
 
@@ -425,6 +460,16 @@ After updating content:
 }
 ```
 
+### `Organizer`
+
+```typescript
+{
+  name: string;              // Organizer name
+  description: string;       // Description
+  icon: LucideIcon;          // Icon component
+}
+```
+
 ### `Partner`
 
 ```typescript
@@ -476,3 +521,4 @@ For questions or issues:
 **Happy content editing! 🎉**
 
 *Last updated: 2025*
+

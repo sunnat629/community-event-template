@@ -8,17 +8,18 @@ This guide shows you exactly which file to edit for common updates.
 
 ## 🎯 Quick Reference
 
-| What to Update | File to Edit | Line(s) |
-|----------------|--------------|---------|
-| Event title | `heroSection.ts` | Line 5 |
-| Event date | `heroSection.ts` + `eventDetails.ts` | Lines 14, 8 |
-| Event location | `heroSection.ts` + `eventDetails.ts` | Lines 15, 13 |
-| Registration URL | `ctaUrls.ts` | Line 6 |
-| Speaker submission URL | `ctaUrls.ts` | Line 10 |
-| Sponsor contact URL | `ctaUrls.ts` | Line 15 |
-| Add speaker | `speakers.ts` | Add to array |
-| Add agenda item | `agenda.ts` | Add to array |
-| Add partner | `partners.ts` | Add to array |
+| What to Update         | File to Edit                         | Line(s)      |
+|------------------------|--------------------------------------|--------------|
+| Event title            | `heroSection.ts`                     | Line 5       |
+| Event date             | `heroSection.ts` + `eventDetails.ts` | Lines 14, 8  |
+| Event location         | `heroSection.ts` + `eventDetails.ts` | Lines 15, 13 |
+| Registration URL       | `ctaUrls.ts`                         | Line 6       |
+| Speaker submission URL | `ctaUrls.ts`                         | Line 10      |
+| Sponsor contact URL    | `ctaUrls.ts`                         | Line 15      |
+| Add speaker            | `speakers.ts`                        | Add to array |
+| Add agenda item        | `agenda.ts`                          | Add to array |
+| Add organizer          | `organizers.ts`                      | Add to array |
+| Add partner            | `partners.ts`                        | Add to array |
 
 ---
 
@@ -170,7 +171,32 @@ export const partners: Partner[] = [
 
 ---
 
-### 6. Update Event Details
+### 6. Add/Update Organizer
+
+**File**: `src/content/organizers.ts`
+
+```typescript
+// Add to organizers array - Line 13
+export const organizers: Organizer[] = [
+  // ... existing organizers
+  {
+    name: "Organization Name",
+    description: "Brief description of the organization and their role",
+    icon: Rocket  // Rocket, Users, Building2, Award
+  }
+];
+```
+
+**Available Icons:**
+
+- `Rocket` - Tech companies/innovation labs
+- `Users` - Community organizations
+- `Building2` - General organizations
+- `Award` - Special organizers
+
+---
+
+### 7. Update Event Details
 
 **File**: `src/content/eventDetails.ts`
 
@@ -230,6 +256,7 @@ src/content/
 ├── eventDetails.ts    ← Event info cards
 ├── agenda.ts          ← Schedule/timeline
 ├── speakers.ts        ← All speakers
+├── organizers.ts      ← Event organizers
 ├── partners.ts        ← Partners/sponsors
 └── ctaUrls.ts         ← All URLs in one place
 ```

@@ -5,5 +5,6 @@ export * from './heroSection';
 export * from './eventDetails';
 export * from './agenda';
 export * from './speakers';
+export * from './organizers';
 export * from './partners';
 export * from './ctaUrls';

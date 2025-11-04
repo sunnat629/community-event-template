@@ -1,5 +1,6 @@
 import { Heart, Users, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {organizers} from "@/content";
 
 export const OrganizersSection = () => {
   return (
@@ -12,33 +13,27 @@ export const OrganizersSection = () => {
           </p>
         </div>
 
-          {/* Co-Organizers - Two Column Layout */}
+          {/* Co-Organizers - Dynamic from content file */}
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-              {/* Sunnat629 Labs */}
-              <div className="bg-card rounded-2xl p-8 shadow-xl border-2 border-primary/20 text-center card-hover">
-                  <div
-                      className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-                      <Rocket className="w-10 h-10 text-white"/>
-            </div>
-              <h3 className="text-2xl font-bold mb-3">Sunnat629 Labs</h3>
-              <p className="text-muted-foreground leading-relaxed">
-              Innovation lab focused on empowering developers and building 
-              cutting-edge mobile solutions with Flutter.
-            </p>
-          </div>
-
-            {/* Flutter Bangladesh */}
-            <div className="bg-card rounded-2xl p-8 shadow-xl border-2 border-primary/20 text-center card-hover">
-                <div
-                    className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-                    <Users className="w-10 h-10 text-white"/>
+              {organizers.map((organizer, index) => {
+                  const Icon = organizer.icon;
+                  return (
+                      <div
+                          key={organizer.name}
+                          className="bg-card rounded-2xl p-8 shadow-xl border-2 border-primary/20 text-center card-hover"
+                          style={{animationDelay: `${index * 100}ms`}}
+                      >
+                          <div
+                              className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
+                              <Icon className="w-10 h-10 text-white"/>
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Flutter Bangladesh</h3>
+                  <h3 className="text-2xl font-bold mb-3">{organizer.name}</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                    Bangladesh's largest Flutter community, connecting thousands of
-                    developers across the country.
+                    {organizer.description}
                 </p>
-            </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Volunteer CTA */}
