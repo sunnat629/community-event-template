@@ -8,8 +8,8 @@ export interface Partner {
     role: string;
     tier: 'platinum' | 'gold' | 'silver' | 'bronze' | 'community' | 'media';
     description: string;
-    logo?: string; // URL to logo image
-    icon: LucideIcon;
+    logo: string; // URL to logo image (required)
+    icon: LucideIcon; // Fallback icon
     website?: string;
     facebook?: string;
     linkedin?: string;
@@ -131,6 +131,16 @@ export const partners: Partner[] = [
         website: "https://dhakadev.com",
         facebook: "https://facebook.com/dhakadev"
     },
+    {
+        name: "Tech Community BD",
+        role: "Community Partner",
+        tier: "community",
+        description: "Largest tech community in Bangladesh connecting thousands of professionals.",
+        logo: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=400&fit=crop",
+        icon: Users,
+        website: "https://techcommunity.bd",
+        linkedin: "https://linkedin.com/company/tech-community-bd"
+    },
 
     // Media Partners
     {
@@ -142,6 +152,16 @@ export const partners: Partner[] = [
         icon: Globe,
         website: "https://techtribune.com.bd",
         facebook: "https://facebook.com/techtribune"
+    },
+    {
+        name: "Digital Times",
+        role: "Media Partner",
+        tier: "media",
+        description: "Digital media outlet focusing on technology and innovation news.",
+        logo: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=400&fit=crop",
+        icon: Globe,
+        website: "https://digitaltimes.bd",
+        facebook: "https://facebook.com/digitaltimes"
     }
 ];
 

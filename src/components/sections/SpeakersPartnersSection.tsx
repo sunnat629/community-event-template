@@ -345,7 +345,6 @@ export const SpeakersPartnersSection = () => {
                     <div
                         className="flex flex-wrap justify-center items-stretch gap-8 max-w-5xl mx-auto">
                         {premiumPartners.map((partner, index) => {
-                            const Icon = partner.icon;
                             const tierStyles = getTierStyles(partner.tier);
 
                             return (
@@ -357,9 +356,9 @@ export const SpeakersPartnersSection = () => {
                                 >
                                     <div
                                         className={`group relative rounded-3xl p-10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[320px]`}>
-                                        {/* Tier badge */}
+                                        {/* Tier badge - TOP RIGHT */}
                                         <div
-                                            className={`absolute top-4 right-4 px-3 py-1 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg`}>
+                                            className={`absolute top-4 right-4 px-3 py-1 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg z-20 animate-pulse`}>
                                             {partner.tier}
                                         </div>
 
@@ -367,73 +366,83 @@ export const SpeakersPartnersSection = () => {
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"/>
 
-                                      {/* Logo/Icon with enhanced size */}
-                                      <div className="relative mb-6">
-                                          <div
-                                              className={`w-32 h-32 ${tierStyles.badge} rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                                              <Icon className="w-16 h-16 text-white"/>
-                                          </div>
-                                          {/* Floating glow */}
-                                          <div
-                                              className="absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"
-                                              style={{background: tierStyles.badge.replace('bg-gradient-to-r', 'linear-gradient(to right,').replace('from-', '').replace('to-', '') + ')'}}/>
-                                      </div>
+                                        {/* Logo Image Container */}
+                                        <div className="relative mb-6">
+                                            <div
+                                                className="w-32 h-32 mx-auto rounded-2xl overflow-hidden bg-white shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border-4 border-white/20">
+                                                <img
+                                                    src={partner.logo}
+                                                    alt={`${partner.name} logo`}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            {/* Floating glow */}
+                                            <div
+                                                className="absolute inset-0 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"
+                                                style={{
+                                                    background: tierStyles.badge
+                                                        .replace('bg-gradient-to-r', 'linear-gradient(to right,')
+                                                        .replace('from-', '')
+                                                        .replace('to-', '') + ')'
+                                                }}
+                                            />
+                                        </div>
 
-                                      {/* Content */}
-                                      <div className="text-center relative z-10">
-                                          <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
-                                              {partner.name}
-                                              <ChevronRight
-                                                  className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
-                                          </h3>
-                                          <p className="text-lg font-semibold mb-4 bg-clip-text text-transparent bg-gradient-hero">
-                                              {partner.role}
-                                          </p>
+                                        {/* Content */}
+                                        <div className="text-center relative z-10">
+                                            <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
+                                                {partner.name}
+                                                <ChevronRight
+                                                    className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
+                                            </h3>
+                                            <p className="text-lg font-semibold mb-4 bg-clip-text text-transparent bg-gradient-hero">
+                                                {partner.role}
+                                            </p>
 
-                                          {/* Short description */}
-                                          {partner.description && (
-                                              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                                                  {partner.description.length > 80
-                                                      ? `${partner.description.substring(0, 80)}...`
-                                                      : partner.description}
-                                              </p>
-                                          )}
+                                            {/* Short description */}
+                                            {partner.description && (
+                                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                                                    {partner.description.length > 80
+                                                        ? `${partner.description.substring(0, 80)}...`
+                                                        : partner.description}
+                                                </p>
+                                            )}
 
-                                          {/* Social icons preview */}
-                                          <div
-                                              className="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                              {partner.website && (
-                                                  <div
-                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                      <Globe className="w-4 h-4"/>
-                                                  </div>
-                                              )}
-                                              {partner.linkedin && (
-                                                  <div
-                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                      <Linkedin className="w-4 h-4"/>
-                                                  </div>
-                                              )}
-                                              {partner.facebook && (
-                                                  <div
-                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
-                                                      <Facebook className="w-4 h-4"/>
-                                                  </div>
-                                              )}
-                                          </div>
+                                            {/* Social icons preview */}
+                                            <div
+                                                className="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                {partner.website && (
+                                                    <div
+                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                        <Globe className="w-4 h-4"/>
+                                                    </div>
+                                                )}
+                                                {partner.linkedin && (
+                                                    <div
+                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                        <Linkedin className="w-4 h-4"/>
+                                                    </div>
+                                                )}
+                                                {partner.facebook && (
+                                                    <div
+                                                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                        <Facebook className="w-4 h-4"/>
+                                                    </div>
+                                                )}
+                                            </div>
 
-                                          {/* Click hint */}
-                                          <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                              Click to learn more
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          );
-                      })}
-                  </div>
-              </div>
-          )}
+                                            {/* Click hint */}
+                                            <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                Click to learn more
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            )}
 
             {/* Other Partners (Silver, Bronze, Community, Media) - Smaller Grid */}
             {otherPartners.length > 0 && (
@@ -441,7 +450,6 @@ export const SpeakersPartnersSection = () => {
                     <div
                         className="flex flex-wrap justify-center items-stretch gap-6 max-w-6xl mx-auto">
                         {otherPartners.map((partner, index) => {
-                            const Icon = partner.icon;
                             const tierStyles = getTierStyles(partner.tier);
 
                             return (
@@ -453,9 +461,9 @@ export const SpeakersPartnersSection = () => {
                                 >
                                     <div
                                         className={`group relative rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[240px]`}>
-                                        {/* Tier badge - smaller */}
+                                        {/* Tier badge - TOP RIGHT - smaller */}
                                         <div
-                                            className={`absolute top-3 right-3 px-2 py-0.5 ${tierStyles.badge} text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-md`}>
+                                            className={`absolute top-3 right-3 px-2 py-0.5 ${tierStyles.badge} text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-md z-20`}>
                                             {partner.tier}
                                         </div>
 
@@ -463,11 +471,15 @@ export const SpeakersPartnersSection = () => {
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
 
-                                        {/* Logo/Icon */}
+                                        {/* Logo Image */}
                                         <div className="relative mb-4">
                                             <div
-                                                className={`w-20 h-20 ${tierStyles.badge} rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                                                <Icon className="w-10 h-10 text-white"/>
+                                                className="w-20 h-20 mx-auto rounded-xl overflow-hidden bg-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border-2 border-white/20">
+                                                <img
+                                                    src={partner.logo}
+                                                    alt={`${partner.name} logo`}
+                                                    className="w-full h-full object-cover"
+                                                />
                                             </div>
                                         </div>
 
@@ -642,11 +654,12 @@ export const SpeakersPartnersSection = () => {
                                   {/* Partner logo with tier-based styling */}
                                   <div className="relative mb-6">
                                       <div
-                                          className={`w-32 h-32 ${getTierStyles(selectedPartner.tier).badge} rounded-3xl flex items-center justify-center shadow-2xl animate-float`}>
-                                          {(() => {
-                                              const Icon = selectedPartner.icon;
-                                              return <Icon className="w-16 h-16 text-white"/>;
-                                          })()}
+                                          className={`w-32 h-32 rounded-3xl overflow-hidden bg-white shadow-2xl animate-float border-4 ${getTierStyles(selectedPartner.tier).border}`}>
+                                          <img
+                                              src={selectedPartner.logo}
+                                              alt={`${selectedPartner.name} logo`}
+                                              className="w-full h-full object-cover"
+                                          />
                                       </div>
                                       {/* Tier badge */}
                                       <div
