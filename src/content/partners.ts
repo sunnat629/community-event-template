@@ -27,7 +27,7 @@ export const partners: Partner[] = [
     },
     {
         name: "Flutter Bangladesh",
-        role: "Community Partner",
+        role: "Co-Organizer",
         icon: Users
     }
 ];

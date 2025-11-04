@@ -12,20 +12,33 @@ export const OrganizersSection = () => {
           </p>
         </div>
 
-          {/* Single Organizer - Sunnat629 Labs */}
-          <div className="max-w-2xl mx-auto mb-16">
-              <div
-                  className="bg-card rounded-2xl p-10 sm:p-12 shadow-xl border-2 border-primary/20 text-center card-hover">
+          {/* Co-Organizers - Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+              {/* Sunnat629 Labs */}
+              <div className="bg-card rounded-2xl p-8 shadow-xl border-2 border-primary/20 text-center card-hover">
                   <div
-                      className="w-24 h-24 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-                      <Rocket className="w-12 h-12 text-white"/>
+                      className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
+                      <Rocket className="w-10 h-10 text-white"/>
             </div>
-              <h3 className="text-3xl font-bold mb-4">Sunnat629 Labs</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-bold mb-3">Sunnat629 Labs</h3>
+              <p className="text-muted-foreground leading-relaxed">
               Innovation lab focused on empowering developers and building 
               cutting-edge mobile solutions with Flutter.
             </p>
           </div>
+
+            {/* Flutter Bangladesh */}
+            <div className="bg-card rounded-2xl p-8 shadow-xl border-2 border-primary/20 text-center card-hover">
+                <div
+                    className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
+                    <Users className="w-10 h-10 text-white"/>
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Flutter Bangladesh</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                    Bangladesh's largest Flutter community, connecting thousands of
+                    developers across the country.
+                </p>
+            </div>
         </div>
 
         {/* Volunteer CTA */}
