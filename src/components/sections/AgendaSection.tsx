@@ -1,137 +1,377 @@
-import { Clock, Coffee, Code, Users, Presentation, Award, Zap } from "lucide-react";
+import {Clock, Coffee, Code, Users, Presentation, Award, Zap, MapPin, Calendar, ChevronRight} from "lucide-react";
+import {useState} from "react";
 
 const agendaItems = [
   {
     time: "9:00 AM",
+      endTime: "10:00 AM",
     title: "Registration & Breakfast",
     description: "Check-in, networking, and morning refreshments",
     icon: Coffee,
-    type: "break"
+      type: "break",
+      track: "all",
+      duration: "60 min",
+      location: "Main Hall"
   },
   {
     time: "10:00 AM",
+      endTime: "11:00 AM",
     title: "Opening Keynote",
     description: "The Future of Flutter: What's Next in 2025",
+      speaker: "TBA",
     icon: Presentation,
-    type: "keynote"
+      type: "keynote",
+      track: "all",
+      duration: "60 min",
+      location: "Main Auditorium"
   },
   {
     time: "11:00 AM",
-    title: "Technical Track 1",
-    description: "Advanced State Management with Riverpod",
+      endTime: "11:45 AM",
+      title: "Advanced State Management with Riverpod",
+      description: "Deep dive into scalable state management patterns and best practices",
+      speaker: "TBA",
     icon: Code,
-    type: "session"
+      type: "session",
+      track: "technical",
+      duration: "45 min",
+      location: "Tech Track Room"
   },
   {
     time: "11:45 AM",
-    title: "Technical Track 2",
-    description: "Building Scalable Flutter Apps with Clean Architecture",
+      endTime: "12:30 PM",
+      title: "Building Scalable Flutter Apps with Clean Architecture",
+      description: "Learn how to structure large-scale applications for maintainability and testability",
+      speaker: "TBA",
     icon: Zap,
-    type: "session"
+      type: "session",
+      track: "technical",
+      duration: "45 min",
+      location: "Tech Track Room"
   },
   {
     time: "12:30 PM",
-    title: "Lunch Break",
-    description: "Networking lunch with fellow developers",
+      endTime: "1:30 PM",
+      title: "Networking Lunch",
+      description: "Enjoy lunch while connecting with fellow developers and industry leaders",
     icon: Coffee,
-    type: "break"
+      type: "break",
+      track: "all",
+      duration: "60 min",
+      location: "Dining Area"
   },
   {
     time: "1:30 PM",
-    title: "Workshops",
-    description: "Hands-on: Firebase Integration & Real-time Apps",
+      endTime: "2:30 PM",
+      title: "Hands-on Workshop: Firebase Integration",
+      description: "Build real-time applications with Firebase and Flutter from scratch",
+      speaker: "TBA",
     icon: Code,
-    type: "workshop"
+      type: "workshop",
+      track: "workshop",
+      duration: "60 min",
+      location: "Workshop Lab"
   },
   {
     time: "2:30 PM",
-    title: "Panel Discussion",
-    description: "Career Growth in Flutter Development",
+      endTime: "3:30 PM",
+      title: "Panel Discussion: Career Growth in Flutter Development",
+      description: "Industry experts share insights on building a successful Flutter career",
+      speaker: "Expert Panel",
     icon: Users,
-    type: "panel"
+      type: "panel",
+      track: "career",
+      duration: "60 min",
+      location: "Panel Stage"
   },
   {
     time: "3:30 PM",
-    title: "Lightning Talks",
-    description: "Community showcases and quick insights",
+      endTime: "4:15 PM",
+      title: "Lightning Talks & Community Showcases",
+      description: "Quick insights, community projects, and inspiring stories",
     icon: Zap,
-    type: "session"
+      type: "session",
+      track: "community",
+      duration: "45 min",
+      location: "Main Hall"
   },
   {
     time: "4:15 PM",
-    title: "Closing & Awards",
-    description: "Wrap-up, prizes, and final networking",
+      endTime: "5:00 PM",
+      title: "Closing Ceremony & Awards",
+      description: "Wrap-up, prize distribution, group photo, and final networking",
     icon: Award,
-    type: "closing"
+      type: "closing",
+      track: "all",
+      duration: "45 min",
+      location: "Main Auditorium"
   }
 ];
 
-const getTypeColor = (type: string) => {
+const tracks = [
+    {id: "all", label: "All Sessions", color: "primary"},
+    {id: "technical", label: "Technical", color: "secondary"},
+    {id: "workshop", label: "Workshops", color: "accent"},
+    {id: "career", label: "Career", color: "purple"},
+    {id: "community", label: "Community", color: "orange"}
+];
+
+const getTypeStyles = (type: string) => {
   switch (type) {
-    case "keynote": return "bg-primary/10 text-primary border-primary/20";
-    case "session": return "bg-secondary/10 text-secondary border-secondary/20";
-    case "workshop": return "bg-accent/10 text-accent border-accent/20";
-    case "panel": return "bg-purple-500/10 text-purple-600 border-purple-500/20";
-    case "break": return "bg-muted text-muted-foreground border-muted";
-    case "closing": return "bg-gradient-hero text-white border-primary";
-    default: return "bg-muted text-muted-foreground";
+      case "keynote":
+          return {
+              badge: "bg-gradient-hero text-white shadow-glow",
+              card: "border-primary/30 hover:border-primary/50",
+              glow: "group-hover:shadow-[0_0_30px_rgba(2,86,155,0.3)]"
+          };
+      case "session":
+          return {
+              badge: "bg-secondary/20 text-secondary border-2 border-secondary/30",
+              card: "border-secondary/20 hover:border-secondary/40",
+              glow: "group-hover:shadow-[0_0_30px_rgba(19,185,253,0.2)]"
+          };
+      case "workshop":
+          return {
+              badge: "bg-accent/20 text-accent border-2 border-accent/30",
+              card: "border-accent/20 hover:border-accent/40",
+              glow: "group-hover:shadow-[0_0_30px_rgba(19,185,253,0.25)]"
+          };
+      case "panel":
+          return {
+              badge: "bg-purple-500/20 text-purple-600 border-2 border-purple-500/30",
+              card: "border-purple-500/20 hover:border-purple-500/40",
+              glow: "group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]"
+          };
+      case "break":
+          return {
+              badge: "bg-muted/50 text-muted-foreground border-2 border-border",
+              card: "border-border hover:border-border",
+              glow: ""
+          };
+      case "closing":
+          return {
+              badge: "bg-gradient-accent text-white shadow-md",
+              card: "border-primary/30 hover:border-primary/50",
+              glow: "group-hover:shadow-[0_0_30px_rgba(2,86,155,0.3)]"
+          };
+      default:
+          return {
+              badge: "bg-muted text-muted-foreground",
+              card: "border-border",
+              glow: ""
+          };
   }
 };
 
 export const AgendaSection = () => {
-  return (
+    const [selectedTrack, setSelectedTrack] = useState("all");
+
+    const filteredItems = agendaItems.filter(
+        item => selectedTrack === "all" || item.track === selectedTrack || item.track === "all"
+    );
+
+    return (
     <section id="agenda" className="section-padding bg-gradient-subtle relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        {/* Enhanced background decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"/>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+             style={{animationDelay: "1s"}}/>
+        <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl"/>
       
       <div className="section-container relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">Event Agenda</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A full day of learning, building, and connecting with the Flutter community
+          {/* Section header with enhanced styling */}
+          <div className="text-center mb-12 animate-fade-in-up">
+              <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                  <Calendar className="w-4 h-4 text-primary"/>
+                  <span className="text-sm font-semibold text-primary">Full Day Event</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero">
+                  Event Agenda
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  A carefully curated day of learning, building, and connecting with the Flutter community
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Timeline */}
+          {/* Track filter tabs with improved design */}
+          <div className="flex flex-wrap justify-center gap-3 mb-16 animate-fade-in-up"
+               style={{animationDelay: "100ms"}}>
+              {tracks.map((track) => (
+                  <button
+                      key={track.id}
+                      onClick={() => setSelectedTrack(track.id)}
+                      className={`
+                px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300
+                border-2 backdrop-blur-sm
+                ${selectedTrack === track.id
+                          ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
+                          : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
+                      }
+              `}
+                  >
+                      {track.label}
+                  </button>
+              ))}
+          </div>
+
+          {/* Enhanced timeline with better visual hierarchy */}
+          <div className="max-w-6xl mx-auto">
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-[28px] sm:left-[50px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary" />
-            
-            <div className="space-y-6">
-              {agendaItems.map((item, index) => {
+              {/* Enhanced vertical timeline line with gradient */}
+              <div
+                  className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-[0_0_10px_rgba(2,86,155,0.3)]"/>
+
+              <div className="space-y-8">
+                  {filteredItems.map((item, index) => {
                 const Icon = item.icon;
-                return (
+                  const styles = getTypeStyles(item.type);
+
+                  return (
                   <div 
                     key={index}
-                    className="relative flex gap-4 sm:gap-8 items-start card-hover"
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    className="relative animate-fade-in-up group"
+                    style={{animationDelay: `${index * 80}ms`}}
                   >
-                    {/* Time badge */}
-                    <div className="flex-shrink-0 relative z-10">
-                      <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-4 border-background shadow-lg ${getTypeColor(item.type)}`}>
-                        <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
+                      {/* Desktop layout */}
+                      <div className="hidden md:flex gap-8 items-start">
+                          {/* Time badge - enhanced design */}
+                          <div className="flex-shrink-0 relative z-10">
+                              <div className={`
+                          w-24 h-24 rounded-2xl flex flex-col items-center justify-center
+                          border-4 border-background shadow-xl
+                          transition-all duration-500 group-hover:scale-110 group-hover:rotate-3
+                          ${styles.badge}
+                        `}>
+                                  <Icon className="w-8 h-8 mb-1"/>
+                                  <span className="text-xs font-bold opacity-80">{item.duration}</span>
+                              </div>
                       </div>
+
+                        {/* Content card - enhanced with more details */}
+                        <div className={`
+                        flex-1 glass-card rounded-3xl p-8
+                        border-2 transition-all duration-500
+                        ${styles.card} ${styles.glow}
+                        hover:scale-[1.02] hover:-translate-y-1
+                        cursor-pointer
+                      `}>
+                            <div className="flex items-start justify-between gap-6 mb-4">
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                                            {item.title}
+                                        </h3>
+                                        <ChevronRight
+                                            className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1"/>
+                                    </div>
+                                    <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+                                        {item.description}
+                                    </p>
+
+                                    {/* Additional metadata */}
+                                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                                        {item.speaker && (
+                                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
+                                                <Users className="w-4 h-4"/>
+                                                <span className="font-medium">{item.speaker}</span>
+                                            </div>
+                                        )}
+                                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
+                                            <MapPin className="w-4 h-4"/>
+                                            <span>{item.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Time display - improved visibility */}
+                                <div className="flex flex-col items-end flex-shrink-0">
+                                    <div
+                                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-md">
+                                        <Clock className="w-5 h-5"/>
+                                        <div className="text-right">
+                                            <div className="font-bold text-lg">{item.time}</div>
+                                            <div className="text-xs opacity-90">{item.endTime}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Content card */}
-                    <div className="flex-1 glass-card rounded-2xl p-6 sm:p-8 card-glow group">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                        <h3 className="text-xl sm:text-2xl font-bold">{item.title}</h3>
-                        <div className="flex items-center gap-2 text-primary font-semibold">
-                          <Clock className="w-4 h-4" />
-                          <span>{item.time}</span>
+                      {/* Mobile layout - improved */}
+                      <div className="md:hidden">
+                          <div className={`
+                        glass-card rounded-2xl p-6 border-2 transition-all duration-300
+                        ${styles.card}
+                        hover:scale-[1.01]
+                      `}>
+                              {/* Header with icon and time */}
+                              <div className="flex items-start gap-4 mb-4">
+                                  <div className={`
+                            w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0
+                            ${styles.badge}
+                          `}>
+                                      <Icon className="w-7 h-7"/>
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                      <div
+                                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-hero text-white inline-flex mb-2 shadow-md">
+                                          <Clock className="w-4 h-4"/>
+                                          <span className="font-bold text-sm">{item.time} - {item.endTime}</span>
+                                      </div>
+                                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                                  </div>
                         </div>
+
+                          {/* Description */}
+                          <p className="text-muted-foreground mb-4 leading-relaxed">
+                              {item.description}
+                          </p>
+
+                          {/* Metadata */}
+                          <div className="flex flex-wrap gap-2 text-sm">
+                              {item.speaker && (
+                                  <div
+                                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
+                                      <Users className="w-3.5 h-3.5"/>
+                                      <span>{item.speaker}</span>
+                                  </div>
+                              )}
+                              <div
+                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
+                                  <MapPin className="w-3.5 h-3.5"/>
+                                  <span>{item.location}</span>
+                              </div>
+                              <div
+                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
+                                  <Clock className="w-3.5 h-3.5"/>
+                                  <span>{item.duration}</span>
+                              </div>
+                          </div>
                       </div>
-                      <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                        {item.description}
-                      </p>
                     </div>
                   </div>
                 );
               })}
             </div>
           </div>
+
+            {/* Call to action footer */}
+            <div className="mt-16 text-center animate-fade-in-up" style={{animationDelay: "600ms"}}>
+                <div
+                    className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 rounded-3xl bg-gradient-hero text-white shadow-glow-lg">
+                    <div className="flex-1 text-left">
+                        <h3 className="text-2xl font-bold mb-2">Don't Miss Out!</h3>
+                        <p className="text-white/90">Register now to secure your spot at this incredible event</p>
+                    </div>
+                    <button
+                        className="px-8 py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl whitespace-nowrap">
+                        Register Now
+                    </button>
+                </div>
+            </div>
         </div>
       </div>
     </section>

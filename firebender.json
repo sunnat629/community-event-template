@@ -1,0 +1,1576 @@
+{
+  "project": {
+    "name": "Sunnat629 Labs Admin Portal",
+    "type": "full-stack-web-application",
+    "version": "1.0.0",
+    "description": "Professional admin portal for managing courses, events, members, and partners with world-class UX/UI"
+  },
+  "roles": {
+    "expert_roles": [
+      "CTO - Technical architecture and system design",
+      "UX/UI Designer - User experience and interface design",
+      "Frontend Developer - React/Next.js development",
+      "Backend Developer - Node.js/Express API development",
+      "Product Designer - Visual design and brand identity",
+      "Database Architect - PostgreSQL schema design",
+      "DBA/Docker Expert - Database management and containerization",
+      "AWS Expert - Cloud infrastructure and deployment",
+      "Security Expert - Authentication and data protection",
+      "DevOps Engineer - Deployment and infrastructure",
+      "Project Auditor - Overall project assessment and scoring",
+      "Code Auditor - Quality assurance and best practices review"
+    ],
+    "responsibilities": {
+      "code_quality": "Write clean, maintainable, well-documented code",
+      "ux_design": "Follow modern UX principles and accessibility standards",
+      "performance": "Optimize for speed and scalability",
+      "security": "Implement secure authentication and data validation",
+      "testing": "Ensure reliability through comprehensive testing",
+      "audit": "Regular quality assessment and improvement recommendations"
+    }
+  },
+  "theme": {
+    "brand_colors": {
+      "primary": {
+        "name": "Mint Green",
+        "main": "#4ad6a8",
+        "description": "Main brand color - Growth, innovation, freshness",
+        "usage": "Primary buttons, active states, brand accents, focus states",
+        "palette": {
+          "50": "#eafdf6",
+          "100": "#ccfae8",
+          "200": "#9ef5d7",
+          "300": "#6ee0bc",
+          "400": "#4ad6a8",
+          "500": "#2eb88a",
+          "600": "#1f9972",
+          "700": "#187a5c",
+          "800": "#14614a",
+          "900": "#0f4d3a",
+          "950": "#083828"
+        }
+      },
+      "secondary": {
+        "name": "Sky Blue",
+        "main": "#a3d3f9",
+        "description": "Secondary brand color - Trust, professionalism, clarity",
+        "usage": "Secondary actions, complementary accents, gradient pairs",
+        "palette": {
+          "50": "#f0f9ff",
+          "100": "#e0f2fe",
+          "200": "#c1e1fb",
+          "300": "#a3d3f9",
+          "400": "#7bb5e7",
+          "500": "#5a9dd8",
+          "600": "#4281c4",
+          "700": "#3368a6",
+          "800": "#2b5589",
+          "900": "#244571",
+          "950": "#1a3352"
+        }
+      },
+      "semantic": {
+        "success": "#10b981",
+        "error": "#ef4444",
+        "warning": "#f59e0b",
+        "info": "#3b82f6"
+      }
+    },
+    "gradients": {
+      "brand": "linear-gradient(135deg, #4ad6a8 0%, #a3d3f9 100%)",
+      "brand_reverse": "linear-gradient(135deg, #a3d3f9 0%, #4ad6a8 100%)",
+      "primary": "linear-gradient(135deg, #4ad6a8 0%, #2eb88a 100%)",
+      "secondary": "linear-gradient(135deg, #a3d3f9 0%, #7bb5e7 100%)",
+      "subtle_background": "linear-gradient(to bottom, #eafdf6 0%, #ffffff 100%)"
+    },
+    "design_tokens": {
+      "border_radius": {
+        "sm": "0.375rem",
+        "md": "0.75rem",
+        "lg": "1rem",
+        "xl": "1.5rem"
+      },
+      "spacing": {
+        "unit": "0.25rem",
+        "scale": "4, 6, 8, 12, 16, 24, 32, 40, 48"
+      },
+      "typography": {
+        "font_family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif",
+        "font_sizes": "xs, sm, base, lg, xl, 2xl, 3xl, 4xl"
+      },
+      "shadows": {
+        "brand": "0 4px 14px 0 rgba(74, 214, 168, 0.25)",
+        "brand_lg": "0 8px 24px 0 rgba(74, 214, 168, 0.3)"
+      }
+    }
+  },
+  "technology_stack": {
+    "frontend": {
+      "framework": "Next.js 16.0.0",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "ui_library": "React 19",
+      "animations": "Framer Motion",
+      "icons": "Lucide React",
+      "notifications": "React Hot Toast",
+      "forms": "Native HTML5 with validation"
+    },
+    "backend": {
+      "runtime": "Node.js 23.1.0",
+      "framework": "Express.js",
+      "language": "TypeScript",
+      "validation": "Zod",
+      "authentication": "JWT (jsonwebtoken)",
+      "rate_limiting": "express-rate-limit",
+      "security": "bcryptjs for password hashing"
+    },
+    "database": {
+      "system": "PostgreSQL",
+      "orm": "Prisma",
+      "migrations": "Prisma Migrate"
+    },
+    "database_management": {
+      "critical_rules": [
+        "⚠️  NEVER run seed scripts in production without backup",
+        "⚠️  ALWAYS backup database before running destructive operations",
+        "⚠️  Seed scripts should ONLY be used for initial setup, never in production with existing data",
+        "⚠️  Use migrations for schema changes, NOT seed scripts",
+        "⚠️  Implement confirmation prompts before deleting existing data",
+        "⚠️  Add --force flag requirement for destructive seed operations"
+      ],
+      "seed_script_best_practices": [
+        "Check if data exists before deleting (prevent accidental data loss)",
+        "Provide --force flag for intentional data deletion",
+        "Provide --skip-delete flag to add data without deleting existing",
+        "Log all operations clearly with warnings for destructive actions",
+        "Create automatic backup before any deleteMany() operation",
+        "Display confirmation message: 'This will DELETE all existing data. Continue? (yes/no)'",
+        "Separate seed scripts: seed-initial.ts (with delete) vs seed-add.ts (without delete)",
+        "Never use deleteMany() in production environment",
+        "Check NODE_ENV before allowing destructive operations"
+      ],
+      "backup_strategy": [
+        "Automated daily backups with retention policy (30 days minimum)",
+        "Backup before any seed script execution",
+        "Point-in-time recovery capability",
+        "Test backup restoration monthly",
+        "Store backups in secure, separate location (S3, different region)",
+        "Document backup/restore procedures clearly"
+      ],
+      "migration_workflow": [
+        "Use Prisma Migrate for all schema changes",
+        "Test migrations in development first",
+        "Review migration SQL before applying",
+        "Never edit migration files manually",
+        "Keep migrations in version control",
+        "Document breaking changes in migration notes"
+      ],
+      "data_safety_checklist": [
+        "✓ Database backup completed and verified",
+        "✓ Seed script reviewed (check for deleteMany())",
+        "✓ Environment checked (development vs production)",
+        "✓ Confirmation prompt implemented for destructive operations",
+        "✓ Rollback plan documented",
+        "✓ Data export completed (if needed)",
+        "✓ Team notified (for production changes)",
+        "✓ Maintenance window scheduled (for large operations)"
+      ],
+      "scripts_organization": {
+        "seed.ts": "Development only - DELETES all data and reseeds",
+        "seed-initial.ts": "First-time setup - safe to use on empty database",
+        "seed-add.ts": "Adds sample data WITHOUT deleting existing data",
+        "seed-production.ts": "Production-safe - NO deleteMany(), only inserts missing data",
+        "backup.ts": "Create manual backup of database",
+        "restore.ts": "Restore database from backup file"
+      },
+      "npm_scripts": {
+        "db:seed": "Development only - tsx prisma/seed.ts",
+        "db:seed:force": "Force seed with confirmation - tsx prisma/seed.ts --force",
+        "db:seed:safe": "Safe seed without deleting - tsx prisma/seed-add.ts",
+        "db:backup": "Create backup - tsx scripts/backup.ts",
+        "db:restore": "Restore from backup - tsx scripts/restore.ts"
+      }
+    },
+    "dev_tools": {
+      "package_manager": "npm",
+      "linter": "ESLint",
+      "git": "Git with conventional commits"
+    }
+  },
+  "coding_standards": {
+    "general": [
+      "Write clear, concise code comments",
+      "Use TypeScript for type safety",
+      "Follow functional programming principles where appropriate",
+      "Prefer composition over inheritance",
+      "Keep functions small and focused (single responsibility)",
+      "Use meaningful variable and function names",
+      "Avoid magic numbers and strings - use constants"
+    ],
+    "react_nextjs": [
+      "Use 'use client' directive for client components",
+      "Prefer functional components with hooks",
+      "Use TypeScript interfaces for props",
+      "Implement proper error boundaries",
+      "Optimize images with next/image",
+      "Use dynamic imports for code splitting",
+      "Implement proper loading and error states"
+    ],
+    "tailwind_css": [
+      "Use semantic color tokens (primary-500, not #4ad6a8)",
+      "Prefer utility classes over custom CSS",
+      "Use @apply sparingly, only for repeated patterns",
+      "Follow mobile-first responsive design",
+      "Use group/peer modifiers for parent-child interactions",
+      "Implement consistent spacing scale (4, 6, 8, 12, 16, 24)"
+    ],
+    "api_design": [
+      "Follow RESTful conventions",
+      "Use proper HTTP status codes",
+      "Implement pagination for list endpoints",
+      "Include comprehensive error messages",
+      "Validate all inputs with Zod schemas",
+      "Use JWT for authentication",
+      "Implement rate limiting on sensitive endpoints"
+    ],
+    "security": [
+      "Never commit sensitive data (use .env files)",
+      "Hash passwords with bcrypt",
+      "Validate and sanitize all user inputs",
+      "Implement CSRF protection",
+      "Use HTTPS in production",
+      "Implement proper CORS policies",
+      "Rate limit authentication endpoints"
+    ]
+  },
+  "ux_ui_principles": {
+    "design_philosophy": [
+      "User-centered design - prioritize user needs",
+      "Consistency - uniform design language throughout",
+      "Accessibility - WCAG AA compliance minimum",
+      "Feedback - provide clear responses to user actions",
+      "Simplicity - avoid unnecessary complexity",
+      "Delight - add thoughtful micro-interactions"
+    ],
+    "interaction_patterns": [
+      "Minimum touch target: 44px × 44px",
+      "Use hover states on all interactive elements",
+      "Provide loading states for async operations",
+      "Show clear focus indicators (keyboard navigation)",
+      "Use animations purposefully (200-300ms duration)",
+      "Implement skeleton loaders for perceived performance"
+    ],
+    "color_usage": [
+      "Primary color for main actions and brand elements",
+      "Secondary color for complementary actions",
+      "Use semantic colors appropriately (red=error, green=success)",
+      "Maintain 4.5:1 contrast ratio minimum (WCAG AA)",
+      "Use gradients sparingly for visual interest",
+      "Keep backgrounds light for readability"
+    ],
+    "typography": [
+      "Use system font stack for performance",
+      "Maintain clear hierarchy (h1 > h2 > h3 > p)",
+      "Line height: 1.5 for body text, 1.2 for headings",
+      "Use font weight for emphasis (semibold/bold)",
+      "Keep line length readable (60-80 characters)",
+      "Ensure sufficient letter spacing"
+    ],
+    "spacing": [
+      "Use consistent spacing scale (4, 6, 8, 12, 16, 24)",
+      "Group related elements closer together",
+      "Use whitespace to create visual hierarchy",
+      "Maintain consistent padding/margins",
+      "Follow 8px grid system"
+    ]
+  },
+  "component_guidelines": {
+    "buttons": [
+      "Use bg-gradient-brand for primary CTAs",
+      "Always include hover and active states",
+      "Provide loading states with spinners",
+      "Implement disabled states with reduced opacity",
+      "Add scale animations on hover (scale: 1.02)",
+      "Include icon + text for clarity",
+      "Minimum height: 44px for accessibility"
+    ],
+    "inputs": [
+      "Use border-2 for better visibility",
+      "Implement focus states with brand colors (primary-500)",
+      "Show focus ring (ring-4 ring-primary-200/50)",
+      "Include icon indicators (mail, lock, etc.)",
+      "Provide clear placeholder text",
+      "Show validation errors inline",
+      "Use proper input types (email, password, etc.)"
+    ],
+    "cards": [
+      "Use white background with subtle shadows",
+      "Round corners (rounded-xl or rounded-2xl)",
+      "Add border for definition (border-gray-100)",
+      "Include hover states for interactive cards",
+      "Maintain consistent padding (p-6 or p-8)",
+      "Use glass effect for overlays"
+    ],
+    "navigation": [
+      "Highlight active page with brand gradient background",
+      "Use icons + text for clarity",
+      "Implement smooth transitions",
+      "Show hover states on all links",
+      "Maintain sticky header for accessibility",
+      "Include breadcrumbs for deep navigation"
+    ]
+  },
+  "accessibility": {
+    "requirements": [
+      "WCAG 2.1 Level AA compliance",
+      "Keyboard navigation support",
+      "Screen reader compatibility",
+      "Color contrast ratios: 4.5:1 minimum",
+      "Focus indicators on all interactive elements",
+      "Alt text for all images",
+      "Proper heading hierarchy",
+      "ARIA labels where appropriate"
+    ],
+    "testing": [
+      "Test with keyboard only (Tab, Enter, Esc)",
+      "Verify with screen reader (VoiceOver, NVDA)",
+      "Check color contrast (contrast-ratio.com)",
+      "Test with zoom (200% minimum)",
+      "Verify with color blindness simulator"
+    ]
+  },
+  "performance": {
+    "optimization": [
+      "Use Next.js Image component for images",
+      "Implement code splitting with dynamic imports",
+      "Lazy load below-the-fold content",
+      "Minimize bundle size (analyze with webpack-bundle-analyzer)",
+      "Use pagination for large data sets",
+      "Implement caching strategies",
+      "Optimize database queries with indexes"
+    ],
+    "metrics": [
+      "Lighthouse score: 90+ (all categories)",
+      "First Contentful Paint: < 1.5s",
+      "Largest Contentful Paint: < 2.5s",
+      "Time to Interactive: < 3s",
+      "Cumulative Layout Shift: < 0.1"
+    ]
+  },
+  "git_workflow": {
+    "branch_naming": [
+      "feature/[feature-name]",
+      "fix/[bug-name]",
+      "docs/[doc-name]",
+      "refactor/[refactor-name]"
+    ],
+    "commit_conventions": [
+      "feat: new feature",
+      "fix: bug fix",
+      "docs: documentation changes",
+      "style: formatting changes",
+      "refactor: code refactoring",
+      "test: test additions/changes",
+      "chore: maintenance tasks"
+    ],
+    "commit_format": "type(scope): description\n\n[optional body]\n\n[optional footer]"
+  },
+  "documentation": {
+    "required": [
+      "README.md with setup instructions",
+      "API documentation (endpoints, params, responses)",
+      "Component documentation (props, usage)",
+      "Theme system documentation (colors, tokens)",
+      "Architecture decision records (ADRs)",
+      "Inline code comments for complex logic"
+    ]
+  },
+  "testing_strategy": {
+    "unit_tests": "Test individual functions and components",
+    "integration_tests": "Test API endpoints and database interactions",
+    "e2e_tests": "Test critical user flows (login, CRUD operations)",
+    "accessibility_tests": "Verify WCAG compliance",
+    "security_tests": "Test authentication and authorization"
+  },
+  "deployment": {
+    "environments": {
+      "development": "Local development with hot reload",
+      "staging": "Pre-production testing environment",
+      "production": "Live user-facing application"
+    },
+    "checklist": [
+      "Environment variables configured",
+      "Database migrations applied",
+      "SSL/TLS certificates installed",
+      "CORS policies configured",
+      "Rate limiting enabled",
+      "Error logging configured",
+      "Performance monitoring enabled",
+      "Backup strategy in place"
+    ]
+  },
+  "maintenance": {
+    "regular_tasks": [
+      "Update dependencies monthly",
+      "Review security advisories",
+      "Monitor error logs",
+      "Analyze performance metrics",
+      "Backup database regularly",
+      "Review and optimize slow queries",
+      "Update documentation as needed"
+    ]
+  },
+  "guilds": {
+    "overview": "Community-driven learning guilds for specialized tech tracks with personalized learning paths, mentorship, and progress tracking",
+    "features": [
+      "7 specialized guilds (Android, Kotlin, iOS, Flutter, AI & ML, QA, Student)",
+      "Dynamic theme system per guild",
+      "Learning roadmaps with progress tracking",
+      "Mentor profiles and booking system",
+      "Guild-specific events and resources",
+      "Role-based membership (member, mentor, lead)",
+      "Social integration (Discord, WhatsApp)"
+    ],
+    "guilds_list": [
+      {
+        "slug": "android",
+        "name": "Android Guild",
+        "tagline": "Kotlin • Jetpack Compose • KMP",
+        "theme": {
+          "primary": "#3DDC84",
+          "secondary": "#0B3D2E",
+          "accent": "#9EF5C6"
+        },
+        "focus_areas": [
+          "Kotlin",
+          "Jetpack Compose",
+          "Kotlin Multiplatform",
+          "Android Architecture"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "kotlin",
+        "name": "Kotlin Guild",
+        "tagline": "Multiplatform • Backend • DSLs",
+        "theme": {
+          "primary": "#F18E33",
+          "secondary": "#1A2B59",
+          "accent": "#5C6BF6"
+        },
+        "focus_areas": [
+          "Kotlin Multiplatform",
+          "Backend Development",
+          "DSL Design",
+          "Coroutines"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "ios",
+        "name": "iOS Guild",
+        "tagline": "Swift • SwiftUI • iOS Frameworks",
+        "theme": {
+          "primary": "#0A84FF",
+          "secondary": "#0B1B2B",
+          "accent": "#B3D5FF"
+        },
+        "focus_areas": [
+          "Swift",
+          "SwiftUI",
+          "UIKit",
+          "iOS Frameworks",
+          "App Store"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "flutter",
+        "name": "Flutter Guild",
+        "tagline": "Cross-platform • Dart • Material Design",
+        "theme": {
+          "primary": "#54C5F8",
+          "secondary": "#0B2331",
+          "accent": "#A7E3FF"
+        },
+        "focus_areas": [
+          "Flutter",
+          "Dart",
+          "Material Design",
+          "Cross-platform",
+          "State Management"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "ai-ml",
+        "name": "AI & ML Guild",
+        "tagline": "Machine Learning • Deep Learning • NLP",
+        "theme": {
+          "primary": "#7C3AED",
+          "secondary": "#1A102A",
+          "accent": "#C4B5FD"
+        },
+        "focus_areas": [
+          "Machine Learning",
+          "Deep Learning",
+          "NLP",
+          "Computer Vision",
+          "MLOps"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "qa",
+        "name": "QA Guild",
+        "tagline": "Testing • Automation • Quality Engineering",
+        "theme": {
+          "primary": "#14B8A6",
+          "secondary": "#062826",
+          "accent": "#99F6E4"
+        },
+        "focus_areas": [
+          "Test Automation",
+          "API Testing",
+          "Performance Testing",
+          "CI/CD",
+          "Quality Engineering"
+        ],
+        "tracks": [
+          "Foundations",
+          "Intermediate",
+          "Advanced"
+        ]
+      },
+      {
+        "slug": "student",
+        "name": "Student Guild",
+        "tagline": "Learning • Mentorship • Career Development",
+        "theme": {
+          "primary": "#F59E0B",
+          "secondary": "#2A1900",
+          "accent": "#FDE68A"
+        },
+        "focus_areas": [
+          "Career Development",
+          "Interview Prep",
+          "Portfolio Building",
+          "Soft Skills",
+          "Mentorship"
+        ],
+        "tracks": [
+          "Getting Started",
+          "Career Prep",
+          "Job Ready"
+        ]
+      }
+    ],
+    "routes": {
+      "public": {
+        "guilds_home": "/guilds",
+        "guild_detail": "/guilds/[slug]",
+        "guild_roadmap": "/guilds/[slug]/roadmap",
+        "guild_mentors": "/guilds/[slug]/mentors",
+        "guild_events": "/guilds/[slug]/events",
+        "guild_resources": "/guilds/[slug]/resources",
+        "mentor_profile": "/mentors/[handle]",
+        "resource_detail": "/resources/[slug]"
+      },
+      "admin": {
+        "guild_management": "/admin/guilds",
+        "guild_create": "/admin/guilds/create",
+        "guild_edit": "/admin/guilds/[slug]/edit",
+        "mentor_management": "/admin/mentors",
+        "roadmap_editor": "/admin/roadmaps",
+        "guild_analytics": "/admin/guilds/[slug]/analytics"
+      }
+    },
+    "components": {
+      "guild_card": {
+        "description": "Card component for guild listing",
+        "props": [
+          "guild",
+          "showProgress",
+          "onClick"
+        ],
+        "styling": [
+          "Guild theme color as left border (4px)",
+          "White background with shadow-sm hover:shadow-md",
+          "rounded-2xl corners",
+          "Hover: scale-[1.02] transform",
+          "Min height: 280px",
+          "Display: icon, name, tagline, member count, join status"
+        ]
+      },
+      "guild_hero": {
+        "description": "Hero section for guild detail page",
+        "props": [
+          "guild",
+          "userMembership"
+        ],
+        "styling": [
+          "Dynamic gradient using guild secondary + primary colors",
+          "Height: 400px desktop, 300px mobile",
+          "Include guild icon (96px), name (text-4xl), tagline",
+          "CTA buttons with guild primary color",
+          "Breadcrumb navigation"
+        ]
+      },
+      "guild_tracks": {
+        "description": "Learning tracks display",
+        "props": [
+          "tracks",
+          "userProgress",
+          "guildSlug"
+        ],
+        "styling": [
+          "Three columns on desktop, stack on mobile",
+          "Track pills with guild accent color",
+          "Progress indicators if user is member",
+          "Icons: 1/2/3 dots or beginner/intermediate/advanced icons"
+        ]
+      },
+      "guild_roadmap": {
+        "description": "Roadmap timeline with steps",
+        "props": [
+          "roadmap",
+          "userProgress",
+          "onStepComplete"
+        ],
+        "styling": [
+          "Vertical timeline with connecting lines (guild primary color)",
+          "Each step: checkbox, title, summary, resource link",
+          "Completed steps: checkmark with guild primary background",
+          "Smooth scroll reveal animations",
+          "Responsive: full width on mobile"
+        ]
+      },
+      "guild_mentors": {
+        "description": "Mentor grid display",
+        "props": [
+          "mentors",
+          "guildSlug"
+        ],
+        "styling": [
+          "Grid: 3 cols desktop, 2 cols tablet, 1 col mobile",
+          "Mentor tile: avatar, name, title, stacks (chips)",
+          "Quick actions: Book Session, Message",
+          "Hover: reveal bio preview",
+          "Online status indicator"
+        ]
+      },
+      "guild_events": {
+        "description": "Guild-specific events list",
+        "props": [
+          "events",
+          "guildSlug"
+        ],
+        "styling": [
+          "List or grid view toggle",
+          "Date badge with guild accent color",
+          "Event card: title, date, venue, RSVP button",
+          "Filter: upcoming/past",
+          "Empty state with CTA to suggest events"
+        ]
+      },
+      "join_cta": {
+        "description": "Join guild call-to-action",
+        "props": [
+          "guild",
+          "isMember",
+          "onJoin",
+          "onLeave"
+        ],
+        "styling": [
+          "Sticky on mobile (bottom), sidebar on desktop",
+          "Primary button with guild primary color gradient",
+          "Show benefits: access to roadmaps, events, mentors",
+          "If member: show joined status + leave option",
+          "Animate on scroll into view"
+        ]
+      },
+      "track_pill": {
+        "description": "Learning track indicator",
+        "props": [
+          "track",
+          "level",
+          "progress"
+        ],
+        "styling": [
+          "Border-2 with guild accent color",
+          "Background: guild accent/10",
+          "Text: guild primary color",
+          "Size: px-4 py-2, text-sm",
+          "Icon + text",
+          "Hover: show description tooltip"
+        ]
+      }
+    },
+    "theme_system": {
+      "implementation": "CSS variables with data-guild attribute on body",
+      "variables": [
+        "--guild-primary: Guild primary color",
+        "--guild-secondary: Guild secondary color (for backgrounds)",
+        "--guild-accent: Guild accent color (for highlights)",
+        "--guild-primary-rgb: RGB values for opacity usage"
+      ],
+      "usage": [
+        "Apply data-guild=\"slug\" to body element",
+        "CSS: bg-[--guild-primary] or style={{backgroundColor: 'var(--guild-primary)'}}",
+        "Tailwind: Use arbitrary values with CSS vars",
+        "Transition: all guild colors with 300ms ease"
+      ],
+      "fallback": "Use brand primary/secondary if guild theme not found"
+    },
+    "database_schema": {
+      "tables": {
+        "guilds": {
+          "columns": [
+            "id UUID PRIMARY KEY",
+            "slug TEXT UNIQUE NOT NULL",
+            "name TEXT NOT NULL",
+            "tagline TEXT",
+            "summary TEXT",
+            "icon_url TEXT",
+            "theme JSONB (primary, secondary, accent)",
+            "focus_areas TEXT[]",
+            "social_links JSONB (discord, whatsapp, twitter)",
+            "is_active BOOLEAN DEFAULT true",
+            "member_count INTEGER DEFAULT 0",
+            "created_at TIMESTAMPTZ DEFAULT NOW()",
+            "updated_at TIMESTAMPTZ DEFAULT NOW()"
+          ],
+          "indexes": [
+            "slug",
+            "is_active"
+          ]
+        },
+        "memberships": {
+          "columns": [
+            "user_id UUID REFERENCES users(id) ON DELETE CASCADE",
+            "guild_id UUID REFERENCES guilds(id) ON DELETE CASCADE",
+            "role TEXT DEFAULT 'member' CHECK (role IN ('member', 'mentor', 'lead'))",
+            "joined_at TIMESTAMPTZ DEFAULT NOW()",
+            "last_active TIMESTAMPTZ",
+            "PRIMARY KEY (user_id, guild_id)"
+          ],
+          "indexes": [
+            "user_id",
+            "guild_id",
+            "role"
+          ]
+        },
+        "roadmaps": {
+          "columns": [
+            "id UUID PRIMARY KEY",
+            "guild_id UUID REFERENCES guilds(id) ON DELETE CASCADE",
+            "title TEXT NOT NULL",
+            "description TEXT",
+            "level TEXT CHECK (level IN ('foundations', 'intermediate', 'advanced'))",
+            "order_index INTEGER",
+            "is_published BOOLEAN DEFAULT false",
+            "created_at TIMESTAMPTZ DEFAULT NOW()",
+            "updated_at TIMESTAMPTZ DEFAULT NOW()"
+          ],
+          "indexes": [
+            "guild_id",
+            "level",
+            "is_published"
+          ]
+        },
+        "roadmap_steps": {
+          "columns": [
+            "id UUID PRIMARY KEY",
+            "roadmap_id UUID REFERENCES roadmaps(id) ON DELETE CASCADE",
+            "step_index INTEGER NOT NULL",
+            "title TEXT NOT NULL",
+            "summary TEXT",
+            "resource_type TEXT CHECK (resource_type IN ('article', 'video', 'codelab', 'repo', 'course'))",
+            "resource_url TEXT",
+            "estimated_hours INTEGER",
+            "is_required BOOLEAN DEFAULT true",
+            "created_at TIMESTAMPTZ DEFAULT NOW()"
+          ],
+          "indexes": [
+            "roadmap_id",
+            "step_index"
+          ]
+        },
+        "user_progress": {
+          "columns": [
+            "user_id UUID REFERENCES users(id) ON DELETE CASCADE",
+            "step_id UUID REFERENCES roadmap_steps(id) ON DELETE CASCADE",
+            "completed BOOLEAN DEFAULT false",
+            "started_at TIMESTAMPTZ DEFAULT NOW()",
+            "completed_at TIMESTAMPTZ",
+            "notes TEXT",
+            "PRIMARY KEY (user_id, step_id)"
+          ],
+          "indexes": [
+            "user_id",
+            "step_id",
+            "completed"
+          ]
+        },
+        "mentors": {
+          "columns": [
+            "id UUID PRIMARY KEY",
+            "user_id UUID REFERENCES users(id) ON DELETE CASCADE UNIQUE",
+            "handle TEXT UNIQUE NOT NULL",
+            "title TEXT",
+            "bio TEXT",
+            "avatar_url TEXT",
+            "stacks TEXT[]",
+            "expertise_level TEXT CHECK (expertise_level IN ('intermediate', 'advanced', 'expert'))",
+            "availability_url TEXT (Cal.com link)",
+            "social_links JSONB",
+            "is_active BOOLEAN DEFAULT true",
+            "created_at TIMESTAMPTZ DEFAULT NOW()"
+          ],
+          "indexes": [
+            "handle",
+            "user_id",
+            "is_active"
+          ]
+        },
+        "mentor_guilds": {
+          "columns": [
+            "mentor_id UUID REFERENCES mentors(id) ON DELETE CASCADE",
+            "guild_id UUID REFERENCES guilds(id) ON DELETE CASCADE",
+            "expertise_areas TEXT[]",
+            "joined_as_mentor_at TIMESTAMPTZ DEFAULT NOW()",
+            "PRIMARY KEY (mentor_id, guild_id)"
+          ],
+          "indexes": [
+            "mentor_id",
+            "guild_id"
+          ]
+        },
+        "guild_resources": {
+          "columns": [
+            "id UUID PRIMARY KEY",
+            "guild_id UUID REFERENCES guilds(id) ON DELETE CASCADE",
+            "title TEXT NOT NULL",
+            "description TEXT",
+            "resource_type TEXT CHECK (resource_type IN ('roadmap', 'codelab', 'repo', 'video', 'article', 'tool'))",
+            "url TEXT NOT NULL",
+            "thumbnail_url TEXT",
+            "tags TEXT[]",
+            "difficulty TEXT CHECK (difficulty IN ('beginner', 'intermediate', 'advanced'))",
+            "is_featured BOOLEAN DEFAULT false",
+            "view_count INTEGER DEFAULT 0",
+            "created_at TIMESTAMPTZ DEFAULT NOW()"
+          ],
+          "indexes": [
+            "guild_id",
+            "resource_type",
+            "is_featured",
+            "difficulty"
+          ]
+        },
+        "event_guilds": {
+          "columns": [
+            "event_id UUID REFERENCES events(id) ON DELETE CASCADE",
+            "guild_id UUID REFERENCES guilds(id) ON DELETE CASCADE",
+            "PRIMARY KEY (event_id, guild_id)"
+          ],
+          "indexes": [
+            "event_id",
+            "guild_id"
+          ]
+        }
+      },
+      "relationships": [
+        "User has many Memberships (many-to-many with Guilds)",
+        "Guild has many Roadmaps, Resources, Events",
+        "Roadmap has many Steps",
+        "User tracks Progress on Roadmap Steps",
+        "Mentor belongs to many Guilds (many-to-many)",
+        "Event can belong to multiple Guilds (many-to-many)"
+      ]
+    },
+    "api_endpoints": {
+      "guilds": {
+        "GET /api/guilds": {
+          "description": "List all active guilds",
+          "query_params": [
+            "search",
+            "sort=members|name"
+          ],
+          "response": "Array of guild objects with basic info + member count",
+          "auth": "Optional (shows membership status if authenticated)"
+        },
+        "GET /api/guilds/:slug": {
+          "description": "Get detailed guild information",
+          "response": "Guild object with tracks, stats, social links",
+          "auth": "Optional (shows user progress if authenticated)"
+        },
+        "POST /api/guilds/:slug/join": {
+          "description": "Join a guild",
+          "body": "{ role?: 'member' }",
+          "response": "{ success: boolean, membership: object }",
+          "auth": "Required",
+          "rate_limit": "5 requests per hour"
+        },
+        "DELETE /api/guilds/:slug/leave": {
+          "description": "Leave a guild",
+          "response": "{ success: boolean }",
+          "auth": "Required"
+        }
+      },
+      "roadmaps": {
+        "GET /api/guilds/:slug/roadmap": {
+          "description": "Get guild roadmaps with steps",
+          "query_params": [
+            "level=foundations|intermediate|advanced"
+          ],
+          "response": "Array of roadmaps with steps and user progress",
+          "auth": "Required for member-only content"
+        },
+        "POST /api/progress": {
+          "description": "Update user progress on a roadmap step",
+          "body": "{ stepId: uuid, completed: boolean, notes?: string }",
+          "response": "{ success: boolean, progress: object }",
+          "auth": "Required",
+          "rate_limit": "60 requests per minute"
+        },
+        "GET /api/progress": {
+          "description": "Get user progress for guild(s)",
+          "query_params": [
+            "guildSlug?",
+            "level?"
+          ],
+          "response": "Object with progress stats and completed steps",
+          "auth": "Required"
+        }
+      },
+      "mentors": {
+        "GET /api/mentors": {
+          "description": "List mentors",
+          "query_params": [
+            "guild=:slug",
+            "expertise=:level",
+            "available=true"
+          ],
+          "response": "Array of mentor profiles",
+          "auth": "Optional"
+        },
+        "GET /api/mentors/:handle": {
+          "description": "Get mentor profile",
+          "response": "Mentor object with bio, stacks, availability",
+          "auth": "Optional"
+        },
+        "GET /api/guilds/:slug/mentors": {
+          "description": "Get mentors for specific guild",
+          "response": "Array of mentor profiles",
+          "auth": "Optional"
+        }
+      },
+      "resources": {
+        "GET /api/guilds/:slug/resources": {
+          "description": "Get guild resources",
+          "query_params": [
+            "type=:resourceType",
+            "difficulty=:level",
+            "featured=true"
+          ],
+          "response": "Array of resource objects",
+          "auth": "Optional"
+        },
+        "GET /api/resources/:id": {
+          "description": "Get resource detail",
+          "response": "Resource object",
+          "auth": "Optional",
+          "side_effect": "Increments view_count"
+        }
+      },
+      "events": {
+        "GET /api/guilds/:slug/events": {
+          "description": "Get guild-specific events",
+          "query_params": [
+            "upcoming=true",
+            "past=true",
+            "limit=10"
+          ],
+          "response": "Array of event objects",
+          "auth": "Optional"
+        }
+      },
+      "admin": {
+        "POST /api/admin/guilds": {
+          "description": "Create new guild",
+          "body": "Guild object",
+          "auth": "Required (admin only)"
+        },
+        "PUT /api/admin/guilds/:slug": {
+          "description": "Update guild",
+          "body": "Partial guild object",
+          "auth": "Required (admin or lead)"
+        },
+        "GET /api/admin/guilds/:slug/analytics": {
+          "description": "Get guild analytics",
+          "response": "Stats: members, active users, progress rates, popular resources",
+          "auth": "Required (admin or lead)"
+        }
+      }
+    },
+    "content_requirements": {
+      "per_guild": [
+        "Mission statement (200-300 words)",
+        "Focus areas (4-6 items)",
+        "3 learning tracks with descriptions",
+        "5-10 resources per track (roadmaps, codelabs, repos, videos)",
+        "Minimum 2 mentors/leads",
+        "2-4 upcoming events per quarter",
+        "Social/chat links (Discord, WhatsApp, Twitter)",
+        "Guild icon/logo (SVG, 512x512px)"
+      ],
+      "roadmap_structure": [
+        "Foundations: 8-12 steps, beginner-friendly",
+        "Intermediate: 10-15 steps, practical projects",
+        "Advanced: 12-20 steps, real-world scenarios"
+      ],
+      "resource_types": [
+        "Roadmap: structured learning path",
+        "Codelab: hands-on tutorial",
+        "Repo: GitHub repository with code",
+        "Video: YouTube/Vimeo tutorial",
+        "Article: blog post or documentation",
+        "Tool: utility or framework"
+      ]
+    },
+    "security": {
+      "authentication": [
+        "Guild membership requires authenticated user",
+        "JWT token validation on all protected endpoints",
+        "Session management for guild context"
+      ],
+      "authorization": [
+        "member: can view content, track progress, join events",
+        "mentor: + can manage mentee assignments, view analytics",
+        "lead: + can edit guild content, manage mentors",
+        "admin: + can create/delete guilds, manage all content"
+      ],
+      "rate_limiting": [
+        "Join guild: 5 requests/hour per user",
+        "Progress update: 60 requests/minute per user",
+        "Resource view: 100 requests/minute per IP"
+      ],
+      "validation": [
+        "Guild slug: lowercase, hyphens only, 3-30 chars",
+        "Validate guild theme colors (hex format)",
+        "Sanitize user input in notes and comments",
+        "Validate resource URLs (whitelist domains)"
+      ],
+      "audit_logging": [
+        "Log membership changes (join/leave)",
+        "Log role assignments (mentor, lead)",
+        "Log content modifications",
+        "Log admin actions"
+      ]
+    },
+    "ux_ui_guidelines": {
+      "theme_switching": [
+        "Smooth color transitions (300ms ease)",
+        "Apply guild colors to: hero gradient, primary buttons, chips, borders, progress bars",
+        "Maintain WCAG AA contrast (4.5:1 minimum)",
+        "Test all guild themes with color blindness simulator",
+        "Preserve brand identity: keep base layout and typography"
+      ],
+      "navigation": [
+        "Add 'Guilds' to main navigation with dropdown/mega menu",
+        "Show all 7 guilds in organized grid (icons + names)",
+        "Highlight active guild in navigation",
+        "Breadcrumbs: Home > Guilds > [Guild Name]",
+        "Quick guild switcher in sidebar (for members)"
+      ],
+      "personalization": [
+        "Show joined guilds first in guild grid",
+        "Display progress rings on joined guilds (% complete)",
+        "Personalized recommendations based on guild membership",
+        "Remember last visited guild (localStorage)",
+        "Dashboard widget: guild progress summary"
+      ],
+      "empty_states": [
+        "No guilds joined: CTA to explore guilds",
+        "No progress: CTA to start first roadmap",
+        "No upcoming events: CTA to suggest event",
+        "No mentors available: CTA to become a mentor"
+      ],
+      "loading_states": [
+        "Skeleton loaders for guild cards (shimmer effect)",
+        "Progress bar for roadmap step loading",
+        "Spinner for join/leave actions",
+        "Optimistic UI for progress updates"
+      ],
+      "feedback": [
+        "Toast notification on join/leave guild",
+        "Confetti animation on completing roadmap",
+        "Badge earned notification",
+        "Mentor booking confirmation"
+      ]
+    },
+    "analytics": {
+      "metrics_to_track": [
+        "Guild membership growth over time",
+        "Active members per guild (7/30/90 days)",
+        "Roadmap completion rates",
+        "Popular resources (views, clicks)",
+        "Event attendance per guild",
+        "Mentor booking rates",
+        "User retention by guild",
+        "Cross-guild memberships"
+      ],
+      "admin_dashboard": [
+        "Guild health score (activity, growth, engagement)",
+        "Top performing guilds",
+        "Underperforming guilds (action needed)",
+        "Member churn rate",
+        "Resource engagement",
+        "Mentor utilization"
+      ]
+    },
+    "integration_with_existing_systems": {
+      "authentication": "Extend existing auth with guild membership roles",
+      "events": "Add guild filter to existing events system",
+      "partners": "Guild-specific partnerships and sponsorships",
+      "courses": "Tag courses with relevant guilds",
+      "admin_portal": "Add guild management to existing admin layout",
+      "notifications": "Guild-specific announcement system",
+      "dashboard": "User dashboard widget showing guild progress"
+    }
+  },
+  "audit_framework": {
+    "overview": "Comprehensive scoring system to evaluate project quality across all dimensions",
+    "scoring_scale": {
+      "A+": "98-100 - Exceptional, world-class implementation",
+      "A": "90-97 - Excellent, production-ready",
+      "B+": "85-89 - Very good with minor improvements needed",
+      "B": "80-84 - Good with some improvements needed",
+      "C+": "75-79 - Acceptable with notable improvements needed",
+      "C": "70-74 - Needs significant improvements",
+      "D": "60-69 - Major issues, not production-ready",
+      "F": "0-59 - Critical failures, requires rework"
+    },
+    "audit_categories": {
+      "1_code_quality": {
+        "weight": 15,
+        "criteria": [
+          "Clean, readable code with proper naming conventions",
+          "Appropriate use of design patterns and abstractions",
+          "DRY (Don't Repeat Yourself) principle followed",
+          "Proper error handling and edge cases covered",
+          "Code comments for complex logic",
+          "TypeScript types properly defined",
+          "No code smells or anti-patterns",
+          "Modular architecture with single responsibility",
+          "Consistent code style throughout",
+          "Proper use of modern JavaScript/TypeScript features"
+        ],
+        "scoring_guide": {
+          "A": "All criteria met with exceptional code quality",
+          "B": "Most criteria met with minor issues",
+          "C": "Some criteria met but significant issues present",
+          "D": "Many criteria not met, poor code quality",
+          "F": "Critical code quality issues, major refactoring needed"
+        }
+      },
+      "2_security": {
+        "weight": 20,
+        "criteria": [
+          "Authentication properly implemented (JWT)",
+          "Password hashing with bcrypt",
+          "Input validation on all endpoints (Zod)",
+          "SQL injection prevention",
+          "XSS attack prevention",
+          "CSRF protection implemented",
+          "Rate limiting on sensitive endpoints",
+          "Proper error messages (no sensitive data leaks)",
+          "Environment variables for sensitive data",
+          "HTTPS/TLS in production",
+          "Authorization checks on protected routes",
+          "Session management and token expiry"
+        ],
+        "scoring_guide": {
+          "A": "Enterprise-grade security, all best practices followed",
+          "B": "Good security with minor gaps",
+          "C": "Basic security but missing important protections",
+          "D": "Significant security vulnerabilities present",
+          "F": "Critical security flaws, not safe for production"
+        }
+      },
+      "3_database_design": {
+        "weight": 10,
+        "criteria": [
+          "Normalized database schema",
+          "Proper relationships and foreign keys",
+          "Appropriate indexes for query optimization",
+          "Data integrity constraints",
+          "Efficient query patterns",
+          "Migration strategy in place",
+          "No N+1 query problems",
+          "Proper connection pooling",
+          "Backup and recovery strategy",
+          "Database security (user permissions)"
+        ],
+        "scoring_guide": {
+          "A": "Optimal database design, scalable and efficient",
+          "B": "Good design with room for optimization",
+          "C": "Functional but inefficient in some areas",
+          "D": "Poor design leading to performance issues",
+          "F": "Critical database design flaws"
+        }
+      },
+      "4_api_design": {
+        "weight": 10,
+        "criteria": [
+          "RESTful conventions followed",
+          "Proper HTTP status codes",
+          "Consistent endpoint naming",
+          "Comprehensive error responses",
+          "Input validation on all endpoints",
+          "Pagination for list endpoints",
+          "API versioning strategy",
+          "Rate limiting implemented",
+          "Proper CORS configuration",
+          "API documentation available"
+        ],
+        "scoring_guide": {
+          "A": "Professional API design following all best practices",
+          "B": "Good API with minor inconsistencies",
+          "C": "Functional but inconsistent or incomplete",
+          "D": "Poor API design, difficult to use",
+          "F": "Broken or insecure API"
+        }
+      },
+      "5_frontend_architecture": {
+        "weight": 10,
+        "criteria": [
+          "Component-based architecture",
+          "Proper state management",
+          "Reusable components",
+          "Proper prop typing",
+          "Error boundaries implemented",
+          "Loading states handled",
+          "Code splitting for performance",
+          "Proper routing structure",
+          "Form validation",
+          "Responsive design"
+        ],
+        "scoring_guide": {
+          "A": "Excellent architecture, maintainable and scalable",
+          "B": "Good structure with minor issues",
+          "C": "Functional but needs refactoring",
+          "D": "Poor organization, difficult to maintain",
+          "F": "Chaotic structure, needs complete rework"
+        }
+      },
+      "6_ux_ui_design": {
+        "weight": 15,
+        "criteria": [
+          "Consistent brand identity throughout",
+          "Intuitive navigation and user flows",
+          "Proper visual hierarchy",
+          "Responsive design (mobile, tablet, desktop)",
+          "Loading states and feedback",
+          "Error messages clear and helpful",
+          "Accessibility (keyboard navigation, screen readers)",
+          "Color contrast compliance (WCAG AA)",
+          "Touch targets appropriate size (44px minimum)",
+          "Animations purposeful and smooth",
+          "Empty states handled",
+          "Professional polish and attention to detail"
+        ],
+        "scoring_guide": {
+          "A": "World-class UX/UI, delightful user experience",
+          "B": "Good UX with minor usability issues",
+          "C": "Functional but lacks polish",
+          "D": "Poor UX, frustrating to use",
+          "F": "Unusable or broken UI"
+        }
+      },
+      "7_performance": {
+        "weight": 10,
+        "criteria": [
+          "Fast page load times (< 3s)",
+          "Optimized images and assets",
+          "Code splitting and lazy loading",
+          "Efficient database queries",
+          "Proper caching strategies",
+          "Minimal bundle size",
+          "No memory leaks",
+          "Smooth animations (60fps)",
+          "API response times (< 200ms for simple queries)",
+          "Lighthouse score 90+ across all metrics"
+        ],
+        "scoring_guide": {
+          "A": "Excellent performance, optimized throughout",
+          "B": "Good performance with minor bottlenecks",
+          "C": "Acceptable but noticeable slowdowns",
+          "D": "Poor performance affecting user experience",
+          "F": "Severely slow, unusable"
+        }
+      },
+      "8_testing": {
+        "weight": 5,
+        "criteria": [
+          "Unit tests for critical functions",
+          "Integration tests for API endpoints",
+          "E2E tests for user flows",
+          "Good test coverage (>70%)",
+          "Tests are meaningful and catch bugs",
+          "CI/CD pipeline with automated testing",
+          "Manual testing checklist",
+          "Accessibility testing",
+          "Security testing",
+          "Performance testing"
+        ],
+        "scoring_guide": {
+          "A": "Comprehensive testing strategy, high confidence",
+          "B": "Good coverage, some gaps",
+          "C": "Basic testing, many gaps",
+          "D": "Minimal testing, high risk",
+          "F": "No testing, critical risk"
+        }
+      },
+      "9_documentation": {
+        "weight": 5,
+        "criteria": [
+          "README with setup instructions",
+          "API documentation",
+          "Code comments for complex logic",
+          "Architecture documentation",
+          "Deployment guide",
+          "Environment variable documentation",
+          "Troubleshooting guide",
+          "Changelog maintained",
+          "Component usage examples",
+          "Database schema documentation"
+        ],
+        "scoring_guide": {
+          "A": "Comprehensive, clear, up-to-date documentation",
+          "B": "Good documentation with minor gaps",
+          "C": "Basic documentation, many gaps",
+          "D": "Minimal documentation, difficult to understand",
+          "F": "No documentation"
+        }
+      },
+      "10_docker_deployment": {
+        "weight": 5,
+        "criteria": [
+          "Dockerfile optimized (multi-stage builds)",
+          "Docker Compose for local development",
+          "Environment variables properly configured",
+          "Proper .dockerignore file",
+          "Container security best practices",
+          "Health checks implemented",
+          "Proper logging configuration",
+          "Volume management for data persistence",
+          "Container orchestration ready (Kubernetes/ECS)",
+          "Production-ready container images"
+        ],
+        "scoring_guide": {
+          "A": "Production-ready containerization",
+          "B": "Good Docker setup with minor issues",
+          "C": "Basic containerization, needs improvement",
+          "D": "Poor Docker implementation",
+          "F": "No containerization or broken setup"
+        }
+      },
+      "11_aws_infrastructure": {
+        "weight": 5,
+        "criteria": [
+          "Infrastructure as Code (Terraform/CloudFormation)",
+          "Proper VPC and network configuration",
+          "Security groups properly configured",
+          "RDS for database with backups",
+          "S3 for static assets",
+          "CloudFront for CDN",
+          "Auto-scaling configured",
+          "Load balancer setup",
+          "Monitoring and alerting (CloudWatch)",
+          "IAM roles and permissions following least privilege"
+        ],
+        "scoring_guide": {
+          "A": "Production-ready AWS infrastructure",
+          "B": "Good setup with minor improvements needed",
+          "C": "Basic AWS setup, lacks best practices",
+          "D": "Poor infrastructure, high risk",
+          "F": "No AWS setup or critical issues"
+        }
+      },
+      "12_guild_implementation": {
+        "weight": 10,
+        "criteria": [
+          "All 7 guilds properly configured with unique themes",
+          "Dynamic theme switching working correctly across all pages",
+          "Guild membership and role system functional (member, mentor, lead)",
+          "Roadmap progress tracking accurate and persistent",
+          "Mentor profiles and booking integration working",
+          "Resource links valid, organized, and properly categorized",
+          "Guild-specific events properly filtered and displayed",
+          "Join/leave functionality secure and reliable",
+          "Progress persistence across sessions with proper sync",
+          "Guild analytics and metrics tracking implemented",
+          "Admin interface for guild management complete",
+          "Personalization working (joined guilds shown first, progress displayed)",
+          "All guild components responsive and accessible",
+          "Theme colors meet WCAG AA contrast requirements",
+          "API endpoints performant and properly secured"
+        ],
+        "scoring_guide": {
+          "A": "Complete guild system, all features working flawlessly, excellent UX",
+          "B": "Good implementation with minor feature gaps or polish issues",
+          "C": "Basic guild functionality working, needs enhancement and optimization",
+          "D": "Incomplete implementation, major features missing or broken",
+          "F": "Guild system not functional or critical bugs present"
+        }
+      }
+    },
+    "audit_process": {
+      "frequency": "Regular audits recommended (monthly or after major features)",
+      "steps": [
+        "1. Clone repository and review codebase",
+        "2. Score each category using the criteria",
+        "3. Calculate weighted average score",
+        "4. Document findings and recommendations",
+        "5. Create improvement action plan",
+        "6. Schedule follow-up audit"
+      ],
+      "deliverables": [
+        "Audit report with scores for each category",
+        "List of critical issues requiring immediate attention",
+        "Recommendations for improvements",
+        "Priority action items (P0, P1, P2)",
+        "Estimated effort for improvements",
+        "Follow-up timeline"
+      ]
+    },
+    "scoring_calculation": {
+      "formula": "Total Score = Σ (Category Score × Weight) / 100",
+      "example": "If Code Quality (15%) = A (95), Security (20%) = A+ (98), etc.",
+      "interpretation": "Final letter grade based on total weighted score"
+    },
+    "audit_template": {
+      "project_name": "Sunnat629 Labs Admin Portal",
+      "audit_date": "YYYY-MM-DD",
+      "auditor": "Role - Name",
+      "version": "1.0.0",
+      "categories": {
+        "code_quality": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "security": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "database_design": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "api_design": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "frontend_architecture": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "ux_ui_design": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "performance": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "testing": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "documentation": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "docker_deployment": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "aws_infrastructure": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        },
+        "guild_implementation": {
+          "score": 0,
+          "grade": "",
+          "notes": "",
+          "issues": [],
+          "recommendations": []
+        }
+      },
+      "summary": {
+        "total_score": 0,
+        "final_grade": "",
+        "strengths": [],
+        "weaknesses": [],
+        "critical_issues": [],
+        "priority_recommendations": [],
+        "production_ready": false
+      }
+    }
+  }
+}
