@@ -253,12 +253,12 @@ export const SpeakersPartnersSection = () => {
                 onClick={() => openSpeakerDialog(speaker)}
               >
                   <div
-                      className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-xl bg-gradient-to-br from-card to-secondary/5 overflow-hidden relative h-[200px] flex flex-col">
+                      className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-xl bg-gradient-to-br from-card to-secondary/5 relative">
                       {/* Shine effect */}
                       <div
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
 
-                      <div className="flex items-start gap-4 mb-4 relative z-10 flex-1">
+                      <div className="flex items-start gap-4 mb-4 relative z-10">
                           {/* Avatar */}
                           <div className="relative flex-shrink-0">
                               <div
@@ -287,7 +287,7 @@ export const SpeakersPartnersSection = () => {
 
                       {/* Topic */}
                       <div
-                          className="bg-gradient-subtle rounded-lg p-3 border border-border/50 group-hover:border-secondary/30 transition-all duration-300 relative z-10">
+                          className="bg-gradient-subtle rounded-lg p-3 border border-border/50 group-hover:border-secondary/30 transition-all duration-300 relative z-10 mb-3">
                           <p className="text-xs font-semibold text-muted-foreground mb-1">Topic:</p>
                           <p className="text-sm text-foreground font-medium">{speaker.topic}</p>
                       </div>
@@ -295,7 +295,7 @@ export const SpeakersPartnersSection = () => {
                       {/* Social icons - compact */}
                       {speaker.social && (
                           <div
-                              className="flex gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                              className="flex gap-2 relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
                               {speaker.social.twitter && (
                                   <div
                                       className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
