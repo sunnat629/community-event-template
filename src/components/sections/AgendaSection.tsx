@@ -32,44 +32,44 @@ const getTypeStyles = (type: string) => {
   switch (type) {
       case "keynote":
           return {
-              badge: "bg-gradient-hero text-white shadow-glow",
-              card: "border-primary/30 hover:border-primary/50",
+              badge: "bg-gradient-to-br from-primary to-primary-light text-white shadow-xl",
+              card: "border-primary/30 hover:border-primary/50 bg-primary/5",
               glow: "group-hover:shadow-[0_0_30px_rgba(2,86,155,0.3)]"
           };
       case "session":
           return {
-              badge: "bg-secondary/20 text-secondary border-2 border-secondary/30",
-              card: "border-secondary/20 hover:border-secondary/40",
+              badge: "bg-gradient-to-br from-secondary to-blue-400 text-white shadow-xl",
+              card: "border-secondary/30 hover:border-secondary/50 bg-secondary/5",
               glow: "group-hover:shadow-[0_0_30px_rgba(19,185,253,0.2)]"
           };
       case "workshop":
           return {
-              badge: "bg-accent/20 text-accent border-2 border-accent/30",
-              card: "border-accent/20 hover:border-accent/40",
-              glow: "group-hover:shadow-[0_0_30px_rgba(19,185,253,0.25)]"
+              badge: "bg-gradient-to-br from-emerald-500 to-teal-400 text-white shadow-xl",
+              card: "border-emerald-500/30 hover:border-emerald-500/50 bg-emerald-50",
+              glow: "group-hover:shadow-[0_0_30px_rgba(16,185,129,0.25)]"
           };
       case "panel":
           return {
-              badge: "bg-purple-500/20 text-purple-600 border-2 border-purple-500/30",
-              card: "border-purple-500/20 hover:border-purple-500/40",
+              badge: "bg-gradient-to-br from-purple-500 to-purple-400 text-white shadow-xl",
+              card: "border-purple-500/30 hover:border-purple-500/50 bg-purple-50",
               glow: "group-hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]"
           };
       case "break":
           return {
-              badge: "bg-muted/50 text-muted-foreground border-2 border-border",
-              card: "border-border hover:border-border",
+              badge: "bg-gradient-to-br from-slate-400 to-slate-300 text-white shadow-lg",
+              card: "border-slate-300 hover:border-slate-400 bg-slate-50",
               glow: ""
           };
       case "closing":
           return {
-              badge: "bg-gradient-accent text-white shadow-md",
-              card: "border-primary/30 hover:border-primary/50",
-              glow: "group-hover:shadow-[0_0_30px_rgba(2,86,155,0.3)]"
+              badge: "bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-xl",
+              card: "border-orange-500/30 hover:border-orange-500/50 bg-orange-50",
+              glow: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]"
           };
       default:
           return {
-              badge: "bg-muted text-muted-foreground",
-              card: "border-border",
+              badge: "bg-gradient-to-br from-gray-400 to-gray-300 text-white shadow-lg",
+              card: "border-border bg-card",
               glow: ""
           };
   }
@@ -320,7 +320,7 @@ END:VCALENDAR`;
                                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
                                   <MapPin className="w-3.5 h-3.5"/>
                                   <span>{item.location}</span>
-                          </div>
+                              </div>
                             <div
                                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 text-muted-foreground">
                                 <Clock className="w-3.5 h-3.5"/>
