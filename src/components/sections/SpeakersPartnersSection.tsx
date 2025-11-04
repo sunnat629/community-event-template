@@ -10,13 +10,15 @@ import {
     Twitter,
     User,
     ChevronRight,
-    ExternalLink
+    ExternalLink,
+    Globe,
+    Facebook
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {useState} from "react";
-import {featuredSpeakers, otherSpeakers, Speaker} from "@/content";
+import {featuredSpeakers, otherSpeakers, Speaker, Partner} from "@/content";
 import {partners} from "@/content";
 
 // Speaker details interface
@@ -25,13 +27,93 @@ import {partners} from "@/content";
 export const SpeakersPartnersSection = () => {
     const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
     const [isSpeakerDialogOpen, setIsSpeakerDialogOpen] = useState(false);
+    const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
+    const [isPartnerDialogOpen, setIsPartnerDialogOpen] = useState(false);
 
     const openSpeakerDialog = (speaker: Speaker) => {
         setSelectedSpeaker(speaker);
         setIsSpeakerDialogOpen(true);
     };
 
-  return (
+    const openPartnerDialog = (partner: Partner) => {
+        setSelectedPartner(partner);
+        setIsPartnerDialogOpen(true);
+    };
+
+    // Get tier-specific styles
+    const getTierStyles = (tier: string) => {
+        switch (tier) {
+            case 'platinum':
+                return {
+                    border: 'border-4 border-purple-500/50 hover:border-purple-400',
+                    bg: 'bg-gradient-to-br from-purple-500/10 via-card to-purple-400/5',
+                    glow: 'shadow-xl shadow-purple-500/20 hover:shadow-2xl hover:shadow-purple-400/40',
+                    badge: 'bg-gradient-to-r from-purple-600 to-purple-400',
+                    ring: 'ring-4 ring-purple-500/20',
+                    size: 'large'
+                };
+            case 'gold':
+                return {
+                    border: 'border-4 border-yellow-500/50 hover:border-yellow-400',
+                    bg: 'bg-gradient-to-br from-yellow-500/10 via-card to-yellow-400/5',
+                    glow: 'shadow-xl shadow-yellow-500/20 hover:shadow-2xl hover:shadow-yellow-400/40',
+                    badge: 'bg-gradient-to-r from-yellow-600 to-yellow-400',
+                    ring: 'ring-4 ring-yellow-500/20',
+                    size: 'large'
+                };
+            case 'silver':
+                return {
+                    border: 'border-2 border-slate-400/50 hover:border-slate-300',
+                    bg: 'bg-gradient-to-br from-slate-400/10 via-card to-slate-300/5',
+                    glow: 'shadow-lg shadow-slate-400/10 hover:shadow-xl hover:shadow-slate-300/20',
+                    badge: 'bg-gradient-to-r from-slate-500 to-slate-400',
+                    ring: 'ring-2 ring-slate-400/20',
+                    size: 'medium'
+                };
+            case 'bronze':
+                return {
+                    border: 'border-2 border-orange-700/50 hover:border-orange-600',
+                    bg: 'bg-gradient-to-br from-orange-700/10 via-card to-orange-600/5',
+                    glow: 'shadow-lg shadow-orange-700/10 hover:shadow-xl hover:shadow-orange-600/20',
+                    badge: 'bg-gradient-to-r from-orange-700 to-orange-600',
+                    ring: 'ring-2 ring-orange-700/20',
+                    size: 'medium'
+                };
+            case 'community':
+                return {
+                    border: 'border-2 border-green-500/50 hover:border-green-400',
+                    bg: 'bg-gradient-to-br from-green-500/10 via-card to-green-400/5',
+                    glow: 'shadow-lg shadow-green-500/10 hover:shadow-xl hover:shadow-green-400/20',
+                    badge: 'bg-gradient-to-r from-green-600 to-green-400',
+                    ring: 'ring-2 ring-green-500/20',
+                    size: 'small'
+                };
+            case 'media':
+                return {
+                    border: 'border-2 border-blue-500/50 hover:border-blue-400',
+                    bg: 'bg-gradient-to-br from-blue-500/10 via-card to-blue-400/5',
+                    glow: 'shadow-lg shadow-blue-500/10 hover:shadow-xl hover:shadow-blue-400/20',
+                    badge: 'bg-gradient-to-r from-blue-600 to-blue-400',
+                    ring: 'ring-2 ring-blue-500/20',
+                    size: 'small'
+                };
+            default:
+                return {
+                    border: 'border-2 border-border hover:border-primary/30',
+                    bg: 'bg-card',
+                    glow: 'shadow-lg hover:shadow-xl',
+                    badge: 'bg-gradient-hero',
+                    ring: '',
+                    size: 'small'
+                };
+        }
+    };
+
+    // Group partners by tier
+    const premiumPartners = partners.filter(p => ['platinum', 'gold'].includes(p.tier));
+    const otherPartners = partners.filter(p => !['platinum', 'gold'].includes(p.tier));
+
+    return (
       <section id="speakers-partners" className="section-padding relative overflow-hidden bg-gradient-subtle">
           {/* Enhanced background decorations */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"/>
@@ -244,37 +326,193 @@ export const SpeakersPartnersSection = () => {
         {/* Partners & Sponsors */}
         <div>
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Partners & Sponsors</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Supporting the Flutter community in Bangladesh
+              <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6 hover:scale-105 transition-transform duration-300">
+                  <Award className="w-4 h-4 text-secondary animate-pulse"/>
+                  <span className="text-sm font-semibold text-secondary">Supporting Our Community</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero">
+                  Partners & Sponsors
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Empowering the Flutter community in Bangladesh together
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {partners.map((partner, index) => {
-              const Icon = partner.icon;
-              return (
-                <div 
-                  key={partner.name}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
+            {/* Premium Partners (Platinum & Gold) - Larger Cards */}
+            {premiumPartners.length > 0 && (
+                <div className="mb-12">
                     <div
-                        className="glass-card h-full text-center hover:border-primary/30 transition-all duration-300 p-8 rounded-2xl border-2 border-border hover:scale-105 hover:-translate-y-1 hover:shadow-xl group">
-                        <div
-                            className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                            <Icon className="w-10 h-10 text-white"/>
-                        </div>
-                        <h4 className="text-xl font-bold mb-2">{partner.name}</h4>
-                        <p className="text-sm font-semibold text-primary">{partner.role}</p>
+                        className="flex flex-wrap justify-center items-stretch gap-8 max-w-5xl mx-auto">
+                        {premiumPartners.map((partner, index) => {
+                            const Icon = partner.icon;
+                            const tierStyles = getTierStyles(partner.tier);
+
+                            return (
+                                <div
+                                    key={partner.name}
+                                    className="animate-fade-in-up cursor-pointer"
+                                    style={{animationDelay: `${index * 150}ms`}}
+                                    onClick={() => openPartnerDialog(partner)}
+                                >
+                                    <div
+                                        className={`group relative rounded-3xl p-10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[320px]`}>
+                                        {/* Tier badge */}
+                                        <div
+                                            className={`absolute top-4 right-4 px-3 py-1 ${tierStyles.badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg`}>
+                                            {partner.tier}
+                                        </div>
+
+                                        {/* Shine effect */}
+                                        <div
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"/>
+
+                                      {/* Logo/Icon with enhanced size */}
+                                      <div className="relative mb-6">
+                                          <div
+                                              className={`w-32 h-32 ${tierStyles.badge} rounded-3xl flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                                              <Icon className="w-16 h-16 text-white"/>
+                                          </div>
+                                          {/* Floating glow */}
+                                          <div
+                                              className="absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"
+                                              style={{background: tierStyles.badge.replace('bg-gradient-to-r', 'linear-gradient(to right,').replace('from-', '').replace('to-', '') + ')'}}/>
+                                      </div>
+
+                                      {/* Content */}
+                                      <div className="text-center relative z-10">
+                                          <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
+                                              {partner.name}
+                                              <ChevronRight
+                                                  className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
+                                          </h3>
+                                          <p className="text-lg font-semibold mb-4 bg-clip-text text-transparent bg-gradient-hero">
+                                              {partner.role}
+                                          </p>
+
+                                          {/* Short description */}
+                                          {partner.description && (
+                                              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                                                  {partner.description.length > 80
+                                                      ? `${partner.description.substring(0, 80)}...`
+                                                      : partner.description}
+                                              </p>
+                                          )}
+
+                                          {/* Social icons preview */}
+                                          <div
+                                              className="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                              {partner.website && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Globe className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.linkedin && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Linkedin className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                              {partner.facebook && (
+                                                  <div
+                                                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                                      <Facebook className="w-4 h-4"/>
+                                                  </div>
+                                              )}
+                                          </div>
+
+                                          {/* Click hint */}
+                                          <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                              Click to learn more
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          );
+                      })}
+                  </div>
+              </div>
+          )}
+
+            {/* Other Partners (Silver, Bronze, Community, Media) - Smaller Grid */}
+            {otherPartners.length > 0 && (
+                <div className="mb-12">
+                    <div
+                        className="flex flex-wrap justify-center items-stretch gap-6 max-w-6xl mx-auto">
+                        {otherPartners.map((partner, index) => {
+                            const Icon = partner.icon;
+                            const tierStyles = getTierStyles(partner.tier);
+
+                            return (
+                                <div
+                                    key={partner.name}
+                                    className="animate-fade-in-up cursor-pointer"
+                                    style={{animationDelay: `${(premiumPartners.length + index) * 100}ms`}}
+                                    onClick={() => openPartnerDialog(partner)}
+                                >
+                                    <div
+                                        className={`group relative rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:-translate-y-1 overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} ${tierStyles.ring} w-[240px]`}>
+                                        {/* Tier badge - smaller */}
+                                        <div
+                                            className={`absolute top-3 right-3 px-2 py-0.5 ${tierStyles.badge} text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-md`}>
+                                            {partner.tier}
+                                        </div>
+
+                                        {/* Shine effect */}
+                                        <div
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"/>
+
+                                        {/* Logo/Icon */}
+                                        <div className="relative mb-4">
+                                            <div
+                                                className={`w-20 h-20 ${tierStyles.badge} rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                                                <Icon className="w-10 h-10 text-white"/>
+                                            </div>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="text-center relative z-10">
+                                            <h4 className="text-lg font-bold mb-1 group-hover:scale-105 transition-transform duration-300">
+                                                {partner.name}
+                                            </h4>
+                                            <p className="text-sm font-semibold text-primary mb-2">
+                                                {partner.role}
+                                            </p>
+
+                                            {/* Social icons preview - compact */}
+                                            <div
+                                                className="flex justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                {partner.website && (
+                                                    <div
+                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                        <Globe className="w-3 h-3"/>
+                                                    </div>
+                                                )}
+                                                {partner.linkedin && (
+                                                    <div
+                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                        <Linkedin className="w-3 h-3"/>
+                                                    </div>
+                                                )}
+                                                {partner.facebook && (
+                                                    <div
+                                                        className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-200">
+                                                        <Facebook className="w-3 h-3"/>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
-              );
-            })}
-          </div>
+            )}
 
             <div
-                className="glass-card rounded-3xl p-8 sm:p-12 text-center border-2 border-border/50 hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                className="glass-card rounded-3xl p-8 sm:p-12 text-center border-2 border-border/50 hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl animate-fade-in-up">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-3xl font-bold mb-4">Become a Sponsor</h3>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
@@ -393,6 +631,135 @@ export const SpeakersPartnersSection = () => {
                 )}
             </DialogContent>
         </Dialog>
+
+          {/* Partner Details Dialog - NEW */}
+          <Dialog open={isPartnerDialogOpen} onOpenChange={setIsPartnerDialogOpen}>
+              <DialogContent className="max-w-2xl animate-scale-in max-h-[90vh] overflow-y-auto">
+                  {selectedPartner && (
+                      <>
+                          <DialogHeader>
+                              <div className="flex flex-col items-center text-center mb-6">
+                                  {/* Partner logo with tier-based styling */}
+                                  <div className="relative mb-6">
+                                      <div
+                                          className={`w-32 h-32 ${getTierStyles(selectedPartner.tier).badge} rounded-3xl flex items-center justify-center shadow-2xl animate-float`}>
+                                          {(() => {
+                                              const Icon = selectedPartner.icon;
+                                              return <Icon className="w-16 h-16 text-white"/>;
+                                          })()}
+                                      </div>
+                                      {/* Tier badge */}
+                                      <div
+                                          className={`absolute -top-2 -right-2 px-3 py-1.5 ${getTierStyles(selectedPartner.tier).badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg animate-pulse`}>
+                                          {selectedPartner.tier} Partner
+                                      </div>
+                                      {/* Glow effect */}
+                                      <div
+                                          className={`absolute inset-0 rounded-3xl blur-2xl opacity-50 animate-pulse ${getTierStyles(selectedPartner.tier).bg}`}/>
+                                  </div>
+
+                                  <DialogTitle className="text-3xl mb-2">{selectedPartner.name}</DialogTitle>
+                                  <p className="text-primary font-bold text-xl">{selectedPartner.role}</p>
+                              </div>
+                          </DialogHeader>
+
+                          <DialogDescription className="text-base text-foreground space-y-6">
+                              {/* Description */}
+                              {selectedPartner.description && (
+                                  <div
+                                      className={`p-6 rounded-2xl ${getTierStyles(selectedPartner.tier).bg} ${getTierStyles(selectedPartner.tier).border} ${getTierStyles(selectedPartner.tier).glow}`}>
+                                      <h4 className="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
+                                          <Building2 className="w-5 h-5"/>
+                                          About
+                                      </h4>
+                                      <p className="text-muted-foreground leading-relaxed text-base">
+                                          {selectedPartner.description}
+                                      </p>
+                                  </div>
+                              )}
+
+                              {/* Partnership highlight */}
+                              <div
+                                  className="p-6 rounded-2xl bg-gradient-subtle border-2 border-primary/20">
+                                  <h4 className="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
+                                      <Award className="w-5 h-5 text-primary"/>
+                                      Partnership Benefits
+                                  </h4>
+                                  <ul className="space-y-2 text-muted-foreground">
+                                      <li className="flex items-start gap-2">
+                                          <span className="text-primary mt-1">✓</span>
+                                          <span>Brand visibility across all event materials</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                          <span className="text-primary mt-1">✓</span>
+                                          <span>Direct engagement with Flutter community</span>
+                                      </li>
+                                      <li className="flex items-start gap-2">
+                                          <span className="text-primary mt-1">✓</span>
+                                          <span>Networking opportunities with industry leaders</span>
+                                      </li>
+                                  </ul>
+                              </div>
+
+                              {/* Connect links */}
+                              {(selectedPartner.website || selectedPartner.linkedin || selectedPartner.facebook) && (
+                                  <div>
+                                      <h4 className="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
+                                          <Globe className="w-5 h-5"/>
+                                          Connect
+                                      </h4>
+                                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                          {selectedPartner.website && (
+                                              <Button
+                                                  variant="outline"
+                                                  size="lg"
+                                                  className="w-full hover:scale-105 transition-all duration-300"
+                                                  onClick={() => window.open(selectedPartner.website, '_blank')}
+                                              >
+                                                  <Globe className="w-4 h-4 mr-2"/>
+                                                  Website
+                                              </Button>
+                                          )}
+                                          {selectedPartner.linkedin && (
+                                              <Button
+                                                  variant="outline"
+                                                  size="lg"
+                                                  className="w-full hover:scale-105 transition-all duration-300"
+                                                  onClick={() => window.open(selectedPartner.linkedin, '_blank')}
+                                              >
+                                                  <Linkedin className="w-4 h-4 mr-2"/>
+                                                  LinkedIn
+                                              </Button>
+                                          )}
+                                          {selectedPartner.facebook && (
+                                              <Button
+                                                  variant="outline"
+                                                  size="lg"
+                                                  className="w-full hover:scale-105 transition-all duration-300"
+                                                  onClick={() => window.open(selectedPartner.facebook, '_blank')}
+                                              >
+                                                  <Facebook className="w-4 h-4 mr-2"/>
+                                                  Facebook
+                                              </Button>
+                                          )}
+                                      </div>
+                                  </div>
+                              )}
+
+                              {/* Action button */}
+                              <Button
+                                  className={`w-full ${getTierStyles(selectedPartner.tier).badge} text-white hover:shadow-glow-lg hover:scale-105 transition-all duration-300`}
+                                  size="lg"
+                                  onClick={() => window.open(selectedPartner.website || '#', '_blank')}
+                              >
+                                  <ExternalLink className="w-4 h-4 mr-2"/>
+                                  Visit {selectedPartner.name}
+                              </Button>
+                          </DialogDescription>
+                      </>
+                  )}
+              </DialogContent>
+          </Dialog>
     </section>
   );
 };
