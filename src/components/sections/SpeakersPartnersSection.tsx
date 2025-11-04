@@ -151,7 +151,7 @@ export const SpeakersPartnersSection = () => {
                                 <div className="relative">
                                     {/* Main card with enhanced hover effects */}
                                     <div
-                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[420px] flex flex-col group">
+                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[480px] flex flex-col group">
                                         {/* Shine effect */}
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"/>
