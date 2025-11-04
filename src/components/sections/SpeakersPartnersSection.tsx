@@ -269,9 +269,6 @@ export const SpeakersPartnersSection = () => {
                                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                                 />
                                             </div>
-                                            {/* Online indicator */}
-                                            <div
-                                                className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-card animate-pulse"/>
                                         </div>
 
                                         {/* Info */}
