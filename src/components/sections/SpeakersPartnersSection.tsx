@@ -144,14 +144,18 @@ export const SpeakersPartnersSection = () => {
                         {featuredSpeakers.map((speaker, index) => (
                             <div
                                 key={speaker.name}
-                                className="group animate-fade-in-up cursor-pointer"
+                                className="animate-fade-in-up"
                                 style={{animationDelay: `${index * 150}ms`}}
-                                onClick={() => openSpeakerDialog(speaker)}
                             >
-                                <div className="relative">
+                                <button
+                                    type="button"
+                                    onClick={() => openSpeakerDialog(speaker)}
+                                    className="relative w-full text-left group"
+                                >
                                     {/* Main card with enhanced hover effects */}
                                     <div
-                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[480px] flex flex-col group">
+                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[480px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+                                    >
                                         {/* Shine effect */}
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"/>
@@ -229,7 +233,7 @@ export const SpeakersPartnersSection = () => {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -248,66 +252,72 @@ export const SpeakersPartnersSection = () => {
                         {otherSpeakers.map((speaker, index) => (
                             <div
                                 key={speaker.name}
-                                className="group animate-fade-in-up cursor-pointer"
+                                className="animate-fade-in-up"
                                 style={{animationDelay: `${index * 80}ms`}}
-                                onClick={() => openSpeakerDialog(speaker)}
                             >
-                                <div
-                                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-colors duration-300 shadow-lg bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden">
-                                    {/* Shine effect */}
+                                <button
+                                    type="button"
+                                    onClick={() => openSpeakerDialog(speaker)}
+                                    className="w-full text-left group"
+                                >
                                     <div
-                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
+                                        className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-colors duration-300 shadow-lg bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
+                                    >
+                                        {/* Shine effect */}
+                                        <div
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
-                                    <div className="flex items-start gap-4 mb-4 relative z-10">
-                                        {/* Avatar - removed scale and rotate to prevent hover jumping */}
-                                        <div className="relative flex-shrink-0">
-                                            <div
-                                                className="w-20 h-20 rounded-xl overflow-hidden border-2 border-secondary/30 shadow-lg group-hover:border-secondary/60 transition-colors duration-300">
-                                                <img
-                                                    src={speaker.image}
-                                                    alt={speaker.name}
-                                                    className="w-full h-full object-cover"
-                                                />
+                                        <div className="flex items-start gap-4 mb-4 relative z-10">
+                                            {/* Avatar - removed scale and rotate to prevent hover jumping */}
+                                            <div className="relative flex-shrink-0">
+                                                <div
+                                                    className="w-20 h-20 rounded-xl overflow-hidden border-2 border-secondary/30 shadow-lg group-hover:border-secondary/60 transition-colors duration-300">
+                                                    <img
+                                                        src={speaker.image}
+                                                        alt={speaker.name}
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            {/* Info */}
+                                            <div className="flex-1 min-w-0">
+                                                <h4 className="text-lg font-bold mb-1 group-hover:text-secondary transition-colors duration-300 flex items-center gap-1">
+                                                    {speaker.name}
+                                                    <ChevronRight
+                                                        className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
+                                                </h4>
+                                                <p className="text-sm text-muted-foreground font-medium mb-2">{speaker.title}</p>
                                             </div>
                                         </div>
 
-                                        {/* Info */}
-                                        <div className="flex-1 min-w-0">
-                                            <h4 className="text-lg font-bold mb-1 group-hover:text-secondary transition-colors duration-300 flex items-center gap-1">
-                                                {speaker.name}
-                                                <ChevronRight
-                                                    className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
-                                            </h4>
-                                            <p className="text-sm text-muted-foreground font-medium mb-2">{speaker.title}</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Topic */}
-                                    <div
-                                        className="bg-gradient-subtle rounded-lg p-3 border border-border/50 group-hover:border-secondary/30 transition-all duration-300 relative z-10 mb-3">
-                                        <p className="text-xs font-semibold text-muted-foreground mb-1">Topic:</p>
-                                        <p className="text-sm text-foreground font-medium">{speaker.topic}</p>
-                                    </div>
-
-                                    {/* Social icons - compact */}
-                                    {speaker.social && (
+                                        {/* Topic */}
                                         <div
-                                            className="flex gap-2 relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                            {speaker.social.twitter && (
-                                                <div
-                                                    className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
-                                                    <Twitter className="w-3 h-3"/>
-                                                </div>
-                                            )}
-                                            {speaker.social.linkedin && (
-                                                <div
-                                                    className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
-                                                    <Linkedin className="w-3 h-3"/>
-                                                </div>
-                                            )}
+                                            className="bg-gradient-subtle rounded-lg p-3 border border-border/50 group-hover:border-secondary/30 transition-all duration-300 relative z-10 mb-3">
+                                            <p className="text-xs font-semibold text-muted-foreground mb-1">Topic:</p>
+                                            <p className="text-sm text-foreground font-medium">{speaker.topic}</p>
                                         </div>
-                                    )}
-                                </div>
+
+                                        {/* Social icons - compact */}
+                                        {speaker.social && (
+                                            <div
+                                                className="flex gap-2 relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                {speaker.social.twitter && (
+                                                    <div
+                                                        className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
+                                                        <Twitter className="w-3 h-3"/>
+                                                    </div>
+                                                )}
+                                                {speaker.social.linkedin && (
+                                                    <div
+                                                        className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
+                                                        <Linkedin className="w-3 h-3"/>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </button>
                             </div>
                         ))}
                     </div>
