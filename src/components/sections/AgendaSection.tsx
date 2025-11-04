@@ -29,10 +29,11 @@ import {
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
 
-// Import agenda data from centralized content
+// Import agenda and speakers data from centralized content
 import {agendaItems, tracks} from "@/content";
+import {featuredSpeakers, otherSpeakers} from "@/content";
 
-// Speaker details interface
+// Speaker details interface (extended from content)
 interface SpeakerDetails {
     name: string;
     title: string;
@@ -46,8 +47,9 @@ interface SpeakerDetails {
     };
 }
 
-// Mock speaker database (in real app, this would come from content files)
-const speakerDatabase: Record<string, SpeakerDetails> = {
+// Build speaker database from imported speakers
+const buildSpeakerDatabase = (): Record<string, SpeakerDetails> => {
+    const database: Record<string, SpeakerDetails> = {
     "TBA": {
         name: "To Be Announced",
         title: "Stay tuned for speaker announcement",
@@ -55,8 +57,52 @@ const speakerDatabase: Record<string, SpeakerDetails> = {
         bio: "We're currently finalizing our amazing speaker lineup. Check back soon for updates!",
         image: "👤",
         social: {}
+    },
+      "Expert Panel": {
+          name: "Expert Panel",
+          title: "Industry Leaders & Community Experts",
+          topic: "Panel Discussion on Career Growth",
+          bio: "Join our panel of experienced Flutter developers and industry leaders as they share insights on building a successful career in Flutter development. The panel includes professionals from leading tech companies and active community contributors.",
+          image: "👥",
+          social: {}
     }
+  };
+
+    // Add all featured speakers
+    featuredSpeakers.forEach(speaker => {
+        database[speaker.name] = {
+            name: speaker.name,
+            title: speaker.title,
+            topic: speaker.topic,
+            bio: `${speaker.name} is an experienced Flutter developer and thought leader in the community. As a ${speaker.title}, they bring valuable insights and practical knowledge to help developers grow their skills.`,
+            image: speaker.image,
+            social: {
+                twitter: `https://twitter.com/${speaker.name.replace(/\s+/g, '').toLowerCase()}`,
+                linkedin: `https://linkedin.com/in/${speaker.name.replace(/\s+/g, '-').toLowerCase()}`,
+                email: `${speaker.name.split(' ')[0].toLowerCase()}@flutterguild.com`
+            }
+        };
+    });
+
+    // Add all other speakers
+    otherSpeakers.forEach(speaker => {
+        database[speaker.name] = {
+            name: speaker.name,
+            title: speaker.title,
+            topic: speaker.topic,
+            bio: `${speaker.name} is passionate about Flutter development and specializes in ${speaker.topic}. They actively contribute to the Flutter community and share their expertise through talks and workshops.`,
+            image: speaker.image,
+            social: {
+                twitter: `https://twitter.com/${speaker.name.replace(/\s+/g, '').toLowerCase()}`,
+                linkedin: `https://linkedin.com/in/${speaker.name.replace(/\s+/g, '-').toLowerCase()}`,
+            }
+        };
+    });
+
+    return database;
 };
+
+const speakerDatabase = buildSpeakerDatabase();
 
 const getTypeStyles = (type: string) => {
   switch (type) {
