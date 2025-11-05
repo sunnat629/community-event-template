@@ -23,3 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 .junie
+
+# Temporary files
+*.sh
+*.bak
+*.tmp
+
+# Build artifacts
+build/
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
