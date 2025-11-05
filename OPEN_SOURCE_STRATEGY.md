@@ -424,7 +424,7 @@ The template is excellent. Don't overthink it. Ship it! 🌟
 **Sunnat629 Labs**
 
 - Website: [sunnat629labs.com](https://sunnat629labs.com)
-- Email: hello@sunnat629labs.com
+- Email: me@sunnat629.dev
 - Twitter: [@sunnat629](https://twitter.com/sunnat629)
 - LinkedIn: [Sunnat629 Lab](https://linkedin.com/company/sunnat629-lab)
 - Facebook: [Sunnat629 Labs](https://facebook.com/sunnat629.labs)
