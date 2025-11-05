@@ -158,7 +158,7 @@ export const SpeakersPartnersSection = () => {
                                     >
                                         {/* Shine effect */}
                                         <div
-                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
                                         {/* Avatar with glow */}
                                         <div className="relative mb-6">
@@ -265,7 +265,7 @@ export const SpeakersPartnersSection = () => {
                                     >
                                         {/* Shine effect */}
                                         <div
-                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                         <div className="flex items-start gap-4 mb-4 relative z-10">
                                             {/* Avatar - removed scale and rotate to prevent hover jumping */}
@@ -365,7 +365,7 @@ export const SpeakersPartnersSection = () => {
 
                                                 {/* Shine effect on hover */}
                                                 <div
-                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
+                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                                 {/* Logo Container */}
                                                 <div
@@ -436,7 +436,7 @@ export const SpeakersPartnersSection = () => {
 
                                                 {/* Shine effect on hover */}
                                                 <div
-                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
+                                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                                 {/* Logo Container */}
                                                 <div
