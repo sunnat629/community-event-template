@@ -456,7 +456,9 @@ If you find this template helpful:
 - 🌐 Website: [sunnat629labs.com](https://sunnat629labs.com)
 - 📧 Email: hello@sunnat629labs.com
 - 🐦 Twitter: [@sunnat629](https://twitter.com/sunnat629)
-- 💼 LinkedIn: [sunnat629](https://linkedin.com/in/sunnat629)
+- 💼 LinkedIn: [Sunnat629 Lab](https://linkedin.com/company/sunnat629-lab)
+- 📘 Facebook: [Sunnat629 Labs](https://facebook.com/sunnat629.labs)
+- 💬 Discord: [Join our community](https://discord.gg/PBaxXN4M3B)
 
 ---
 

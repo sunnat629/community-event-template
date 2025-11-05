@@ -152,9 +152,12 @@ Feel free to reach out:
 
 - **Email:** hello@sunnat629labs.com
 - **Twitter:** [@sunnat629](https://twitter.com/sunnat629)
+- **LinkedIn:** [Sunnat629 Lab](https://linkedin.com/company/sunnat629-lab)
+- **Facebook:** [Sunnat629 Labs](https://facebook.com/sunnat629.labs)
+- **Discord:** [Join our community](https://discord.gg/PBaxXN4M3B)
 - **Discussions:** [GitHub Discussions](https://github.com/sunnat629/community-event-template/discussions)
 
-## 💖 Thank You!
+## Thank You!
 
 Your contributions make this template better for everyone. We appreciate your time and effort!
 

@@ -365,12 +365,13 @@ Create release on GitHub:
 - **GitHub Issues:** For bugs and feature requests
 - **GitHub Discussions:** For questions and general discussion
 - **Email:** hello@sunnat629labs.com
+- **Discord:** [Join our community](https://discord.gg/PBaxXN4M3B)
 
 ### Secondary
 
-- **Twitter:** @sunnat629 (for updates)
-- **LinkedIn:** For professional inquiries
-- **Discord:** (optional, if community grows)
+- **Twitter:** [@sunnat629](https://twitter.com/sunnat629) (for updates)
+- **LinkedIn:** [Sunnat629 Lab](https://linkedin.com/company/sunnat629-lab) (for professional inquiries)
+- **Facebook:** [Sunnat629 Labs](https://facebook.com/sunnat629.labs)
 
 ---
 
