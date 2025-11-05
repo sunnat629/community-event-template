@@ -17,7 +17,7 @@ export const OrganizersSection = () => {
                 <Users className="w-4 h-4 text-primary animate-pulse"/>
                 <span className="text-sm font-semibold text-primary">Community Leaders</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-hero pb-2 leading-tight">
                 Organized By
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
