@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, MapPin } from "lucide-react";
+import {ArrowRight} from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import {heroContent} from "@/content";
 
 export const HeroSection = () => {
   return (
@@ -27,52 +28,41 @@ export const HeroSection = () => {
       <div className="relative z-10 section-container text-center text-white">
         <div className="animate-fade-in-up">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Flutter Guild 2025
+              {heroContent.title}
           </h1>
           <p className="text-2xl sm:text-3xl lg:text-4xl font-light mb-8 text-secondary/90">
-            Code. Connect. Create.
+              {heroContent.subtitle}
           </p>
           <p className="text-lg sm:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            Join Bangladesh's premier Flutter community event. Connect with passionate developers, 
-            learn from industry experts, and build the future together.
+              {heroContent.description}
           </p>
 
           {/* Event Info */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 text-lg">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
-              <span>Coming Soon 2025</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5" />
-              <span>Dhaka, Bangladesh</span>
-            </div>
+              {heroContent.eventInfo.map((info, index) => {
+                  const Icon = info.icon;
+                  return (
+                      <div key={index} className="flex items-center gap-2">
+                          <Icon className="w-5 h-5"/>
+                          <span>{info.text}</span>
+                      </div>
+                  );
+              })}
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="text-lg px-8 py-6 h-auto"
-            >
-              Register Now
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
-              variant="hero-secondary" 
-              size="lg"
-              className="text-lg px-8 py-6 h-auto"
-            >
-              Call for Speakers
-            </Button>
-            <Button 
-              variant="hero-secondary" 
-              size="lg"
-              className="text-lg px-8 py-6 h-auto"
-            >
-              Become a Sponsor
-            </Button>
+              {heroContent.buttons.map((button, index) => (
+                  <Button
+                      key={index}
+                      variant={button.variant}
+                      size="lg"
+                      className="text-lg px-8 py-6 h-auto"
+                  >
+                      {button.text}
+                      {button.isPrimary && <ArrowRight className="ml-2 w-5 h-5"/>}
+                  </Button>
+              ))}
           </div>
         </div>
       </div>

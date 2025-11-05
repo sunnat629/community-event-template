@@ -6,7 +6,7 @@ import { SpeakersPartnersSection } from "@/components/sections/SpeakersPartnersS
 import {VenueSection} from "@/components/sections/VenueSection";
 import { OrganizersSection } from "@/components/sections/OrganizersSection";
 import { CTASection } from "@/components/sections/CTASection";
-import { Footer } from "@/components/sections/Footer";
+import {FooterSection} from "@/components/sections/FooterSection";
 
 const Index = () => {
   return (
@@ -19,7 +19,7 @@ const Index = () => {
         <VenueSection/>
       <OrganizersSection />
       <CTASection />
-      <Footer />
+        <FooterSection/>
     </main>
   );
 };

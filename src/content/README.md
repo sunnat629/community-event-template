@@ -45,7 +45,7 @@ Update main title, tagline, description, and button labels/URLs:
 
 ```typescript
 export const heroContent = {
-  title: "Flutter Guild 2025",           // ← Main event title
+  title: "Flutter Guild 2026",           // ← Main event title
   tagline: "Code. Connect. Create.",     // ← Subtitle
   description: "Join Bangladesh's...",   // ← Main description
   

@@ -7,7 +7,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 gradient-text">Flutter Guild 2025</h3>
+            <h3 className="text-2xl font-bold mb-4 gradient-text">Flutter Guild 2026</h3>
             <p className="text-muted-foreground leading-relaxed">
               Code. Connect. Create.
             </p>
@@ -90,7 +90,7 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-border pt-8 text-center">
           <p className="text-muted-foreground mb-4">
-            Organized by <span className="font-semibold text-foreground">Sunnat629 Labs</span> & <span className="font-semibold text-foreground">Flutter Bangladesh</span>
+            Organized by <span className="font-semibold text-foreground">Sunnat629 Labs</span>
           </p>
           <p className="text-muted-foreground flex items-center justify-center gap-2">
             Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> for the Flutter community

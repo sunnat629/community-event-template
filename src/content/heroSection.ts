@@ -3,7 +3,7 @@
 
 export const heroContent = {
     // Main event title
-    title: "Flutter Guild 2025",
+    title: "Flutter Guild 2026",
 
     // Tagline
     tagline: "Code. Connect. Create.",
@@ -13,7 +13,7 @@ export const heroContent = {
 
     // Event info badges
     eventInfo: {
-        date: "Coming Soon 2025",
+        date: "Coming Soon 2026",
         location: "Dhaka, Bangladesh"
     },
 

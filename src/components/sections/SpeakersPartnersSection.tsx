@@ -20,6 +20,7 @@ import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} fro
 import {useState} from "react";
 import {featuredSpeakers, otherSpeakers, Speaker, Partner} from "@/content";
 import {partners} from "@/content";
+import {SectionWrapper} from "@/components/ui/SectionWrapper";
 
 // Speaker details interface
 // Removed empty interface
@@ -114,7 +115,7 @@ export const SpeakersPartnersSection = () => {
     const otherPartners = partners.filter(p => !['platinum', 'gold'].includes(p.tier));
 
     return (
-        <section id="speakers-partners" className="section-padding relative overflow-hidden bg-gradient-subtle">
+        <SectionWrapper theme="white">
             {/* Enhanced background decorations */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"/>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"
@@ -347,10 +348,10 @@ export const SpeakersPartnersSection = () => {
                         </p>
                     </div>
 
-                    {/* Partners & Sponsors - Professional Card Design */}
+                    {/* Partners & Sponsors - Premium Tier (Larger Cards) */}
                     {premiumPartners.length > 0 && (
                         <div className="mb-8">
-                            <div className="flex flex-wrap justify-center items-stretch gap-6 max-w-7xl mx-auto">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                                 {premiumPartners.map((partner, index) => {
                                     const tierStyles = getTierStyles(partner.tier);
 
@@ -360,57 +361,52 @@ export const SpeakersPartnersSection = () => {
                                             className="animate-fade-in-up"
                                             style={{animationDelay: `${index * 150}ms`}}
                                         >
-                                            <div
-                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
-
+                                            <button
+                                                type="button"
+                                                onClick={() => openPartnerDialog(partner)}
+                                                className={`group relative rounded-2xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 w-full h-[360px] flex flex-col bg-card text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30`}
+                                            >
                                                 {/* Shine effect on hover */}
                                                 <div
                                                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
-                                                {/* Logo Container */}
+                                                {/* Tier badge - top right corner */}
                                                 <div
-                                                    className="relative h-48 flex items-center justify-center p-6 bg-gradient-to-br from-muted/30 to-muted/10 border-b border-border/50">
+                                                    className={`absolute top-4 right-4 px-4 py-2 ${tierStyles.badge} text-white text-sm font-bold rounded-lg shadow-xl z-10 uppercase tracking-wide`}>
+                                                    {partner.tier}
+                                                </div>
+
+                                                {/* Logo Container - Wide Banner style (3:1 ratio) */}
+                                                <div
+                                                    className="relative h-40 flex items-center justify-center p-8 bg-gradient-to-br from-muted/30 to-muted/10 border-b-2 border-border/50">
                                                     <img
                                                         src={partner.logo}
                                                         alt={`${partner.name} logo`}
-                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                                                        className="max-w-[320px] max-h-[90px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                                                     />
-                                                    {/* Tier badge overlay */}
-                                                    <div
-                                                        className={`absolute top-3 right-3 px-3 py-1 ${tierStyles.badge} text-white text-xs font-semibold rounded-md shadow-lg`}>
-                                                        {partner.tier.toUpperCase()}
-                                                    </div>
                                                 </div>
 
                                                 {/* Content */}
-                                                <div className="flex-1 p-5 flex flex-col">
-                                                    <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                                                <div className="flex-1 p-6 flex flex-col">
+                                                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
                                                         {partner.name}
+                                                        <ChevronRight
+                                                            className="w-6 h-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
                                                     </h3>
 
                                                     {/* Description */}
                                                     {partner.description && (
-                                                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-1">
+                                                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 flex-1">
                                                             {partner.description}
                                                         </p>
                                                     )}
 
-                                                    {/* View Details Button */}
-                                                    <Button
-                                                        variant="outline"
-                                                        size="sm"
-                                                        className="w-full border-2 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold"
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            openPartnerDialog(partner);
-                                                        }}
-                                                    >
-                                                        View Details
-                                                        <ChevronRight
-                                                            className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"/>
-                                                    </Button>
+                                                    {/* Click hint */}
+                                                    <p className="text-sm text-primary font-semibold mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                        Click to view details →
+                                                    </p>
                                                 </div>
-                                            </div>
+                                            </button>
                                         </div>
                                     );
                                 })}
@@ -418,10 +414,11 @@ export const SpeakersPartnersSection = () => {
                         </div>
                     )}
 
-                    {/* Other Partners - Same Professional Design */}
+                    {/* Other Partners - Smaller Cards (4 per row) */}
                     {otherPartners.length > 0 && (
                         <div className="mb-12">
-                            <div className="flex flex-wrap justify-center items-stretch gap-6 max-w-7xl mx-auto">
+                            <div
+                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
                                 {otherPartners.map((partner, index) => {
                                     const tierStyles = getTierStyles(partner.tier);
 
@@ -431,57 +428,52 @@ export const SpeakersPartnersSection = () => {
                                             className="animate-fade-in-up"
                                             style={{animationDelay: `${(premiumPartners.length + index) * 100}ms`}}
                                         >
-                                            <div
-                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-[320px] h-[440px] flex flex-col bg-card`}>
-
+                                            <button
+                                                type="button"
+                                                onClick={() => openPartnerDialog(partner)}
+                                                className={`group relative rounded-xl border overflow-hidden ${tierStyles.border} ${tierStyles.bg} ${tierStyles.glow} hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-full h-[300px] flex flex-col bg-card text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30`}
+                                            >
                                                 {/* Shine effect on hover */}
                                                 <div
                                                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
-                                                {/* Logo Container */}
+                                                {/* Tier badge - top right corner */}
                                                 <div
-                                                    className="relative h-48 flex items-center justify-center p-6 bg-gradient-to-br from-muted/30 to-muted/10 border-b border-border/50">
+                                                    className={`absolute top-3 right-3 px-3 py-1.5 ${tierStyles.badge} text-white text-xs font-semibold rounded-md shadow-lg z-10 uppercase`}>
+                                                    {partner.tier}
+                                                </div>
+
+                                                {/* Logo Container - Wide Banner style (3:1 ratio) */}
+                                                <div
+                                                    className="relative h-28 flex items-center justify-center p-6 bg-gradient-to-br from-muted/30 to-muted/10 border-b border-border/50">
                                                     <img
                                                         src={partner.logo}
                                                         alt={`${partner.name} logo`}
-                                                        className="max-w-[180px] max-h-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                                                        className="max-w-[260px] max-h-[70px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                                                     />
-                                                    {/* Tier badge overlay */}
-                                                    <div
-                                                        className={`absolute top-3 right-3 px-3 py-1 ${tierStyles.badge} text-white text-xs font-semibold rounded-md shadow-lg`}>
-                                                        {partner.tier.toUpperCase()}
-                                                    </div>
                                                 </div>
 
                                                 {/* Content */}
                                                 <div className="flex-1 p-5 flex flex-col">
-                                                    <h4 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                                                    <h4 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
                                                         {partner.name}
+                                                        <ChevronRight
+                                                            className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
                                                     </h4>
 
                                                     {/* Description */}
                                                     {partner.description && (
-                                                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-1">
+                                                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 flex-1">
                                                             {partner.description}
                                                         </p>
                                                     )}
 
-                                                    {/* View Details Button */}
-                                                    <Button
-                                                        variant="outline"
-                                                        size="sm"
-                                                        className="w-full border-2 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold"
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            openPartnerDialog(partner);
-                                                        }}
-                                                    >
-                                                        View Details
-                                                        <ChevronRight
-                                                            className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"/>
-                                                    </Button>
+                                                    {/* Click hint */}
+                                                    <p className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                        Click to view details
+                                                    </p>
                                                 </div>
-                                            </div>
+                                            </button>
                                         </div>
                                     );
                                 })}
@@ -599,44 +591,37 @@ export const SpeakersPartnersSection = () => {
                                     </div>
                                 )}
 
-                                {/* Action button */}
-                                <Button
-                                    className="w-full bg-gradient-hero text-white hover:shadow-glow-lg hover:scale-105 transition-all duration-300"
-                                    size="lg">
-                                    <User className="w-4 h-4 mr-2"/>
-                                    View Full Profile
-                                </Button>
                             </DialogDescription>
                         </>
                     )}
                 </DialogContent>
             </Dialog>
 
-            {/* Partner Details Dialog - NEW */}
+            {/* Partner Details Dialog - Improved with Banner Logo */}
             <Dialog open={isPartnerDialogOpen} onOpenChange={setIsPartnerDialogOpen}>
                 <DialogContent className="max-w-2xl animate-scale-in max-h-[90vh] overflow-y-auto">
                     {selectedPartner && (
                         <>
                             <DialogHeader>
                                 <div className="flex flex-col items-center text-center mb-6">
-                                    {/* Partner logo with tier-based styling */}
-                                    <div className="relative mb-6">
+                                    {/* Partner logo - Banner format */}
+                                    <div className="relative mb-6 w-full">
                                         <div
-                                            className={`w-32 h-32 rounded-3xl overflow-hidden bg-white shadow-2xl animate-float border-4 ${getTierStyles(selectedPartner.tier).border}`}>
+                                            className={`w-full max-w-md mx-auto h-32 rounded-2xl overflow-hidden bg-gradient-to-br from-muted/30 to-muted/10 shadow-2xl animate-float border-4 ${getTierStyles(selectedPartner.tier).border} flex items-center justify-center p-6`}>
                                             <img
                                                 src={selectedPartner.logo}
                                                 alt={`${selectedPartner.name} logo`}
-                                                className="w-full h-full object-cover"
+                                                className="max-w-full max-h-full w-auto h-auto object-contain"
                                             />
                                         </div>
-                                        {/* Tier badge */}
+                                        {/* Tier badge - top LEFT to avoid close button */}
                                         <div
-                                            className={`absolute -top-2 -right-2 px-3 py-1.5 ${getTierStyles(selectedPartner.tier).badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg animate-pulse`}>
-                                            {selectedPartner.tier} Partner
+                                            className={`absolute -top-2 -left-2 px-3 py-1.5 ${getTierStyles(selectedPartner.tier).badge} text-white text-xs font-bold rounded-full uppercase tracking-wider shadow-lg animate-pulse`}>
+                                            {selectedPartner.tier}
                                         </div>
                                         {/* Glow effect */}
                                         <div
-                                            className={`absolute inset-0 rounded-3xl blur-2xl opacity-50 animate-pulse ${getTierStyles(selectedPartner.tier).bg}`}/>
+                                            className={`absolute inset-0 rounded-2xl blur-2xl opacity-30 animate-pulse ${getTierStyles(selectedPartner.tier).bg}`}/>
                                     </div>
 
                                     <DialogTitle className="text-3xl mb-2">{selectedPartner.name}</DialogTitle>
@@ -682,65 +667,46 @@ export const SpeakersPartnersSection = () => {
                                     </ul>
                                 </div>
 
-                                {/* Connect links */}
+                                {/* Connect links - Icon buttons only */}
                                 {(selectedPartner.website || selectedPartner.linkedin || selectedPartner.facebook) && (
                                     <div>
                                         <h4 className="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
                                             <Globe className="w-5 h-5"/>
                                             Connect
                                         </h4>
-                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                        <div className="flex justify-center gap-3">
                                             {selectedPartner.website && (
-                                                <Button
-                                                    variant="outline"
-                                                    size="lg"
-                                                    className="w-full hover:scale-105 transition-all duration-300"
+                                                <button
                                                     onClick={() => window.open(selectedPartner.website, '_blank')}
+                                                    className="w-12 h-12 rounded-full border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 flex items-center justify-center shadow-md hover:shadow-lg"
                                                 >
-                                                    <Globe className="w-4 h-4 mr-2"/>
-                                                    Website
-                                                </Button>
+                                                    <Globe className="w-5 h-5"/>
+                                                </button>
                                             )}
                                             {selectedPartner.linkedin && (
-                                                <Button
-                                                    variant="outline"
-                                                    size="lg"
-                                                    className="w-full hover:scale-105 transition-all duration-300"
+                                                <button
                                                     onClick={() => window.open(selectedPartner.linkedin, '_blank')}
+                                                    className="w-12 h-12 rounded-full border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 flex items-center justify-center shadow-md hover:shadow-lg"
                                                 >
-                                                    <Linkedin className="w-4 h-4 mr-2"/>
-                                                    LinkedIn
-                                                </Button>
+                                                    <Linkedin className="w-5 h-5"/>
+                                                </button>
                                             )}
                                             {selectedPartner.facebook && (
-                                                <Button
-                                                    variant="outline"
-                                                    size="lg"
-                                                    className="w-full hover:scale-105 transition-all duration-300"
+                                                <button
                                                     onClick={() => window.open(selectedPartner.facebook, '_blank')}
+                                                    className="w-12 h-12 rounded-full border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 flex items-center justify-center shadow-md hover:shadow-lg"
                                                 >
-                                                    <Facebook className="w-4 h-4 mr-2"/>
-                                                    Facebook
-                                                </Button>
+                                                    <Facebook className="w-5 h-5"/>
+                                                </button>
                                             )}
                                         </div>
                                     </div>
                                 )}
-
-                                {/* Action button */}
-                                <Button
-                                    className={`w-full ${getTierStyles(selectedPartner.tier).badge} text-white hover:shadow-glow-lg hover:scale-105 transition-all duration-300`}
-                                    size="lg"
-                                    onClick={() => window.open(selectedPartner.website || '#', '_blank')}
-                                >
-                                    <ExternalLink className="w-4 h-4 mr-2"/>
-                                    Visit {selectedPartner.name}
-                                </Button>
                             </DialogDescription>
                         </>
                     )}
                 </DialogContent>
             </Dialog>
-        </section>
+        </SectionWrapper>
     );
 };

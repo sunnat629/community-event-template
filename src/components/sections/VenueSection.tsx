@@ -14,13 +14,13 @@ import {
 } from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {eventDetails} from "@/content";
+import {SectionWrapper} from "@/components/ui/SectionWrapper";
 
 export const VenueSection = () => {
     const venue = eventDetails.venue;
 
     return (
-        <section id="venue"
-                 className="section-padding relative overflow-hidden bg-gradient-to-b from-background to-secondary/5">
+        <SectionWrapper id="venue" theme="warm-tint">
             {/* Background decorations */}
             <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"/>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"
@@ -187,18 +187,18 @@ export const VenueSection = () => {
                         {(venue.venueDetails.contact.phone || venue.venueDetails.contact.email) && (
                             <div className="flex flex-wrap gap-3">
                                 {venue.venueDetails.contact.phone && (
-                                    <Button variant="outline" size="lg"
-                                            className="flex-1 hover:scale-105 transition-all duration-300">
-                                        <Phone className="w-4 h-4 mr-2"/>
-                                        Call Venue
-                                    </Button>
+                                    <button
+                                        className="flex-1 flex items-center justify-center h-12 rounded-xl border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg"
+                                    >
+                                        <Phone className="w-5 h-5"/>
+                                    </button>
                                 )}
                                 {venue.venueDetails.contact.email && (
-                                    <Button variant="outline" size="lg"
-                                            className="flex-1 hover:scale-105 transition-all duration-300">
-                                        <Mail className="w-4 h-4 mr-2"/>
-                                        Email Us
-                                    </Button>
+                                    <button
+                                        className="flex-1 flex items-center justify-center h-12 rounded-xl border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg"
+                                    >
+                                        <Mail className="w-5 h-5"/>
+                                    </button>
                                 )}
                             </div>
                         )}
@@ -247,24 +247,20 @@ export const VenueSection = () => {
 
                                 {/* Quick Actions Below Map */}
                                 <div className="grid grid-cols-2 gap-3 mt-4">
-                                    <Button
-                                        variant="outline"
-                                        className="hover:scale-105 transition-all duration-300"
+                                    <button
+                                        className="flex items-center justify-center h-12 rounded-xl border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg"
                                         onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${venue.coordinates.lat},${venue.coordinates.lng}`, '_blank')}
                                     >
-                                        <Navigation className="w-4 h-4 mr-2"/>
-                                        Navigate
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className="hover:scale-105 transition-all duration-300"
+                                        <Navigation className="w-5 h-5"/>
+                                    </button>
+                                    <button
+                                        className="flex items-center justify-center h-12 rounded-xl border-2 border-border hover:border-primary bg-card hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg"
                                         onClick={() => {
                                             navigator.clipboard.writeText(venue.venueDetails.fullAddress);
                                         }}
                                     >
-                                        <MapPin className="w-4 h-4 mr-2"/>
-                                        Copy Address
-                                    </Button>
+                                        <MapPin className="w-5 h-5"/>
+                                    </button>
                                 </div>
                             </div>
 
@@ -298,6 +294,6 @@ export const VenueSection = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
