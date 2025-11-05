@@ -56,14 +56,14 @@
 
 ## 🌍 Perfect For
 
+- 🔷 **Kotlin Communities** - KotlinConf, user groups
+- 🤖 **Android Communities** - Android developer meetups
 - 🦋 **Flutter Communities** - Meetups, conferences, workshops
 - ⚛️ **React Communities** - User groups, conferences
 - 🟩 **Vue.js Communities** - Local meetups, events
 - 🅰️ **Angular Communities** - Developer gatherings
 - 🐍 **Python Communities** - PyCon, PyData events
 - ☕ **Java Communities** - JUG meetings, conferences
-- 🔷 **Kotlin Communities** - KotlinConf, user groups
-- 🤖 **Android Communities** - Android developer meetups
 - 🍎 **iOS Communities** - Swift, iOS developer events
 - 🧪 **QA Communities** - Testing, automation conferences
 - 🎮 **Game Dev Communities** - Indie game meetups
