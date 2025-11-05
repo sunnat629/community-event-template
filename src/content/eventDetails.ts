@@ -66,7 +66,7 @@ export const eventDetails: EventDetails = {
         },
         capacity: "200+ Attendees",
         format: "In-Person Event",
-        price: "Free",
+        price: "TBA",
         venueDetails: {
             name: "Brain Station 23 Headquarters",
             fullAddress: "Plot 7, Road 9, Niketan, Gulshan-1, Dhaka 1212, Bangladesh",
