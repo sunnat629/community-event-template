@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
+import {SectionWrapper} from "@/components/ui/SectionWrapper";
 
 // Import agenda and speakers data from centralized content
 import {agendaItems, tracks} from "@/content";
@@ -210,7 +211,7 @@ END:VCALENDAR`;
     };
 
     return (
-        <section id="agenda" className="section-padding bg-gradient-subtle relative overflow-hidden">
+        <SectionWrapper theme="gradient-soft">
             {/* Enhanced background decorations with animation */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float"/>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"
@@ -697,6 +698,6 @@ END:VCALENDAR`;
                     )}
                 </DialogContent>
             </Dialog>
-        </section>
+        </SectionWrapper>
     );
 };
