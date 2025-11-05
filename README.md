@@ -2,11 +2,16 @@
 
 > **A professional, open-source event website template for tech communities worldwide**
 
-[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://sunnat629labs.com)
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC.svg)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![GitHub stars](https://img.shields.io/github/stars/sunnat629/community-event-template?style=social)](https://github.com/sunnat629/community-event-template/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/sunnat629/community-event-template?style=social)](https://github.com/sunnat629/community-event-template/network/members)
+
+[![Made with React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-latest-000000?logo=shadcnui&logoColor=white)](https://ui.shadcn.com/)
 
 **Created by [Sunnat629 Labs](https://sunnat629labs.com)** | Innovation lab focused on empowering developers
 
