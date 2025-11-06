@@ -92,24 +92,20 @@ const SpeakersPage = () => {
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Page Header */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-subtle">
-                <div className="max-w-7xl mx-auto">
-                    <PageHeader
-                        title={`${allSpeakers.length}+ Expert Speakers`}
-                        subtitle="Learn from industry leaders and community experts"
-                        description="Connect with speakers shaping the future of technology"
-                        icon={Users}
-                        badge={{
-                            text: "Industry Experts",
-                            icon: Users,
-                        }}
-                    />
-                </div>
-            </section>
+            {/* Page Header - Now has hero-style background built-in */}
+            <PageHeader
+                title={`${allSpeakers.length}+ Expert Speakers`}
+                subtitle="Learn from industry leaders and community experts"
+                description="Connect with speakers shaping the future of technology"
+                icon={Users}
+                badge={{
+                    text: "Industry Experts",
+                    icon: Users,
+                }}
+            />
 
             {/* Filters Section */}
-            <section className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
+            <section className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                         {/* Search */}
