@@ -137,10 +137,10 @@ export const SpeakerCard = ({
                     <div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
-                    {/* Featured Badge - Top Right */}
+                    {/* Featured Badge - Top Right Inside Card */}
                     {speaker.featured && (
                         <div
-                            className="absolute -top-2 -right-2 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg z-10 animate-float">
+                            className="absolute top-3 right-3 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg z-20 animate-float">
                             ⭐ Featured
                         </div>
                     )}
@@ -160,10 +160,10 @@ export const SpeakerCard = ({
                         <div
                             className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"/>
 
-                        {/* Badge for company */}
+                        {/* Badge for company - Below avatar center */}
                         {speaker.company && (
                             <div
-                                className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-2 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-4 whitespace-nowrap">
+                                className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-10">
                                 {speaker.company}
                             </div>
                         )}
