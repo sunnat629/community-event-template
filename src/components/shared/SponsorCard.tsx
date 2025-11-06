@@ -247,7 +247,7 @@ export function SponsorCard({sponsor, size, onClick, index}: SponsorCardProps) {
                         animate={{opacity: isHovered ? 1 : 0.8}}
                         transition={{duration: 0.3}}
                     >
-                        {sponsor.description}
+                        {sponsor.shortDescription}
                     </motion.p>
                 )}
 

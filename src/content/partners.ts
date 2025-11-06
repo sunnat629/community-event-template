@@ -7,6 +7,7 @@ export interface Partner {
     name: string;
     role: string;
     tier: 'platinum' | 'gold' | 'silver' | 'bronze' | 'community' | 'media';
+    shortDescription: string;
     description: string;
     logo: string; // URL to logo image (required)
     icon: LucideIcon; // Fallback icon
@@ -22,6 +23,7 @@ export const partners: Partner[] = [
         name: "Brain Station 23",
         role: "Venue Partner",
         tier: "platinum",
+        shortDescription: "Leading software and IT solutions company providing world-class technology services",
         description: "Leading software and IT solutions company providing world-class technology services. Proud venue partner for Flutter Guild Connect 2025.",
         logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
         icon: Building2,
@@ -39,6 +41,7 @@ export const partners: Partner[] = [
         name: "DSI",
         role: "Platinum Sponsor",
         tier: "platinum",
+        shortDescription: "Leading digital innovation company empowering businesses with cutting-edge technology",
         description: "Dohatec New Media is a leading digital innovation company in Bangladesh, empowering businesses with cutting-edge technology solutions.",
         logo: "https://images.unsplash.com/photo-1549924231-f129b911e442?w=400&h=400&fit=crop",
         icon: Award,
@@ -58,6 +61,7 @@ export const partners: Partner[] = [
         name: "Cheq",
         role: "Gold Sponsor",
         tier: "gold",
+        shortDescription: "Innovative fintech solution revolutionizing digital payments in Bangladesh",
         description: "Innovative fintech solution revolutionizing digital payments in Bangladesh.",
         logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=400&fit=crop",
         icon: Star,
@@ -74,6 +78,7 @@ export const partners: Partner[] = [
         name: "Tech Valley",
         role: "Gold Sponsor",
         tier: "gold",
+        shortDescription: "Technology park fostering innovation and entrepreneurship in tech ecosystem",
         description: "Technology park fostering innovation and entrepreneurship in the tech ecosystem.",
         logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop",
         icon: Star,
@@ -92,6 +97,7 @@ export const partners: Partner[] = [
         name: "CodeCraft Studio",
         role: "Silver Sponsor",
         tier: "silver",
+        shortDescription: "Creative software development studio specializing in mobile applications",
         description: "Creative software development studio specializing in mobile applications.",
         logo: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&h=400&fit=crop",
         icon: Sparkles,
@@ -102,6 +108,7 @@ export const partners: Partner[] = [
         name: "DevHub",
         role: "Silver Sponsor",
         tier: "silver",
+        shortDescription: "Community-driven platform connecting developers across Bangladesh",
         description: "Community-driven platform connecting developers across Bangladesh.",
         logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop",
         icon: Users,
@@ -114,6 +121,7 @@ export const partners: Partner[] = [
         name: "Flutter Bangladesh",
         role: "Community Partner",
         tier: "community",
+        shortDescription: "Bangladesh's largest Flutter community connecting thousands of developers",
         description: "Bangladesh's largest Flutter community, connecting thousands of developers across the country.",
         logo: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=400&fit=crop",
         icon: Users,
@@ -125,6 +133,7 @@ export const partners: Partner[] = [
         name: "Dhaka Dev Meetup",
         role: "Community Partner",
         tier: "community",
+        shortDescription: "Monthly meetup bringing together developers, designers, and tech enthusiasts",
         description: "Monthly meetup bringing together developers, designers, and tech enthusiasts.",
         logo: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=400&fit=crop",
         icon: Users,
@@ -135,6 +144,7 @@ export const partners: Partner[] = [
         name: "Tech Community BD",
         role: "Community Partner",
         tier: "community",
+        shortDescription: "Largest tech community connecting thousands of professionals nationwide",
         description: "Largest tech community in Bangladesh connecting thousands of professionals.",
         logo: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=400&fit=crop",
         icon: Users,
@@ -147,6 +157,7 @@ export const partners: Partner[] = [
         name: "Tech Tribune",
         role: "Media Partner",
         tier: "media",
+        shortDescription: "Leading technology news and media platform covering latest in tech",
         description: "Leading technology news and media platform covering the latest in tech.",
         logo: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=400&fit=crop",
         icon: Globe,
@@ -157,6 +168,7 @@ export const partners: Partner[] = [
         name: "Digital Times",
         role: "Media Partner",
         tier: "media",
+        shortDescription: "Digital media outlet focusing on technology and innovation news",
         description: "Digital media outlet focusing on technology and innovation news.",
         logo: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=400&fit=crop",
         icon: Globe,
