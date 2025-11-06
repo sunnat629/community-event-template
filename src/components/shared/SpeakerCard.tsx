@@ -132,10 +132,18 @@ export const SpeakerCard = ({
                 className={cn("w-full text-left group", className)}
             >
                 <div
-                    className="glass-card rounded-3xl p-6 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[420px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30">
+                    className="glass-card rounded-3xl p-6 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[420px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 relative">
                     {/* Shine effect */}
                     <div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
+
+                    {/* Featured Badge - Top Right */}
+                    {speaker.featured && (
+                        <div
+                            className="absolute -top-2 -right-2 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg z-10 animate-float">
+                            ⭐ Featured
+                        </div>
+                    )}
 
                     {/* Avatar - Centered and Round like featured */}
                     <div className="relative mb-6">

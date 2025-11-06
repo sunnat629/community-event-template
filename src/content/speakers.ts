@@ -74,7 +74,8 @@ export const otherSpeakers: Speaker[] = [
         social: {
             twitter: "https://twitter.com/ashikahmed",
             linkedin: "https://linkedin.com/in/ashik-ahmed"
-        }
+        },
+        featured: true
     },
     {
         name: "Nusrat Jahan",
@@ -86,7 +87,8 @@ export const otherSpeakers: Speaker[] = [
         social: {
             twitter: "https://twitter.com/nusratjahan",
             linkedin: "https://linkedin.com/in/nusrat-jahan"
-        }
+        },
+        featured: true
     },
     {
         name: "Tanvir Hasan",

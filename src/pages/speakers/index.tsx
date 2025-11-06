@@ -60,8 +60,13 @@ const SpeakersPage = () => {
             filtered = filtered.filter((speaker) => speaker.company === companyFilter);
         }
 
-        // Sort
+        // Sort - Featured first, then by selected sort option
         filtered = [...filtered].sort((a, b) => {
+            // Featured speakers always come first
+            if (a.featured && !b.featured) return -1;
+            if (!a.featured && b.featured) return 1;
+
+            // Then sort by selected option
             if (sortBy === "name") {
                 return a.name.localeCompare(b.name);
             } else if (sortBy === "company") {
