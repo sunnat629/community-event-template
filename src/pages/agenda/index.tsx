@@ -8,6 +8,7 @@ import {FooterSection} from "@/components/sections/FooterSection";
 import {agendaItems, tracks} from "@/content";
 import {featuredSpeakers, otherSpeakers} from "@/content";
 import {cn} from "@/lib/utils";
+import {Link} from "react-router-dom";
 
 /**
  * Agenda Page - Pro Mode
@@ -258,17 +259,21 @@ const AgendaPage = () => {
                                 <div className="space-y-4 sm:space-y-6">
                                     {filteredSessions.map((session, index) => {
                                         const Icon = session.icon;
+                                        const sessionId = session.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                                         const style = getSessionStyle(session.type);
                                         // Get track label for display
                                         const sessionTrack = trackLabels.find(t => t.id === session.track);
 
                                         return (
-                                            <div
+                                            <Link
                                                 key={index}
-                                                className="relative animate-fade-in-up group"
-                                                style={{animationDelay: `${index * 80}ms`}}
+                                                to={`/agenda/${sessionId}`}
+                                                className="block group"
                                             >
-                                                <div className="flex gap-4 sm:gap-6 items-start">
+                                                <div
+                                                    className="flex gap-4 sm:gap-6 group"
+                                                    style={{animationDelay: `${index * 80}ms`}}
+                                                >
                                                     {/* Time Badge - More Compact */}
                                                     <div className="flex-shrink-0 relative z-10">
                                                         <div className={cn(
@@ -359,7 +364,7 @@ const AgendaPage = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         );
                                     })}
                                 </div>
@@ -421,99 +426,106 @@ const AgendaPage = () => {
                                             }
 
                                             const Icon = session.icon;
+                                            const sessionId = session.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                                             const style = getSessionStyle(session.type);
                                             const sessionTrack = trackLabels.find(t => t.id === session.track);
 
                                             return (
-                                                <div
+                                                <Link
                                                     key={`${session.title}-${trackIdx}`}
-                                                    className={cn(
-                                                        "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative overflow-hidden",
-                                                        style.border,
-                                                        style.bg,
-                                                        style.glow,
-                                                        "hover:scale-[1.02] hover:-translate-y-1"
-                                                    )}
+                                                    to={`/agenda/${sessionId}`}
+                                                    className="block"
                                                 >
-                                                    {/* Shine effect */}
                                                     <div
-                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
-
-                                                    <div className="relative z-10">
-                                                        {/* Icon + Badge - Compact header */}
+                                                        className={cn(
+                                                            "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative overflow-hidden",
+                                                            style.border,
+                                                            style.bg,
+                                                            style.glow,
+                                                            "hover:scale-[1.02] hover:-translate-y-1"
+                                                        )}
+                                                    >
+                                                        {/* Shine effect */}
                                                         <div
-                                                            className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
-                                                            <div className="flex items-center gap-2">
-                                                                <div className={cn(
-                                                                    "w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0",
-                                                                    style.badge
-                                                                )}>
-                                                                    <Icon className="w-4 h-4 sm:w-5 sm:h-5"/>
-                                                                </div>
-                                                                <Badge
-                                                                    className={cn("text-[10px] sm:text-xs px-2 py-0.5", style.badge)}>
-                                                                    {session.type}
-                                                                </Badge>
-                                                            </div>
-                                                            {/* Track indicator badge - desktop only */}
-                                                            {sessionTrack && (
-                                                                <div
-                                                                    className="hidden lg:flex items-center gap-1 text-xs text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
-                                                                    <span>{sessionTrack.icon}</span>
-                                                                </div>
-                                                            )}
-                                                        </div>
+                                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
-                                                        {/* Title - Compact */}
-                                                        <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                                                            {session.title}
-                                                        </h3>
-
-                                                        {/* Description - Compact */}
-                                                        <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 leading-relaxed">
-                                                            {session.description}
-                                                        </p>
-
-                                                        {/* Metadata - Super Compact */}
-                                                        <div
-                                                            className="space-y-1 text-[10px] sm:text-xs text-muted-foreground">
-                                                            {session.speaker && (
-                                                                <div className="flex items-center gap-1.5">
-                                                                    {getSpeakerAvatar(session.speaker) ? (
-                                                                        <img
-                                                                            src={getSpeakerAvatar(session.speaker)!}
-                                                                            alt={session.speaker}
-                                                                            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover ring-2 ring-background"
-                                                                        />
-                                                                    ) : (
-                                                                        <User className="w-3 h-3 flex-shrink-0"/>
-                                                                    )}
-                                                                    <span
-                                                                        className="font-medium truncate">{session.speaker}</span>
-                                                                </div>
-                                                            )}
-                                                            <div className="flex items-center gap-1.5">
-                                                                <MapPin className="w-3 h-3 flex-shrink-0"/>
-                                                                <span className="truncate">{session.location}</span>
-                                                            </div>
-                                                            <div className="flex items-center gap-1.5">
-                                                                <Clock className="w-3 h-3 flex-shrink-0"/>
-                                                                <span>{session.duration}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Mobile Track Label - FIXED TO USE ACTUAL SESSION TRACK */}
-                                                    {sessionTrack && (
-                                                        <div className="lg:hidden mt-2 pt-2 border-t border-border/30">
+                                                        <div className="relative z-10">
+                                                            {/* Icon + Badge - Compact header */}
                                                             <div
-                                                                className="text-[10px] text-muted-foreground flex items-center gap-1 font-medium">
-                                                                <span>{sessionTrack.icon}</span>
-                                                                <span>{sessionTrack.label}</span>
+                                                                className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
+                                                                <div className="flex items-center gap-2">
+                                                                    <div className={cn(
+                                                                        "w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0",
+                                                                        style.badge
+                                                                    )}>
+                                                                        <Icon className="w-4 h-4 sm:w-5 sm:h-5"/>
+                                                                    </div>
+                                                                    <Badge
+                                                                        className={cn("text-[10px] sm:text-xs px-2 py-0.5", style.badge)}>
+                                                                        {session.type}
+                                                                    </Badge>
+                                                                </div>
+                                                                {/* Track indicator badge - desktop only */}
+                                                                {sessionTrack && (
+                                                                    <div
+                                                                        className="hidden lg:flex items-center gap-1 text-xs text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
+                                                                        <span>{sessionTrack.icon}</span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+
+                                                            {/* Title - Compact */}
+                                                            <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                                                                {session.title}
+                                                            </h3>
+
+                                                            {/* Description - Compact */}
+                                                            <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 leading-relaxed">
+                                                                {session.description}
+                                                            </p>
+
+                                                            {/* Metadata - Super Compact */}
+                                                            <div
+                                                                className="space-y-1 text-[10px] sm:text-xs text-muted-foreground">
+                                                                {session.speaker && (
+                                                                    <div className="flex items-center gap-1.5">
+                                                                        {getSpeakerAvatar(session.speaker) ? (
+                                                                            <img
+                                                                                src={getSpeakerAvatar(session.speaker)!}
+                                                                                alt={session.speaker}
+                                                                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover ring-2 ring-background"
+                                                                            />
+                                                                        ) : (
+                                                                            <User className="w-3 h-3 flex-shrink-0"/>
+                                                                        )}
+                                                                        <span
+                                                                            className="font-medium truncate">{session.speaker}</span>
+                                                                    </div>
+                                                                )}
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <MapPin className="w-3 h-3 flex-shrink-0"/>
+                                                                    <span className="truncate">{session.location}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <Clock className="w-3 h-3 flex-shrink-0"/>
+                                                                    <span>{session.duration}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    )}
-                                                </div>
+
+                                                        {/* Mobile Track Label - FIXED TO USE ACTUAL SESSION TRACK */}
+                                                        {sessionTrack && (
+                                                            <div
+                                                                className="lg:hidden mt-2 pt-2 border-t border-border/30">
+                                                                <div
+                                                                    className="text-[10px] text-muted-foreground flex items-center gap-1 font-medium">
+                                                                    <span>{sessionTrack.icon}</span>
+                                                                    <span>{sessionTrack.label}</span>
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </Link>
                                             );
                                         })}
                                     </div>
