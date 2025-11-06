@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import SpeakersPage from "./pages/speakers/index";
 import SpeakerDetailPage from "./pages/speakers/[id]";
 import {ModeToggle} from "@/components/pro/ModeToggle";
+import {Navigation} from "@/components/pro/Navigation";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,9 @@ const App = () => {
                 <ModeToggle/>
 
                 <BrowserRouter>
+                    {/* Navigation - Only show in Pro Mode */}
+                    {isProMode && <Navigation/>}
+
                     <Routes>
                         {/* Root route - show different page based on mode */}
                         <Route path="/" element={isProMode ? <Home/> : <Index/>}/>
