@@ -17,7 +17,7 @@ export const Navigation = () => {
         {label: "Home", href: "/", icon: Home},
         {label: "Speakers", href: "/speakers", icon: Users},
         {label: "Schedule", href: "/agenda", icon: Calendar},
-        {label: "Sponsors", href: "/sponsors", icon: Award, disabled: true}, // TODO: Enable when page is ready
+        {label: "Sponsors", href: "/sponsors", icon: Award},
         {label: "Venue", href: "/venue", icon: MapPin, disabled: true}, // TODO: Enable when page is ready
         {label: "Team", href: "/team", icon: UsersRound, disabled: true}, // TODO: Enable when page is ready
     ];

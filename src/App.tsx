@@ -13,6 +13,7 @@ import SessionDetailPage from "./pages/agenda/[sessionId]";
 import {ModeToggle} from "@/components/pro/ModeToggle";
 import {Navigation} from "@/components/pro/Navigation";
 import {ScrollToTop} from "@/components/ScrollToTop";
+import SponsorsPage from "./pages/sponsors/index";
 
 const queryClient = new QueryClient();
 
@@ -46,9 +47,9 @@ const App = () => {
                         <Route path="/speakers/:id" element={<SpeakerDetailPage/>}/>
                         <Route path="/agenda" element={<AgendaPage/>}/>
                         <Route path="/agenda/:sessionId" element={<SessionDetailPage/>}/>
+                        <Route path="/sponsors" element={<SponsorsPage/>}/>
 
                         {/* Future Pro Mode Routes */}
-                        {/* <Route path="/sponsors" element={<SponsorsPage/>}/> */}
                         {/* <Route path="/venue" element={<VenuePage/>}/> */}
                         {/* <Route path="/team" element={<TeamPage/>}/> */}
 
