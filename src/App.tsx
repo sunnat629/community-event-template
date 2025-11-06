@@ -12,6 +12,7 @@ import AgendaPage from "./pages/agenda/index";
 import SessionDetailPage from "./pages/agenda/[sessionId]";
 import {ModeToggle} from "@/components/pro/ModeToggle";
 import {Navigation} from "@/components/pro/Navigation";
+import {ScrollToTop} from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,9 @@ const App = () => {
                 <ModeToggle/>
 
                 <BrowserRouter>
+                    {/* Scroll to top on route change */}
+                    <ScrollToTop/>
+
                     {/* Navigation - Only show in Pro Mode */}
                     {isProMode && <Navigation/>}
 
