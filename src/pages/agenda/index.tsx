@@ -4,6 +4,7 @@ import {PageHeader} from "@/components/pro/PageHeader";
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {FooterSection} from "@/components/sections/FooterSection";
 import {agendaItems, tracks} from "@/content";
 import {cn} from "@/lib/utils";
 
@@ -535,6 +536,9 @@ const AgendaPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Footer */}
+            <FooterSection/>
         </div>
     );
 };

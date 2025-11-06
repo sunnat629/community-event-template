@@ -2,6 +2,7 @@ import {useState, useMemo} from "react";
 import {Users, Search, Building2, Filter as FilterIcon} from "lucide-react";
 import {PageHeader} from "@/components/pro/PageHeader";
 import {SpeakerCard} from "@/components/shared/SpeakerCard";
+import {FooterSection} from "@/components/sections/FooterSection";
 import {featuredSpeakers, otherSpeakers} from "@/content";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
@@ -225,6 +226,9 @@ const SpeakersPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Footer */}
+            <FooterSection/>
         </div>
     );
 };

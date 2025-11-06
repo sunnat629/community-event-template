@@ -3,6 +3,7 @@ import {ChevronLeft, Twitter, Linkedin, Mail, Globe, Calendar, Clock, MapPin, Ex
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
 import {SpeakerCard} from "@/components/shared/SpeakerCard";
+import {FooterSection} from "@/components/sections/FooterSection";
 import {featuredSpeakers, otherSpeakers, agendaItems} from "@/content";
 import {useMemo} from "react";
 
@@ -328,6 +329,9 @@ const SpeakerDetailPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Footer */}
+            <FooterSection/>
         </div>
     );
 };
