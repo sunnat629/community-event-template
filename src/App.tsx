@@ -15,6 +15,8 @@ import {Navigation} from "@/components/pro/Navigation";
 import {ScrollToTop} from "@/components/ScrollToTop";
 import SponsorsPage from "./pages/sponsors/index";
 import SponsorDetailPage from "./pages/sponsors/[id]";
+import VenuePage from "./pages/venue/index";
+import TeamPage from "./pages/team/index";
 
 const queryClient = new QueryClient();
 
@@ -50,10 +52,8 @@ const App = () => {
                         <Route path="/agenda/:sessionId" element={<SessionDetailPage/>}/>
                         <Route path="/sponsors" element={<SponsorsPage/>}/>
                         <Route path="/sponsors/:id" element={<SponsorDetailPage/>}/>
-
-                        {/* Future Pro Mode Routes */}
-                        {/* <Route path="/venue" element={<VenuePage/>}/> */}
-                        {/* <Route path="/team" element={<TeamPage/>}/> */}
+                        <Route path="/venue" element={<VenuePage/>}/>
+                        <Route path="/team" element={<TeamPage/>}/>
 
                         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                         <Route path="*" element={<NotFound/>}/>
