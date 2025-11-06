@@ -67,7 +67,8 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Ashik Ahmed",
         title: "Flutter Community Leader",
-        topic: "Building Real-time Apps",
+        company: "Flutter Bangladesh",
+        topic: "Building Real-time Apps with Flutter",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
         bio: "Ashik is a community organizer and Flutter enthusiast who loves sharing knowledge and helping developers succeed.",
         social: {
@@ -78,6 +79,7 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Nusrat Jahan",
         title: "Mobile App Security Expert",
+        company: "CyberSafe Solutions",
         topic: "Securing Flutter Applications",
         image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
         bio: "Nusrat specializes in mobile security and helps developers build secure Flutter applications.",
@@ -89,6 +91,7 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Tanvir Hasan",
         title: "Firebase Integration Specialist",
+        company: "CloudTech Systems",
         topic: "Cloud-first Flutter Apps",
         image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
         bio: "Tanvir is a cloud architecture expert who specializes in integrating Firebase with Flutter applications.",
@@ -100,6 +103,7 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Fatema Khatun",
         title: "UX Designer & Flutter Dev",
+        company: "DesignHub",
         topic: "Design Systems in Flutter",
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
         bio: "Fatema combines UX design expertise with Flutter development to create beautiful user experiences.",
@@ -110,6 +114,7 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Rakib Islam",
         title: "Performance Optimization Lead",
+        company: "SpeedLabs",
         topic: "Flutter Performance Deep Dive",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
         bio: "Rakib focuses on performance optimization and helps teams build lightning-fast Flutter applications.",
@@ -121,6 +126,7 @@ export const otherSpeakers: Speaker[] = [
     {
         name: "Sadia Rahman",
         title: "Testing & Quality Expert",
+        company: "QA Masters",
         topic: "Testing Strategies for Flutter",
         image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
         bio: "Sadia is a quality assurance specialist who advocates for comprehensive testing in Flutter projects.",

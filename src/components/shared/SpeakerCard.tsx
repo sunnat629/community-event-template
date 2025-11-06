@@ -89,7 +89,7 @@ export const SpeakerCard = ({
                         </div>
 
                         {/* Social icons - appear on hover */}
-                        {speaker.social && (
+                        {speaker.social && Object.keys(speaker.social).length > 0 && (
                             <div
                                 className="flex justify-center gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-2">
                                 {speaker.social.twitter && (
@@ -184,7 +184,7 @@ export const SpeakerCard = ({
                         </div>
 
                         {/* Social icons - appear on hover */}
-                        {speaker.social && (
+                        {speaker.social && Object.keys(speaker.social).length > 0 && (
                             <div
                                 className="flex justify-center gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-2">
                                 {speaker.social.twitter && (
