@@ -161,7 +161,7 @@ const SessionDetailPage = () => {
                     <Button
                         onClick={handleAddToCalendar}
                         size="lg"
-                        className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md"
+                        className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                     >
                         <Calendar className="w-4 h-4 mr-2"/>
                         Add to Calendar
@@ -169,10 +169,9 @@ const SessionDetailPage = () => {
                     <Button
                         onClick={() => setIsBookmarked(!isBookmarked)}
                         size="lg"
-                        variant="outline"
                         className={cn(
-                            "border-2 border-white/40 text-white hover:bg-white/10",
-                            isBookmarked && "bg-white/20 border-white/60"
+                            "bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300",
+                            isBookmarked && "bg-white/30 border-white/60"
                         )}
                     >
                         <Bookmark className={cn("w-4 h-4 mr-2", isBookmarked && "fill-current")}/>
@@ -181,8 +180,7 @@ const SessionDetailPage = () => {
                     <Button
                         onClick={handleShare}
                         size="lg"
-                        variant="outline"
-                        className="border-2 border-white/40 text-white hover:bg-white/10"
+                        className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                     >
                         <Share2 className="w-4 h-4 mr-2"/>
                         Share
