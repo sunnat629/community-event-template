@@ -6,6 +6,7 @@ import {Badge} from "@/components/ui/badge";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {FooterSection} from "@/components/sections/FooterSection";
 import {agendaItems, tracks} from "@/content";
+import {featuredSpeakers, otherSpeakers} from "@/content";
 import {cn} from "@/lib/utils";
 
 /**
@@ -19,6 +20,18 @@ const AgendaPage = () => {
 
     const [selectedDay, setSelectedDay] = useState<number>(1);
     const [selectedTrack, setSelectedTrack] = useState<string>("all");
+
+    // Combine all speakers for avatar lookup
+    const allSpeakers = useMemo(() => {
+        return [...featuredSpeakers, ...otherSpeakers];
+    }, []);
+
+    // Helper function to get speaker avatar
+    const getSpeakerAvatar = (speakerName?: string) => {
+        if (!speakerName) return null;
+        const speaker = allSpeakers.find(s => s.name === speakerName);
+        return speaker?.image || null;
+    };
 
     // Generate days array based on configuration
     const days = useMemo(() => {
@@ -317,7 +330,15 @@ const AgendaPage = () => {
                                                                 {session.speaker && (
                                                                     <div
                                                                         className="flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-muted/30">
-                                                                        <User className="w-3 h-3 sm:w-4 sm:h-4"/>
+                                                                        {getSpeakerAvatar(session.speaker) ? (
+                                                                            <img
+                                                                                src={getSpeakerAvatar(session.speaker)!}
+                                                                                alt={session.speaker}
+                                                                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover ring-2 ring-background"
+                                                                            />
+                                                                        ) : (
+                                                                            <User className="w-3 h-3 sm:w-4 sm:h-4"/>
+                                                                        )}
                                                                         <span
                                                                             className="font-medium text-xs sm:text-sm">{session.speaker}</span>
                                                                     </div>
@@ -459,7 +480,15 @@ const AgendaPage = () => {
                                                             className="space-y-1 text-[10px] sm:text-xs text-muted-foreground">
                                                             {session.speaker && (
                                                                 <div className="flex items-center gap-1.5">
-                                                                    <User className="w-3 h-3 flex-shrink-0"/>
+                                                                    {getSpeakerAvatar(session.speaker) ? (
+                                                                        <img
+                                                                            src={getSpeakerAvatar(session.speaker)!}
+                                                                            alt={session.speaker}
+                                                                            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover ring-2 ring-background"
+                                                                        />
+                                                                    ) : (
+                                                                        <User className="w-3 h-3 flex-shrink-0"/>
+                                                                    )}
                                                                     <span
                                                                         className="font-medium truncate">{session.speaker}</span>
                                                                 </div>
