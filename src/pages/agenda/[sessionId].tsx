@@ -19,6 +19,7 @@ import {Card} from "@/components/ui/card";
 import {agendaItems} from "@/content/agenda";
 import {featuredSpeakers, otherSpeakers} from "@/content/speakers";
 import {FooterSection} from "@/components/sections/FooterSection";
+import {PageHeader} from "@/components/pro/PageHeader";
 import {useState, useMemo} from "react";
 import {cn} from "@/lib/utils";
 
@@ -55,15 +56,15 @@ const SessionDetailPage = () => {
             .slice(0, 3);
     }, [session]);
 
-    // Get type badge styling
+    // Get type badge styling - LIGHT THEME
     const getTypeBadge = (type: string) => {
         const badges: Record<string, { label: string; className: string }> = {
-            keynote: {label: "Keynote", className: "bg-blue-500/20 text-blue-300 border-blue-500/30"},
-            session: {label: "Session", className: "bg-purple-500/20 text-purple-300 border-purple-500/30"},
-            workshop: {label: "Workshop", className: "bg-green-500/20 text-green-300 border-green-500/30"},
-            panel: {label: "Panel", className: "bg-orange-500/20 text-orange-300 border-orange-500/30"},
-            break: {label: "Break", className: "bg-gray-500/20 text-gray-300 border-gray-500/30"},
-            closing: {label: "Closing", className: "bg-pink-500/20 text-pink-300 border-pink-500/30"}
+            keynote: {label: "Keynote", className: "bg-primary text-white"},
+            session: {label: "Session", className: "bg-secondary text-white"},
+            workshop: {label: "Workshop", className: "bg-green-500 text-white"},
+            panel: {label: "Panel", className: "bg-purple-500 text-white"},
+            break: {label: "Break", className: "bg-slate-400 text-white"},
+            closing: {label: "Closing", className: "bg-orange-500 text-white"}
         };
         return badges[type] || badges.session;
     };
@@ -83,13 +84,8 @@ const SessionDetailPage = () => {
     const handleAddToCalendar = () => {
         if (!session) return;
 
-        // Create a simple ICS file content
-        const eventTitle = session.title;
-        const eventDescription = session.description;
-        const eventLocation = session.location;
-
         // In a real app, you'd generate proper ICS format
-        alert(`Add to Calendar feature:\n\n${eventTitle}\n${session.time} - ${session.endTime}\n${eventLocation}`);
+        alert(`Add to Calendar feature:\n\n${session.title}\n${session.time} - ${session.endTime}\n${session.location}`);
     };
 
     // Share handler
@@ -117,10 +113,10 @@ const SessionDetailPage = () => {
 
     if (!session) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800">
+            <div className="min-h-screen bg-background">
                 <div className="container mx-auto px-4 py-20 text-center">
-                    <h1 className="text-4xl font-bold text-white mb-4">Session Not Found</h1>
-                    <p className="text-gray-400 mb-8">The session you're looking for doesn't exist.</p>
+                    <h1 className="text-4xl font-bold mb-4">Session Not Found</h1>
+                    <p className="text-muted-foreground mb-8">The session you're looking for doesn't exist.</p>
                     <Button onClick={() => navigate('/agenda')} variant="default">
                         <ChevronLeft className="w-4 h-4 mr-2"/>
                         Back to Agenda
@@ -135,14 +131,13 @@ const SessionDetailPage = () => {
     const trackInfo = getTrackInfo(session.track);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800">
+        <div className="min-h-screen bg-background">
             {/* Back Button - Fixed */}
-            <div className="sticky top-16 z-40 bg-gray-900/50 backdrop-blur-lg border-b border-white/5">
+            <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-lg border-b border-border">
                 <div className="container mx-auto px-4 py-3">
                     <Button
                         onClick={() => navigate('/agenda')}
                         variant="ghost"
-                        className="text-white hover:bg-white/10"
                     >
                         <ChevronLeft className="w-4 h-4 mr-2"/>
                         Back to Agenda
@@ -150,81 +145,68 @@ const SessionDetailPage = () => {
                 </div>
             </div>
 
-            {/* Hero Section */}
-            <section className="relative py-12 sm:py-16 overflow-hidden">
-                {/* Background Gradient */}
-                <div
-                    className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent opacity-50"/>
-                <div
-                    className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"/>
+            {/* Hero Header - Using PageHeader Component */}
+            <PageHeader
+                title={session.title}
+                subtitle={`${session.time} - ${session.endTime} • ${session.duration}`}
+                description={session.description}
+                icon={Icon}
+                badge={{
+                    text: typeBadge.label,
+                    icon: Icon,
+                }}
+            >
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3">
+                    <Button
+                        onClick={handleAddToCalendar}
+                        size="lg"
+                        className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md"
+                    >
+                        <Calendar className="w-4 h-4 mr-2"/>
+                        Add to Calendar
+                    </Button>
+                    <Button
+                        onClick={() => setIsBookmarked(!isBookmarked)}
+                        size="lg"
+                        variant="outline"
+                        className={cn(
+                            "border-2 border-white/40 text-white hover:bg-white/10",
+                            isBookmarked && "bg-white/20 border-white/60"
+                        )}
+                    >
+                        <Bookmark className={cn("w-4 h-4 mr-2", isBookmarked && "fill-current")}/>
+                        {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+                    </Button>
+                    <Button
+                        onClick={handleShare}
+                        size="lg"
+                        variant="outline"
+                        className="border-2 border-white/40 text-white hover:bg-white/10"
+                    >
+                        <Share2 className="w-4 h-4 mr-2"/>
+                        Share
+                    </Button>
+                </div>
+            </PageHeader>
 
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="max-w-4xl mx-auto">
-                        {/* Type Badge & Track */}
-                        <div className="flex flex-wrap items-center gap-3 mb-4">
-                            <Badge className={cn("border", typeBadge.className)}>
-                                {typeBadge.label}
-                            </Badge>
-                            <Badge variant="outline" className="border-white/20 text-white">
-                                {trackInfo.icon} {trackInfo.label}
-                            </Badge>
-                            <Badge variant="outline" className="border-white/20 text-white">
-                                📅 Day {session.day}
-                            </Badge>
-                        </div>
-
-                        {/* Session Title */}
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                            {session.title}
-                        </h1>
-
-                        {/* Session Meta */}
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-gray-300 mb-6">
-                            <div className="flex items-center gap-2">
-                                <Clock className="w-5 h-5 text-primary"/>
-                                <span className="text-sm sm:text-base">
-                                    {session.time} - {session.endTime}
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Calendar className="w-5 h-5 text-primary"/>
-                                <span className="text-sm sm:text-base">{session.duration}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <MapPin className="w-5 h-5 text-primary"/>
-                                <span className="text-sm sm:text-base">{session.location}</span>
-                            </div>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex flex-wrap gap-3">
-                            <Button
-                                onClick={handleAddToCalendar}
-                                className="bg-primary hover:bg-primary/90"
-                            >
-                                <Calendar className="w-4 h-4 mr-2"/>
-                                Add to Calendar
-                            </Button>
-                            <Button
-                                onClick={() => setIsBookmarked(!isBookmarked)}
-                                variant="outline"
-                                className={cn(
-                                    "border-white/20 text-white hover:bg-white/10",
-                                    isBookmarked && "bg-white/20 border-white/40"
-                                )}
-                            >
-                                <Bookmark className={cn("w-4 h-4 mr-2", isBookmarked && "fill-current")}/>
-                                {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-                            </Button>
-                            <Button
-                                onClick={handleShare}
-                                variant="outline"
-                                className="border-white/20 text-white hover:bg-white/10"
-                            >
-                                <Share2 className="w-4 h-4 mr-2"/>
-                                Share
-                            </Button>
-                        </div>
+            {/* Session Meta Badges */}
+            <section className="py-4 px-4 sm:px-6 lg:px-8 bg-muted/30">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="flex flex-wrap items-center gap-3">
+                        <Badge className={cn("border", typeBadge.className)}>
+                            {typeBadge.label}
+                        </Badge>
+                        <Badge variant="outline">
+                            {trackInfo.icon} {trackInfo.label}
+                        </Badge>
+                        <Badge variant="outline">
+                            📅 Day {session.day}
+                        </Badge>
+                        <Badge variant="outline">
+                            <MapPin className="w-3 h-3 mr-1"/>
+                            {session.location}
+                        </Badge>
                     </div>
                 </div>
             </section>
@@ -236,21 +218,21 @@ const SessionDetailPage = () => {
                         {/* Left Column - Main Content */}
                         <div className="lg:col-span-2 space-y-8">
                             {/* Description Card */}
-                            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-6 sm:p-8">
+                            <Card className="glass-card border-2 p-6 sm:p-8">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
-                                        <Icon className="w-6 h-6 text-primary"/>
+                                    <div className={cn("p-3 rounded-xl", typeBadge.className)}>
+                                        <Icon className="w-6 h-6"/>
                                     </div>
-                                    <h2 className="text-2xl font-bold text-white">About This Session</h2>
+                                    <h2 className="text-2xl font-bold">About This Session</h2>
                                 </div>
-                                <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                                     {session.description}
                                 </p>
 
-                                {/* Additional session details could go here */}
-                                <div className="mt-6 pt-6 border-t border-white/10">
-                                    <h3 className="text-lg font-semibold text-white mb-3">What You'll Learn</h3>
-                                    <ul className="space-y-2 text-gray-300">
+                                {/* What You'll Learn */}
+                                <div className="mt-6 pt-6 border-t">
+                                    <h3 className="text-lg font-semibold mb-3">What You'll Learn</h3>
+                                    <ul className="space-y-2 text-muted-foreground">
                                         <li className="flex items-start gap-2">
                                             <span className="text-primary mt-1">✓</span>
                                             <span>Key concepts and best practices</span>
@@ -269,8 +251,8 @@ const SessionDetailPage = () => {
 
                             {/* Speaker Card */}
                             {speaker && (
-                                <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-6 sm:p-8">
-                                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                                <Card className="glass-card border-2 p-6 sm:p-8">
+                                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                                         <User className="w-6 h-6 text-primary"/>
                                         About the Speaker
                                     </h2>
@@ -287,20 +269,20 @@ const SessionDetailPage = () => {
 
                                         {/* Speaker Info */}
                                         <div className="flex-1">
-                                            <h3 className="text-xl font-bold text-white mb-1">
+                                            <h3 className="text-xl font-bold mb-1">
                                                 {speaker.name}
                                             </h3>
                                             <p className="text-primary font-medium mb-1">
                                                 {speaker.title}
                                             </p>
                                             {speaker.company && (
-                                                <p className="text-gray-400 text-sm mb-3">
+                                                <p className="text-muted-foreground text-sm mb-3">
                                                     {speaker.company}
                                                 </p>
                                             )}
 
                                             {speaker.bio && (
-                                                <p className="text-gray-300 text-sm sm:text-base mb-4">
+                                                <p className="text-muted-foreground text-sm sm:text-base mb-4">
                                                     {speaker.bio}
                                                 </p>
                                             )}
@@ -312,7 +294,6 @@ const SessionDetailPage = () => {
                                                         <Button
                                                             size="sm"
                                                             variant="outline"
-                                                            className="border-white/20 text-white hover:bg-white/10"
                                                             onClick={() => window.open(speaker.social!.twitter, '_blank')}
                                                         >
                                                             <Twitter className="w-4 h-4 mr-1"/>
@@ -323,7 +304,6 @@ const SessionDetailPage = () => {
                                                         <Button
                                                             size="sm"
                                                             variant="outline"
-                                                            className="border-white/20 text-white hover:bg-white/10"
                                                             onClick={() => window.open(speaker.social!.linkedin, '_blank')}
                                                         >
                                                             <Linkedin className="w-4 h-4 mr-1"/>
@@ -334,7 +314,6 @@ const SessionDetailPage = () => {
                                                         <Button
                                                             size="sm"
                                                             variant="outline"
-                                                            className="border-white/20 text-white hover:bg-white/10"
                                                             onClick={() => window.location.href = `mailto:${speaker.social!.email}`}
                                                         >
                                                             <Mail className="w-4 h-4 mr-1"/>
@@ -363,33 +342,38 @@ const SessionDetailPage = () => {
                         {/* Right Column - Sidebar */}
                         <div className="space-y-6">
                             {/* Quick Info Card */}
-                            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-6">
-                                <h3 className="text-lg font-bold text-white mb-4">Session Details</h3>
+                            <Card className="glass-card border-2 p-6">
+                                <h3 className="text-lg font-bold mb-4">Session Details</h3>
                                 <div className="space-y-3 text-sm">
                                     <div className="flex justify-between">
-                                        <span className="text-gray-400">Type</span>
-                                        <span className="text-white font-medium">{typeBadge.label}</span>
+                                        <span className="text-muted-foreground">Type</span>
+                                        <span className="font-medium">{typeBadge.label}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="text-gray-400">Track</span>
-                                        <span className="text-white font-medium">{trackInfo.label}</span>
+                                        <span className="text-muted-foreground">Track</span>
+                                        <span className="font-medium">{trackInfo.label}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="text-gray-400">Day</span>
-                                        <span className="text-white font-medium">Day {session.day}</span>
+                                        <span className="text-muted-foreground">Day</span>
+                                        <span className="font-medium">Day {session.day}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="text-gray-400">Duration</span>
-                                        <span className="text-white font-medium">{session.duration}</span>
+                                        <span className="text-muted-foreground">Duration</span>
+                                        <span className="font-medium">{session.duration}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="text-gray-400">Location</span>
-                                        <span className="text-white font-medium text-right">{session.location}</span>
+                                        <span className="text-muted-foreground">Location</span>
+                                        <span className="font-medium text-right">{session.location}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-muted-foreground">Time</span>
+                                        <span
+                                            className="font-medium text-right">{session.time} - {session.endTime}</span>
                                     </div>
                                 </div>
 
                                 <Button
-                                    className="w-full mt-6 bg-primary hover:bg-primary/90"
+                                    className="w-full mt-6 bg-gradient-hero text-white"
                                     onClick={handleAddToCalendar}
                                 >
                                     <Download className="w-4 h-4 mr-2"/>
@@ -399,8 +383,8 @@ const SessionDetailPage = () => {
 
                             {/* Related Sessions */}
                             {relatedSessions.length > 0 && (
-                                <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-6">
-                                    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <Card className="glass-card border-2 p-6">
+                                    <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                                         <Users className="w-5 h-5 text-primary"/>
                                         Related Sessions
                                     </h3>
@@ -413,19 +397,19 @@ const SessionDetailPage = () => {
                                                 <Link
                                                     key={idx}
                                                     to={`/agenda/${relatedId}`}
-                                                    className="block p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all group"
+                                                    className="block p-3 rounded-lg bg-muted/30 hover:bg-muted/50 border border-border hover:border-primary/30 transition-all group"
                                                 >
                                                     <div className="flex items-start gap-3">
                                                         <div
-                                                            className="p-2 rounded-lg bg-primary/20 border border-primary/30 mt-1">
+                                                            className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                                                             <relatedIcon className="w-4 h-4 text-primary"/>
                                                         </div>
                                                         <div className="flex-1 min-w-0">
-                                                            <h4 className="text-sm font-semibold text-white mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                                                            <h4 className="text-sm font-semibold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                                                                 {relatedSession.title}
                                                             </h4>
                                                             <div
-                                                                className="flex items-center gap-2 text-xs text-gray-400">
+                                                                className="flex items-center gap-2 text-xs text-muted-foreground">
                                                                 <Clock className="w-3 h-3"/>
                                                                 <span>{relatedSession.time}</span>
                                                             </div>
