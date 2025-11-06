@@ -322,14 +322,13 @@ const SessionDetailPage = () => {
                                             )}
 
                                             {/* Link to speaker page */}
-                                            <Link to={`/speakers/${speaker.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                                                <Button
-                                                    size="sm"
-                                                    variant="ghost"
-                                                    className="mt-3 text-primary hover:text-primary/80 px-0"
-                                                >
-                                                    View Full Profile →
-                                                </Button>
+                                            <Link
+                                                to={`/speakers/${speaker.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                                className="inline-flex items-center gap-1 mt-3 text-sm text-primary hover:text-primary/80 transition-colors font-medium group"
+                                            >
+                                                View Full Profile
+                                                <span
+                                                    className="transition-transform group-hover:translate-x-1">→</span>
                                             </Link>
                                         </div>
                                     </div>
