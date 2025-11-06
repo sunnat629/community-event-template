@@ -54,6 +54,97 @@
 
 ---
 
+## ⚡ **Event Modes: Lite vs Pro**
+
+This template supports **two architecture modes** to perfectly match your event scale:
+
+### 🎈 **Lite Mode** (Single-Page Architecture)
+
+**Perfect for:**
+
+- ✅ Single-day events (3-6 hours)
+- ✅ 5-10 speakers
+- ✅ Single track sessions
+- ✅ Meetups, workshops, small conferences
+- ✅ 50-200 attendees
+
+**Features:**
+
+- Single scrolling page with all content
+- Fast setup and deployment
+- Mobile-optimized experience
+- Lower maintenance overhead
+
+**Examples:** Local meetups, community workshops, user group events
+
+---
+
+### 🚀 **Pro Mode** (Multi-Route Architecture)
+
+**Perfect for:**
+
+- ✅ Multi-day conferences (2-3+ days)
+- ✅ 20+ speakers
+- ✅ Multiple parallel tracks (2-3+)
+- ✅ Large conferences, summits
+- ✅ 200+ attendees
+
+**Features:**
+
+- Dedicated pages for speakers, agenda, sponsors
+- Individual speaker/session pages
+- Advanced filtering and search
+- Better SEO and shareability
+- Personalized agenda (optional)
+- Live event dashboard (optional)
+
+**Examples:** KotlinConf, FlutterCon, DevSummit, PyCon
+
+---
+
+### 🎯 **Choosing Your Mode**
+
+**Quick Decision Matrix:**
+
+| Factor        | Lite Mode | Pro Mode  |
+|---------------|-----------|-----------|
+| **Duration**  | 3-8 hours | 1-3+ days |
+| **Speakers**  | 5-10      | 20+       |
+| **Sessions**  | <15       | 30+       |
+| **Tracks**    | 1         | 2-3+      |
+| **Attendees** | 50-200    | 200+      |
+
+**How to Set:**
+
+Edit `src/config/site.config.ts`:
+
+```typescript
+export const siteConfig: SiteConfig = {
+  eventMode: {
+    mode: 'lite', // Change to 'pro' for large events
+    scale: {
+      duration: 'single-day', // or 'multi-day'
+      speakerCount: 9,
+      sessionCount: 9,
+      parallelTracks: 1, // Change to 2+ for multi-track
+      expectedAttendees: 150,
+    },
+    features: {
+      dedicatedSpeakerPages: false, // Enable for pro mode
+      sessionDetailPages: false,
+      personalizedAgenda: false,
+      liveEventDashboard: false,
+      // ... more features
+    },
+  },
+  // ... rest of config
+};
+```
+
+**The template will auto-detect and recommend the optimal mode based on your event scale!** ✨
+
+---
+
 ## 🌍 Perfect For
 
 - 🔷 **Kotlin Communities** - KotlinConf, user groups
@@ -485,3 +576,4 @@ event? [Add your event here!](https://github.com/sunnat629/community-event-templ
 [Report Bug](https://github.com/sunnat629/community-event-template/issues) · [Request Feature](https://github.com/sunnat629/community-event-template/issues) · [Documentation](https://github.com/sunnat629/community-event-template/wiki)
 
 </div>
+
