@@ -82,9 +82,16 @@ const AgendaPage = () => {
             grouped.set(session.time, existing);
         });
 
+        // Sort sessions within each time slot by track order
+        const trackOrder = {technical: 0, workshop: 1, business: 2, all: 3};
+
         return Array.from(grouped.entries()).map(([time, sessions]) => ({
             time,
-            sessions
+            sessions: sessions.sort((a, b) => {
+                const orderA = trackOrder[a.track as keyof typeof trackOrder] ?? 99;
+                const orderB = trackOrder[b.track as keyof typeof trackOrder] ?? 99;
+                return orderA - orderB;
+            })
         }));
     }, [filteredSessions]);
 
@@ -369,11 +376,14 @@ const AgendaPage = () => {
                                             const Icon = session.icon;
                                             const style = getSessionStyle(session.type);
 
+                                            // Find the correct track label based on session's actual track
+                                            const sessionTrack = trackLabels.find(t => t.id === session.track);
+
                                             return (
                                                 <div
                                                     key={sessionIdx}
                                                     className={cn(
-                                                        "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative",
+                                                        "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative overflow-hidden",
                                                         style.border,
                                                         style.bg,
                                                         style.glow,
@@ -382,21 +392,31 @@ const AgendaPage = () => {
                                                 >
                                                     {/* Shine effect */}
                                                     <div
-                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none rounded-xl sm:rounded-2xl"/>
+                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
                                                     <div className="relative z-10">
                                                         {/* Icon + Badge - Compact header */}
-                                                        <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                                                            <div className={cn(
-                                                                "w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0",
-                                                                style.badge
-                                                            )}>
-                                                                <Icon className="w-4 h-4 sm:w-5 sm:h-5"/>
+                                                        <div
+                                                            className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className={cn(
+                                                                    "w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0",
+                                                                    style.badge
+                                                                )}>
+                                                                    <Icon className="w-4 h-4 sm:w-5 sm:h-5"/>
+                                                                </div>
+                                                                <Badge
+                                                                    className={cn("text-[10px] sm:text-xs px-2 py-0.5", style.badge)}>
+                                                                    {session.type}
+                                                                </Badge>
                                                             </div>
-                                                            <Badge
-                                                                className={cn("text-[10px] sm:text-xs px-2 py-0.5", style.badge)}>
-                                                                {session.type}
-                                                            </Badge>
+                                                            {/* Track indicator badge - desktop only */}
+                                                            {sessionTrack && (
+                                                                <div
+                                                                    className="hidden lg:flex items-center gap-1 text-xs text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
+                                                                    <span>{sessionTrack.icon}</span>
+                                                                </div>
+                                                            )}
                                                         </div>
 
                                                         {/* Title - Compact */}
@@ -430,14 +450,16 @@ const AgendaPage = () => {
                                                         </div>
                                                     </div>
 
-                                                    {/* Mobile Track Label */}
-                                                    <div className="lg:hidden mt-2 pt-2 border-t border-border/30">
-                                                        <div
-                                                            className="text-[10px] text-muted-foreground flex items-center gap-1">
-                                                            <span>{trackLabels[sessionIdx % eventTracks]?.icon}</span>
-                                                            <span>{trackLabels[sessionIdx % eventTracks]?.label}</span>
+                                                    {/* Mobile Track Label - FIXED TO USE ACTUAL SESSION TRACK */}
+                                                    {sessionTrack && (
+                                                        <div className="lg:hidden mt-2 pt-2 border-t border-border/30">
+                                                            <div
+                                                                className="text-[10px] text-muted-foreground flex items-center gap-1 font-medium">
+                                                                <span>{sessionTrack.icon}</span>
+                                                                <span>{sessionTrack.label}</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    )}
                                                 </div>
                                             );
                                         })}
