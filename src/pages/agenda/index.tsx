@@ -233,8 +233,8 @@ const AgendaPage = () => {
             {/* Schedule Content */}
             <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
-                    {eventTracks === 1 ? (
-                        /* Single Track Layout - Timeline View */
+                    {eventTracks === 1 || selectedTrack !== "all" ? (
+                        /* Single Track Layout - Timeline View (also used when filtering by specific track) */
                         <div className="max-w-4xl mx-auto">
                             <div className="relative">
                                 {/* Vertical Timeline Line */}
@@ -245,6 +245,8 @@ const AgendaPage = () => {
                                     {filteredSessions.map((session, index) => {
                                         const Icon = session.icon;
                                         const style = getSessionStyle(session.type);
+                                        // Get track label for display
+                                        const sessionTrack = trackLabels.find(t => t.id === session.track);
 
                                         return (
                                             <div
@@ -283,10 +285,20 @@ const AgendaPage = () => {
                                                             <div
                                                                 className="flex items-start justify-between gap-3 mb-2">
                                                                 <div className="flex-1">
-                                                                    <Badge
-                                                                        className={cn("mb-2 text-[10px] sm:text-xs", style.badge)}>
-                                                                        {session.type}
-                                                                    </Badge>
+                                                                    <div
+                                                                        className="flex items-center gap-2 mb-2 flex-wrap">
+                                                                        <Badge
+                                                                            className={cn("text-[10px] sm:text-xs", style.badge)}>
+                                                                            {session.type}
+                                                                        </Badge>
+                                                                        {/* Show track badge when filtering by specific track or multi-track config */}
+                                                                        {(eventTracks > 1 || selectedTrack !== "all") && sessionTrack && session.track !== "all" && (
+                                                                            <Badge variant="outline"
+                                                                                   className="text-[10px] sm:text-xs">
+                                                                                {sessionTrack.icon} {sessionTrack.label}
+                                                                            </Badge>
+                                                                        )}
+                                                                    </div>
                                                                     <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
                                                                         {session.title}
                                                                         <ChevronRight
@@ -334,22 +346,24 @@ const AgendaPage = () => {
                     ) : (
                         /* Multi-Track Layout - Grid View - REDESIGNED FOR COMPACTNESS */
                         <div className="space-y-6 sm:space-y-8">
-                            {/* Track Headers - Always Visible */}
-                            <div className="hidden lg:grid gap-4 px-4"
-                                 style={{gridTemplateColumns: `120px repeat(${eventTracks}, 1fr)`}}>
-                                <div></div>
-                                {/* Empty space for time column */}
-                                {trackLabels.slice(0, eventTracks).map((track, idx) => (
-                                    <div
-                                        key={track.id}
-                                        className="text-center py-3 px-4 rounded-xl bg-gradient-to-br from-card to-muted/30 border-2 border-border animate-fade-in-up"
-                                        style={{animationDelay: `${idx * 100}ms`}}
-                                    >
-                                        <div className="text-2xl mb-1">{track.icon}</div>
-                                        <div className="font-bold text-sm">{track.label}</div>
-                                    </div>
-                                ))}
-                            </div>
+                            {/* Track Headers - Always Visible - DYNAMICALLY MATCH AVAILABLE TRACKS */}
+                            {selectedTrack === "all" && (
+                                <div className="hidden lg:grid gap-4 px-4"
+                                     style={{gridTemplateColumns: `120px repeat(${eventTracks}, 1fr)`}}>
+                                    <div></div>
+                                    {/* Empty space for time column */}
+                                    {trackLabels.slice(0, eventTracks).map((track, idx) => (
+                                        <div
+                                            key={track.id}
+                                            className="text-center py-3 px-4 rounded-xl bg-gradient-to-br from-card to-muted/30 border-2 border-border animate-fade-in-up"
+                                            style={{animationDelay: `${idx * 100}ms`}}
+                                        >
+                                            <div className="text-2xl mb-1">{track.icon}</div>
+                                            <div className="font-bold text-sm">{track.label}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
 
                             {sessionsByTime.map((timeSlot, idx) => (
                                 <div
@@ -357,7 +371,7 @@ const AgendaPage = () => {
                                     className="animate-fade-in-up"
                                     style={{animationDelay: `${idx * 100}ms`}}
                                 >
-                                    {/* Time + Sessions Grid */}
+                                    {/* Time + Sessions Grid - FIXED: Dynamic columns based on available tracks */}
                                     <div className="grid gap-3 sm:gap-4"
                                          style={{gridTemplateColumns: window.innerWidth >= 1024 ? `120px repeat(${eventTracks}, 1fr)` : '1fr'}}>
                                         {/* Time Header - Sticky on desktop */}
@@ -371,17 +385,27 @@ const AgendaPage = () => {
                                             </div>
                                         </div>
 
-                                        {/* Sessions - More Compact Cards */}
-                                        {timeSlot.sessions.slice(0, eventTracks).map((session, sessionIdx) => {
+                                        {/* Sessions - Create placeholder divs for empty tracks to maintain column alignment */}
+                                        {trackLabels.slice(0, eventTracks).map((trackLabel, trackIdx) => {
+                                            // Find session for this specific track at this time
+                                            const session = timeSlot.sessions.find(s => s.track === trackLabel.id || s.track === 'all');
+
+                                            if (!session) {
+                                                // Empty placeholder to maintain grid alignment
+                                                return (
+                                                    <div key={`empty-${trackIdx}`} className="hidden lg:block">
+                                                        {/* Empty space to maintain column structure */}
+                                                    </div>
+                                                );
+                                            }
+
                                             const Icon = session.icon;
                                             const style = getSessionStyle(session.type);
-
-                                            // Find the correct track label based on session's actual track
                                             const sessionTrack = trackLabels.find(t => t.id === session.track);
 
                                             return (
                                                 <div
-                                                    key={sessionIdx}
+                                                    key={`${session.title}-${trackIdx}`}
                                                     className={cn(
                                                         "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative overflow-hidden",
                                                         style.border,
