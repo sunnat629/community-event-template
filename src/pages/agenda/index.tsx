@@ -59,13 +59,10 @@ const AgendaPage = () => {
 
     // Filter agenda items by day and track
     const filteredSessions = useMemo(() => {
-        // For demo, distribute agenda items across days
-        const sessionsPerDay = Math.ceil(agendaItems.length / eventDays);
-        const dayStart = (selectedDay - 1) * sessionsPerDay;
-        const dayEnd = selectedDay * sessionsPerDay;
+        // Filter by selected day
+        let filtered = agendaItems.filter(item => item.day === selectedDay);
 
-        let filtered = agendaItems.slice(dayStart, dayEnd);
-
+        // Filter by track
         if (selectedTrack !== "all") {
             filtered = filtered.filter(
                 item => item.track === selectedTrack || item.track === "all"
@@ -73,7 +70,7 @@ const AgendaPage = () => {
         }
 
         return filtered;
-    }, [selectedDay, selectedTrack, eventDays]);
+    }, [selectedDay, selectedTrack]);
 
     // Group sessions by time for multi-track layout
     const sessionsByTime = useMemo(() => {
@@ -153,12 +150,12 @@ const AgendaPage = () => {
                     icon: Calendar,
                 }}
             >
-                {/* Download Button */}
+                {/* Download Button - FIXED THEMING */}
                 <Button
                     onClick={handleDownloadSchedule}
                     size="lg"
-                    variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                    variant="default"
+                    className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 >
                     <Download className="w-4 h-4 mr-2"/>
                     Download Schedule
