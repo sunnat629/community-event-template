@@ -66,33 +66,18 @@ const SpeakerDetailPage = () => {
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Breadcrumbs */}
-            <div className="bg-gradient-subtle border-b border-border">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <nav className="flex items-center gap-2 text-sm">
-                        <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
-                            Home
-                        </Link>
-                        <span className="text-muted-foreground">/</span>
-                        <Link to="/speakers" className="text-muted-foreground hover:text-primary transition-colors">
-                            Speakers
-                        </Link>
-                        <span className="text-muted-foreground">/</span>
-                        <span className="text-foreground font-medium">{speaker.name}</span>
-                    </nav>
-                </div>
-            </div>
-
             {/* Back Button */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <Button
-                    variant="ghost"
-                    onClick={() => navigate(-1)}
-                    className="group"
-                >
-                    <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"/>
-                    Back to Speakers
-                </Button>
+            <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-lg border-b border-border">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                    <Button
+                        variant="ghost"
+                        onClick={() => navigate(-1)}
+                        className="group"
+                    >
+                        <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"/>
+                        Back to Speakers
+                    </Button>
+                </div>
             </div>
 
             {/* Speaker Hero Section */}

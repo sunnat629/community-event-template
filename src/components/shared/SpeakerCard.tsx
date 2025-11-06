@@ -132,63 +132,87 @@ export const SpeakerCard = ({
                 className={cn("w-full text-left group", className)}
             >
                 <div
-                    className="glass-card rounded-2xl p-6 border-2 border-border hover:border-secondary/50 transition-colors duration-300 shadow-lg bg-gradient-to-br from-card to-secondary/5 relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30">
+                    className="glass-card rounded-3xl p-6 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[420px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30">
                     {/* Shine effect */}
                     <div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
-                    <div className="flex items-start gap-4 mb-4 relative z-10">
-                        {/* Avatar */}
-                        <div className="relative flex-shrink-0">
-                            <div
-                                className="w-20 h-20 rounded-xl overflow-hidden border-2 border-secondary/30 shadow-lg group-hover:border-secondary/60 transition-colors duration-300">
-                                <img
-                                    src={speaker.image}
-                                    alt={speaker.name}
-                                    className="w-full h-full object-cover"
-                                    loading="lazy"
-                                />
-                            </div>
+                    {/* Avatar - Centered and Round like featured */}
+                    <div className="relative mb-6">
+                        <div
+                            className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl group-hover:border-primary/60 transition-all duration-500">
+                            <img
+                                src={speaker.image}
+                                alt={speaker.name}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                            />
                         </div>
+                        {/* Floating glow ring */}
+                        <div
+                            className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"/>
 
-                        {/* Info */}
-                        <div className="flex-1 min-w-0">
-                            <h4 className="text-lg font-bold mb-1 group-hover:text-secondary transition-colors duration-300 flex items-center gap-1">
-                                {speaker.name}
-                                <ChevronRight
-                                    className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
-                            </h4>
-                            <p className="text-sm text-muted-foreground font-medium mb-2">
-                                {speaker.title}
+                        {/* Badge for company */}
+                        {speaker.company && (
+                            <div
+                                className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-2 px-3 py-1 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-4 whitespace-nowrap">
+                                {speaker.company}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Content - Centered */}
+                    <div className="text-center relative z-10 flex-1 flex flex-col">
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 flex items-center justify-center gap-2">
+                            {speaker.name}
+                            <ChevronRight
+                                className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
+                        </h3>
+                        <p className="text-primary font-semibold mb-4 text-sm">
+                            {speaker.title}
+                        </p>
+
+                        {/* Topic card */}
+                        <div
+                            className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl p-4 border border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-105 flex-1 flex flex-col justify-center">
+                            <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wide">
+                                Speaking on:
+                            </p>
+                            <p className="text-foreground font-semibold text-sm leading-relaxed line-clamp-2">
+                                {speaker.topic}
                             </p>
                         </div>
-                    </div>
 
-                    {/* Topic */}
-                    <div
-                        className="bg-gradient-subtle rounded-lg p-3 border border-border/50 group-hover:border-secondary/30 transition-all duration-300 relative z-10 mb-3">
-                        <p className="text-xs font-semibold text-muted-foreground mb-1">Topic:</p>
-                        <p className="text-sm text-foreground font-medium">{speaker.topic}</p>
-                    </div>
+                        {/* Social icons - appear on hover */}
+                        {speaker.social && (
+                            <div
+                                className="flex justify-center gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-2">
+                                {speaker.social.twitter && (
+                                    <div
+                                        className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+                                        <Twitter className="w-4 h-4"/>
+                                    </div>
+                                )}
+                                {speaker.social.linkedin && (
+                                    <div
+                                        className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+                                        <Linkedin className="w-4 h-4"/>
+                                    </div>
+                                )}
+                                {speaker.social.email && (
+                                    <div
+                                        className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+                                        <Mail className="w-4 h-4"/>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
-                    {/* Social icons - compact */}
-                    {speaker.social && (
-                        <div
-                            className="flex gap-2 relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            {speaker.social.twitter && (
-                                <div
-                                    className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
-                                    <Twitter className="w-3 h-3"/>
-                                </div>
-                            )}
-                            {speaker.social.linkedin && (
-                                <div
-                                    className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-200">
-                                    <Linkedin className="w-3 h-3"/>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                        {/* Click hint */}
+                        <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Click to view profile
+                        </p>
+                    </div>
                 </div>
             </button>
         );
