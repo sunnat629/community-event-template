@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import SpeakersPage from "./pages/speakers/index";
 import SpeakerDetailPage from "./pages/speakers/[id]";
+import AgendaPage from "./pages/agenda/index";
 import {ModeToggle} from "@/components/pro/ModeToggle";
 import {Navigation} from "@/components/pro/Navigation";
 
@@ -38,9 +39,9 @@ const App = () => {
                         {/* Pro Mode Routes - Only accessible when needed */}
                         <Route path="/speakers" element={<SpeakersPage/>}/>
                         <Route path="/speakers/:id" element={<SpeakerDetailPage/>}/>
+                        <Route path="/agenda" element={<AgendaPage/>}/>
 
                         {/* Future Pro Mode Routes */}
-                        {/* <Route path="/agenda" element={<AgendaPage/>}/> */}
                         {/* <Route path="/agenda/:sessionId" element={<SessionDetailPage/>}/> */}
                         {/* <Route path="/sponsors" element={<SponsorsPage/>}/> */}
                         {/* <Route path="/venue" element={<VenuePage/>}/> */}
