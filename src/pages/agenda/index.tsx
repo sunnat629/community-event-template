@@ -393,9 +393,8 @@ const AgendaPage = () => {
                                     className="animate-fade-in-up"
                                     style={{animationDelay: `${idx * 100}ms`}}
                                 >
-                                    {/* Time + Sessions Grid - FIXED: Dynamic columns based on available tracks */}
-                                    <div className="grid gap-3 sm:gap-4"
-                                         style={{gridTemplateColumns: window.innerWidth >= 1024 ? `120px repeat(${eventTracks}, 1fr)` : '1fr'}}>
+                                    {/* Time + Sessions Grid - FIXED: Responsive without window.innerWidth */}
+                                    <div className="grid grid-cols-1 lg:grid-cols-[120px_repeat(3,1fr)] gap-3 sm:gap-4">
                                         {/* Time Header - Sticky on desktop */}
                                         <div className="lg:sticky lg:top-40 lg:self-start">
                                             <div
