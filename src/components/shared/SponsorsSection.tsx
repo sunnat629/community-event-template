@@ -1,11 +1,10 @@
-import {useState} from "react";
 import {SponsorCard} from "./SponsorCard";
-import {SponsorDialog} from "./SponsorDialog";
 import {Partner, partners} from "@/content/partners";
 import {motion} from "motion/react";
+import {useNavigate} from "react-router-dom";
 
 export function SponsorsSection() {
-    const [selectedSponsor, setSelectedSponsor] = useState<Partner | null>(null);
+    const navigate = useNavigate();
 
     // Group sponsors by tier
     const platinumSponsors = partners.filter(s => s.tier === "platinum");
@@ -14,6 +13,12 @@ export function SponsorsSection() {
     const bronzeSponsors = partners.filter(s => s.tier === "bronze");
     const communitySponsors = partners.filter(s => s.tier === "community");
     const mediaSponsors = partners.filter(s => s.tier === "media");
+
+    // Handle sponsor click - navigate to detail page
+    const handleSponsorClick = (sponsor: Partner) => {
+        const slug = sponsor.name.toLowerCase().replace(/\s+/g, '-');
+        navigate(`/sponsors/${slug}`);
+    };
 
     // Animation variants for stagger effect
     const containerVariants = {
@@ -46,7 +51,7 @@ export function SponsorsSection() {
                                 key={sponsor.name}
                                 sponsor={sponsor}
                                 size="large"
-                                onClick={() => setSelectedSponsor(sponsor)}
+                                onClick={() => handleSponsorClick(sponsor)}
                                 index={index}
                             />
                         ))}
@@ -64,7 +69,7 @@ export function SponsorsSection() {
                                 key={sponsor.name}
                                 sponsor={sponsor}
                                 size="large"
-                                onClick={() => setSelectedSponsor(sponsor)}
+                                onClick={() => handleSponsorClick(sponsor)}
                                 index={index + platinumSponsors.length}
                             />
                         ))}
@@ -105,7 +110,7 @@ export function SponsorsSection() {
                                     key={sponsor.name}
                                     sponsor={sponsor}
                                     size="small"
-                                    onClick={() => setSelectedSponsor(sponsor)}
+                                    onClick={() => handleSponsorClick(sponsor)}
                                     index={index}
                                 />
                             ))}
@@ -139,7 +144,7 @@ export function SponsorsSection() {
                                     key={sponsor.name}
                                     sponsor={sponsor}
                                     size="small"
-                                    onClick={() => setSelectedSponsor(sponsor)}
+                                    onClick={() => handleSponsorClick(sponsor)}
                                     index={index}
                                 />
                             ))}
@@ -173,7 +178,7 @@ export function SponsorsSection() {
                                     key={sponsor.name}
                                     sponsor={sponsor}
                                     size="small"
-                                    onClick={() => setSelectedSponsor(sponsor)}
+                                    onClick={() => handleSponsorClick(sponsor)}
                                     index={index}
                                 />
                             ))}
@@ -207,7 +212,7 @@ export function SponsorsSection() {
                                     key={sponsor.name}
                                     sponsor={sponsor}
                                     size="small"
-                                    onClick={() => setSelectedSponsor(sponsor)}
+                                    onClick={() => handleSponsorClick(sponsor)}
                                     index={index}
                                 />
                             ))}
@@ -216,12 +221,6 @@ export function SponsorsSection() {
                 )}
             </motion.div>
 
-            {/* Sponsor Details Dialog */}
-            <SponsorDialog
-                sponsor={selectedSponsor}
-                open={!!selectedSponsor}
-                onClose={() => setSelectedSponsor(null)}
-            />
         </div>
     );
 }

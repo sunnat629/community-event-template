@@ -14,6 +14,7 @@ import {ModeToggle} from "@/components/pro/ModeToggle";
 import {Navigation} from "@/components/pro/Navigation";
 import {ScrollToTop} from "@/components/ScrollToTop";
 import SponsorsPage from "./pages/sponsors/index";
+import SponsorDetailPage from "./pages/sponsors/[id]";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => {
                         <Route path="/agenda" element={<AgendaPage/>}/>
                         <Route path="/agenda/:sessionId" element={<SessionDetailPage/>}/>
                         <Route path="/sponsors" element={<SponsorsPage/>}/>
+                        <Route path="/sponsors/:id" element={<SponsorDetailPage/>}/>
 
                         {/* Future Pro Mode Routes */}
                         {/* <Route path="/venue" element={<VenuePage/>}/> */}
