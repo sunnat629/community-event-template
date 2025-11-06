@@ -12,6 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import {useNavigate} from "react-router-dom";
 
 /**
  * Speakers Page - Pro Mode
@@ -71,11 +72,13 @@ const SpeakersPage = () => {
         return filtered;
     }, [allSpeakers, searchQuery, companyFilter, sortBy]);
 
-    // Handle speaker click - for now just open dialog
+    const navigate = useNavigate();
+
+    // Handle speaker click - navigate to detail page
     const handleSpeakerClick = (speaker: typeof allSpeakers[0]) => {
-        // TODO: Navigate to speaker detail page when ready
-        // For now, we'll use the dialog like in lite mode
-        console.log("Speaker clicked:", speaker.name);
+        // Convert speaker name to URL-friendly slug
+        const slug = speaker.name.toLowerCase().replace(/\s+/g, '-');
+        navigate(`/speakers/${slug}`);
     };
 
     // Clear all filters
