@@ -1,9 +1,9 @@
 import {useState, useMemo} from "react";
-import {Calendar, Clock, MapPin, User, Download, Filter, ChevronRight, Zap} from "lucide-react";
+import {Calendar, Clock, MapPin, User, Download, ChevronRight, Zap} from "lucide-react";
 import {PageHeader} from "@/components/pro/PageHeader";
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
-import {Tabs, TabsList, TabsTrigger, TabsContent} from "@/components/ui/tabs";
+import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {agendaItems, tracks} from "@/content";
 import {cn} from "@/lib/utils";
 
@@ -28,6 +28,13 @@ const AgendaPage = () => {
         }));
     }, [eventDays]);
 
+    // Track labels for multi-track view
+    const trackLabels = [
+        {id: "technical", label: "Technical Track", color: "blue", icon: "💻"},
+        {id: "workshop", label: "Workshop Track", color: "green", icon: "🛠️"},
+        {id: "business", label: "Business Track", color: "purple", icon: "💼"},
+    ];
+
     // Filter tracks based on configuration
     const availableTracks = useMemo(() => {
         const allTracks = [
@@ -44,6 +51,11 @@ const AgendaPage = () => {
         }
         return allTracks; // All tracks
     }, [eventTracks]);
+
+    // Calculate sticky top positions based on what's visible
+    const dayTabsHeight = eventDays > 1 ? 88 : 0; // Height of day tabs section
+    const navHeight = 64; // Height of navigation bar
+    const trackFilterTop = navHeight + dayTabsHeight;
 
     // Filter agenda items by day and track
     const filteredSessions = useMemo(() => {
@@ -156,20 +168,22 @@ const AgendaPage = () => {
             {/* Day Tabs */}
             {eventDays > 1 && (
                 <section
-                    className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border shadow-md">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    className="sticky top-16 z-40 bg-background/95 backdrop-blur-md border-b border-border shadow-md">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                         <Tabs value={selectedDay.toString()} onValueChange={(v) => setSelectedDay(parseInt(v))}>
-                            <TabsList className="grid w-full max-w-2xl mx-auto"
-                                      style={{gridTemplateColumns: `repeat(${eventDays}, 1fr)`}}>
+                            <TabsList
+                                className="grid w-full max-w-2xl mx-auto h-auto"
+                                style={{gridTemplateColumns: `repeat(${eventDays}, 1fr)`}}
+                            >
                                 {days.map((day) => (
                                     <TabsTrigger
                                         key={day.day}
                                         value={day.day.toString()}
-                                        className="data-[state=active]:bg-gradient-hero data-[state=active]:text-white"
+                                        className="data-[state=active]:bg-gradient-hero data-[state=active]:text-white transition-all duration-300 py-3"
                                     >
-                                        <div className="flex flex-col items-center py-2">
-                                            <span className="font-bold text-lg">{day.label}</span>
-                                            <span className="text-xs opacity-80">{day.date}</span>
+                                        <div className="flex flex-col items-center">
+                                            <span className="font-bold text-base sm:text-lg">{day.label}</span>
+                                            <span className="text-[10px] sm:text-xs opacity-80">{day.date}</span>
                                         </div>
                                     </TabsTrigger>
                                 ))}
@@ -180,18 +194,18 @@ const AgendaPage = () => {
             )}
 
             {/* Track Filters */}
-            <section className={cn(
-                "sticky z-30 bg-background/90 backdrop-blur-sm border-b border-border",
-                eventDays > 1 ? "top-32" : "top-16"
-            )}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex flex-wrap justify-center gap-3">
+            <section
+                className="sticky z-30 bg-background/90 backdrop-blur-md border-b border-border"
+                style={{top: `${trackFilterTop}px`}}
+            >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                         {availableTracks.map((track, idx) => (
                             <button
                                 key={track.id}
                                 onClick={() => setSelectedTrack(track.id)}
                                 className={cn(
-                                    "px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 border-2 backdrop-blur-sm hover:-translate-y-1",
+                                    "px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 border-2 backdrop-blur-sm hover:-translate-y-0.5",
                                     selectedTrack === track.id
                                         ? "bg-gradient-hero text-white border-primary shadow-glow scale-105"
                                         : "bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105",
@@ -205,7 +219,7 @@ const AgendaPage = () => {
                     </div>
 
                     {/* Results count */}
-                    <div className="text-center mt-4 text-sm text-muted-foreground">
+                    <div className="text-center mt-2 text-xs sm:text-sm text-muted-foreground">
                         Showing {filteredSessions.length} sessions
                         {selectedTrack !== "all" && ` in ${availableTracks.find(t => t.id === selectedTrack)?.label}`}
                     </div>
@@ -213,7 +227,7 @@ const AgendaPage = () => {
             </section>
 
             {/* Schedule Content */}
-            <section className="py-12 px-4 sm:px-6 lg:px-8">
+            <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {eventTracks === 1 ? (
                         /* Single Track Layout - Timeline View */
@@ -221,9 +235,9 @@ const AgendaPage = () => {
                             <div className="relative">
                                 {/* Vertical Timeline Line */}
                                 <div
-                                    className="hidden md:block absolute left-16 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-glow"/>
+                                    className="hidden md:block absolute left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-glow"/>
 
-                                <div className="space-y-6">
+                                <div className="space-y-4 sm:space-y-6">
                                     {filteredSessions.map((session, index) => {
                                         const Icon = session.icon;
                                         const style = getSessionStyle(session.type);
@@ -234,23 +248,24 @@ const AgendaPage = () => {
                                                 className="relative animate-fade-in-up group"
                                                 style={{animationDelay: `${index * 80}ms`}}
                                             >
-                                                <div className="flex gap-6 items-start">
-                                                    {/* Time Badge */}
+                                                <div className="flex gap-4 sm:gap-6 items-start">
+                                                    {/* Time Badge - More Compact */}
                                                     <div className="flex-shrink-0 relative z-10">
                                                         <div className={cn(
-                                                            "w-32 rounded-2xl flex flex-col items-center justify-center border-4 border-background shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 p-4",
+                                                            "w-20 sm:w-24 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center border-3 sm:border-4 border-background shadow-lg sm:shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-2 p-2 sm:p-3",
                                                             style.badge
                                                         )}>
-                                                            <Icon className="w-6 h-6 mb-1"/>
-                                                            <span className="text-sm font-bold">{session.time}</span>
+                                                            <Icon className="w-4 h-4 sm:w-5 sm:h-5 mb-1"/>
                                                             <span
-                                                                className="text-xs opacity-90">{session.duration}</span>
+                                                                className="text-xs sm:text-sm font-bold whitespace-nowrap">{session.time}</span>
+                                                            <span
+                                                                className="text-[10px] sm:text-xs opacity-90">{session.duration}</span>
                                                         </div>
                                                     </div>
 
                                                     {/* Session Card */}
                                                     <div className={cn(
-                                                        "flex-1 glass-card rounded-3xl p-6 border-2 transition-all duration-500 cursor-pointer",
+                                                        "flex-1 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-2 transition-all duration-500 cursor-pointer",
                                                         style.border,
                                                         style.bg,
                                                         style.glow,
@@ -258,46 +273,49 @@ const AgendaPage = () => {
                                                     )}>
                                                         {/* Shine effect */}
                                                         <div
-                                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none rounded-3xl"/>
+                                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none rounded-2xl sm:rounded-3xl"/>
 
                                                         <div className="relative z-10">
                                                             <div
-                                                                className="flex items-start justify-between gap-4 mb-3">
+                                                                className="flex items-start justify-between gap-3 mb-2">
                                                                 <div className="flex-1">
-                                                                    <Badge className={cn("mb-2", style.badge)}>
+                                                                    <Badge
+                                                                        className={cn("mb-2 text-[10px] sm:text-xs", style.badge)}>
                                                                         {session.type}
                                                                     </Badge>
-                                                                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
+                                                                    <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
                                                                         {session.title}
                                                                         <ChevronRight
-                                                                            className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"/>
+                                                                            className="w-4 h-4 sm:w-5 sm:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"/>
                                                                     </h3>
-                                                                    <p className="text-muted-foreground text-sm leading-relaxed">
+                                                                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                                                                         {session.description}
                                                                     </p>
                                                                 </div>
                                                             </div>
 
-                                                            {/* Metadata */}
+                                                            {/* Metadata - More Compact */}
                                                             <div
-                                                                className="flex flex-wrap gap-4 text-sm text-muted-foreground mt-4">
+                                                                className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4">
                                                                 {session.speaker && (
                                                                     <div
-                                                                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                                                        <User className="w-4 h-4"/>
+                                                                        className="flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-muted/30">
+                                                                        <User className="w-3 h-3 sm:w-4 sm:h-4"/>
                                                                         <span
-                                                                            className="font-medium">{session.speaker}</span>
+                                                                            className="font-medium text-xs sm:text-sm">{session.speaker}</span>
                                                                     </div>
                                                                 )}
                                                                 <div
-                                                                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                                                    <MapPin className="w-4 h-4"/>
-                                                                    <span>{session.location}</span>
+                                                                    className="flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-muted/30">
+                                                                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4"/>
+                                                                    <span
+                                                                        className="text-xs sm:text-sm">{session.location}</span>
                                                                 </div>
                                                                 <div
-                                                                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/30">
-                                                                    <Clock className="w-4 h-4"/>
-                                                                    <span>{session.duration}</span>
+                                                                    className="flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-muted/30">
+                                                                    <Clock className="w-3 h-3 sm:w-4 sm:h-4"/>
+                                                                    <span
+                                                                        className="text-xs sm:text-sm">{session.duration}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -310,29 +328,46 @@ const AgendaPage = () => {
                             </div>
                         </div>
                     ) : (
-                        /* Multi-Track Layout - Grid View */
-                        <div className="space-y-8">
+                        /* Multi-Track Layout - Grid View - REDESIGNED FOR COMPACTNESS */
+                        <div className="space-y-6 sm:space-y-8">
+                            {/* Track Headers - Always Visible */}
+                            <div className="hidden lg:grid gap-4 px-4"
+                                 style={{gridTemplateColumns: `120px repeat(${eventTracks}, 1fr)`}}>
+                                <div></div>
+                                {/* Empty space for time column */}
+                                {trackLabels.slice(0, eventTracks).map((track, idx) => (
+                                    <div
+                                        key={track.id}
+                                        className="text-center py-3 px-4 rounded-xl bg-gradient-to-br from-card to-muted/30 border-2 border-border animate-fade-in-up"
+                                        style={{animationDelay: `${idx * 100}ms`}}
+                                    >
+                                        <div className="text-2xl mb-1">{track.icon}</div>
+                                        <div className="font-bold text-sm">{track.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+
                             {sessionsByTime.map((timeSlot, idx) => (
                                 <div
                                     key={timeSlot.time}
                                     className="animate-fade-in-up"
                                     style={{animationDelay: `${idx * 100}ms`}}
                                 >
-                                    {/* Time Header */}
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <div
-                                            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-hero text-white shadow-lg">
-                                            <Clock className="w-5 h-5"/>
-                                            <span className="font-bold text-lg">{timeSlot.time}</span>
+                                    {/* Time + Sessions Grid */}
+                                    <div className="grid gap-3 sm:gap-4"
+                                         style={{gridTemplateColumns: window.innerWidth >= 1024 ? `120px repeat(${eventTracks}, 1fr)` : '1fr'}}>
+                                        {/* Time Header - Sticky on desktop */}
+                                        <div className="lg:sticky lg:top-40 lg:self-start">
+                                            <div
+                                                className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-xl bg-gradient-hero text-white shadow-lg lg:flex-col lg:items-center lg:justify-center lg:h-full">
+                                                <Clock className="w-4 h-4 sm:w-5 sm:h-5"/>
+                                                <div className="font-bold text-sm sm:text-base lg:text-center">
+                                                    {timeSlot.time}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent"/>
-                                    </div>
 
-                                    {/* Sessions Grid */}
-                                    <div
-                                        className="grid gap-6"
-                                        style={{gridTemplateColumns: `repeat(${Math.min(timeSlot.sessions.length, eventTracks)}, 1fr)`}}
-                                    >
+                                        {/* Sessions - More Compact Cards */}
                                         {timeSlot.sessions.slice(0, eventTracks).map((session, sessionIdx) => {
                                             const Icon = session.icon;
                                             const style = getSessionStyle(session.type);
@@ -341,58 +376,69 @@ const AgendaPage = () => {
                                                 <div
                                                     key={sessionIdx}
                                                     className={cn(
-                                                        "glass-card rounded-3xl p-6 border-2 transition-all duration-500 cursor-pointer group",
+                                                        "glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-500 cursor-pointer group relative",
                                                         style.border,
                                                         style.bg,
                                                         style.glow,
-                                                        "hover:scale-[1.03] hover:-translate-y-2"
+                                                        "hover:scale-[1.02] hover:-translate-y-1"
                                                     )}
                                                 >
                                                     {/* Shine effect */}
                                                     <div
-                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none rounded-3xl"/>
+                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none rounded-xl sm:rounded-2xl"/>
 
                                                     <div className="relative z-10">
-                                                        {/* Icon */}
-                                                        <div className={cn(
-                                                            "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6",
-                                                            style.badge
-                                                        )}>
-                                                            <Icon className="w-6 h-6"/>
+                                                        {/* Icon + Badge - Compact header */}
+                                                        <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                                                            <div className={cn(
+                                                                "w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 flex-shrink-0",
+                                                                style.badge
+                                                            )}>
+                                                                <Icon className="w-4 h-4 sm:w-5 sm:h-5"/>
+                                                            </div>
+                                                            <Badge
+                                                                className={cn("text-[10px] sm:text-xs px-2 py-0.5", style.badge)}>
+                                                                {session.type}
+                                                            </Badge>
                                                         </div>
 
-                                                        {/* Badge */}
-                                                        <Badge className={cn("mb-3", style.badge)}>
-                                                            {session.type}
-                                                        </Badge>
-
-                                                        {/* Title */}
-                                                        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                                                        {/* Title - Compact */}
+                                                        <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                                                             {session.title}
                                                         </h3>
 
-                                                        {/* Description */}
-                                                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                                                        {/* Description - Compact */}
+                                                        <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-2 leading-relaxed">
                                                             {session.description}
                                                         </p>
 
-                                                        {/* Metadata */}
-                                                        <div className="space-y-2 text-xs text-muted-foreground">
+                                                        {/* Metadata - Super Compact */}
+                                                        <div
+                                                            className="space-y-1 text-[10px] sm:text-xs text-muted-foreground">
                                                             {session.speaker && (
-                                                                <div className="flex items-center gap-2">
-                                                                    <User className="w-3.5 h-3.5"/>
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <User className="w-3 h-3 flex-shrink-0"/>
                                                                     <span
                                                                         className="font-medium truncate">{session.speaker}</span>
                                                                 </div>
                                                             )}
-                                                            <div className="flex items-center gap-2">
-                                                                <MapPin className="w-3.5 h-3.5"/>
+                                                            <div className="flex items-center gap-1.5">
+                                                                <MapPin className="w-3 h-3 flex-shrink-0"/>
                                                                 <span className="truncate">{session.location}</span>
                                                             </div>
-                                                            <div className="flex items-center gap-2">
-                                                                <Clock className="w-3.5 h-3.5"/>
+                                                            <div className="flex items-center gap-1.5">
+                                                                <Clock className="w-3 h-3 flex-shrink-0"/>
                                                                 <span>{session.duration}</span>
                                                             </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Mobile Track Label */}
+                                                    <div className="lg:hidden mt-2 pt-2 border-t border-border/30">
+                                                        <div
+                                                            className="text-[10px] text-muted-foreground flex items-center gap-1">
+                                                            <span>{trackLabels[sessionIdx % eventTracks]?.icon}</span>
+                                                            <span>{trackLabels[sessionIdx % eventTracks]?.label}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -406,13 +452,13 @@ const AgendaPage = () => {
 
                     {/* Empty State */}
                     {filteredSessions.length === 0 && (
-                        <div className="text-center py-16">
+                        <div className="text-center py-12 sm:py-16">
                             <div
-                                className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-                                <Calendar className="w-10 h-10 text-muted-foreground"/>
+                                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                                <Calendar className="w-8 h-8 sm:w-10 sm:h-10 text-muted-foreground"/>
                             </div>
-                            <h3 className="text-xl font-bold mb-2">No sessions found</h3>
-                            <p className="text-muted-foreground mb-6">
+                            <h3 className="text-lg sm:text-xl font-bold mb-2">No sessions found</h3>
+                            <p className="text-sm sm:text-base text-muted-foreground mb-6">
                                 Try selecting a different day or track
                             </p>
                             <Button onClick={() => setSelectedTrack("all")}>
@@ -424,17 +470,17 @@ const AgendaPage = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-subtle">
+            <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-subtle">
                 <div className="max-w-4xl mx-auto text-center">
                     <div
-                        className="glass-card rounded-3xl p-8 sm:p-12 border-2 border-primary/20 hover:border-primary/30 transition-all duration-500 animate-float">
-                        <Zap className="w-16 h-16 mx-auto mb-6 text-primary animate-pulse"/>
-                        <h2 className="text-3xl font-bold mb-4">Don't Miss a Single Session!</h2>
-                        <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                        className="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border-2 border-primary/20 hover:border-primary/30 transition-all duration-500 animate-float">
+                        <Zap className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 text-primary animate-pulse"/>
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Don't Miss a Single Session!</h2>
+                        <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
                             Register now to get full access to all {filteredSessions.length}+ sessions
                             across {eventDays} day{eventDays > 1 ? 's' : ''}
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                             <Button size="lg" className="bg-gradient-hero text-white hover:shadow-glow">
                                 Register for Event
                             </Button>
