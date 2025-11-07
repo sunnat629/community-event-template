@@ -2,13 +2,12 @@ import {HeroSection} from "@/components/sections/HeroSection";
 import {AboutSection} from "@/components/sections/AboutSection";
 import {EventDetailsSection} from "@/components/sections/EventDetailsSection";
 import {SponsorsLiteSection} from "@/components/sections/SponsorsLiteSection";
-import {VenueSection} from "@/components/sections/VenueSection";
 import {CTASection} from "@/components/sections/CTASection";
 import {FooterSection} from "@/components/sections/FooterSection";
 import {Button} from "@/components/ui/button";
 import {SpeakerCard} from "@/components/shared/SpeakerCard";
 import {featuredSpeakers} from "@/content";
-import {Calendar, Users, Award, Clock, ChevronRight, Sparkles, TrendingUp, Target} from "lucide-react";
+import {Calendar, Users, Award, Clock, ChevronRight, Sparkles, TrendingUp, MapPin, Navigation} from "lucide-react";
 import {Link} from "react-router-dom";
 import {motion} from "motion/react";
 
@@ -221,8 +220,93 @@ const Home = () => {
             {/* Sponsors Section - Same as lite mode */}
             <SponsorsLiteSection/>
 
-            {/* Venue Section - Same as lite mode */}
-            <VenueSection/>
+            {/* Venue Preview - Simple teaser with CTA to /venue page */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-5xl mx-auto">
+                    <motion.div
+                        className="glass-card rounded-3xl overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl group"
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.6}}
+                    >
+                        <div className="grid md:grid-cols-2">
+                            {/* Venue Visual */}
+                            <div
+                                className="relative h-64 md:h-auto bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden">
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <motion.div
+                                        animate={{
+                                            scale: [1, 1.1, 1],
+                                            rotate: [0, 5, -5, 0]
+                                        }}
+                                        transition={{
+                                            duration: 4,
+                                            repeat: Infinity,
+                                            ease: "easeInOut"
+                                        }}
+                                    >
+                                        <MapPin className="w-24 h-24 text-white/20"/>
+                                    </motion.div>
+                                </div>
+                                {/* Floating badge */}
+                                <div
+                                    className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-xl animate-float">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"/>
+                                        <span className="text-sm font-bold">Live Event</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Venue Info */}
+                            <div className="p-8 md:p-12 flex flex-col justify-center">
+                                <div
+                                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6 w-fit">
+                                    <MapPin className="w-4 h-4 text-primary"/>
+                                    <span className="text-sm font-semibold text-primary">Event Venue</span>
+                                </div>
+
+                                <h2 className="text-3xl md:text-4xl font-bold mb-4 group-hover:text-primary transition-colors">
+                                    Join Us In Person
+                                </h2>
+
+                                <div className="space-y-2 mb-6">
+                                    <p className="text-lg font-semibold text-foreground">
+                                        Brain Station 23 HQ
+                                    </p>
+                                    <p className="text-muted-foreground">
+                                        Plot 1/A, Road 113<br/>
+                                        Gulshan-2, Dhaka-1212<br/>
+                                        Bangladesh
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3 mb-6">
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <Clock className="w-4 h-4 text-primary"/>
+                                        <span>9 AM - 6 PM</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <Users className="w-4 h-4 text-primary"/>
+                                        <span>500+ Capacity</span>
+                                    </div>
+                                </div>
+
+                                <Link to="/venue" className="w-full">
+                                    <Button size="lg"
+                                            className="w-full bg-gradient-hero hover:shadow-glow group/btn hover:scale-105 transition-all">
+                                        <Navigation className="w-5 h-5 mr-2"/>
+                                        View Venue Details & Map
+                                        <ChevronRight
+                                            className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform"/>
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* CTA Section - Same as lite mode */}
             <CTASection/>
