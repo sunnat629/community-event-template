@@ -19,7 +19,7 @@ export const Navigation = () => {
         {label: "Schedule", href: "/agenda", icon: Calendar},
         {label: "Sponsors", href: "/sponsors", icon: Award},
         {label: "Venue", href: "/venue", icon: MapPin},
-        {label: "Team", href: "/team", icon: UsersRound}, // Enabled!
+        {label: "Team", href: "/team", icon: UsersRound},
     ];
 
     // Check if route is active
@@ -65,19 +65,6 @@ export const Navigation = () => {
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const active = isActive(item.href);
-
-                            if (item.disabled) {
-                                return (
-                                    <div
-                                        key={item.href}
-                                        className="px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground/50 cursor-not-allowed flex items-center gap-2"
-                                        title="Coming soon"
-                                    >
-                                        <Icon className="w-4 h-4"/>
-                                        {item.label}
-                                    </div>
-                                );
-                            }
 
                             return (
                                 <Link
@@ -129,19 +116,6 @@ export const Navigation = () => {
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const active = isActive(item.href);
-
-                            if (item.disabled) {
-                                return (
-                                    <div
-                                        key={item.href}
-                                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-foreground/50 cursor-not-allowed"
-                                    >
-                                        <Icon className="w-5 h-5"/>
-                                        <span className="font-medium">{item.label}</span>
-                                        <span className="ml-auto text-xs bg-muted px-2 py-1 rounded">Soon</span>
-                                    </div>
-                                );
-                            }
 
                             return (
                                 <Link
