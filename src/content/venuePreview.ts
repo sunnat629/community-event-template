@@ -30,17 +30,17 @@ export const venuePreview: VenuePreview = {
     title: "Join Us In Person",
 
     // Venue details
-    venueName: "Brain Station 23 HQ",
+    venueName: "To Be Announced",
     address: {
-        line1: "Plot 1/A, Road 113",
-        line2: "Gulshan-2, Dhaka-1212",
+        line1: "Dhaka",
+        line2: "Location details coming soon",
         country: "Bangladesh"
     },
 
     // Quick information
     quickInfo: {
         time: "9 AM - 6 PM",
-        capacity: "500+ Capacity"
+        capacity: "TBA"
     },
 
     // Call-to-action

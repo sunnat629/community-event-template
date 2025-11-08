@@ -40,7 +40,22 @@ export interface Speaker {
 //
 // ⚠️ IMPORTANT: Only add REAL speakers - no mock data!
 // ============================================================================
-export const featuredSpeakers: Speaker[] = [];
+export const featuredSpeakers: Speaker[] = [
+    {
+        name: "Md. Sunnat Hossain",
+        title: "Lead Organizer & Flutter Developer",
+        company: "Community Event Template",
+        topic: "Building Community Through Events",
+        image: "https://avatars.githubusercontent.com/u/17354962?v=4", // Sunnat629's GitHub avatar
+        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
+        social: {
+            twitter: "https://twitter.com/sunnat629",
+            linkedin: "https://linkedin.com/in/sunnat629",
+            email: "sunnat629@gmail.com"
+        },
+        featured: true
+    }
+];
 
 // ============================================================================
 // 📢 OTHER SPEAKERS
