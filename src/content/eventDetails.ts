@@ -56,45 +56,44 @@ export const eventDetails: EventDetails = {
     },
     venue: {
         city: "Dhaka, Bangladesh",
-        location: "Exact location to be revealed soon",
+        location: "Location to be announced",
         details: "",
-        address: "Plot 7, Road 9, Niketan",
-        mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0914502474687!2d90.40844631498157!3d23.778634084577676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a1f5c5f5f5%3A0x1f5f5f5f5f5f5f5!2sBrain%20Station%2023!5e0!3m2!1sen!2sbd!4v1234567890123!5m2!1sen!2sbd",
+        address: "Dhaka, Bangladesh",
+        mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.0643419245!2d90.25487654999999!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1620000000000!5m2!1sen!2sbd",
         coordinates: {
-            lat: 23.778634,
-            lng: 90.410445
+            lat: 23.8103,
+            lng: 90.4125
         },
-        capacity: "200+ Attendees",
+        capacity: "TBA",
         format: "In-Person Event",
         price: "TBA",
         venueDetails: {
-            name: "Brain Station 23 Headquarters",
-            fullAddress: "Plot 7, Road 9, Niketan, Gulshan-1, Dhaka 1212, Bangladesh",
-            landmark: "Near Gulshan 1 Circle, opposite to North South University",
+            name: "To Be Announced",
+            fullAddress: "Dhaka, Bangladesh - Exact location coming soon",
+            landmark: "Location details will be announced soon",
             directions: [
-                "From Gulshan 1 Circle: 5 minutes walk via Road 9",
-                "From Mohakhali: Take Road 9 towards Niketan (10 mins drive)",
-                "From Banani: Via Kemal Ataturk Avenue to Gulshan (15 mins)",
-                "From Airport: 30-40 minutes via Airport Road and Gulshan Avenue"
+                "Venue location will be shared once confirmed",
+                "Detailed directions will be provided closer to the event",
+                "We'll share transportation options when venue is finalized",
+                "Stay tuned for venue announcement"
             ],
-            parking: "Limited parking available on premises. Street parking available nearby. We recommend using ride-sharing services.",
+            parking: "Parking information will be shared once venue is confirmed",
             accessibility: [
-                "Wheelchair accessible entrance and elevator",
-                "Accessible restrooms on each floor",
-                "Reserved seating for attendees with mobility needs",
-                "Sign language interpretation available upon request"
+                "We're committed to ensuring accessibility for all attendees",
+                "Specific accessibility features will be confirmed with venue selection",
+                "Please contact us with any specific accessibility requirements",
+                "We'll accommodate all reasonable accessibility needs"
             ],
             facilities: [
-                "High-speed WiFi throughout the venue",
-                "Air-conditioned conference halls",
-                "Prayer rooms available",
-                "Cafeteria and refreshment areas",
-                "Backup power supply",
-                "Professional AV equipment"
+                "High-speed WiFi",
+                "Air-conditioned halls",
+                "Prayer facilities",
+                "Refreshment areas",
+                "Professional AV equipment",
+                "Comfortable seating"
             ],
             contact: {
-                phone: "+880 1234-567890",
-                email: "venue@flutterguild.com"
+                email: "info@event.com"
             }
         }
     },

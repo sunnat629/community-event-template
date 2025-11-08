@@ -12,128 +12,85 @@ export interface Speaker {
         twitter?: string;
         linkedin?: string;
         email?: string;
+        facebook?: string;
     };
     featured?: boolean;
 }
 
-// Featured speakers (displayed prominently with large cards)
+// ============================================================================
+// 🚀 FEATURED SPEAKERS
+// ============================================================================
+// Add your main/keynote speakers here
+// These will be displayed prominently with large cards and auto-rotating carousel
+//
+// Example:
+// {
+//   name: "Speaker Name",
+//   title: "Role/Title",
+//   company: "Company Name",
+//   topic: "Talk Title",
+//   image: "https://yourcdn.com/speaker-photo.jpg",
+//   bio: "Detailed biography...",
+//   social: {
+//     twitter: "https://twitter.com/username",
+//     linkedin: "https://linkedin.com/in/username",
+//     email: "speaker@email.com"
+//   },
+//   featured: true
+// }
+//
+// ⚠️ IMPORTANT: Only add REAL speakers - no mock data!
+// ============================================================================
 export const featuredSpeakers: Speaker[] = [
     {
-        name: "Dr. Sarah Chen",
-        title: "Google Developer Expert - Flutter",
-        company: "Google",
-        topic: "The Future of Flutter: 2025 and Beyond",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-        bio: "Dr. Sarah Chen is a renowned Flutter expert and Google Developer Expert with over 10 years of experience in mobile development. She has contributed to numerous open-source projects and spoken at conferences worldwide.",
+        name: "Mohi Us Sunnat",
+        title: "Sr Software Engineer",
+        company: "Sunnat629 Labs",
+        topic: "Building Community Through Events",
+        image: "https://avatars.githubusercontent.com/u/5854791?v=4", // Sunnat629's GitHub avatar
+        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
         social: {
-            twitter: "https://twitter.com/sarahchen",
-            linkedin: "https://linkedin.com/in/sarahchen",
-            email: "sarah@flutterguild.com"
+            twitter: "https://twitter.com/sunnat629",
+            linkedin: "https://linkedin.com/in/sunnat629",
+            email: "me@sunnat629.dev"
         },
         featured: true
     },
     {
-        name: "Mohammed Rahman",
-        title: "Senior Flutter Architect",
-        company: "Brain Station 23",
-        topic: "Scalable Architecture Patterns",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        bio: "Mohammed is a senior architect specializing in building scalable Flutter applications. He leads the mobile development team at Brain Station 23 and mentors aspiring developers.",
+        name: "Faysal Ahmed",
+        title: "Senior AI Engineer",
+        company: "AI & Backend Specialist",
+        topic: "Building AI-Driven Systems and Solutions",
+        image: "https://avatars.githubusercontent.com/u/10289348?v=4",
+        bio: "Faysal Ahmed is a Senior AI Engineer with experience across backend, frontend, and DevOps. He specializes in building AI-driven systems, including chatbots, RAG solutions, and scalable data platforms. He has built solutions that have been instrumental in legal AI queries and process automation within government ministries.",
         social: {
-            twitter: "https://twitter.com/morahman",
-            linkedin: "https://linkedin.com/in/mohammed-rahman",
-            email: "mohammed@flutterguild.com"
+            linkedin: "https://www.linkedin.com/in/faysal515/",
+            email: "faysal515.ae@gmail.com"
         },
         featured: true
     },
     {
-        name: "Priya Sharma",
-        title: "Lead Mobile Developer",
-        company: "DSI",
-        topic: "Advanced State Management with Riverpod",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-        bio: "Priya is a passionate Flutter developer and state management expert. She has built multiple production apps and actively contributes to the Flutter community through blogs and tutorials.",
+        name: "Syed Monowarul Islam",
+        title: "Co-Founder & Senior Software Engineer",
+        company: "Sunnat629 Labs",
+        topic: "Quality Assurance and Community Building",
+        image: "https://avatars.githubusercontent.com/u/7632242?v=4",
+        bio: "Syed Monowarul Islam works as a Senior Software Engineer in QA at Tiger IT Bangladesh LTD. He's also the Co-founder of Sunnat629 Labs, where developers come together to learn new skills, share ideas, and grow in their tech journeys.",
         social: {
-            twitter: "https://twitter.com/priyasharma",
-            linkedin: "https://linkedin.com/in/priya-sharma",
-            email: "priya@flutterguild.com"
+            linkedin: "https://www.linkedin.com/in/smizibon/",
+            facebook: "https://www.facebook.com/zibon.dhaka",
+            email: "zibon@outlook.com"
         },
         featured: true
     }
 ];
 
-// Additional speakers (displayed in compact grid)
-export const otherSpeakers: Speaker[] = [
-    {
-        name: "Ashik Ahmed",
-        title: "Flutter Community Leader",
-        company: "Flutter Bangladesh",
-        topic: "Building Real-time Apps with Flutter",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
-        bio: "Ashik is a community organizer and Flutter enthusiast who loves sharing knowledge and helping developers succeed.",
-        social: {
-            twitter: "https://twitter.com/ashikahmed",
-            linkedin: "https://linkedin.com/in/ashik-ahmed"
-        },
-        featured: true
-    },
-    {
-        name: "Nusrat Jahan",
-        title: "Mobile App Security Expert",
-        company: "CyberSafe Solutions",
-        topic: "Securing Flutter Applications",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
-        bio: "Nusrat specializes in mobile security and helps developers build secure Flutter applications.",
-        social: {
-            twitter: "https://twitter.com/nusratjahan",
-            linkedin: "https://linkedin.com/in/nusrat-jahan"
-        },
-        featured: true
-    },
-    {
-        name: "Tanvir Hasan",
-        title: "Firebase Integration Specialist",
-        company: "CloudTech Systems",
-        topic: "Cloud-first Flutter Apps",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
-        bio: "Tanvir is a cloud architecture expert who specializes in integrating Firebase with Flutter applications.",
-        social: {
-            twitter: "https://twitter.com/tanvirhasan",
-            linkedin: "https://linkedin.com/in/tanvir-hasan"
-        }
-    },
-    {
-        name: "Fatema Khatun",
-        title: "UX Designer & Flutter Dev",
-        company: "DesignHub",
-        topic: "Design Systems in Flutter",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-        bio: "Fatema combines UX design expertise with Flutter development to create beautiful user experiences.",
-        social: {
-            linkedin: "https://linkedin.com/in/fatema-khatun"
-        }
-    },
-    {
-        name: "Rakib Islam",
-        title: "Performance Optimization Lead",
-        company: "SpeedLabs",
-        topic: "Flutter Performance Deep Dive",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-        bio: "Rakib focuses on performance optimization and helps teams build lightning-fast Flutter applications.",
-        social: {
-            twitter: "https://twitter.com/rakibislam",
-            linkedin: "https://linkedin.com/in/rakib-islam"
-        }
-    },
-    {
-        name: "Sadia Rahman",
-        title: "Testing & Quality Expert",
-        company: "QA Masters",
-        topic: "Testing Strategies for Flutter",
-        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
-        bio: "Sadia is a quality assurance specialist who advocates for comprehensive testing in Flutter projects.",
-        social: {
-            linkedin: "https://linkedin.com/in/sadia-rahman"
-        }
-    }
-];
+// ============================================================================
+// 📢 OTHER SPEAKERS
+// ============================================================================
+// Add additional speakers here (workshops, lightning talks, etc.)
+// These will be displayed in a compact grid layout
+//
+// ⚠️ IMPORTANT: Only add REAL speakers - no mock data!
+// ============================================================================
+export const otherSpeakers: Speaker[] = [];

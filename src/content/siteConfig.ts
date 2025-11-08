@@ -31,8 +31,8 @@ export const siteConfig: SiteConfig = {
     siteKeywords: "Flutter, Flutter Bangladesh, Flutter Guild, Mobile Development, Dart, Developer Conference, Tech Community",
 
     // Social media
-    ogImageUrl: "https://lovable.dev/opengraph-image-p98pqg.png",
-    twitterHandle: "@Lovable",
+    ogImageUrl: "/android-chrome-512x512.png",
+    twitterHandle: "@FlutterGuild",
 
     // Organization
     organizerName: "Sunnat629 Labs"
@@ -41,4 +41,4 @@ export const siteConfig: SiteConfig = {
 // Helper functions for common combinations
 export const getSiteTitle = () => `${siteConfig.eventTitle} — ${siteConfig.eventTagline}`;
 export const getCopyrightText = (year: number = new Date().getFullYear()) =>
-    `© ${year} Flutter Guild Connect. All rights reserved.`;
+    `© ${year} ${siteConfig.eventTitle}. All rights reserved.`;

@@ -25,7 +25,7 @@ export interface AgendaItem {
     speaker?: string;
     icon: LucideIcon;
     type: "keynote" | "session" | "workshop" | "panel" | "break" | "closing";
-    track: "all" | "technical" | "workshop" | "business";
+    track: "all" | "technical" | "workshop";
     duration: string;
     location: string;
     day: 1 | 2 | 3; // Add day field for multi-day events
@@ -48,9 +48,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "10:00 AM",
         endTime: "11:00 AM",
-        title: "Opening Keynote: The Future of Flutter",
-        description: "Discover what's next in Flutter development and cross-platform innovation",
-        speaker: "Dr. Sarah Chen",
+        title: "Opening Keynote",
+        description: "Welcome address and event overview",
+        speaker: "Mohi Us Sunnat",
         icon: Presentation,
         type: "keynote",
         track: "all",
@@ -61,9 +61,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "Advanced State Management with Riverpod",
-        description: "Deep dive into scalable state management patterns and best practices",
-        speaker: "Priya Sharma",
+        title: "Session 1",
+        description: "Technical talk and demonstration",
+        speaker: "Mohi Us Sunnat",
         icon: Code,
         type: "session",
         track: "technical",
@@ -74,9 +74,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "Hands-on: Building Your First Flutter App",
-        description: "Workshop for beginners - create a complete app from scratch",
-        speaker: "Mohammed Rahman",
+        title: "Workshop 1",
+        description: "Hands-on workshop and practical exercises",
+        speaker: "Mohi Us Sunnat",
         icon: Wrench,
         type: "workshop",
         track: "workshop",
@@ -85,23 +85,10 @@ export const agendaItems: AgendaItem[] = [
         day: 1
     },
     {
-        time: "11:15 AM",
-        endTime: "12:15 PM",
-        title: "Monetization Strategies for Mobile Apps",
-        description: "Learn proven methods to generate revenue from your Flutter applications",
-        speaker: "Emily Zhang",
-        icon: TrendingUp,
-        type: "session",
-        track: "business",
-        duration: "60 min",
-        location: "Business Track Room C",
-        day: 1
-    },
-    {
         time: "12:30 PM",
         endTime: "1:30 PM",
         title: "Networking Lunch",
-        description: "Enjoy lunch while connecting with fellow developers and industry leaders",
+        description: "Enjoy lunch while connecting with fellow attendees",
         icon: Coffee,
         type: "break",
         track: "all",
@@ -112,9 +99,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "1:30 PM",
         endTime: "2:30 PM",
-        title: "Flutter Performance Optimization",
-        description: "Techniques to make your Flutter apps lightning fast",
-        speaker: "Alex Johnson",
+        title: "Session 2",
+        description: "Advanced technical topics and best practices",
+        speaker: "Mohi Us Sunnat",
         icon: Zap,
         type: "session",
         track: "technical",
@@ -125,9 +112,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "1:30 PM",
         endTime: "2:30 PM",
-        title: "Firebase Integration Workshop",
-        description: "Build real-time applications with Firebase and Flutter",
-        speaker: "Tanvir Hasan",
+        title: "Workshop 2",
+        description: "Interactive workshop session",
+        speaker: "Mohi Us Sunnat",
         icon: Wrench,
         type: "workshop",
         track: "workshop",
@@ -136,24 +123,11 @@ export const agendaItems: AgendaItem[] = [
         day: 1
     },
     {
-        time: "1:30 PM",
-        endTime: "2:30 PM",
-        title: "Building a Flutter Development Agency",
-        description: "Business insights from successful agency founders",
-        speaker: "Lisa Martinez",
-        icon: Briefcase,
-        type: "session",
-        track: "business",
-        duration: "60 min",
-        location: "Business Track Room C",
-        day: 1
-    },
-    {
         time: "2:45 PM",
         endTime: "3:45 PM",
-        title: "Panel: Career Growth in Flutter Development",
-        description: "Industry experts share insights on building a successful Flutter career",
-        speaker: "Expert Panel",
+        title: "Panel Discussion",
+        description: "Q&A and discussion with attendees",
+        speaker: "Mohi Us Sunnat",
         icon: Users,
         type: "panel",
         track: "all",
@@ -164,9 +138,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "4:00 PM",
         endTime: "5:00 PM",
-        title: "Clean Architecture in Flutter",
-        description: "Structure large-scale applications for maintainability",
-        speaker: "David Kumar",
+        title: "Session 3",
+        description: "Deep dive into specific topics",
+        speaker: "Mohi Us Sunnat",
         icon: Code,
         type: "session",
         track: "technical",
@@ -175,32 +149,18 @@ export const agendaItems: AgendaItem[] = [
         day: 1
     },
     {
-        time: "4:00 PM",
-        endTime: "5:00 PM",
-        title: "UI/UX Design Workshop for Flutter",
-        description: "Create beautiful, user-friendly interfaces",
-        speaker: "Sophie Brown",
-        icon: Wrench,
-        type: "workshop",
-        track: "workshop",
+        time: "5:00 PM",
+        endTime: "6:00 PM",
+        title: "Closing Session - Day 1",
+        description: "Day wrap-up and networking",
+        speaker: "Mohi Us Sunnat",
+        icon: Award,
+        type: "closing",
+        track: "all",
         duration: "60 min",
-        location: "Workshop Lab B",
+        location: "Main Auditorium",
         day: 1
     },
-    {
-        time: "4:00 PM",
-        endTime: "5:00 PM",
-        title: "Marketing Your Flutter App",
-        description: "Strategies to reach your target audience and grow downloads",
-        speaker: "Carlos Rodriguez",
-        icon: Target,
-        type: "session",
-        track: "business",
-        duration: "60 min",
-        location: "Business Track Room C",
-        day: 1
-    },
-
     // ===== DAY 2 =====
     {
         time: "9:00 AM",
@@ -217,9 +177,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "10:00 AM",
         endTime: "11:00 AM",
-        title: "Day 2 Keynote: Flutter in Enterprise",
-        description: "How Fortune 500 companies are using Flutter at scale",
-        speaker: "Jennifer Lee",
+        title: "Keynote 2",
+        description: "Welcome address and event overview",
+        speaker: "Mohi Us Sunnat",
         icon: Presentation,
         type: "keynote",
         track: "all",
@@ -230,9 +190,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "GraphQL & Flutter Best Practices",
-        description: "Modern API integration patterns for Flutter apps",
-        speaker: "Robert Singh",
+        title: "Session 4",
+        description: "Technical talk and demonstration",
+        speaker: "Mohi Us Sunnat",
         icon: Code,
         type: "session",
         track: "technical",
@@ -243,27 +203,14 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "Testing Workshop: Unit, Widget & Integration",
-        description: "Comprehensive testing strategies for Flutter",
-        speaker: "Nina Patel",
+        title: "Workshop 3",
+        description: "Hands-on workshop and practical exercises",
+        speaker: "Mohi Us Sunnat",
         icon: Wrench,
         type: "workshop",
         track: "workshop",
         duration: "60 min",
         location: "Workshop Lab B",
-        day: 2
-    },
-    {
-        time: "11:15 AM",
-        endTime: "12:15 PM",
-        title: "Fundraising for Flutter Startups",
-        description: "Navigate the investor landscape and secure funding",
-        speaker: "Michael Chen",
-        icon: TrendingUp,
-        type: "session",
-        track: "business",
-        duration: "60 min",
-        location: "Business Track Room C",
         day: 2
     },
     {
@@ -281,9 +228,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "1:30 PM",
         endTime: "2:30 PM",
-        title: "Advanced Animation Techniques",
-        description: "Create stunning, performant animations in Flutter",
-        speaker: "Jessica Wang",
+        title: "Session 5",
+        description: "Advanced technical topics and best practices",
+        speaker: "Mohi Us Sunnat",
         icon: Zap,
         type: "session",
         track: "technical",
@@ -294,9 +241,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "1:30 PM",
         endTime: "2:30 PM",
-        title: "CI/CD Pipeline Workshop",
-        description: "Automate your Flutter app deployment process",
-        speaker: "Omar Abdullah",
+        title: "Workshop 4",
+        description: "Interactive workshop session",
+        speaker: "Mohi Us Sunnat",
         icon: Wrench,
         type: "workshop",
         track: "workshop",
@@ -305,19 +252,31 @@ export const agendaItems: AgendaItem[] = [
         day: 2
     },
     {
-        time: "1:30 PM",
-        endTime: "2:30 PM",
-        title: "SaaS Business Models with Flutter",
-        description: "Building successful subscription-based products",
-        speaker: "Amanda Foster",
-        icon: Rocket,
-        type: "session",
-        track: "business",
+        time: "2:45 PM",
+        endTime: "3:45 PM",
+        title: "Panel Discussion 2",
+        description: "Q&A and discussion with attendees",
+        speaker: "Mohi Us Sunnat",
+        icon: Users,
+        type: "panel",
+        track: "all",
         duration: "60 min",
-        location: "Business Track Room C",
+        location: "Main Auditorium",
         day: 2
     },
-
+    {
+        time: "4:00 PM",
+        endTime: "5:00 PM",
+        title: "Session 6",
+        description: "Deep dive into specific topics",
+        speaker: "Mohi Us Sunnat",
+        icon: Code,
+        type: "session",
+        track: "technical",
+        duration: "60 min",
+        location: "Tech Track Room A",
+        day: 2
+    },
     // ===== DAY 3 =====
     {
         time: "9:00 AM",
@@ -334,9 +293,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "10:00 AM",
         endTime: "11:00 AM",
-        title: "Closing Keynote: The Future is Cross-Platform",
+        title: "Closing Keynote",
         description: "Vision for the next generation of mobile development",
-        speaker: "Dr. James Wilson",
+        speaker: "Mohi Us Sunnat",
         icon: Presentation,
         type: "keynote",
         track: "all",
@@ -347,9 +306,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "Flutter Web & Desktop Production Ready",
+        title: "Session 7",
         description: "Real-world experiences building for multiple platforms",
-        speaker: "Aisha Rahman",
+        speaker: "Mohi Us Sunnat",
         icon: Code,
         type: "session",
         track: "technical",
@@ -360,9 +319,9 @@ export const agendaItems: AgendaItem[] = [
     {
         time: "11:15 AM",
         endTime: "12:15 PM",
-        title: "Accessibility in Flutter Apps",
+        title: "Workshop 5",
         description: "Building inclusive applications for everyone",
-        speaker: "Marcus Thompson",
+        speaker: "Mohi Us Sunnat",
         icon: Wrench,
         type: "workshop",
         track: "workshop",
@@ -371,24 +330,11 @@ export const agendaItems: AgendaItem[] = [
         day: 3
     },
     {
-        time: "11:15 AM",
-        endTime: "12:15 PM",
-        title: "Scaling Your Flutter Business",
-        description: "Growth strategies for established Flutter companies",
-        speaker: "Patricia O'Connor",
-        icon: TrendingUp,
-        type: "session",
-        track: "business",
-        duration: "60 min",
-        location: "Business Track Room C",
-        day: 3
-    },
-    {
         time: "12:30 PM",
         endTime: "1:00 PM",
         title: "Lightning Talks & Community Showcases",
         description: "Quick insights, community projects, and inspiring stories",
-        speaker: "Ashik Ahmed",
+        speaker: "Mohi Us Sunnat",
         icon: Lightbulb,
         type: "session",
         track: "all",
@@ -401,6 +347,7 @@ export const agendaItems: AgendaItem[] = [
         endTime: "2:00 PM",
         title: "Closing Ceremony & Awards",
         description: "Wrap-up, prize distribution, group photo, and final networking",
+        speaker: "Mohi Us Sunnat",
         icon: Award,
         type: "closing",
         track: "all",
@@ -414,6 +361,5 @@ export const agendaItems: AgendaItem[] = [
 export const tracks = [
     {id: "all", label: "All Tracks", color: "primary"},
     {id: "technical", label: "Technical", color: "blue"},
-    {id: "workshop", label: "Workshop", color: "green"},
-    {id: "business", label: "Business", color: "purple"}
+    {id: "workshop", label: "Workshop", color: "green"}
 ];
