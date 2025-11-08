@@ -39,7 +39,6 @@ export default function TeamPage() {
                 title="Meet the Team"
                 subtitle={`The amazing people making ${siteConfig.eventTitle} possible`}
                 icon={UsersRound}
-                gradient="gradient-hero"
                 backgroundImage={heroBackgrounds.team.image}
                 overlayOpacity={heroBackgrounds.team.overlayOpacity}
             />
