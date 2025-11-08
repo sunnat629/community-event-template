@@ -36,7 +36,21 @@ export interface TeamMember {
 //
 // ⚠️ IMPORTANT: Only add REAL team members - no mock data!
 // ============================================================================
-export const teamMembers: TeamMember[] = [];
+export const teamMembers: TeamMember[] = [
+    {
+        name: "Mohi Us Sunnat",
+        role: "Lead Organizer",
+        title: "Founder & Event Director",
+        image: "https://avatars.githubusercontent.com/u/5854791?v=4",
+        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects. Founder of Sunnat629 Labs.",
+        social: {
+            twitter: "https://twitter.com/sunnat629",
+            linkedin: "https://linkedin.com/in/sunnat629",
+            email: "me@sunnat629.dev"
+        },
+        tier: "organizer"
+    }
+];
 
 // Get team members by tier
 export const getTeamByTier = (tier: TeamMember['tier']) => {

@@ -232,8 +232,7 @@ export const OrganizersSection = () => {
                     <div className="text-center mb-12 animate-fade-in-up">
                         <h3 className="text-3xl sm:text-4xl font-bold mb-4">Meet the Organizing Team</h3>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            The passionate individuals working behind the scenes to make {siteConfig.eventTitle} a
-                            success
+                            Leading the vision and execution of {siteConfig.eventTitle}
                         </p>
                     </div>
 

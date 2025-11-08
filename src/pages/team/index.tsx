@@ -62,6 +62,7 @@ export default function TeamPage() {
                                     {tierConfig.organizer.label}
                                 </span>
                             </div>
+                            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet the Organizing Team</h2>
                             <p className="text-muted-foreground max-w-2xl mx-auto">
                                 Leading the vision and execution of {siteConfig.eventTitle}
                             </p>
