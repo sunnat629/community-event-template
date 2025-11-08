@@ -60,7 +60,8 @@ export const SponsorsLiteSection = () => {
                         whileInView="visible"
                         viewport={{once: true, margin: "-100px"}}
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {/* 3 columns grid - makes premium sponsors ~1.5x larger than small cards */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             {premiumSponsors.map((sponsor, index) => (
                                 <SponsorCard
                                     key={sponsor.name}
