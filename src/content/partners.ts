@@ -71,25 +71,61 @@ export interface Partner {
 
 export const partners: Partner[] = [
     // ============================================================================
-    // 🚀 ADD YOUR REAL SPONSORS HERE
+    // 🚀 MOCK SPONSORS FOR DEMO/TEMPLATE
     // ============================================================================
-    // Copy the example below and fill in with real sponsor data:
-    //
-    // {
-    //   name: "Company Name",
-    //   slug: generateSlug("Company Name"),
-    //   role: "Platinum Sponsor",
-    //   tier: "platinum",
-    //   shortDescription: "Short 1-2 sentence description",
-    //   description: "Full detailed description...",
-    //   logo: "https://yourcdn.com/logo.png",
-    //   icon: Building2,
-    //   website: "https://company.com",
-    //   benefits: ["Benefit 1", "Benefit 2"]
-    // },
-    //
-    // ⚠️ IMPORTANT: Always add REAL sponsors only - no mock data!
+    // ⚠️ IMPORTANT: Replace these with REAL sponsors before production!
+    // These are generic placeholder sponsors for demonstration purposes only.
     // ============================================================================
+
+    // Gold Sponsors
+    {
+        name: "TechCorp Solutions",
+        slug: generateSlug("TechCorp Solutions"),
+        role: "Gold Sponsor",
+        tier: "gold",
+        shortDescription: "Leading technology solutions provider",
+        description: "A pioneering technology company dedicated to delivering innovative solutions for modern businesses. Replace this with real sponsor information.",
+        logo: "https://ui-avatars.com/api/?name=TechCorp&size=400&background=FFD700&color=fff&bold=true&font-size=0.4",
+        icon: Building2,
+        website: "https://example.com",
+        benefits: ["Workshop Support", "Networking Sessions", "Brand Visibility"]
+    },
+    {
+        name: "Digital Innovators Ltd",
+        slug: generateSlug("Digital Innovators Ltd"),
+        role: "Gold Sponsor",
+        tier: "gold",
+        shortDescription: "Digital transformation experts",
+        description: "Empowering businesses through cutting-edge digital solutions and innovation. Replace this with real sponsor information.",
+        logo: "https://ui-avatars.com/api/?name=Digital+Innovators&size=400&background=FFD700&color=fff&bold=true&font-size=0.35",
+        icon: Award,
+        website: "https://example.com",
+        benefits: ["Coffee Break Sponsorship", "Swag Distribution", "Logo Placement"]
+    },
+
+    // Silver Sponsors
+    {
+        name: "CodeMasters Inc",
+        slug: generateSlug("CodeMasters Inc"),
+        role: "Silver Sponsor",
+        tier: "silver",
+        shortDescription: "Software development excellence",
+        description: "Delivering world-class software development services and technical expertise. Replace this with real sponsor information.",
+        logo: "https://ui-avatars.com/api/?name=CodeMasters&size=400&background=C0C0C0&color=000&bold=true&font-size=0.4",
+        icon: Star,
+        website: "https://example.com"
+    },
+    {
+        name: "InnoTech Group",
+        slug: generateSlug("InnoTech Group"),
+        role: "Silver Sponsor",
+        tier: "silver",
+        shortDescription: "Innovation-driven technology partner",
+        description: "A technology group focused on bringing innovative solutions to market. Replace this with real sponsor information.",
+        logo: "https://ui-avatars.com/api/?name=InnoTech&size=400&background=C0C0C0&color=000&bold=true&font-size=0.4",
+        icon: Sparkles,
+        website: "https://example.com"
+    }
 ];
 
 // Get partners by tier
