@@ -33,6 +33,9 @@ dist-ssr
 build/
 coverage/
 
+# Vercel
+.vercel
+
 # Environment files
 .env
 .env.local
