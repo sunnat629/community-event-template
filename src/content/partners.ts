@@ -1,10 +1,62 @@
 import {Building2, Award, Star, Users, LucideIcon, Sparkles, Globe} from "lucide-react";
 
-// Partners & Sponsors Configuration
-// Update this file to change partner and sponsor information
+// ============================================================================
+// PARTNERS & SPONSORS CONFIGURATION
+// ============================================================================
+//
+// 📝 HOW TO ADD A NEW SPONSOR:
+//
+// 1. Add a new object to the `partners` array below
+// 2. Required fields:
+//    - name: Full company name (e.g., "Brain Station 23", "DSI")
+//    - slug: URL-friendly identifier - use generateSlug(name) or create manually
+//    - role: What they're sponsoring (e.g., "Gold Sponsor", "Venue Partner")
+//    - tier: 'platinum' | 'gold' | 'silver' | 'bronze' | 'community' | 'media'
+//    - shortDescription: 1-2 sentence summary (for cards)
+//    - description: Full description (for detail page)
+//    - logo: Image URL (required - use high-quality square/rectangular logo)
+//    - icon: Fallback Lucide icon (Building2, Award, Star, Users, etc.)
+//
+// 3. Optional fields:
+//    - website: Company website URL
+//    - facebook: Facebook page URL
+//    - linkedin: LinkedIn company URL
+//    - benefits: Array of benefit strings (for premium sponsors)
+//
+// 4. The detail page will automatically work at: /sponsors/{slug}
+//
+// 💡 EXAMPLE:
+// {
+//   name: "New Sponsor Inc",
+//   slug: generateSlug("New Sponsor Inc"), // or "new-sponsor-inc"
+//   role: "Gold Sponsor",
+//   tier: "gold",
+//   shortDescription: "Leading tech company in Bangladesh",
+//   description: "Detailed description about the sponsor...",
+//   logo: "https://example.com/logo.png",
+//   icon: Building2,
+//   website: "https://newsponsor.com",
+//   benefits: ["Workshop Support", "Brand Visibility"]
+// }
+//
+// ============================================================================
+
+/**
+ * Helper function to generate URL-friendly slug from sponsor name
+ * Usage: generateSlug("Brain Station 23") => "brain-station-23"
+ */
+export const generateSlug = (name: string): string => {
+    return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-')      // Replace spaces with hyphens
+        .replace(/-+/g, '-');      // Replace multiple hyphens with single hyphen
+};
 
 export interface Partner {
     name: string;
+    slug: string; // URL-friendly identifier for routing
     role: string;
     tier: 'platinum' | 'gold' | 'silver' | 'bronze' | 'community' | 'media';
     shortDescription: string;
@@ -21,6 +73,7 @@ export const partners: Partner[] = [
     // Platinum Tier - Largest cards
     {
         name: "Brain Station 23",
+        slug: "brain-station-23",
         role: "Venue Partner",
         tier: "platinum",
         shortDescription: "Leading software and IT solutions company providing world-class technology services",
@@ -39,6 +92,7 @@ export const partners: Partner[] = [
     },
     {
         name: "DSI",
+        slug: "dsi",
         role: "Platinum Sponsor",
         tier: "platinum",
         shortDescription: "Leading digital innovation company empowering businesses with cutting-edge technology",
@@ -59,6 +113,7 @@ export const partners: Partner[] = [
     // Gold Tier - Medium cards
     {
         name: "Cheq",
+        slug: "cheq",
         role: "Gold Sponsor",
         tier: "gold",
         shortDescription: "Innovative fintech solution revolutionizing digital payments in Bangladesh",
@@ -76,6 +131,7 @@ export const partners: Partner[] = [
     },
     {
         name: "Tech Valley",
+        slug: "tech-valley",
         role: "Gold Sponsor",
         tier: "gold",
         shortDescription: "Technology park fostering innovation and entrepreneurship in tech ecosystem",
@@ -95,6 +151,7 @@ export const partners: Partner[] = [
     // Silver Tier
     {
         name: "CodeCraft Studio",
+        slug: "codecraft-studio",
         role: "Silver Sponsor",
         tier: "silver",
         shortDescription: "Creative software development studio specializing in mobile applications",
@@ -106,6 +163,7 @@ export const partners: Partner[] = [
     },
     {
         name: "DevHub",
+        slug: "devhub",
         role: "Silver Sponsor",
         tier: "silver",
         shortDescription: "Community-driven platform connecting developers across Bangladesh",
@@ -116,9 +174,28 @@ export const partners: Partner[] = [
         facebook: "https://facebook.com/devhub"
     },
 
+    // Bronze Tier - TEST SPONSOR
+    {
+        name: "Test Sponsor Co.",
+        slug: generateSlug("Test Sponsor Co."),
+        role: "Bronze Sponsor",
+        tier: "bronze",
+        shortDescription: "Test sponsor to verify routing works correctly for new sponsors",
+        description: "This is a test sponsor added to verify that the routing system works correctly. When you click on this sponsor, the detail page should load properly using the slug 'test-sponsor-co'.",
+        logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
+        icon: Award,
+        website: "https://test-sponsor.example.com",
+        benefits: [
+            "Test Benefit 1",
+            "Test Benefit 2",
+            "Routing Works Correctly"
+        ]
+    },
+
     // Community Partners
     {
         name: "Flutter Bangladesh",
+        slug: "flutter-bangladesh",
         role: "Community Partner",
         tier: "community",
         shortDescription: "Bangladesh's largest Flutter community connecting thousands of developers",
@@ -131,6 +208,7 @@ export const partners: Partner[] = [
     },
     {
         name: "Dhaka Dev Meetup",
+        slug: "dhaka-dev-meetup",
         role: "Community Partner",
         tier: "community",
         shortDescription: "Monthly meetup bringing together developers, designers, and tech enthusiasts",
@@ -142,6 +220,7 @@ export const partners: Partner[] = [
     },
     {
         name: "Tech Community BD",
+        slug: "tech-community-bd",
         role: "Community Partner",
         tier: "community",
         shortDescription: "Largest tech community connecting thousands of professionals nationwide",
@@ -155,6 +234,7 @@ export const partners: Partner[] = [
     // Media Partners
     {
         name: "Tech Tribune",
+        slug: "tech-tribune",
         role: "Media Partner",
         tier: "media",
         shortDescription: "Leading technology news and media platform covering latest in tech",
@@ -166,6 +246,7 @@ export const partners: Partner[] = [
     },
     {
         name: "Digital Times",
+        slug: "digital-times",
         role: "Media Partner",
         tier: "media",
         shortDescription: "Digital media outlet focusing on technology and innovation news",
