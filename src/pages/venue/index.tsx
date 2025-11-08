@@ -15,6 +15,7 @@ import {
     Info
 } from "lucide-react";
 import {motion} from "motion/react";
+import {heroBackgrounds} from "@/content";
 
 export default function VenuePage() {
     const facilities = [
@@ -50,8 +51,15 @@ export default function VenuePage() {
             <PageHeader
                 title="Event Venue"
                 subtitle="Brain Station 23 - Dhaka's Premier Tech Hub"
+                description="Experience the event in our world-class facility"
                 icon={MapPin}
-                gradient="gradient-hero"
+                badge={{
+                    text: "In-Person Event",
+                    icon: MapPin
+                }}
+                backgroundImage={heroBackgrounds.venue.image}
+                overlayOpacity={heroBackgrounds.venue.overlayOpacity}
+                blurAmount={heroBackgrounds.venue.blurAmount}
             />
 
             {/* Main Content */}

@@ -9,6 +9,7 @@ import {agendaItems, tracks} from "@/content";
 import {featuredSpeakers, otherSpeakers} from "@/content";
 import {cn} from "@/lib/utils";
 import {Link} from "react-router-dom";
+import {heroBackgrounds} from "@/content";
 
 /**
  * Agenda Page - Pro Mode
@@ -171,6 +172,8 @@ const AgendaPage = () => {
                     text: `${filteredSessions.length}+ Sessions`,
                     icon: Calendar,
                 }}
+                backgroundImage={heroBackgrounds.agenda.image}
+                overlayOpacity={heroBackgrounds.agenda.overlayOpacity}
             >
                 {/* Download Button - FIXED THEMING */}
                 <Button

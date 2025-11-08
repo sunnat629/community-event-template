@@ -3,7 +3,7 @@ import {Users, Search, Building2, Filter as FilterIcon} from "lucide-react";
 import {PageHeader} from "@/components/pro/PageHeader";
 import {SpeakerCard} from "@/components/shared/SpeakerCard";
 import {FooterSection} from "@/components/sections/FooterSection";
-import {featuredSpeakers, otherSpeakers} from "@/content";
+import {featuredSpeakers, otherSpeakers, heroBackgrounds} from "@/content";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {
@@ -108,6 +108,8 @@ const SpeakersPage = () => {
                     text: "Industry Experts",
                     icon: Users,
                 }}
+                backgroundImage={heroBackgrounds.speakers.image}
+                overlayOpacity={heroBackgrounds.speakers.overlayOpacity}
             />
 
             {/* Filters Section */}
