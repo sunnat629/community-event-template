@@ -6,7 +6,7 @@ import {ChevronLeft, ChevronRight} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {Link} from "react-router-dom";
 import {motion} from "motion/react";
-import type {Speaker} from "@/types";
+import type {Speaker} from "@/content/speakers";
 
 interface FeaturedSpeakersCarouselProps {
     speakers: Speaker[];

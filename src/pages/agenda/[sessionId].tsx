@@ -387,7 +387,7 @@ const SessionDetailPage = () => {
                                     </h3>
                                     <div className="space-y-3">
                                         {relatedSessions.map((relatedSession, idx) => {
-                                            const relatedIcon = relatedSession.icon;
+                                            const RelatedIcon = relatedSession.icon;
                                             const relatedId = relatedSession.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
                                             return (
@@ -399,7 +399,7 @@ const SessionDetailPage = () => {
                                                     <div className="flex items-start gap-3">
                                                         <div
                                                             className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                                                            <relatedIcon className="w-4 h-4 text-primary"/>
+                                                            <RelatedIcon className="w-4 h-4 text-primary"/>
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <h4 className="text-sm font-semibold mb-1 line-clamp-2 group-hover:text-primary transition-colors">

@@ -91,7 +91,9 @@ export function SponsorCard({sponsor, size, onClick, index}: SponsorCardProps) {
 
     return (
         <motion.button
-            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true, margin: "-50px"}}
             onClick={onClick}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}

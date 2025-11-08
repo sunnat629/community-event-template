@@ -13,7 +13,6 @@ export default function SponsorsPage() {
                 title="Our Sponsors & Partners"
                 subtitle={`Meet the amazing companies and communities supporting ${siteConfig.eventTitle}`}
                 icon={Award}
-                gradient="gradient-hero"
                 backgroundImage={heroBackgrounds.sponsors.image}
                 overlayOpacity={heroBackgrounds.sponsors.overlayOpacity}
             />
