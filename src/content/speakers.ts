@@ -42,16 +42,16 @@ export interface Speaker {
 // ============================================================================
 export const featuredSpeakers: Speaker[] = [
     {
-        name: "Md. Sunnat Hossain",
-        title: "Lead Organizer & Flutter Developer",
-        company: "Community Event Template",
+        name: "Mohi Us Sunnat",
+        title: "Sr Software Engineer",
+        company: "Sunnat629 Labs",
         topic: "Building Community Through Events",
-        image: "https://avatars.githubusercontent.com/u/17354962?v=4", // Sunnat629's GitHub avatar
+        image: "https://avatars.githubusercontent.com/u/5854791?v=4", // Sunnat629's GitHub avatar
         bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
         social: {
             twitter: "https://twitter.com/sunnat629",
             linkedin: "https://linkedin.com/in/sunnat629",
-            email: "sunnat629@gmail.com"
+            email: "me@sunnat629.dev"
         },
         featured: true
     }
