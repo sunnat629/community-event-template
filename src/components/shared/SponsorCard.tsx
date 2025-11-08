@@ -165,12 +165,12 @@ export function SponsorCard({sponsor, size, onClick, index}: SponsorCardProps) {
                 </>
             )}
 
-            {/* Premium Badge for Large Cards */}
+            {/* Premium Badge for Large Cards - Positioned at top, behind logo */}
             {isLarge && (
                 <motion.div
-                    className="absolute top-4 right-4 z-10"
-                    initial={{opacity: 0, scale: 0}}
-                    animate={{opacity: 1, scale: 1}}
+                    className="absolute top-0 left-1/2 -translate-x-1/2 z-0"
+                    initial={{opacity: 0, scale: 0, y: -20}}
+                    animate={{opacity: 1, scale: 1, y: 0}}
                     transition={{
                         type: "spring",
                         stiffness: 500,
@@ -179,17 +179,18 @@ export function SponsorCard({sponsor, size, onClick, index}: SponsorCardProps) {
                     }}
                 >
                     <motion.div
-                        whileHover={{rotate: [0, -10, 10, -10, 0], scale: 1.1}}
+                        whileHover={{scale: 1.1}}
                         transition={{duration: 0.5}}
                     >
-                        <Badge className={`${config.badgeColor} border-0 flex items-center gap-1.5 shadow-lg`}>
+                        <Badge
+                            className={`${config.badgeColor} border-0 flex items-center gap-1.5 shadow-lg px-4 py-1.5 rounded-b-lg rounded-t-none`}>
                             <motion.div
                                 animate={{rotate: isHovered ? 360 : 0}}
                                 transition={{duration: 0.6}}
                             >
                                 <Icon className="w-3.5 h-3.5"/>
                             </motion.div>
-                            <span className="capitalize">{sponsor.tier}</span>
+                            <span className="capitalize font-bold">{sponsor.tier}</span>
                         </Badge>
                     </motion.div>
                 </motion.div>
@@ -197,11 +198,12 @@ export function SponsorCard({sponsor, size, onClick, index}: SponsorCardProps) {
 
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center text-center">
-                {/* Logo Container */}
+
+                {/* Logo Container - Portrait aspect ratio for better layout */}
                 <motion.div
                     className={`
                         bg-white rounded-xl shadow-md overflow-hidden mb-4
-                        ${isLarge ? "w-48 h-48" : "w-32 h-32"}
+                        ${isLarge ? "w-full aspect-[3/4]" : "w-32 h-32"}
                         flex items-center justify-center relative
                     `}
                     whileHover={{

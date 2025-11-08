@@ -40,39 +40,67 @@ export function SponsorsSection() {
                 initial="hidden"
                 animate="visible"
             >
-                {/* Platinum Sponsors */}
+                {/* Platinum Sponsors - 3 per row */}
                 {platinumSponsors.length > 0 && (
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                        variants={containerVariants}
+                        initial={{opacity: 0, y: 20}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.6, delay: 0.2}}
                     >
-                        {platinumSponsors.map((sponsor, index) => (
-                            <SponsorCard
-                                key={sponsor.name}
-                                sponsor={sponsor}
-                                size="large"
-                                onClick={() => handleSponsorClick(sponsor)}
-                                index={index}
-                            />
-                        ))}
+                        <motion.h3
+                            className="mb-6 text-slate-900 text-2xl font-bold"
+                            initial={{opacity: 0, x: -20}}
+                            animate={{opacity: 1, x: 0}}
+                            transition={{duration: 0.5}}
+                        >
+                            Platinum Sponsors
+                        </motion.h3>
+                        <motion.div
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                            variants={containerVariants}
+                        >
+                            {platinumSponsors.map((sponsor, index) => (
+                                <SponsorCard
+                                    key={sponsor.name}
+                                    sponsor={sponsor}
+                                    size="large"
+                                    onClick={() => handleSponsorClick(sponsor)}
+                                    index={index}
+                                />
+                            ))}
+                        </motion.div>
                     </motion.div>
                 )}
 
-                {/* Gold Sponsors */}
+                {/* Gold Sponsors - 3 per row */}
                 {goldSponsors.length > 0 && (
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                        variants={containerVariants}
+                        initial={{opacity: 0, y: 20}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.6, delay: 0.3}}
                     >
-                        {goldSponsors.map((sponsor, index) => (
-                            <SponsorCard
-                                key={sponsor.name}
-                                sponsor={sponsor}
-                                size="large"
-                                onClick={() => handleSponsorClick(sponsor)}
-                                index={index + platinumSponsors.length}
-                            />
-                        ))}
+                        <motion.h3
+                            className="mb-6 text-slate-900 text-2xl font-bold"
+                            initial={{opacity: 0, x: -20}}
+                            animate={{opacity: 1, x: 0}}
+                            transition={{duration: 0.5}}
+                        >
+                            Gold Sponsors
+                        </motion.h3>
+                        <motion.div
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                            variants={containerVariants}
+                        >
+                            {goldSponsors.map((sponsor, index) => (
+                                <SponsorCard
+                                    key={sponsor.name}
+                                    sponsor={sponsor}
+                                    size="large"
+                                    onClick={() => handleSponsorClick(sponsor)}
+                                    index={index + platinumSponsors.length}
+                                />
+                            ))}
+                        </motion.div>
                     </motion.div>
                 )}
             </motion.div>
