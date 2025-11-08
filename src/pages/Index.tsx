@@ -7,6 +7,7 @@ import {VenueSection} from "@/components/sections/VenueSection";
 import { OrganizersSection } from "@/components/sections/OrganizersSection";
 import { CTASection } from "@/components/sections/CTASection";
 import {FooterSection} from "@/components/sections/FooterSection";
+import {SpeakersPartnersSection} from "@/components/sections/SpeakersPartnersSection";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <AboutSection />
       <EventDetailsSection />
       <AgendaSection />
+        <SpeakersPartnersSection/>
         <SponsorsLiteSection/>
         <VenueSection/>
       <OrganizersSection />
