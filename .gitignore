@@ -40,3 +40,6 @@ coverage/
 .env
 .env.local
 .env.*.local
+
+# Local documentation (not for public)
+docs/local/

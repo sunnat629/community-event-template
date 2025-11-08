@@ -1,158 +1,37 @@
 # Contributing to Community Event Template
 
-First off, thank you for considering contributing to Community Event Template!
+Thank you for your interest in contributing! This template is used by tech communities worldwide, and your contributions
+help make events better for everyone.
 
-This project helps communities worldwide organize amazing events. Your contribution makes a real difference.
+## Ways to Contribute
 
----
-
-## Table of Contents
-
-- [Code of Conduct](#code-of-conduct)
-- [How Can I Contribute?](#how-can-i-contribute)
-- [Getting Started](#getting-started)
-- [Development Workflow](#development-workflow)
-- [Pull Request Process](#pull-request-process)
-- [Style Guidelines](#style-guidelines)
-- [Content Management](#content-management)
-- [Community](#community)
-
----
-
-## Code of Conduct
-
-This project adheres to a Code of Conduct that all contributors are expected to follow. Please read it before
-contributing.
-
-**In short:**
-
-- Be respectful and inclusive
-- Welcome newcomers
-- Accept constructive criticism
-- Focus on what's best for the community
-- Show empathy towards others
-
----
-
-## How Can I Contribute?
-
-### Reporting Bugs
-
-Before creating bug reports, please check existing issues. When creating a bug report, include as many details as
-possible:
-
-**Bug Report Template:**
-
-```markdown
-**Describe the bug**
-A clear description of what the bug is.
-
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '...'
-3. Scroll down to '...'
-4. See error
-
-**Expected behavior**
-What you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots.
-
-**Environment:**
-- OS: [e.g., macOS, Windows, Linux]
-- Browser: [e.g., Chrome 120, Firefox 115]
-- Node version: [e.g., 18.17.0]
-- npm version: [e.g., 9.6.7]
-
-**Additional context**
-Any other context about the problem.
-```
-
-### Suggesting Features
-
-Feature suggestions are welcome! Before creating a feature request:
-
-1. Check if the feature has already been suggested
-2. Ensure it aligns with the project's goals
-3. Provide as much detail as possible
-
-**Feature Request Template:**
-
-```markdown
-**Is your feature request related to a problem?**
-A clear description of what the problem is.
-
-**Describe the solution you'd like**
-A clear description of what you want to happen.
-
-**Describe alternatives you've considered**
-Any alternative solutions or features you've considered.
-
-**Additional context**
-Any other context or screenshots about the feature request.
-
-**Implementation ideas (optional)**
-If you have ideas about how to implement this.
-```
-
-### Contributing Code
-
-See [Development Workflow](#development-workflow) below.
-
-### Improving Documentation
-
-Documentation improvements are always welcome! This includes:
-
-- Fixing typos
-- Clarifying instructions
-- Adding examples
-- Improving README
-- Writing tutorials
-
----
+- **Report Bugs** - Found an issue? Let us know!
+- **Suggest Features** - Have ideas? We'd love to hear them!
+- **Improve Documentation** - Help others understand the template
+- **Design Improvements** - Enhance UI/UX
+- **Performance Optimizations** - Make it faster
+- **Add Tests** - Improve code quality
+- **Translations** - Make it accessible worldwide
 
 ## Getting Started
 
 ### Prerequisites
 
-```bash
-# Required
-Node.js >= 18.x
-npm >= 9.x
-Git
-
-# Recommended
-VS Code with extensions:
-- ESLint
-- Prettier
-- Tailwind CSS IntelliSense
-```
+- **Node.js 18+** - [Install with nvm](https://github.com/nvm-sh/nvm)
+- **Git** - For version control
+- **Code Editor** - VS Code recommended
 
 ### Fork & Clone
 
-1. **Fork the repository** on GitHub (top right corner)
+```bash
+# Fork the repository on GitHub
+# Then clone your fork:
+git clone https://github.com/YOUR_USERNAME/community-event-template.git
+cd community-event-template
 
-2. **Clone your fork:**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/community-event-template.git
-   cd community-event-template
-   ```
-
-3. **Add upstream remote:**
-   ```bash
-   git remote add upstream https://github.com/sunnat629/community-event-template.git
-   ```
-
-4. **Verify remotes:**
-   ```bash
-   git remote -v
-   # origin    https://github.com/YOUR_USERNAME/community-event-template.git (fetch)
-   # origin    https://github.com/YOUR_USERNAME/community-event-template.git (push)
-   # upstream  https://github.com/sunnat629/community-event-template.git (fetch)
-   # upstream  https://github.com/sunnat629/community-event-template.git (push)
-   ```
+# Add upstream remote
+git remote add upstream https://github.com/sunnat629/community-event-template.git
+```
 
 ### Install Dependencies
 
@@ -164,551 +43,346 @@ npm install
 
 ```bash
 npm run dev
-# Open http://localhost:5173
+# Visit http://localhost:5173
 ```
-
----
-
-## Content Management
-
-This project follows a **content-first architecture** where all event content is managed separately from components.
-
-### Quick Content Updates
-
-Most content updates **don't require code changes**. Update these files:
-
-```
-src/content/
-├── siteConfig.ts        # Event title, tagline, SEO
-├── venuePreview.ts      # Venue card (Pro mode home)
-├── hero.ts              # Hero section
-├── eventDetails.ts      # Date, venue, format
-├── agenda.ts            # Event schedule
-├── speakers.ts          # Speaker information
-├── organizers.ts        # Organizers & partners
-└── partners.ts          # Sponsors
-```
-
-### Content Update Examples
-
-**1. Change Event Title:**
-
-```typescript
-// src/content/siteConfig.ts
-export const siteConfig = {
-  eventTitle: "DevFest Bangladesh 2025",     // ← Update once
-  eventTagline: "Connect. Build. Inspire.",
-  // ... updates everywhere automatically
-};
-```
-
-**2. Update Venue Image:**
-
-```typescript
-// src/content/venuePreview.ts
-export const venuePreview = {
-  image: "/venue-photo.jpg",                 // ← Add image to /public folder
-  venueName: "Brain Station 23 HQ",
-  address: {
-    line1: "Plot 1/A, Road 113",
-    line2: "Gulshan-2, Dhaka-1212",
-    country: "Bangladesh"
-  },
-  quickInfo: {
-    time: "9 AM - 6 PM",
-    capacity: "500+ Capacity"
-  },
-  ctaText: "View Venue Details & Map",
-  ctaLink: "/venue"
-};
-```
-
-**3. Add New Speaker:**
-
-```typescript
-// src/content/speakers.ts
-export const featuredSpeakers = [
-  // ... existing speakers
-  {
-    name: "Jane Doe",
-    title: "Senior Flutter Engineer",
-    topic: "State Management Best Practices",
-    image: "👩‍💻"  // or "/speakers/jane-doe.jpg"
-  }
-];
-```
-
-**4. Update Sponsor:**
-
-```typescript
-// src/content/partners.ts
-export const partners = [
-  {
-    name: "Tech Corp",
-    tier: "platinum",                        // platinum, gold, silver, bronze
-    logo: "/sponsors/tech-corp.svg",
-    role: "Platinum Sponsor",
-    shortDescription: "Leading tech company",
-    description: "Full description...",
-    benefits: ["Premium booth", "Logo on badges"]
-  }
-];
-```
-
-### Content Guidelines
-
-When updating content:
-
-1. **Follow TypeScript interfaces** - The types guide you
-2. **Use relative paths** for images (`"/images/photo.jpg"`)
-3. **Test immediately** - Hot reload shows changes instantly
-4. **Keep descriptions concise** - Aim for 1-2 sentences
-5. **Use high-quality images** - Minimum 1200px width
-6. **Validate URLs** - Ensure all links work
-
-### Adding Images
-
-```bash
-# 1. Add images to public folder
-public/
-  ├── speakers/
-  │   └── jane-doe.jpg
-  ├── sponsors/
-  │   └── company-logo.png
-  └── venue-photo.jpg
-
-# 2. Reference in content files
-image: "/speakers/jane-doe.jpg"
-logo: "/sponsors/company-logo.png"
-```
-
-**Image Best Practices:**
-
-- **Format**: JPG for photos, PNG for logos, SVG for icons
-- **Size**: Optimize images (use tools like TinyPNG)
-- **Dimensions**:
-    - Speakers: 400x400px (square)
-    - Sponsors: 400x200px (2:1 ratio)
-    - Venue: 1200x800px (landscape)
-- **Naming**: Use kebab-case (`jane-doe.jpg`, not `Jane Doe.jpg`)
-
-### Content Documentation
-
-See **[src/content/README.md](src/content/README.md)** for complete content management guide including:
-
-- All configuration files
-- TypeScript interfaces
-- Update scenarios
-- Common issues
-
----
 
 ## Development Workflow
 
-### 1. Sync with Upstream
-
-Always start by syncing with the latest code:
+### 1. Create a Branch
 
 ```bash
-git checkout main
+# Sync with upstream
 git fetch upstream
+git checkout main
 git merge upstream/main
-git push origin main
-```
 
-### 2. Create a Branch
-
-```bash
-# Feature branch
-git checkout -b feature/amazing-feature
-
-# Bug fix branch
+# Create feature branch
+git checkout -b feature/your-feature-name
+# OR for bugs
 git checkout -b fix/bug-description
-
-# Documentation branch
-git checkout -b docs/update-readme
 ```
 
-**Branch Naming Convention:**
+### 2. Make Changes
 
-- `feature/` - New features
-- `fix/` - Bug fixes
-- `docs/` - Documentation changes
-- `style/` - Code style changes (formatting, etc.)
-- `refactor/` - Code refactoring
-- `perf/` - Performance improvements
-- `test/` - Adding tests
-- `chore/` - Build process or auxiliary tool changes
-
-### 3. Make Your Changes
-
-- Write clean, readable code
-- Follow the [Style Guidelines](#style-guidelines)
-- Add comments where necessary
-- Keep commits small and focused
+- Write clean, documented code
+- Follow existing code style
 - Test your changes thoroughly
+- Update documentation if needed
 
-### 4. Commit Your Changes
-
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-```bash
-# Format: type(scope): description
-
-git commit -m "feat(search): add global search with Cmd+K shortcut"
-git commit -m "fix(navigation): resolve mobile menu overflow on iOS"
-git commit -m "docs(readme): update installation instructions"
-git commit -m "style(footer): improve spacing and alignment"
-git commit -m "refactor(agenda): extract filter logic to custom hook"
-git commit -m "perf(images): implement lazy loading"
-git commit -m "test(speakers): add unit tests for speaker card"
-git commit -m "chore(deps): update dependencies to latest versions"
-```
-
-**Commit Types:**
-
-- `feat` - New feature
-- `fix` - Bug fix
-- `docs` - Documentation only
-- `style` - Code style (formatting, semicolons, etc.)
-- `refactor` - Code change that neither fixes a bug nor adds a feature
-- `perf` - Performance improvement
-- `test` - Adding or updating tests
-- `chore` - Maintenance tasks
-
-**Good Commit Messages:**
+### 3. Commit Changes
 
 ```bash
-feat(search): add keyboard navigation to search results
-fix(agenda): correct timezone display for sessions
-docs(contributing): add pull request template
-style(button): update hover state colors
+git add .
+git commit -m "feat: add amazing feature"
 ```
 
-**Bad Commit Messages:**
+**Commit Message Format:**
+```
+<type>: <description>
+
+[optional body]
+[optional footer]
+```
+
+**Types:**
+
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation changes
+- `style:` - Code style/formatting
+- `refactor:` - Code refactoring
+- `perf:` - Performance improvements
+- `test:` - Adding tests
+- `chore:` - Maintenance tasks
+
+**Examples:**
+```bash
+feat: add speaker filtering functionality
+fix: resolve carousel auto-rotation issue
+docs: update customization guide
+style: improve button hover effects
+perf: optimize image loading
+```
+
+### 4. Push & Create PR
 
 ```bash
-update stuff
-fix bug
-WIP
-asdfasdf
+git push origin feature/your-feature-name
 ```
 
-### 5. Push Your Changes
+Then create a Pull Request on GitHub.
 
-```bash
-git push origin feature/amazing-feature
+## Pull Request Guidelines
+
+### Before Submitting
+
+- Code builds successfully (`npm run build`)
+- No TypeScript errors
+- No console errors in browser
+- Tested on mobile and desktop
+- Documentation updated (if needed)
+- Follows existing code style
+
+### PR Title Format
+
+```
+feat: Add speaker filtering
+fix: Carousel navigation on mobile
+docs: Update README with examples
 ```
 
-### 6. Create Pull Request
-
-1. Go to your fork on GitHub
-2. Click "Compare & pull request"
-3. Fill out the PR template (see below)
-4. Submit the pull request
-
----
-
-## Pull Request Process
-
-### PR Template
+### PR Description Template
 
 ```markdown
 ## Description
-<!-- Brief description of the changes -->
-
-## Related Issue
-<!-- Link to the issue this PR closes -->
-Closes #123
+Brief description of changes
 
 ## Type of Change
-<!-- Mark with an 'x' -->
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
 - [ ] Documentation update
-- [ ] Style update (formatting, renaming)
-- [ ] Code refactoring
-- [ ] Performance improvement
-- [ ] Test update
 
-## How Has This Been Tested?
-<!-- Describe the tests you ran -->
-- [ ] Built successfully (`npm run build`)
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] Tested on desktop (Chrome/Firefox/Safari)
-- [ ] Tested on mobile (iOS/Android)
-- [ ] Tested keyboard navigation
-- [ ] All existing tests pass
+## Testing
+- Tested on Chrome, Firefox, Safari
+- Tested responsive design
+- No console errors
 
 ## Screenshots (if applicable)
-<!-- Add screenshots to show the changes -->
+[Add screenshots]
 
 ## Checklist
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings or errors
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published
-
-## Additional Notes
-<!-- Any additional information -->
+- [ ] Code builds without errors
+- [ ] Followed code style guidelines
+- [ ] Updated documentation
+- [ ] Tested thoroughly
 ```
 
-### PR Guidelines
+## Code Style Guidelines
 
-1. **One PR = One Feature/Fix**
-    - Keep PRs focused and small
-    - Easier to review and merge
-    - Reduces conflicts
-
-2. **Update Your Branch**
-   ```bash
-   # If main has been updated after you created your branch
-   git checkout main
-   git pull upstream main
-   git checkout feature/your-feature
-   git rebase main
-   # Resolve conflicts if any
-   git push origin feature/your-feature --force-with-lease
-   ```
-
-3. **Respond to Feedback**
-    - Be open to suggestions
-    - Make requested changes promptly
-    - Ask questions if unclear
-
-4. **CI Must Pass**
-    - All automated checks must pass
-    - Fix any linting errors
-    - Ensure build succeeds
-
----
-
-## Style Guidelines
-
-### TypeScript/React
+### TypeScript
 
 ```typescript
-// Use TypeScript interfaces
-interface SpeakerCardProps {
-  speaker: Speaker;
-  featured?: boolean;
-  onSelect?: (id: string) => void;
+// Use descriptive names
+const speakerCount = speakers.length; 
+const n = speakers.length; 
+
+// Use types/interfaces
+interface Speaker {
+  name: string;
+  title: string;
 }
 
-// Use functional components with React.FC
-export const SpeakerCard: React.FC<SpeakerCardProps> = ({ 
-  speaker, 
-  featured = false,
-  onSelect 
-}) => {
-  // Component logic
+// Use arrow functions for components
+export const MyComponent = () => {
+  return <div>Content</div>;
 };
 
-// Destructure props
-const { name, company, bio } = speaker;
-
-// Use early returns
-if (!speaker) return null;
-
-// Extract complex logic to functions
-const filteredSpeakers = useMemo(() => 
-  speakers.filter(matchesSearchCriteria), 
-  [speakers, searchQuery]
-);
+// Add comments for complex logic
+// Calculate total sessions across all days
+const totalSessions = days.reduce((sum, day) => sum + day.sessions.length, 0);
 ```
 
-### Naming Conventions
+### React Components
 
-```typescript
-// Components: PascalCase
-SpeakerCard.tsx
-NavigationMenu.tsx
-
-// Utilities: camelCase
-formatDate.ts
-searchUtils.ts
-
-// Constants: SCREAMING_SNAKE_CASE
-const MAX_SPEAKERS = 100;
-const API_BASE_URL = "https://api.example.com";
-
-// CSS/Assets: kebab-case
-speaker - card.css
-hero - background.jpg
-```
-
-### File Organization
-
-```typescript
+```tsx
 // Organize imports
-// 1. External libraries
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
+import React from "react";
+import {ComponentA} from "@/components/ComponentA";
+import {useHook} from "@/hooks/useHook";
+import {Button} from "@/components/ui/button";
 
-// 2. UI components
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-
-// 3. Shared components
-import { SpeakerCard } from "@/components/shared/SpeakerCard";
-import { SearchBar } from "@/components/shared/SearchBar";
-
-// 4. Content/Data
-import { speakers } from "@/content/speakers";
-import { eventConfig } from "@/config/site.config";
-
-// 5. Utilities
-import { formatDate, cn } from "@/lib/utils";
-
-// 6. Types
-import type { Speaker, Session } from "@/types";
+// Use functional components
+export const MyComponent = () => {
+  // Hooks at the top
+  const [state, setState] = useState();
+  
+  // Helper functions
+  const handleClick = () => {
+    // logic
+  };
+  
+  // Render
+  return (
+    <div className="container">
+      <Button onClick={handleClick}>Click</Button>
+    </div>
+  );
+};
 ```
 
-### Comments
+### CSS/Tailwind
 
-```typescript
-// Explain WHY, not WHAT
-// Debounce search to avoid excessive API calls
-const debouncedSearch = useDebouncedValue(searchQuery, 300);
+```tsx
+// Use Tailwind utility classes
+<div className="flex items-center gap-4 p-6 rounded-lg bg-card">
 
-// Use JSDoc for complex functions
-/**
- * Filters sessions by day and track
- * @param sessions - Array of all sessions
- * @param day - Day number (1-3) or 'all'
- * @param track - Track name or 'all'
- * @returns Filtered array of sessions
- */
-export function filterSessions(
-  sessions: Session[], 
-  day: string, 
-  track: string
-): Session[] {
-  // Implementation
-}
+// Group related classes
+<div className="
+  flex items-center justify-center gap-4
+  p-6 rounded-lg
+  bg-card border-2 border-border
+  hover:shadow-lg hover:scale-105
+  transition-all duration-300
+">
 
-// Avoid obvious comments
-// This is a button
-<Button>Click me</Button>
+// Use custom CSS variables for colors
+<div className="bg-primary text-white">
 ```
 
-### Formatting
+## Project Structure
 
-We use Prettier for consistent formatting. Key settings:
-
-```json
-{
-  "printWidth": 100,
-  "tabWidth": 2,
-  "useTabs": false,
-  "semi": true,
-  "singleQuote": false,
-  "trailingComma": "es5",
-  "bracketSpacing": true,
-  "arrowParens": "always"
-}
 ```
-
----
+src/
+├── components/
+│   ├── pro/          # Pro mode components
+│   ├── sections/     # Page sections
+│   ├── shared/       # Shared components
+│   └── ui/           # UI primitives
+├── config/           # Configuration files
+├── content/          # Content management
+│   ├── agenda.ts
+│   ├── partners.ts
+│   ├── speakers.ts
+│   └── ...
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions
+├── pages/            # Route pages
+└── types/            # TypeScript types
+```
 
 ## Testing
 
-### Before Submitting PR
-
-Run these checks locally:
+Before submitting:
 
 ```bash
-# Build check
+# Build test
 npm run build
 
-# TypeScript check
-npx tsc --noEmit
+# Check for TypeScript errors
+npm run type-check
 
-# Lint check
-npm run lint
-
-# Format check
-npm run format:check
+# Preview production build
+npm run preview
 ```
 
 ### Manual Testing Checklist
 
-- Feature works as expected
+- All pages load without errors
+- Navigation works correctly
+- Responsive design (mobile, tablet, desktop)
+- Forms work correctly
+- Images load properly
+- Carousels auto-rotate
+- Hover effects work
 - No console errors
-- Responsive on mobile (< 768px)
-- Responsive on tablet (768-1024px)
-- Works on desktop (> 1024px)
-- Keyboard navigation works
-- Animations are smooth (60fps)
-- Images load correctly
-- Links navigate correctly
-- Forms validate properly
-- No performance regressions
 
-### Browser Testing
+## Reporting Bugs
 
-Test on at least 2 browsers:
+### Before Reporting
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+1. Check if bug already exists in [Issues](https://github.com/sunnat629/community-event-template/issues)
+2. Try on latest version
+3. Reproduce the bug consistently
 
----
+### Bug Report Template
 
-## Community
+```markdown
+**Describe the bug**
+Clear description of the bug
 
-### Getting Help
+**To Reproduce**
+1. Go to '...'
+2. Click on '...'
+3. See error
 
-- GitHub Discussions: Ask questions, share ideas
-- GitHub Issues: Report bugs, request features
-- Email: [Maintainer email]
+**Expected behavior**
+What should happen
 
-### Staying Updated
+**Screenshots**
+Add screenshots if helpful
 
-- Star the repository to stay informed
-- Watch releases for updates
-- Follow on social media [if applicable]
+**Environment:**
+- OS: [e.g. macOS, Windows]
+- Browser: [e.g. Chrome 120]
+- Node version: [e.g. 18.0.0]
 
----
+**Additional context**
+Any other relevant information
+```
 
-## Recognition
+## Feature Requests
 
-Contributors are recognized in several ways:
+### Feature Request Template
 
-1. **CONTRIBUTORS.md** - Listed with contribution details
-2. **Release Notes** - Mentioned in relevant releases
-3. **README** - Major contributors featured
-4. **Maintainer Team** - Outstanding contributors invited
+```markdown
+**Feature Description**
+Clear description of the feature
 
----
+**Problem it Solves**
+What problem does this solve?
+
+**Proposed Solution**
+How should it work?
+
+**Alternatives Considered**
+Other approaches you've thought about
+
+**Additional Context**
+Mockups, examples, references
+```
+
+## Questions & Support
+
+- **Discussions**: [GitHub Discussions](https://github.com/sunnat629/community-event-template/discussions)
+- **Email**: me@sunnat629.dev
+- **Twitter**: [@sunnat629](https://twitter.com/sunnat629)
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
 
----
+## Code of Conduct
 
-## Thank You!
+### Our Pledge
 
-Your contribution is valuable, whether it's:
+We are committed to providing a welcoming and inclusive experience for everyone.
 
-- Fixing a typo
-- Adding a feature
-- Improving documentation
-- Enhancing design
-- Adding tests
+### Expected Behavior
 
-Every bit helps make this project better for everyone!
+- Be respectful and kind
+- Accept constructive criticism
+- Focus on what's best for the community
+- Show empathy towards others
 
-**Happy Contributing!**
+### Unacceptable Behavior
 
----
+- Harassment or discriminatory language
+- Trolling or insulting comments
+- Personal or political attacks
+- Publishing others' private information
 
-**Questions?** Open an issue or discussion. We're here to help! 
+## Recognition
+
+Contributors will be:
+
+- Listed in GitHub contributors
+- Mentioned in release notes
+- Credited in project documentation
+
+## Contact
+
+**Sunnat629 Labs**
+
+- Website: [sunnat629labs.com](https://sunnat629labs.com)
+- Email: me@sunnat629.dev
+- Twitter: [@sunnat629](https://twitter.com/sunnat629)
+- LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
+
+<div align="center">
+
+**Thank you for contributing!**
+
+Made with ❤️ for tech communities worldwide
+
+</div>
