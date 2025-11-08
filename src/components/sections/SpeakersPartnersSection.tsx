@@ -155,14 +155,14 @@ export const SpeakersPartnersSection = () => {
                                 >
                                     {/* Main card with enhanced hover effects */}
                                     <div
-                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[480px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+                                        className="glass-card rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br from-card to-primary/5 overflow-hidden h-[520px] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
                                     >
                                         {/* Shine effect */}
                                         <div
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"/>
 
                                         {/* Avatar with glow */}
-                                        <div className="relative mb-6">
+                                        <div className="relative mb-6 flex-shrink-0">
                                             <div
                                                 className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl group-hover:border-primary/60 transition-all duration-500">
                                                 <img
@@ -178,35 +178,35 @@ export const SpeakersPartnersSection = () => {
                                             {/* Badge for company */}
                                             {speaker.company && (
                                                 <div
-                                                    className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-2 px-4 py-1.5 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-4">
+                                                    className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-2 px-4 py-1.5 bg-gradient-hero text-white text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-4 truncate max-w-[90%]">
                                                     {speaker.company}
                                                 </div>
                                             )}
                                         </div>
 
                                         {/* Content */}
-                                        <div className="text-center relative z-10">
-                                            <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 flex items-center justify-center gap-2">
-                                                {speaker.name}
+                                        <div className="text-center relative z-10 flex-1 flex flex-col">
+                                            <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 flex items-center justify-center gap-2 truncate px-2">
+                                                <span className="truncate">{speaker.name}</span>
                                                 <ChevronRight
-                                                    className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"/>
+                                                    className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"/>
                                             </h3>
-                                            <p className="text-primary font-semibold mb-4 text-base">
+                                            <p className="text-primary font-semibold mb-4 text-base truncate px-2">
                                                 {speaker.title}
                                             </p>
 
                                             {/* Topic card */}
                                             <div
-                                                className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl p-4 border border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-105">
-                                                <p className="text-xs font-semibold text-muted-foreground mb-1 uppercase tracking-wide">Speaking
+                                                className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl p-4 border border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-105 mb-4">
+                                                <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Speaking
                                                     on:</p>
-                                                <p className="text-foreground font-semibold text-sm leading-relaxed">{speaker.topic}</p>
+                                                <p className="text-foreground font-semibold text-sm leading-relaxed line-clamp-2">{speaker.topic}</p>
                                             </div>
 
                                             {/* Social icons - appear on hover */}
                                             {speaker.social && (
                                                 <div
-                                                    className="flex justify-center gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-2">
+                                                    className="flex justify-center gap-3 mt-auto opacity-0 group-hover:opacity-100 transition-all duration-300">
                                                     {speaker.social.twitter && (
                                                         <div
                                                             className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
@@ -229,7 +229,7 @@ export const SpeakersPartnersSection = () => {
                                             )}
 
                                             {/* Click hint */}
-                                            <p className="text-xs text-muted-foreground mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <p className="text-xs text-muted-foreground mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 Click to view profile
                                             </p>
                                         </div>
