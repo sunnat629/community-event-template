@@ -236,11 +236,11 @@ export const OrganizersSection = () => {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 justify-items-center">
+                    <div className="flex flex-wrap justify-center gap-6 mb-12 max-w-5xl mx-auto">
                         {organizerTeam.map((member, index) => (
                             <div
                                 key={member.username}
-                                className="animate-fade-in-up"
+                                className="animate-fade-in-up w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-md"
                                 style={{animationDelay: `${index * 80}ms`}}
                             >
                                 <button

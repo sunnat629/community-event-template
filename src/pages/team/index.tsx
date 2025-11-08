@@ -68,12 +68,12 @@ export default function TeamPage() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto justify-items-center">
+                        <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
                             {organizers.map((member, index) => (
                                 <motion.div
                                     key={index}
                                     variants={cardVariants}
-                                    className="glass-card rounded-3xl p-8 border-2 border-border hover:border-yellow-400 hover:shadow-2xl transition-all group max-w-md w-full"
+                                    className="glass-card rounded-3xl p-8 border-2 border-border hover:border-yellow-400 hover:shadow-2xl transition-all group w-full max-w-md"
                                 >
                                     {/* Avatar */}
                                     <div className="relative w-32 h-32 mx-auto mb-6">
