@@ -236,7 +236,7 @@ export const OrganizersSection = () => {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 justify-items-center">
                         {organizerTeam.map((member, index) => (
                             <div
                                 key={member.username}
