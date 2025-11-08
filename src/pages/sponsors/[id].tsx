@@ -62,13 +62,8 @@ export default function SponsorDetailPage() {
     const {id} = useParams<{ id: string }>();
     const navigate = useNavigate();
 
-    // Convert URL slug back to sponsor name
-    const sponsorName = id?.split('-').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
-
-    // Find the sponsor
-    const sponsor = partners.find(s => s.name === sponsorName);
+    // Find the sponsor by slug (not by converting name)
+    const sponsor = partners.find(s => s.slug === id);
 
     if (!sponsor) {
         return (
@@ -329,7 +324,7 @@ export default function SponsorDetailPage() {
                                 <h3 className="font-bold text-xl mb-4">More {sponsor.tier} Partners</h3>
                                 <div className="space-y-4">
                                     {relatedSponsors.map((related, index) => {
-                                        const relatedSlug = related.name.toLowerCase().replace(/\s+/g, '-');
+                                        const relatedSlug = related.slug; // changed this line
                                         return (
                                             <Link
                                                 key={index}

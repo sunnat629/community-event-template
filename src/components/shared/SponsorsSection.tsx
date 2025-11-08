@@ -16,7 +16,7 @@ export function SponsorsSection() {
 
     // Handle sponsor click - navigate to detail page
     const handleSponsorClick = (sponsor: Partner) => {
-        const slug = sponsor.name.toLowerCase().replace(/\s+/g, '-');
+        const slug = sponsor.slug;
         navigate(`/sponsors/${slug}`);
     };
 

@@ -64,7 +64,7 @@ export const PremiumSponsorsCarousel = ({sponsors}: PremiumSponsorsCarouselProps
                 <div className="overflow-hidden -mx-6" ref={emblaRef}>
                     <div className="flex gap-6 px-6">
                         {sponsors.map((sponsor, index) => {
-                            const sponsorSlug = sponsor.name.toLowerCase().replace(/\s+/g, '-');
+                            const sponsorSlug = sponsor.slug;
                             return (
                                 <motion.div
                                     key={sponsor.name}
