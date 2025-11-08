@@ -14,6 +14,7 @@ This project helps communities worldwide organize amazing events. Your contribut
 - [Development Workflow](#development-workflow)
 - [Pull Request Process](#pull-request-process)
 - [Style Guidelines](#style-guidelines)
+- [Content Management](#content-management)
 - [Community](#community)
 
 ---
@@ -165,6 +166,140 @@ npm install
 npm run dev
 # Open http://localhost:5173
 ```
+
+---
+
+## Content Management
+
+This project follows a **content-first architecture** where all event content is managed separately from components.
+
+### Quick Content Updates
+
+Most content updates **don't require code changes**. Update these files:
+
+```
+src/content/
+├── siteConfig.ts        # Event title, tagline, SEO
+├── venuePreview.ts      # Venue card (Pro mode home)
+├── hero.ts              # Hero section
+├── eventDetails.ts      # Date, venue, format
+├── agenda.ts            # Event schedule
+├── speakers.ts          # Speaker information
+├── organizers.ts        # Organizers & partners
+└── partners.ts          # Sponsors
+```
+
+### Content Update Examples
+
+**1. Change Event Title:**
+
+```typescript
+// src/content/siteConfig.ts
+export const siteConfig = {
+  eventTitle: "DevFest Bangladesh 2025",     // ← Update once
+  eventTagline: "Connect. Build. Inspire.",
+  // ... updates everywhere automatically
+};
+```
+
+**2. Update Venue Image:**
+
+```typescript
+// src/content/venuePreview.ts
+export const venuePreview = {
+  image: "/venue-photo.jpg",                 // ← Add image to /public folder
+  venueName: "Brain Station 23 HQ",
+  address: {
+    line1: "Plot 1/A, Road 113",
+    line2: "Gulshan-2, Dhaka-1212",
+    country: "Bangladesh"
+  },
+  quickInfo: {
+    time: "9 AM - 6 PM",
+    capacity: "500+ Capacity"
+  },
+  ctaText: "View Venue Details & Map",
+  ctaLink: "/venue"
+};
+```
+
+**3. Add New Speaker:**
+
+```typescript
+// src/content/speakers.ts
+export const featuredSpeakers = [
+  // ... existing speakers
+  {
+    name: "Jane Doe",
+    title: "Senior Flutter Engineer",
+    topic: "State Management Best Practices",
+    image: "👩‍💻"  // or "/speakers/jane-doe.jpg"
+  }
+];
+```
+
+**4. Update Sponsor:**
+
+```typescript
+// src/content/partners.ts
+export const partners = [
+  {
+    name: "Tech Corp",
+    tier: "platinum",                        // platinum, gold, silver, bronze
+    logo: "/sponsors/tech-corp.svg",
+    role: "Platinum Sponsor",
+    shortDescription: "Leading tech company",
+    description: "Full description...",
+    benefits: ["Premium booth", "Logo on badges"]
+  }
+];
+```
+
+### Content Guidelines
+
+When updating content:
+
+1. **Follow TypeScript interfaces** - The types guide you
+2. **Use relative paths** for images (`"/images/photo.jpg"`)
+3. **Test immediately** - Hot reload shows changes instantly
+4. **Keep descriptions concise** - Aim for 1-2 sentences
+5. **Use high-quality images** - Minimum 1200px width
+6. **Validate URLs** - Ensure all links work
+
+### Adding Images
+
+```bash
+# 1. Add images to public folder
+public/
+  ├── speakers/
+  │   └── jane-doe.jpg
+  ├── sponsors/
+  │   └── company-logo.png
+  └── venue-photo.jpg
+
+# 2. Reference in content files
+image: "/speakers/jane-doe.jpg"
+logo: "/sponsors/company-logo.png"
+```
+
+**Image Best Practices:**
+
+- **Format**: JPG for photos, PNG for logos, SVG for icons
+- **Size**: Optimize images (use tools like TinyPNG)
+- **Dimensions**:
+    - Speakers: 400x400px (square)
+    - Sponsors: 400x200px (2:1 ratio)
+    - Venue: 1200x800px (landscape)
+- **Naming**: Use kebab-case (`jane-doe.jpg`, not `Jane Doe.jpg`)
+
+### Content Documentation
+
+See **[src/content/README.md](src/content/README.md)** for complete content management guide including:
+
+- All configuration files
+- TypeScript interfaces
+- Update scenarios
+- Common issues
 
 ---
 
