@@ -3,6 +3,7 @@ import {SponsorsSection} from "@/components/shared/SponsorsSection";
 import {FooterSection} from "@/components/sections/FooterSection";
 import {Award, Sparkles} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import {siteConfig, heroBackgrounds} from "@/content";
 
 export default function SponsorsPage() {
     return (
@@ -10,9 +11,11 @@ export default function SponsorsPage() {
             {/* Page Header */}
             <PageHeader
                 title="Our Sponsors & Partners"
-                subtitle="Meet the amazing companies and communities supporting Flutter Guild Connect 2025"
+                subtitle={`Meet the amazing companies and communities supporting ${siteConfig.eventTitle}`}
                 icon={Award}
                 gradient="gradient-hero"
+                backgroundImage={heroBackgrounds.sponsors.image}
+                overlayOpacity={heroBackgrounds.sponsors.overlayOpacity}
             />
 
             {/* Main Content */}

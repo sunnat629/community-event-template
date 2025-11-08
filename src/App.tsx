@@ -3,6 +3,7 @@ import {Toaster as Sonner} from "@/components/ui/sonner";
 import {TooltipProvider} from "@/components/ui/tooltip";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useEffect} from "react";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -17,6 +18,7 @@ import SponsorsPage from "./pages/sponsors/index";
 import SponsorDetailPage from "./pages/sponsors/[id]";
 import VenuePage from "./pages/venue/index";
 import TeamPage from "./pages/team/index";
+import {getSiteTitle, siteConfig} from "@/content";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,29 @@ const App = () => {
     // Check mode from localStorage (defaults to 'lite')
     const eventMode = (localStorage.getItem('eventMode') as 'lite' | 'pro') || 'lite';
     const isProMode = eventMode === 'pro';
+
+    // Dynamically set the document title and meta tags from siteConfig
+    useEffect(() => {
+        document.title = getSiteTitle();
+
+        // Update meta description
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', siteConfig.siteDescription);
+        }
+
+        // Update OG title
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+            ogTitle.setAttribute('content', getSiteTitle());
+        }
+
+        // Update OG description
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (ogDescription) {
+            ogDescription.setAttribute('content', siteConfig.siteDescription);
+        }
+    }, []);
 
     return (
         <QueryClientProvider client={queryClient}>

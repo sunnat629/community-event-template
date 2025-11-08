@@ -1,5 +1,5 @@
 import {Heart, ExternalLink, Github} from "lucide-react";
-import {attribution} from "@/content";
+import {attribution, siteConfig, getCopyrightText} from "@/content";
 import {Link} from "react-router-dom";
 
 export const FooterSection = () => {
@@ -17,10 +17,10 @@ export const FooterSection = () => {
                     {/* Left: Branding */}
                     <div>
                         <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-white to-secondary/90 bg-clip-text text-transparent">
-                            Flutter Guild 2026
+                            {siteConfig.eventTitle}
                         </h3>
                         <p className="text-white/70 text-sm">
-                            Code. Connect. Create.
+                            {siteConfig.eventTagline}
                         </p>
                     </div>
 
@@ -71,7 +71,7 @@ export const FooterSection = () => {
                     {/* Left: Copyright & Organizer */}
                     <div className="text-center md:text-left">
                         <p className="text-white/60 text-xs mb-1">
-                            © {currentYear} Flutter Guild Connect. All rights reserved.
+                            {getCopyrightText(currentYear)}
                         </p>
                         <p className="text-white/50 text-xs">
                             Organized by{" "}

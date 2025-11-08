@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {Menu, X, Home, Users, Calendar, Award, MapPin, UsersRound} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
+import {siteConfig} from "@/content";
 
 /**
  * Navigation Component - Pro Mode Only
@@ -52,10 +53,10 @@ export const Navigation = () => {
                         </div>
                         <div className="hidden sm:block">
                             <div className="font-bold text-lg bg-clip-text text-transparent bg-gradient-hero">
-                                Flutter Guild
+                                {siteConfig.eventTitle}
                             </div>
                             <div className="text-xs text-muted-foreground -mt-1">
-                                Connect 2025
+                                {siteConfig.eventTagline}
                             </div>
                         </div>
                     </Link>

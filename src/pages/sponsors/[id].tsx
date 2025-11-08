@@ -6,6 +6,7 @@ import {partners} from "@/content/partners";
 import {FooterSection} from "@/components/sections/FooterSection";
 import {motion} from "motion/react";
 import {Crown, Award as AwardIcon, Medal, Users, Globe as GlobeIcon} from "lucide-react";
+import {siteConfig} from "@/content";
 
 // Tier icons
 const tierIcons = {
@@ -281,7 +282,7 @@ export default function SponsorDetailPage() {
                                 Thank You for Supporting Our Community!
                             </h3>
                             <p className="text-muted-foreground text-lg">
-                                {sponsor.name} is helping make Flutter Guild Connect 2025 possible.
+                                {sponsor.name} is helping make {siteConfig.eventTitle} possible.
                             </p>
                         </motion.div>
                     </div>

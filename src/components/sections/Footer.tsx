@@ -1,4 +1,5 @@
 import { Heart, ExternalLink } from "lucide-react";
+import {siteConfig} from "@/content";
 
 export const Footer = () => {
   return (
@@ -7,9 +8,9 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 gradient-text">Flutter Guild 2026</h3>
+              <h3 className="text-2xl font-bold mb-4 gradient-text">{siteConfig.eventTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Code. Connect. Create.
+                {siteConfig.eventTagline}
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 import {Heart, Users, Twitter, Linkedin, Github, Mail, Globe, Facebook, Instagram, Youtube} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import {mainOrganizer, coOrganizers, organizerTeam} from "@/content";
+import {mainOrganizer, coOrganizers, organizerTeam, siteConfig} from "@/content";
 import {useState} from "react";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import type {OrganizerTeamMember} from "@/content";
@@ -232,7 +232,8 @@ export const OrganizersSection = () => {
                     <div className="text-center mb-12 animate-fade-in-up">
                         <h3 className="text-3xl sm:text-4xl font-bold mb-4">Meet the Organizing Team</h3>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            The passionate individuals working behind the scenes to make Flutter Guild 2026 a success
+                            The passionate individuals working behind the scenes to make {siteConfig.eventTitle} a
+                            success
                         </p>
                     </div>
 
@@ -376,7 +377,7 @@ export const OrganizersSection = () => {
                         </div>
                         <h3 className="text-3xl font-bold mb-4">Join Our Team</h3>
                         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-                            Want to help make Flutter Guild 2026 amazing? We're looking for passionate
+                            Want to help make {siteConfig.eventTitle} amazing? We're looking for passionate
                             volunteers to join our organizing team. It's a great way to give back to the
                             community and gain valuable experience.
                         </p>

@@ -1,15 +1,16 @@
 import { Users, Heart, Zap } from "lucide-react";
 import {SectionWrapper} from "@/components/ui/SectionWrapper";
+import {siteConfig} from "@/content";
 
 export const AboutSection = () => {
   return (
       <SectionWrapper id="about" theme="blue-tint">
           <div className="text-center mb-16 animate-fade-in-up">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                  About <span className="gradient-text">Flutter Guild</span>
+                  About <span className="gradient-text">{siteConfig.eventTitle}</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Flutter Guild is more than just a conference—it's a movement. We're building Bangladesh's
+                  {siteConfig.eventTitle} is more than just a conference—it's a movement. We're building Bangladesh's
                   most vibrant Flutter community, where developers of all levels come together to learn,
                   share, and create amazing things.
               </p>

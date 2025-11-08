@@ -2,6 +2,7 @@
 // Update this file to customize the hero section content
 
 import {Calendar, MapPin, LucideIcon} from "lucide-react";
+import {siteConfig} from "./siteConfig";
 
 export interface HeroButton {
     text: string;
@@ -23,8 +24,8 @@ export interface HeroContent {
 }
 
 export const heroContent: HeroContent = {
-    title: "Flutter Guild 2026",
-    subtitle: "Code. Connect. Create.",
+    title: siteConfig.eventTitle,
+    subtitle: siteConfig.eventTagline,
     description: "Join Bangladesh's premier Flutter community event. Connect with passionate developers, learn from industry experts, and build the future together.",
     eventInfo: [
         {

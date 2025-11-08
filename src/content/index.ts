@@ -1,6 +1,14 @@
 // Content Management System - Main Export File
 // Import content from this file: import { speakers, eventDetails, etc. } from '@/content'
 
+// Site Configuration (Global)
+export {siteConfig, getSiteTitle, getCopyrightText} from './siteConfig';
+export type {SiteConfig} from './siteConfig';
+
+// Hero Backgrounds (All Pages)
+export {heroBackgrounds, getHeroBackgroundStyles, getHeroOverlayClass, getHeroBlurClass} from './heroBackgrounds';
+export type {HeroBackground, HeroBackgrounds} from './heroBackgrounds';
+
 // Event Information
 export {eventDetails} from './eventDetails';
 export type {EventDetails} from './eventDetails';
@@ -8,6 +16,10 @@ export type {EventDetails} from './eventDetails';
 // Hero Section
 export {heroContent} from './hero';
 export type {HeroContent, HeroButton, HeroEventInfo} from './hero';
+
+// Venue Preview (Pro Mode)
+export {venuePreview} from './venuePreview';
+export type {VenuePreview} from './venuePreview';
 
 // Speakers and Partners
 export {featuredSpeakers, otherSpeakers} from './speakers';

@@ -5,6 +5,7 @@ import {UsersRound, Twitter, Linkedin, Mail, Heart} from "lucide-react";
 import {motion} from "motion/react";
 import {teamMembers, tierConfig} from "@/content/team";
 import {Button} from "@/components/ui/button";
+import {siteConfig, heroBackgrounds} from "@/content";
 
 export default function TeamPage() {
     const organizers = teamMembers.filter(m => m.tier === 'organizer');
@@ -36,9 +37,11 @@ export default function TeamPage() {
             {/* Page Header */}
             <PageHeader
                 title="Meet the Team"
-                subtitle="The amazing people making Flutter Guild Connect 2025 possible"
+                subtitle={`The amazing people making ${siteConfig.eventTitle} possible`}
                 icon={UsersRound}
                 gradient="gradient-hero"
+                backgroundImage={heroBackgrounds.team.image}
+                overlayOpacity={heroBackgrounds.team.overlayOpacity}
             />
 
             {/* Main Content */}
@@ -60,7 +63,7 @@ export default function TeamPage() {
                                 </span>
                             </div>
                             <p className="text-muted-foreground max-w-2xl mx-auto">
-                                Leading the vision and execution of Flutter Guild Connect 2025
+                                Leading the vision and execution of {siteConfig.eventTitle}
                             </p>
                         </div>
 
