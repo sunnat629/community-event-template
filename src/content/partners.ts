@@ -70,192 +70,26 @@ export interface Partner {
 }
 
 export const partners: Partner[] = [
-    // Platinum Tier - Largest cards
-    {
-        name: "Brain Station 23",
-        slug: "brain-station-23",
-        role: "Venue Partner",
-        tier: "platinum",
-        shortDescription: "Leading software and IT solutions company providing world-class technology services",
-        description: "Leading software and IT solutions company providing world-class technology services. Proud venue partner for Flutter Guild Connect 2025.",
-        logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
-        icon: Building2,
-        website: "https://brainstation-23.com",
-        facebook: "https://facebook.com/brainstation23",
-        linkedin: "https://linkedin.com/company/brainstation23",
-        benefits: [
-            "Venue Hosting",
-            "Technical Infrastructure",
-            "Recruitment Opportunities",
-            "Brand Visibility"
-        ]
-    },
-    {
-        name: "DSI",
-        slug: "dsi",
-        role: "Platinum Sponsor",
-        tier: "platinum",
-        shortDescription: "Leading digital innovation company empowering businesses with cutting-edge technology",
-        description: "Dohatec New Media is a leading digital innovation company in Bangladesh, empowering businesses with cutting-edge technology solutions.",
-        logo: "https://images.unsplash.com/photo-1549924231-f129b911e442?w=400&h=400&fit=crop",
-        icon: Award,
-        website: "https://dsinnovators.com",
-        facebook: "https://facebook.com/dsinnovators",
-        linkedin: "https://linkedin.com/company/dsinnovators",
-        benefits: [
-            "Main Stage Sponsor",
-            "Workshop Support",
-            "Swag & Prizes",
-            "Premium Booth"
-        ]
-    },
-
-    // Gold Tier - Medium cards
-    {
-        name: "Cheq",
-        slug: "cheq",
-        role: "Gold Sponsor",
-        tier: "gold",
-        shortDescription: "Innovative fintech solution revolutionizing digital payments in Bangladesh",
-        description: "Innovative fintech solution revolutionizing digital payments in Bangladesh.",
-        logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=400&fit=crop",
-        icon: Star,
-        website: "https://cheq.com.bd",
-        facebook: "https://facebook.com/cheqbd",
-        linkedin: "https://linkedin.com/company/cheq",
-        benefits: [
-            "Coffee Break Sponsor",
-            "Networking Session",
-            "Standard Booth"
-        ]
-    },
-    {
-        name: "Tech Valley",
-        slug: "tech-valley",
-        role: "Gold Sponsor",
-        tier: "gold",
-        shortDescription: "Technology park fostering innovation and entrepreneurship in tech ecosystem",
-        description: "Technology park fostering innovation and entrepreneurship in the tech ecosystem.",
-        logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop",
-        icon: Star,
-        website: "https://techvalley.com.bd",
-        facebook: "https://facebook.com/techvalley",
-        linkedin: "https://linkedin.com/company/tech-valley",
-        benefits: [
-            "Lunch Sponsor",
-            "Networking Support",
-            "Brand Presence"
-        ]
-    },
-
-    // Silver Tier
-    {
-        name: "CodeCraft Studio",
-        slug: "codecraft-studio",
-        role: "Silver Sponsor",
-        tier: "silver",
-        shortDescription: "Creative software development studio specializing in mobile applications",
-        description: "Creative software development studio specializing in mobile applications.",
-        logo: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&h=400&fit=crop",
-        icon: Sparkles,
-        website: "https://codecraft.studio",
-        linkedin: "https://linkedin.com/company/codecraft-studio"
-    },
-    {
-        name: "DevHub",
-        slug: "devhub",
-        role: "Silver Sponsor",
-        tier: "silver",
-        shortDescription: "Community-driven platform connecting developers across Bangladesh",
-        description: "Community-driven platform connecting developers across Bangladesh.",
-        logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop",
-        icon: Users,
-        website: "https://devhub.com.bd",
-        facebook: "https://facebook.com/devhub"
-    },
-
-    // Bronze Tier - TEST SPONSOR
-    {
-        name: "Test Sponsor Co.",
-        slug: generateSlug("Test Sponsor Co."),
-        role: "Bronze Sponsor",
-        tier: "bronze",
-        shortDescription: "Test sponsor to verify routing works correctly for new sponsors",
-        description: "This is a test sponsor added to verify that the routing system works correctly. When you click on this sponsor, the detail page should load properly using the slug 'test-sponsor-co'.",
-        logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
-        icon: Award,
-        website: "https://test-sponsor.example.com",
-        benefits: [
-            "Test Benefit 1",
-            "Test Benefit 2",
-            "Routing Works Correctly"
-        ]
-    },
-
-    // Community Partners
-    {
-        name: "Flutter Bangladesh",
-        slug: "flutter-bangladesh",
-        role: "Community Partner",
-        tier: "community",
-        shortDescription: "Bangladesh's largest Flutter community connecting thousands of developers",
-        description: "Bangladesh's largest Flutter community, connecting thousands of developers across the country.",
-        logo: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=400&fit=crop",
-        icon: Users,
-        website: "https://flutter.com.bd",
-        facebook: "https://facebook.com/flutterbangladesh",
-        linkedin: "https://linkedin.com/company/flutter-bangladesh"
-    },
-    {
-        name: "Dhaka Dev Meetup",
-        slug: "dhaka-dev-meetup",
-        role: "Community Partner",
-        tier: "community",
-        shortDescription: "Monthly meetup bringing together developers, designers, and tech enthusiasts",
-        description: "Monthly meetup bringing together developers, designers, and tech enthusiasts.",
-        logo: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=400&fit=crop",
-        icon: Users,
-        website: "https://dhakadev.com",
-        facebook: "https://facebook.com/dhakadev"
-    },
-    {
-        name: "Tech Community BD",
-        slug: "tech-community-bd",
-        role: "Community Partner",
-        tier: "community",
-        shortDescription: "Largest tech community connecting thousands of professionals nationwide",
-        description: "Largest tech community in Bangladesh connecting thousands of professionals.",
-        logo: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=400&fit=crop",
-        icon: Users,
-        website: "https://techcommunity.bd",
-        linkedin: "https://linkedin.com/company/tech-community-bd"
-    },
-
-    // Media Partners
-    {
-        name: "Tech Tribune",
-        slug: "tech-tribune",
-        role: "Media Partner",
-        tier: "media",
-        shortDescription: "Leading technology news and media platform covering latest in tech",
-        description: "Leading technology news and media platform covering the latest in tech.",
-        logo: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=400&fit=crop",
-        icon: Globe,
-        website: "https://techtribune.com.bd",
-        facebook: "https://facebook.com/techtribune"
-    },
-    {
-        name: "Digital Times",
-        slug: "digital-times",
-        role: "Media Partner",
-        tier: "media",
-        shortDescription: "Digital media outlet focusing on technology and innovation news",
-        description: "Digital media outlet focusing on technology and innovation news.",
-        logo: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=400&fit=crop",
-        icon: Globe,
-        website: "https://digitaltimes.bd",
-        facebook: "https://facebook.com/digitaltimes"
-    }
+    // ============================================================================
+    // 🚀 ADD YOUR REAL SPONSORS HERE
+    // ============================================================================
+    // Copy the example below and fill in with real sponsor data:
+    //
+    // {
+    //   name: "Company Name",
+    //   slug: generateSlug("Company Name"),
+    //   role: "Platinum Sponsor",
+    //   tier: "platinum",
+    //   shortDescription: "Short 1-2 sentence description",
+    //   description: "Full detailed description...",
+    //   logo: "https://yourcdn.com/logo.png",
+    //   icon: Building2,
+    //   website: "https://company.com",
+    //   benefits: ["Benefit 1", "Benefit 2"]
+    // },
+    //
+    // ⚠️ IMPORTANT: Always add REAL sponsors only - no mock data!
+    // ============================================================================
 ];
 
 // Get partners by tier
