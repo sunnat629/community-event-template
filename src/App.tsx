@@ -27,6 +27,16 @@ const App = () => {
     const eventMode = (localStorage.getItem('eventMode') as 'lite' | 'pro') || 'lite';
     const isProMode = eventMode === 'pro';
 
+    // Apply Android theme class to document root
+    useEffect(() => {
+        const androidTheme = localStorage.getItem('androidTheme') === 'true';
+        if (androidTheme) {
+            document.documentElement.classList.add('android-theme');
+        } else {
+            document.documentElement.classList.remove('android-theme');
+        }
+    }, []);
+
     // Dynamically set the document title and meta tags from siteConfig
     useEffect(() => {
         document.title = getSiteTitle();

@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {Settings, Zap, Rocket, Calendar, List} from "lucide-react";
+import {Settings, Zap, Rocket, Calendar, List, Smartphone} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -14,7 +14,7 @@ import {Badge} from "@/components/ui/badge";
 /**
  * Mode Toggle Component - DEV ONLY
  * Allows switching between lite and pro modes for testing
- * Also controls event configuration (days, tracks)
+ * Also controls event configuration (days, tracks) and theme
  */
 export const ModeToggle = () => {
     const [currentMode, setCurrentMode] = useState<'lite' | 'pro'>(() => {
@@ -29,11 +29,23 @@ export const ModeToggle = () => {
         return (parseInt(localStorage.getItem('eventTracks') || '1') as 1 | 2 | 3);
     });
 
+    const [androidTheme, setAndroidTheme] = useState<boolean>(() => {
+        return localStorage.getItem('androidTheme') === 'true';
+    });
+
     useEffect(() => {
         localStorage.setItem('eventMode', currentMode);
         localStorage.setItem('eventDays', eventDays.toString());
         localStorage.setItem('eventTracks', eventTracks.toString());
-    }, [currentMode, eventDays, eventTracks]);
+        localStorage.setItem('androidTheme', androidTheme.toString());
+
+        // Apply Android theme to document
+        if (androidTheme) {
+            document.documentElement.classList.add('android-theme');
+        } else {
+            document.documentElement.classList.remove('android-theme');
+        }
+    }, [currentMode, eventDays, eventTracks, androidTheme]);
 
     const handleModeChange = (mode: 'lite' | 'pro') => {
         setCurrentMode(mode);
@@ -57,6 +69,13 @@ export const ModeToggle = () => {
         if (window.location.pathname.includes('/agenda')) {
             window.location.reload();
         }
+    };
+
+    const handleAndroidThemeToggle = () => {
+        const newValue = !androidTheme;
+        setAndroidTheme(newValue);
+        localStorage.setItem('androidTheme', newValue.toString());
+        window.location.reload(); // Reload to apply theme changes
     };
 
     return (
@@ -152,39 +171,57 @@ export const ModeToggle = () => {
                                     variant={eventDays === days ? 'default' : 'outline'}
                                     onClick={() => handleDaysChange(days as 1 | 2 | 3)}
                                     className="flex-1"
-                    >
-                        {days} Day{days > 1 ? 's' : ''}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-                {/* Parallel Tracks */}
-                <div className="p-4 space-y-2">
-                    <div className="flex items-center gap-2 mb-2">
-                        <List className="w-4 h-4 text-primary"/>
-                        <span className="text-sm font-semibold">Parallel Tracks</span>
+                                >
+                                    {days} Day{days > 1 ? 's' : ''}
+                                </Button>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex gap-2">
-                        {[1, 2, 3].map((tracks) => (
+
+                    {/* Parallel Tracks */}
+                    <div className="p-4 space-y-2">
+                        <div className="flex items-center gap-2 mb-2">
+                            <List className="w-4 h-4 text-primary"/>
+                            <span className="text-sm font-semibold">Parallel Tracks</span>
+                        </div>
+                        <div className="flex gap-2">
+                            {[1, 2, 3].map((tracks) => (
+                                <Button
+                                    key={tracks}
+                                    size="sm"
+                                    variant={eventTracks === tracks ? 'default' : 'outline'}
+                                    onClick={() => handleTracksChange(tracks as 1 | 2 | 3)}
+                                    className="flex-1"
+                                >
+                                    {tracks} Track{tracks > 1 ? 's' : ''}
+                                </Button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Android Theme */}
+                    <div className="p-4 space-y-2">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Smartphone className="w-4 h-4 text-primary"/>
+                            <span className="text-sm font-semibold">Android Theme</span>
+                        </div>
+                        <div className="flex gap-2">
                             <Button
-                                key={tracks}
                                 size="sm"
-                                variant={eventTracks === tracks ? 'default' : 'outline'}
-                                onClick={() => handleTracksChange(tracks as 1 | 2 | 3)}
+                                variant={androidTheme ? 'default' : 'outline'}
+                                onClick={handleAndroidThemeToggle}
                                 className="flex-1"
                             >
-                                {tracks} Track{tracks > 1 ? 's' : ''}
+                                {androidTheme ? 'Enabled' : 'Disabled'}
                             </Button>
-                        ))}
+                        </div>
                     </div>
-                </div>
 
-                <div className="px-4 pb-2 text-xs text-muted-foreground">
-                    💡 Changes apply to Agenda page
-                </div>
-            </>
-          )}
+                    <div className="px-4 pb-2 text-xs text-muted-foreground">
+                        💡 Changes apply to Agenda page
+                    </div>
+                </>
+            )}
 
             <DropdownMenuSeparator/>
 

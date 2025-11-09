@@ -97,6 +97,118 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(90deg, hsl(197 98% 44%) 0%, hsl(207 98% 35%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(210 25% 8%) 0%, hsl(210 25% 12%) 100%);
   }
+
+    /* Android Theme - Official Android Colors */
+    .android-theme {
+        /* PRIMARY: Android Green #3DDC84 (HSL: 149° 72% 53%) */
+        --primary: 149 72% 53%;
+        --primary-foreground: 0 0% 0%; /* Black text on Android Green */
+        --primary-light: 149 72% 65%;
+
+        /* SECONDARY: Android/Google Blue #4285F4 (HSL: 217° 89% 61%) */
+        --secondary: 217 89% 61%;
+        --secondary-foreground: 0 0% 100%; /* White text on blue */
+
+        /* ACCENT: Chartreuse/Lime #C6FF00 (HSL: 75° 100% 50%) */
+        --accent: 75 100% 50%;
+        --accent-foreground: 0 0% 0%; /* Black text on lime */
+
+        /* BACKGROUND: White #FFFFFF with subtle green tint */
+        --background: 0 0% 100%;
+        --foreground: 0 0% 0%; /* Pure black for body text per Android guidelines */
+
+        /* CARDS: White backgrounds */
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 0%; /* Black text on cards */
+
+        /* POPOVER */
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 0%;
+
+        /* MUTED: Light Green #E8F5E9 (Android Green 50) */
+        --muted: 149 20% 95%;
+        --muted-foreground: 149 30% 35%; /* Darker green for readable muted text */
+
+        /* DESTRUCTIVE: Keep standard red */
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+
+        /* BORDERS: Subtle green tint */
+        --border: 149 20% 88%;
+        --input: 149 20% 88%;
+        --ring: 149 72% 53%; /* Android Green for focus rings */
+
+        /* GRADIENTS: Official Android gradients */
+        --gradient-hero: linear-gradient(135deg, #3DDC84 0%, #34A853 100%);
+        --gradient-accent: linear-gradient(90deg, #3DDC84 0%, #4285F4 100%);
+        --gradient-subtle: linear-gradient(180deg, #FFFFFF 0%, #E8F5E9 100%);
+        --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F1F3F4 100%);
+        --gradient-glow: radial-gradient(circle at 50% 0%, rgba(61, 220, 132, 0.12) 0%, transparent 60%);
+
+        /* SHADOWS: Android Green tinted */
+        --shadow-sm: 0 2px 4px rgba(61, 220, 132, 0.08);
+        --shadow-md: 0 4px 12px rgba(61, 220, 132, 0.12);
+        --shadow-lg: 0 8px 24px rgba(61, 220, 132, 0.16);
+        --shadow-xl: 0 16px 48px rgba(61, 220, 132, 0.20);
+        --shadow-glow: 0 0 40px rgba(61, 220, 132, 0.30);
+        --shadow-glow-lg: 0 0 60px rgba(61, 220, 132, 0.40);
+    }
+
+    /* Android Theme Dark Mode - Navy backgrounds */
+    .android-theme.dark {
+        /* BACKGROUND: Android Navy #073042 (HSL: 197° 81% 14%) */
+        --background: 197 81% 14%;
+        --foreground: 0 0% 100%; /* White text on dark backgrounds */
+
+        /* CARDS: Slightly lighter navy */
+        --card: 197 70% 18%;
+        --card-foreground: 0 0% 100%; /* White text */
+
+        /* POPOVER */
+        --popover: 197 70% 18%;
+        --popover-foreground: 0 0% 100%;
+
+        /* PRIMARY: Android Green stays vibrant on dark */
+        --primary: 149 72% 53%;
+        --primary-foreground: 0 0% 0%; /* Black text on green */
+        --primary-light: 149 72% 65%;
+
+        /* SECONDARY: Android Blue */
+        --secondary: 217 89% 61%;
+        --secondary-foreground: 0 0% 100%; /* White text on blue */
+
+        /* ACCENT: Chartreuse */
+        --accent: 75 100% 50%;
+        --accent-foreground: 0 0% 0%; /* Black text on lime */
+
+        /* MUTED: Darker navy with green tint */
+        --muted: 197 60% 22%;
+        --muted-foreground: 149 20% 70%; /* Light green tint for muted text */
+
+        /* DESTRUCTIVE */
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+
+        /* BORDERS */
+        --border: 197 50% 25%;
+        --input: 197 50% 25%;
+        --ring: 149 72% 53%;
+
+        /* GRADIENTS: Dark mode versions */
+        --gradient-hero: linear-gradient(135deg, #3DDC84 0%, #2BA64C 100%);
+        --gradient-accent: linear-gradient(90deg, #3DDC84 0%, #4285F4 100%);
+        --gradient-subtle: linear-gradient(180deg, hsl(197 81% 14%) 0%, hsl(197 70% 18%) 100%);
+        --gradient-card: linear-gradient(145deg, hsl(197 70% 18%) 0%, hsl(197 60% 22%) 100%);
+        --gradient-glow: radial-gradient(circle at 50% 0%, rgba(61, 220, 132, 0.20) 0%, transparent 60%);
+
+        /* SHADOWS: More pronounced on dark */
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+        --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+        --shadow-glow: 0 0 40px rgba(61, 220, 132, 0.40);
+        --shadow-glow-lg: 0 0 60px rgba(61, 220, 132, 0.50);
+    }
 }
 
 @layer base {

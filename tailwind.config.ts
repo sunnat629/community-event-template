@@ -49,6 +49,27 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+          // Android Official Theme Colors
+          android: {
+              green: {
+                  DEFAULT: "#3DDC84", // Android Green (Primary)
+                  50: "#E8F5E9",      // Light Green
+                  500: "#34A853",     // Google Green
+                  accent: "#C6FF00",  // Android Green Accent (Lime)
+              },
+              blue: {
+                  DEFAULT: "#4285F4", // Android/Google Blue
+              },
+              navy: "#073042",      // Android Navy (for backgrounds)
+              orange: "#F86734",    // Android Orange (tertiary)
+              chartreuse: "#EFF7CF", // Android Chartreuse (tertiary)
+              lightblue: "#D7EFFE", // Android Light Blue (tertiary)
+              grey: {
+                  100: "#F1F3F4",     // Light Grey
+                  700: "#5F6368",     // Dark Grey
+                  900: "#202124",     // Black
+              },
+          },
       },
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',
@@ -56,6 +77,8 @@ export default {
         'gradient-subtle': 'var(--gradient-subtle)',
         'gradient-card': 'var(--gradient-card)',
         'gradient-glow': 'var(--gradient-glow)',
+          // Android Gradient
+          'gradient-android': 'linear-gradient(135deg, #3DDC84 0%, #34A853 100%)',
       },
       boxShadow: {
         'sm': 'var(--shadow-sm)',

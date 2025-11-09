@@ -2,7 +2,12 @@
 // Import content from this file: import { speakers, eventDetails, etc. } from '@/content'
 
 // Site Configuration (Global)
-export {siteConfig, getSiteTitle, getCopyrightText} from './siteConfig';
+export {
+    siteConfig,
+    getSiteTitle,
+    getCopyrightText,
+    getThemeConfig,
+} from './siteConfig';
 export type {SiteConfig} from './siteConfig';
 
 // Hero Backgrounds (All Pages)
@@ -14,7 +19,7 @@ export {eventDetails} from './eventDetails';
 export type {EventDetails} from './eventDetails';
 
 // Hero Section
-export {heroContent} from './hero';
+export {heroContent, getHeroContent} from './hero';
 export type {HeroContent, HeroButton, HeroEventInfo} from './hero';
 
 // Venue Preview (Pro Mode)
