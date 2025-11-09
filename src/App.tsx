@@ -2,7 +2,7 @@ import {Toaster} from "@/components/ui/toaster";
 import {Toaster as Sonner} from "@/components/ui/sonner";
 import {TooltipProvider} from "@/components/ui/tooltip";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useEffect} from "react";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
@@ -28,14 +28,12 @@ const queryClient = new QueryClient();
  * Accessible at: /demo/pro (for production testing)
  */
 const DemoProMode = () => {
-    const navigate = useNavigate();
-
     useEffect(() => {
         // Enable Pro mode
         localStorage.setItem('eventMode', 'pro');
-        // Redirect to home
-        navigate('/');
-    }, [navigate]);
+        // Reload to apply changes and redirect to home
+        window.location.href = '/';
+    }, []);
 
     return (
         <div className="min-h-screen flex items-center justify-center">
@@ -53,14 +51,12 @@ const DemoProMode = () => {
  * Accessible at: /demo/lite (for production testing)
  */
 const DemoLiteMode = () => {
-    const navigate = useNavigate();
-
     useEffect(() => {
         // Enable Lite mode
         localStorage.setItem('eventMode', 'lite');
-        // Redirect to home
-        navigate('/');
-    }, [navigate]);
+        // Reload to apply changes and redirect to home
+        window.location.href = '/';
+    }, []);
 
     return (
         <div className="min-h-screen flex items-center justify-center">
