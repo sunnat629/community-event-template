@@ -91,6 +91,35 @@ npm run build
 
 ---
 
+## 🎨 Demo & Testing
+
+### Production Demo Routes
+
+The debug toggle button is **hidden in production** to keep the live site clean. To test different modes on the
+production site:
+
+#### Test Pro Mode (Multi-page):
+
+```
+https://templates.sunnat629labs.com/demo/pro
+```
+
+Enables Pro mode and redirects to home page with navigation
+
+#### Test Lite Mode (Single-page):
+
+```
+https://templates.sunnat629labs.com/demo/lite
+```
+
+Enables Lite mode and redirects to single-page layout
+
+#### Development Mode:
+
+In development (`npm run dev`), the debug button is visible in the bottom-right corner for easy mode switching.
+
+---
+
 ## 📝 Content Management
 
 All content is managed through simple TypeScript files in `src/content/`:

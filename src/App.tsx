@@ -2,7 +2,7 @@ import {Toaster} from "@/components/ui/toaster";
 import {Toaster as Sonner} from "@/components/ui/sonner";
 import {TooltipProvider} from "@/components/ui/tooltip";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
@@ -21,6 +21,56 @@ import TeamPage from "./pages/team/index";
 import {getSiteTitle, siteConfig} from "@/content";
 
 const queryClient = new QueryClient();
+
+/**
+ * Demo Pro Mode Component
+ * Enables Pro mode and redirects to home
+ * Accessible at: /demo/pro (for production testing)
+ */
+const DemoProMode = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Enable Pro mode
+        localStorage.setItem('eventMode', 'pro');
+        // Redirect to home
+        navigate('/');
+    }, [navigate]);
+
+    return (
+        <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+                <h1 className="text-2xl font-bold mb-2">Enabling Pro Mode...</h1>
+                <p className="text-muted-foreground">Redirecting to home page</p>
+            </div>
+        </div>
+    );
+};
+
+/**
+ * Demo Lite Mode Component
+ * Enables Lite mode and redirects to home
+ * Accessible at: /demo/lite (for production testing)
+ */
+const DemoLiteMode = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Enable Lite mode
+        localStorage.setItem('eventMode', 'lite');
+        // Redirect to home
+        navigate('/');
+    }, [navigate]);
+
+    return (
+        <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+                <h1 className="text-2xl font-bold mb-2">Enabling Lite Mode...</h1>
+                <p className="text-muted-foreground">Redirecting to home page</p>
+            </div>
+        </div>
+    );
+};
 
 const App = () => {
     // Check mode from localStorage (defaults to 'lite')
@@ -66,8 +116,8 @@ const App = () => {
                 <Toaster/>
                 <Sonner/>
 
-                {/* Mode Toggle - DEV ONLY */}
-                <ModeToggle/>
+                {/* Mode Toggle - DEV ONLY (hidden in production) */}
+                {process.env.NODE_ENV !== 'production' && <ModeToggle/>}
 
                 <BrowserRouter>
                     {/* Scroll to top on route change */}
@@ -89,6 +139,10 @@ const App = () => {
                         <Route path="/sponsors/:id" element={<SponsorDetailPage/>}/>
                         <Route path="/venue" element={<VenuePage/>}/>
                         <Route path="/team" element={<TeamPage/>}/>
+
+                        {/* Demo Routes - For production testing */}
+                        <Route path="/demo/pro" element={<DemoProMode/>}/>
+                        <Route path="/demo/lite" element={<DemoLiteMode/>}/>
 
                         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                         <Route path="*" element={<NotFound/>}/>

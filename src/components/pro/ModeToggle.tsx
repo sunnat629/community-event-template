@@ -15,8 +15,14 @@ import {Badge} from "@/components/ui/badge";
  * Mode Toggle Component - DEV ONLY
  * Allows switching between lite and pro modes for testing
  * Also controls event configuration (days, tracks) and theme
+ *
+ * NOTE: This component is HIDDEN in production builds
+ * To test Pro mode in production, visit: /demo/pro
  */
 export const ModeToggle = () => {
+    // Hide in production builds
+    const isDevelopment = import.meta.env.DEV;
+
     const [currentMode, setCurrentMode] = useState<'lite' | 'pro'>(() => {
         return (localStorage.getItem('eventMode') as 'lite' | 'pro') || 'lite';
     });
@@ -77,6 +83,11 @@ export const ModeToggle = () => {
         localStorage.setItem('androidTheme', newValue.toString());
         window.location.reload(); // Reload to apply theme changes
     };
+
+    // Don't render in production
+    if (!isDevelopment) {
+        return null;
+    }
 
     return (
         <div className="fixed bottom-4 right-4 z-50">
