@@ -2,7 +2,12 @@
 // Import content from this file: import { speakers, eventDetails, etc. } from '@/content'
 
 // Site Configuration (Global)
-export {siteConfig, getSiteTitle, getCopyrightText} from './siteConfig';
+export {
+    siteConfig,
+    getSiteTitle,
+    getCopyrightText,
+    getThemeConfig,
+} from './siteConfig';
 export type {SiteConfig} from './siteConfig';
 
 // Hero Backgrounds (All Pages)
