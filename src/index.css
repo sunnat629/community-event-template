@@ -97,6 +97,87 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(90deg, hsl(197 98% 44%) 0%, hsl(207 98% 35%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(210 25% 8%) 0%, hsl(210 25% 12%) 100%);
   }
+
+    /* Android Theme - Official Android Colors */
+    .android-theme {
+        /* Android Green (#3DDC84) as primary - HSL: 149° 72% 53% */
+        --primary: 149 72% 53%;
+        --primary-foreground: 0 0% 100%;
+        --primary-light: 149 72% 65%;
+
+        /* Google/Android Blue (#4285F4) as secondary - HSL: 217° 89% 61% */
+        --secondary: 217 89% 61%;
+        --secondary-foreground: 0 0% 100%;
+
+        /* Android Accent Colors */
+        --accent: 75 100% 50%; /* Android Green Accent (#C6FF00) - HSL: 75° 100% 50% */
+        --accent-foreground: 0 0% 0%;
+
+        /* Background with Android Navy hint */
+        --background: 0 0% 98%;
+        --foreground: 197 64% 15%; /* Android Navy tint - HSL: 197° 64% 15% */
+
+        --card: 0 0% 100%;
+        --card-foreground: 197 64% 15%;
+
+        --muted: 149 15% 96%;
+        --muted-foreground: 149 10% 45%;
+
+        --border: 149 15% 88%;
+        --input: 149 15% 88%;
+        --ring: 149 72% 53%;
+
+        /* Android-themed gradients */
+        --gradient-hero: linear-gradient(135deg, #3DDC84 0%, #34A853 100%);
+        --gradient-accent: linear-gradient(90deg, #3DDC84 0%, #4285F4 100%);
+        --gradient-subtle: linear-gradient(180deg, #E8F5E9 0%, #FFFFFF 100%);
+        --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #E8F5E9 100%);
+        --gradient-glow: radial-gradient(circle at 50% 0%, rgba(61, 220, 132, 0.15) 0%, transparent 60%);
+
+        /* Android-themed shadows */
+        --shadow-sm: 0 2px 4px rgba(61, 220, 132, 0.08);
+        --shadow-md: 0 4px 12px rgba(61, 220, 132, 0.12);
+        --shadow-lg: 0 8px 24px rgba(61, 220, 132, 0.18);
+        --shadow-xl: 0 16px 48px rgba(61, 220, 132, 0.22);
+        --shadow-glow: 0 0 40px rgba(61, 220, 132, 0.35);
+        --shadow-glow-lg: 0 0 60px rgba(61, 220, 132, 0.45);
+    }
+
+    /* Android Theme Dark Mode */
+    .android-theme.dark {
+        --background: 197 64% 8%; /* Android Navy dark */
+        --foreground: 149 15% 95%;
+
+        --card: 197 50% 12%;
+        --card-foreground: 149 15% 95%;
+
+        --popover: 197 50% 12%;
+        --popover-foreground: 149 15% 95%;
+
+        --primary: 149 72% 53%; /* Android Green stays vibrant */
+        --primary-foreground: 0 0% 0%;
+        --primary-light: 149 72% 65%;
+
+        --secondary: 217 89% 61%; /* Android Blue */
+        --secondary-foreground: 0 0% 100%;
+
+        --muted: 197 40% 18%;
+        --muted-foreground: 149 15% 65%;
+
+        --accent: 75 100% 50%; /* Android Green Accent */
+        --accent-foreground: 0 0% 0%;
+
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+
+        --border: 197 40% 22%;
+        --input: 197 40% 22%;
+        --ring: 149 72% 53%;
+
+        --gradient-hero: linear-gradient(135deg, #3DDC84 0%, #2BA64C 100%);
+        --gradient-accent: linear-gradient(90deg, #3DDC84 0%, #4285F4 100%);
+        --gradient-subtle: linear-gradient(180deg, hsl(197 50% 12%) 0%, hsl(197 50% 15%) 100%);
+    }
 }
 
 @layer base {
