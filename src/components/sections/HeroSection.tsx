@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
-import {heroContent, getThemeConfig} from "@/content";
+import {getHeroContent, getThemeConfig} from "@/content";
 
 export const HeroSection = () => {
     const themeConfig = getThemeConfig();
+    const heroContent = getHeroContent();
 
     return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

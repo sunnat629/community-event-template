@@ -19,7 +19,7 @@ export {eventDetails} from './eventDetails';
 export type {EventDetails} from './eventDetails';
 
 // Hero Section
-export {heroContent} from './hero';
+export {heroContent, getHeroContent} from './hero';
 export type {HeroContent, HeroButton, HeroEventInfo} from './hero';
 
 // Venue Preview (Pro Mode)
