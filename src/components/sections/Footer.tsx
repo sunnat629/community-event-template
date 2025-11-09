@@ -17,8 +17,10 @@ export const Footer = () => {
                     {/* Brand Column */}
                     <div className="lg:col-span-2 space-y-6">
                         <div>
-                            <h3 className="text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-hero">
-                                {themeConfig.eventTitle}
+                            <h3 className="text-3xl font-bold mb-3 text-foreground">
+                                <span className="bg-clip-text text-transparent bg-gradient-hero">
+                                    {themeConfig.eventTitle}
+                                </span>
                             </h3>
                             <p className="text-xl font-medium text-primary mb-2">
                                 {themeConfig.eventTagline}
