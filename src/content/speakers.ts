@@ -47,7 +47,7 @@ export const featuredSpeakers: Speaker[] = [
         title: "Sr Software Engineer",
         company: "Sunnat629 Labs",
         topic: "Building Community Through Events",
-        image: "https://avatars.githubusercontent.com/u/5854791?v=4", // Sunnat629's GitHub avatar
+        image: 'https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/sunnat_pro.png',
         bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
         social: {
             twitter: "https://twitter.com/sunnat629",
@@ -61,7 +61,7 @@ export const featuredSpeakers: Speaker[] = [
         title: "Senior AI Engineer",
         company: "AI & Backend Specialist",
         topic: "Building AI-Driven Systems and Solutions",
-        image: "https://avatars.githubusercontent.com/u/10289348?v=4",
+        image: "https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/faysal.png",
         bio: "Faysal Ahmed is a Senior AI Engineer with experience across backend, frontend, and DevOps. He specializes in building AI-driven systems, including chatbots, RAG solutions, and scalable data platforms. He has built solutions that have been instrumental in legal AI queries and process automation within government ministries.",
         social: {
             linkedin: "https://www.linkedin.com/in/faysal515/",
@@ -74,7 +74,7 @@ export const featuredSpeakers: Speaker[] = [
         title: "Co-Founder & Senior Software Engineer",
         company: "Sunnat629 Labs",
         topic: "Quality Assurance and Community Building",
-        image: "https://avatars.githubusercontent.com/u/7632242?v=4",
+        image: "https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/zibon.png",
         bio: "Syed Monowarul Islam works as a Senior Software Engineer in QA at Tiger IT Bangladesh LTD. He's also the Co-founder of Sunnat629 Labs, where developers come together to learn new skills, share ideas, and grow in their tech journeys.",
         social: {
             linkedin: "https://www.linkedin.com/in/smizibon/",
