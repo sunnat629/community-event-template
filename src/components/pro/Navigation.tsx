@@ -48,12 +48,13 @@ export const Navigation = () => {
                         onClick={handleLinkClick}
                     >
                         <div
-                            className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+                            className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 overflow-hidden">
                             {/* TechCommunity Icon/Logo */}
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-white">
-                                <path fill="currentColor"
-                                      d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5zm10-5l-10-5 10-5 10 5-10 5z"/>
-                            </svg>
+                            <img
+                                src="/android-chrome-512x512.png"
+                                alt="TechCommunity Logo"
+                                className="w-6 h-6 object-contain"
+                            />
                         </div>
                         <div className="hidden sm:block">
                             <div className="font-bold text-lg bg-clip-text text-transparent bg-gradient-hero">
