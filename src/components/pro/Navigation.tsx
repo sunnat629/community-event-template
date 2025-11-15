@@ -48,12 +48,12 @@ export const Navigation = () => {
                         onClick={handleLinkClick}
                     >
                         <div
-                            className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 overflow-hidden">
+                            className="w-10 h-10 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
                             {/* TechCommunity Icon/Logo */}
                             <img
                                 src="/android-chrome-512x512.png"
                                 alt="TechCommunity Logo"
-                                className="w-6 h-6 object-contain"
+                                className="w-10 h-10 object-contain"
                             />
                         </div>
                         <div className="hidden sm:block">
