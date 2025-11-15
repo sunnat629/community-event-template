@@ -64,4 +64,4 @@ If you find this project helpful:
 
 ---
 
-**Made with ❤️ by [Mohi Us Sunnat](https://github.com/sunnat629) for tech communities worldwide**
+**Made with ❤️ by [Sunnat629 Labs](https://github.com/sunnat629) for tech communities worldwide**
