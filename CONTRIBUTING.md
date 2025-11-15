@@ -269,13 +269,7 @@ If you need help or have questions:
 
 ## Recognition
 
-All contributors will be recognized in our README.md file and in our contributors page.
-
-### Current Contributors
-
-<a href="https://github.com/sunnat629/community-event-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunnat629/community-event-template" />
-</a>
+Significant contributors may be recognized in our README.md file at the maintainer's discretion.
 
 ---
 

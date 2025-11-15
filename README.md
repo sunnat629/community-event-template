@@ -546,11 +546,10 @@ See the [Theme Contribution Guide](CONTRIBUTING.md#theme-contribution-checklist)
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-### Join Our Contributors
+### Join Our Community
 
-<a href="https://github.com/sunnat629/community-event-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sunnat629/community-event-template" />
-</a>
+We welcome contributions from developers of all experience levels. See our [CONTRIBUTING.md](CONTRIBUTING.md) guide to
+get started.
 
 ---
 
