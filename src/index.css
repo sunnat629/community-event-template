@@ -7,96 +7,96 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    /* Flutter Guild Brand Colors */
-    --background: 0 0% 98%;
-    --foreground: 210 20% 15%;
+    :root {
+        /* TechCommunity Brand Colors */
+        --background: 0 0% 98%;
+        --foreground: 210 20% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 20% 15%;
+        --card: 0 0% 100%;
+        --card-foreground: 210 20% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 210 20% 15%;
 
-    /* Flutter Primary Blue #02569B */
-    --primary: 207 98% 30%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 207 98% 45%;
-    
-    /* Flutter Light Blue #13B9FD */
-    --secondary: 197 98% 54%;
-    --secondary-foreground: 210 20% 15%;
+        /* TechCommunity Primary Mint Green #2eb88a (HSL: 159 59% 46%) */
+        --primary: 159 59% 46%;
+        --primary-foreground: 0 0% 100%;
+        --primary-light: 159 59% 56%;
 
-    --muted: 210 15% 96%;
-    --muted-foreground: 210 10% 50%;
+        /* TechCommunity Secondary Sky Blue #a3d3f9 (HSL: 207 90% 81%) */
+        --secondary: 207 90% 81%;
+        --secondary-foreground: 210 20% 15%;
 
-    --accent: 197 98% 54%;
-    --accent-foreground: 0 0% 100%;
+        --muted: 210 15% 96%;
+        --muted-foreground: 210 10% 50%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+        --accent: 207 90% 81%;
+        --accent-foreground: 0 0% 100%;
 
-    --border: 210 15% 90%;
-    --input: 210 15% 90%;
-    --ring: 207 98% 30%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.75rem;
+        --border: 210 15% 90%;
+        --input: 210 15% 90%;
+        --ring: 159 59% 46%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(207 98% 30%) 0%, hsl(197 98% 54%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(197 98% 54%) 0%, hsl(207 98% 45%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 15% 98%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 15% 99%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(197 98% 54% / 0.15) 0%, transparent 60%);
+        --radius: 0.75rem;
 
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(2, 86, 155, 0.05);
-    --shadow-md: 0 4px 12px rgba(2, 86, 155, 0.1);
-    --shadow-lg: 0 8px 24px rgba(2, 86, 155, 0.15);
-    --shadow-xl: 0 16px 48px rgba(2, 86, 155, 0.2);
-    --shadow-glow: 0 0 40px rgba(19, 185, 253, 0.3);
-    --shadow-glow-lg: 0 0 60px rgba(19, 185, 253, 0.4);
+        /* Gradients */
+        --gradient-hero: linear-gradient(135deg, hsl(159 59% 46%) 0%, hsl(207 90% 81%) 100%);
+        --gradient-accent: linear-gradient(90deg, hsl(207 90% 81%) 0%, hsl(159 59% 56%) 100%);
+        --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 15% 98%) 100%);
+        --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 15% 99%) 100%);
+        --gradient-glow: radial-gradient(circle at 50% 0%, hsl(159 59% 46% / 0.15) 0%, transparent 60%);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+        /* Shadows */
+        --shadow-sm: 0 2px 4px rgba(46, 184, 138, 0.05);
+        --shadow-md: 0 4px 12px rgba(46, 184, 138, 0.1);
+        --shadow-lg: 0 8px 24px rgba(46, 184, 138, 0.15);
+        --shadow-xl: 0 16px 48px rgba(46, 184, 138, 0.2);
+        --shadow-glow: 0 0 40px rgba(46, 184, 138, 0.3);
+        --shadow-glow-lg: 0 0 60px rgba(46, 184, 138, 0.4);
 
-  .dark {
-    --background: 210 25% 8%;
-    --foreground: 210 15% 95%;
+        /* Animations */
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-    --card: 210 25% 10%;
-    --card-foreground: 210 15% 95%;
+    .dark {
+        --background: 210 25% 8%;
+        --foreground: 210 15% 95%;
 
-    --popover: 210 25% 10%;
-    --popover-foreground: 210 15% 95%;
+        --card: 210 25% 10%;
+        --card-foreground: 210 15% 95%;
 
-    --primary: 197 98% 54%;
-    --primary-foreground: 210 25% 8%;
-    --primary-light: 197 98% 64%;
+        --popover: 210 25% 10%;
+        --popover-foreground: 210 15% 95%;
 
-    --secondary: 207 98% 45%;
-    --secondary-foreground: 0 0% 100%;
+        --primary: 159 59% 46%;
+        --primary-foreground: 210 25% 8%;
+        --primary-light: 159 59% 56%;
 
-    --muted: 210 20% 15%;
-    --muted-foreground: 210 15% 65%;
+        --secondary: 207 90% 81%;
+        --secondary-foreground: 0 0% 100%;
 
-    --accent: 197 98% 54%;
-    --accent-foreground: 210 25% 8%;
+        --muted: 210 20% 15%;
+        --muted-foreground: 210 15% 65%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+        --accent: 159 59% 46%;
+        --accent-foreground: 210 25% 8%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
-    --ring: 197 98% 54%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(207 98% 20%) 0%, hsl(197 98% 44%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(197 98% 44%) 0%, hsl(207 98% 35%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(210 25% 8%) 0%, hsl(210 25% 12%) 100%);
-  }
+        --border: 210 20% 20%;
+        --input: 210 20% 20%;
+        --ring: 159 59% 46%;
+
+        --gradient-hero: linear-gradient(135deg, hsl(159 59% 30%) 0%, hsl(207 90% 51%) 100%);
+        --gradient-accent: linear-gradient(90deg, hsl(159 59% 46%) 0%, hsl(207 90% 61%) 100%);
+        --gradient-subtle: linear-gradient(180deg, hsl(210 25% 8%) 0%, hsl(210 25% 12%) 100%);
+    }
 
     /* Android Theme - Official Android Colors */
     .android-theme {
@@ -212,97 +212,97 @@ All colors MUST be HSL.
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "kern" 1, "liga" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "kern" 1, "liga" 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-  html {
-    scroll-behavior: smooth;
-  }
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 @layer components {
-  .section-container {
-    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
-  }
-
-  .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02];
-  }
-
-  .card-glow {
-    @apply relative overflow-hidden;
-  }
-
-  .card-glow::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: var(--gradient-glow);
-  }
-
-  .card-glow:hover::before {
-    @apply opacity-100;
-  }
-
-  .btn-glow {
-    box-shadow: var(--shadow-glow);
-    transition: var(--transition-spring);
-  }
-
-  .btn-glow:hover {
-    box-shadow: var(--shadow-glow-lg);
-    transform: translateY(-2px) scale(1.05);
-  }
-
-  .glass-card {
-    @apply backdrop-blur-lg bg-card/80 border border-border/50;
-  }
-
-  .shimmer {
-    @apply relative overflow-hidden;
-  }
-
-  .shimmer::after {
-    content: '';
-    @apply absolute inset-0 -translate-x-full;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    animation: shimmer 2s infinite;
-  }
-
-  @keyframes shimmer {
-    100% {
-      transform: translateX(100%);
+    .section-container {
+        @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
     }
-  }
 
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
+    .section-padding {
+        @apply py-16 sm:py-20 lg:py-24;
+    }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(19, 185, 253, 0.3);
+    .gradient-text {
+        @apply bg-clip-text text-transparent;
+        background-image: var(--gradient-accent);
     }
-    50% {
-      box-shadow: 0 0 40px rgba(19, 185, 253, 0.6);
+
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02];
     }
-  }
+
+    .card-glow {
+        @apply relative overflow-hidden;
+    }
+
+    .card-glow::before {
+        content: '';
+        @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+        background: var(--gradient-glow);
+    }
+
+    .card-glow:hover::before {
+        @apply opacity-100;
+    }
+
+    .btn-glow {
+        box-shadow: var(--shadow-glow);
+        transition: var(--transition-spring);
+    }
+
+    .btn-glow:hover {
+        box-shadow: var(--shadow-glow-lg);
+        transform: translateY(-2px) scale(1.05);
+    }
+
+    .glass-card {
+        @apply backdrop-blur-lg bg-card/80 border border-border/50;
+    }
+
+    .shimmer {
+        @apply relative overflow-hidden;
+    }
+
+    .shimmer::after {
+        content: '';
+        @apply absolute inset-0 -translate-x-full;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(46, 184, 138, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 40px rgba(46, 184, 138, 0.6);
+        }
+    }
 
     /* Enhanced animations for agenda section */
     .animate-fade-in {
@@ -360,7 +360,7 @@ All colors MUST be HSL.
 
     .hover-lift:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 24px -8px rgba(2, 86, 155, 0.15);
+        box-shadow: 0 12px 24px -8px rgba(46, 184, 138, 0.15);
     }
 
     /* Glowing border animation */
@@ -373,7 +373,7 @@ All colors MUST be HSL.
         position: absolute;
         inset: -2px;
         border-radius: inherit;
-        background: linear-gradient(135deg, hsl(207 98% 30%), hsl(197 98% 54%));
+        background: linear-gradient(135deg, hsl(159 59% 46%), hsl(207 90% 81%));
         opacity: 0;
         transition: opacity 0.3s ease;
         z-index: -1;

@@ -45,10 +45,10 @@ export const featuredSpeakers: Speaker[] = [
     {
         name: "Mohi Us Sunnat",
         title: "Sr Software Engineer",
-        company: "Sunnat629 Labs",
+        company: "TechCommunity",
         topic: "Building Community Through Events",
         image: 'https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/sunnat_pro.png',
-        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
+        bio: "Passionate technology advocate and community organizer with experience building tech events and open-source projects.",
         social: {
             twitter: "https://twitter.com/sunnat629",
             linkedin: "https://linkedin.com/in/sunnat629",
@@ -72,10 +72,10 @@ export const featuredSpeakers: Speaker[] = [
     {
         name: "Syed Monowarul Islam",
         title: "Co-Founder & Senior Software Engineer",
-        company: "Sunnat629 Labs",
+        company: "TechCommunity",
         topic: "Quality Assurance and Community Building",
         image: "https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/zibon.png",
-        bio: "Syed Monowarul Islam works as a Senior Software Engineer in QA at Tiger IT Bangladesh LTD. He's also the Co-founder of Sunnat629 Labs, where developers come together to learn new skills, share ideas, and grow in their tech journeys.",
+        bio: "Syed Monowarul Islam works as a Senior Software Engineer in QA at Tiger IT Bangladesh LTD. He's also the Co-founder of TechCommunity, where developers come together to learn new skills, share ideas, and grow in their tech journeys.",
         social: {
             linkedin: "https://www.linkedin.com/in/smizibon/",
             facebook: "https://www.facebook.com/zibon.dhaka",

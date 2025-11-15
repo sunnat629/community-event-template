@@ -73,19 +73,19 @@ export const themeConfigs = {
         twitterHandle: "@CloudSummit",
     },
     generic: {
-        eventTitle: "Tech Community Event 2026",
+        eventTitle: "TechCommunity Event 2026",
         eventTagline: "Code. Connect. Create.",
-        siteDescription: "Join Bangladesh's premier tech community event. Connect with developers, learn from experts, and build the future together.",
-        siteKeywords: "Technology, Software Development, Tech Bangladesh, Developer Conference, Tech Community",
+        siteDescription: "Join the premier tech community event. Connect with developers, learn from experts, and build the future together.",
+        siteKeywords: "Technology, Software Development, TechCommunity, Developer Conference, Tech Community",
         twitterHandle: "@TechEvent",
     }
 };
 
-// Get current theme from localStorage or default to flutter
+// Get current theme from localStorage or default to generic
 const getCurrentTheme = (): keyof typeof themeConfigs => {
-    if (typeof window === 'undefined') return 'flutter'; // SSR safety
+    if (typeof window === 'undefined') return 'generic'; // SSR safety
     const androidTheme = localStorage.getItem('androidTheme') === 'true';
-    return androidTheme ? 'android' : 'flutter';
+    return androidTheme ? 'android' : 'generic';
 };
 
 // Get configuration based on current theme
@@ -96,24 +96,22 @@ export const getThemeConfig = () => {
 
 export const siteConfig: SiteConfig = {
     // Event branding - dynamically loaded based on theme
-    ...getThemeConfig(),
+    ...themeConfigs.generic,
     eventYear: "2026",
-    eventType: getCurrentTheme(),
+    eventType: 'generic',
 
     // Social media
     ogImageUrl: "/android-chrome-512x512.png",
 
     // Organization
-    organizerName: "Sunnat629 Labs"
+    organizerName: "TechCommunity"
 };
 
 // Helper functions for common combinations
 export const getSiteTitle = () => {
-    const config = getThemeConfig();
-    return `${config.eventTitle} — ${config.eventTagline}`;
+    return `${siteConfig.eventTitle} — ${siteConfig.eventTagline}`;
 };
 
 export const getCopyrightText = (year: number = new Date().getFullYear()) => {
-    const config = getThemeConfig();
-    return `© ${year} ${config.eventTitle}. All rights reserved.`;
+    return `© ${year} ${siteConfig.eventTitle}. All rights reserved.`;
 };

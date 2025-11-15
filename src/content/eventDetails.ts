@@ -50,15 +50,15 @@ export interface EventDetails {
 
 export const eventDetails: EventDetails = {
     date: {
-        display: "Coming Soon 2025",
+        display: "Coming Soon 2026",
         announcement: "To be announced soon",
         details: "Stay tuned for the official date announcement"
     },
     venue: {
-        city: "Dhaka, Bangladesh",
+        city: "Tech City, Innovation District",
         location: "Location to be announced",
         details: "",
-        address: "Dhaka, Bangladesh",
+        address: "Tech City, Innovation District",
         mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.0643419245!2d90.25487654999999!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1620000000000!5m2!1sen!2sbd",
         coordinates: {
             lat: 23.8103,
@@ -69,7 +69,7 @@ export const eventDetails: EventDetails = {
         price: "TBA",
         venueDetails: {
             name: "To Be Announced",
-            fullAddress: "Dhaka, Bangladesh - Exact location coming soon",
+            fullAddress: "Tech City, Innovation District - Exact location coming soon",
             landmark: "Location details will be announced soon",
             directions: [
                 "Venue location will be shared once confirmed",
@@ -93,7 +93,7 @@ export const eventDetails: EventDetails = {
                 "Comfortable seating"
             ],
             contact: {
-                email: "info@event.com"
+                email: "info@techcommunity-event.com"
             }
         }
     },
@@ -102,7 +102,7 @@ export const eventDetails: EventDetails = {
         description: "Keynotes, technical sessions, workshops, and networking"
     },
     audience: {
-        primary: "Flutter developers, mobile engineers, tech enthusiasts",
+        primary: "Developers, engineers, and tech enthusiasts",
         description: "All skill levels welcome—from beginners to experts"
     },
     included: [

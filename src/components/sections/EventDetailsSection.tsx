@@ -31,7 +31,7 @@ export const EventDetailsSection = () => {
                     Event Details
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                    Mark your calendars for an unforgettable day of Flutter excellence
+                    Mark your calendars for an unforgettable day of technology excellence
                 </p>
             </div>
 
@@ -126,7 +126,7 @@ export const EventDetailsSection = () => {
                     <div
                         className="absolute top-4 right-4 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/30 flex items-center gap-1.5">
                         <MapPin className="w-3 h-3"/>
-                        Dhaka
+                        Tech City
                     </div>
                 </div>
 

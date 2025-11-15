@@ -11,7 +11,7 @@ export const minimalTheme: Theme = {
         id: 'minimal',
         name: 'Minimal',
         description: 'Clean and elegant design with subtle colors and lots of whitespace',
-        author: 'Flutter Guild Team',
+        author: 'TechCommunity Team',
         version: '1.0.0',
         tags: ['minimal', 'clean', 'elegant', 'professional', 'monochrome'],
     },

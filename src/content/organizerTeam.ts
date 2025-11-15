@@ -24,9 +24,9 @@ export const organizerTeam: OrganizerTeamMember[] = [
         username: "@sunnat629",
         teamRole: "Lead Organizer & Founder",
         designation: "Sr Software Engineer",
-        company: "Sunnat629 Labs",
+        company: "TechCommunity",
         image: "https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/mohi.png",
-        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects.",
+        bio: "Passionate technology advocate and community organizer with experience building tech events and open-source projects.",
         social: {
             twitter: "https://twitter.com/sunnat629",
             linkedin: "https://linkedin.com/in/sunnat629",

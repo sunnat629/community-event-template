@@ -33,7 +33,7 @@ export const SponsorsPreviewSection = () => {
                         Partners & Sponsors
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Empowering the Flutter community in Bangladesh together
+                        Empowering the technology community together
                     </p>
                 </div>
 

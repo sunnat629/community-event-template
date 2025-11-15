@@ -1,71 +1,71 @@
 import {Theme} from './types';
 
 /**
- * Default Theme - Flutter Guild Connect
+ * Default Theme - TechCommunity Event
  *
  * This theme represents the current vibrant, modern design
- * with Flutter brand colors and energetic gradients.
+ * with mint green and sky blue brand colors.
  */
 export const defaultTheme: Theme = {
     metadata: {
         id: 'default',
-        name: 'Flutter Guild (Default)',
-        description: 'Vibrant and energetic theme with Flutter brand colors',
-        author: 'Flutter Guild Team',
+        name: 'TechCommunity (Default)',
+        description: 'Vibrant and energetic theme with mint green and sky blue colors',
+        author: 'TechCommunity Team',
         version: '1.0.0',
-        tags: ['vibrant', 'modern', 'flutter', 'blue'],
+        tags: ['vibrant', 'modern', 'tech', 'green'],
     },
 
     colors: {
-        // Primary - Flutter Blue #02569B
+        // Primary - Mint Green #2eb88a
         primary: {
-            DEFAULT: 'hsl(207 98% 30%)',
+            DEFAULT: 'hsl(159 59% 46%)',
             foreground: 'hsl(0 0% 100%)',
-            50: 'hsl(207 98% 95%)',
-            100: 'hsl(207 98% 90%)',
-            200: 'hsl(207 98% 80%)',
-            300: 'hsl(207 98% 70%)',
-            400: 'hsl(207 98% 60%)',
-            500: 'hsl(207 98% 50%)',
-            600: 'hsl(207 98% 40%)',
-            700: 'hsl(207 98% 30%)',
-            800: 'hsl(207 98% 25%)',
-            900: 'hsl(207 98% 20%)',
-            950: 'hsl(207 98% 15%)',
+            50: 'hsl(159 59% 95%)',
+            100: 'hsl(159 59% 90%)',
+            200: 'hsl(159 59% 80%)',
+            300: 'hsl(159 59% 70%)',
+            400: 'hsl(159 59% 60%)',
+            500: 'hsl(159 59% 50%)',
+            600: 'hsl(159 59% 40%)',
+            700: 'hsl(159 59% 30%)',
+            800: 'hsl(159 59% 25%)',
+            900: 'hsl(159 59% 20%)',
+            950: 'hsl(159 59% 15%)',
         },
 
-        // Secondary - Flutter Light Blue #13B9FD
+        // Secondary - Sky Blue #a3d3f9
         secondary: {
-            DEFAULT: 'hsl(197 98% 54%)',
+            DEFAULT: 'hsl(207 90% 81%)',
             foreground: 'hsl(210 20% 15%)',
-            50: 'hsl(197 98% 95%)',
-            100: 'hsl(197 98% 90%)',
-            200: 'hsl(197 98% 80%)',
-            300: 'hsl(197 98% 70%)',
-            400: 'hsl(197 98% 60%)',
-            500: 'hsl(197 98% 54%)',
-            600: 'hsl(197 98% 45%)',
-            700: 'hsl(197 98% 40%)',
-            800: 'hsl(197 98% 35%)',
-            900: 'hsl(197 98% 30%)',
-            950: 'hsl(197 98% 25%)',
+            50: 'hsl(207 90% 95%)',
+            100: 'hsl(207 90% 90%)',
+            200: 'hsl(207 90% 85%)',
+            300: 'hsl(207 90% 81%)',
+            400: 'hsl(207 90% 70%)',
+            500: 'hsl(207 90% 60%)',
+            600: 'hsl(207 90% 50%)',
+            700: 'hsl(207 90% 40%)',
+            800: 'hsl(207 90% 35%)',
+            900: 'hsl(207 90% 30%)',
+            950: 'hsl(207 90% 25%)',
         },
 
         // Accent - Same as secondary for this theme
         accent: {
-            DEFAULT: 'hsl(197 98% 54%)',
+            DEFAULT: 'hsl(207 90% 81%)',
             foreground: 'hsl(0 0% 100%)',
-            50: 'hsl(197 98% 95%)',
-            100: 'hsl(197 98% 90%)',
-            200: 'hsl(197 98% 80%)',
-            300: 'hsl(197 98% 70%)',
-            400: 'hsl(197 98% 60%)',
-            500: 'hsl(197 98% 54%)',
-            600: 'hsl(197 98% 45%)',
-            700: 'hsl(197 98% 40%)',
-            800: 'hsl(197 98% 35%)',
-            900: 'hsl(197 98% 30%)',
-            950: 'hsl(197 98% 25%)',
+            50: 'hsl(207 90% 95%)',
+            100: 'hsl(207 90% 90%)',
+            200: 'hsl(207 90% 85%)',
+            300: 'hsl(207 90% 81%)',
+            400: 'hsl(207 90% 70%)',
+            500: 'hsl(207 90% 60%)',
+            600: 'hsl(207 90% 50%)',
+            700: 'hsl(207 90% 40%)',
+            800: 'hsl(207 90% 35%)',
+            900: 'hsl(207 90% 30%)',
+            950: 'hsl(207 90% 25%)',
         },
 
         // Base colors
@@ -112,12 +112,12 @@ export const defaultTheme: Theme = {
         // Borders
         border: 'hsl(210 15% 90%)',
         input: 'hsl(210 15% 90%)',
-        ring: 'hsl(207 98% 30%)',
+        ring: 'hsl(159 59% 46%)',
 
         // Chart colors
         chart: {
-            1: 'hsl(207 98% 30%)',
-            2: 'hsl(197 98% 54%)',
+            1: 'hsl(159 59% 46%)',
+            2: 'hsl(207 90% 81%)',
             3: 'hsl(142 76% 36%)',
             4: 'hsl(38 92% 50%)',
             5: 'hsl(271 76% 53%)',
@@ -195,13 +195,13 @@ export const defaultTheme: Theme = {
     },
 
     shadows: {
-        sm: '0 2px 4px rgba(2, 86, 155, 0.05)',
-        DEFAULT: '0 4px 8px rgba(2, 86, 155, 0.08)',
-        md: '0 4px 12px rgba(2, 86, 155, 0.1)',
-        lg: '0 8px 24px rgba(2, 86, 155, 0.15)',
-        xl: '0 16px 48px rgba(2, 86, 155, 0.2)',
-        '2xl': '0 24px 64px rgba(2, 86, 155, 0.25)',
-        inner: 'inset 0 2px 4px rgba(2, 86, 155, 0.06)',
+        sm: '0 2px 4px rgba(46, 184, 138, 0.05)',
+        DEFAULT: '0 4px 8px rgba(46, 184, 138, 0.08)',
+        md: '0 4px 12px rgba(46, 184, 138, 0.1)',
+        lg: '0 8px 24px rgba(46, 184, 138, 0.15)',
+        xl: '0 16px 48px rgba(46, 184, 138, 0.2)',
+        '2xl': '0 24px 64px rgba(46, 184, 138, 0.25)',
+        inner: 'inset 0 2px 4px rgba(46, 184, 138, 0.06)',
         none: 'none',
     },
 
@@ -237,8 +237,8 @@ export const defaultTheme: Theme = {
                 '50%': {transform: 'translateY(-10px)'},
             },
             'pulse-glow': {
-                '0%, 100%': {boxShadow: '0 0 20px rgba(19, 185, 253, 0.3)'},
-                '50%': {boxShadow: '0 0 40px rgba(19, 185, 253, 0.6)'},
+                '0%, 100%': {boxShadow: '0 0 20px rgba(46, 184, 138, 0.3)'},
+                '50%': {boxShadow: '0 0 40px rgba(46, 184, 138, 0.6)'},
             },
         },
     },
@@ -362,10 +362,10 @@ export const defaultTheme: Theme = {
     },
 
     gradients: {
-        hero: 'linear-gradient(135deg, hsl(207 98% 30%) 0%, hsl(197 98% 54%) 100%)',
-        primary: 'linear-gradient(135deg, hsl(207 98% 30%) 0%, hsl(207 98% 45%) 100%)',
-        secondary: 'linear-gradient(90deg, hsl(197 98% 54%) 0%, hsl(207 98% 45%) 100%)',
-        accent: 'linear-gradient(90deg, hsl(197 98% 54%) 0%, hsl(207 98% 45%) 100%)',
+        hero: 'linear-gradient(135deg, hsl(159 59% 46%) 0%, hsl(207 90% 81%) 100%)',
+        primary: 'linear-gradient(135deg, hsl(159 59% 46%) 0%, hsl(159 59% 36%) 100%)',
+        secondary: 'linear-gradient(90deg, hsl(207 90% 81%) 0%, hsl(207 90% 60%) 100%)',
+        accent: 'linear-gradient(90deg, hsl(207 90% 81%) 0%, hsl(159 59% 46%) 100%)',
         subtle: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 15% 98%) 100%)',
         dark: 'linear-gradient(135deg, hsl(210 25% 8%) 0%, hsl(210 25% 15%) 100%)',
     },

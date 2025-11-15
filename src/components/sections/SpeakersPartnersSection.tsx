@@ -14,8 +14,8 @@ import {
     Globe,
     Facebook
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {useState} from "react";
 import {featuredSpeakers, otherSpeakers, Speaker, Partner} from "@/content";
@@ -137,7 +137,7 @@ export const SpeakersPartnersSection = () => {
                             Featured Speakers
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                            Learn from industry experts and thought leaders shaping the Flutter ecosystem
+                            Learn from industry experts and thought leaders shaping the technology ecosystem
                         </p>
                     </div>
 
@@ -344,7 +344,7 @@ export const SpeakersPartnersSection = () => {
                             Partners & Sponsors
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                            Empowering the Flutter community in Bangladesh together
+                            Empowering the technology community together
                         </p>
                     </div>
 
@@ -486,7 +486,7 @@ export const SpeakersPartnersSection = () => {
                         <div className="max-w-3xl mx-auto">
                             <h3 className="text-3xl font-bold mb-4">Become a Sponsor</h3>
                             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                                Join us in building Bangladesh's Flutter community. Multiple sponsorship tiers
+                                Join us in building a thriving technology community. Multiple sponsorship tiers
                                 available with exclusive benefits and brand visibility.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -658,7 +658,7 @@ export const SpeakersPartnersSection = () => {
                                         </li>
                                         <li className="flex items-start gap-2">
                                             <span className="text-primary mt-1">✓</span>
-                                            <span>Direct engagement with Flutter community</span>
+                                            <span>Direct engagement with technology community</span>
                                         </li>
                                         <li className="flex items-start gap-2">
                                             <span className="text-primary mt-1">✓</span>

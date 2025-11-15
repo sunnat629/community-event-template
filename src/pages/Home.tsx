@@ -70,7 +70,7 @@ const Home = () => {
                             <span className="text-sm font-semibold text-primary">Event Highlights</span>
                         </div>
                         <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-                            Bangladesh's Biggest Flutter Event
+                            The Premier Technology Event
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             Three days of learning, networking, and building the future

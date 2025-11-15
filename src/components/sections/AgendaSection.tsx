@@ -63,7 +63,7 @@ const buildSpeakerDatabase = (): Record<string, SpeakerDetails> => {
             name: "Expert Panel",
             title: "Industry Leaders & Community Experts",
             topic: "Panel Discussion on Career Growth",
-            bio: "Join our panel of experienced Flutter developers and industry leaders as they share insights on building a successful career in Flutter development. The panel includes professionals from leading tech companies and active community contributors.",
+            bio: "Join our panel of experienced developers and industry leaders as they share insights on building a successful career in technology. The panel includes professionals from leading tech companies and active community contributors.",
             image: "👥",
             social: {}
         }
@@ -75,7 +75,7 @@ const buildSpeakerDatabase = (): Record<string, SpeakerDetails> => {
             name: speaker.name,
             title: speaker.title,
             topic: speaker.topic,
-            bio: speaker.bio || `${speaker.name} is an experienced Flutter developer and thought leader in the community. As a ${speaker.title}, they bring valuable insights and practical knowledge to help developers grow their skills.`,
+            bio: speaker.bio || `${speaker.name} is an experienced developer and thought leader in the community. As a ${speaker.title}, they bring valuable insights and practical knowledge to help developers grow their skills.`,
             image: speaker.image,
             social: speaker.social || {}
         };
@@ -87,7 +87,7 @@ const buildSpeakerDatabase = (): Record<string, SpeakerDetails> => {
             name: speaker.name,
             title: speaker.title,
             topic: speaker.topic,
-            bio: speaker.bio || `${speaker.name} is passionate about Flutter development and specializes in ${speaker.topic}. They actively contribute to the Flutter community and share their expertise through talks and workshops.`,
+            bio: speaker.bio || `${speaker.name} is passionate about technology and specializes in ${speaker.topic}. They actively contribute to the tech community and share their expertise through talks and workshops.`,
             image: speaker.image,
             social: speaker.social || {}
         };
@@ -104,13 +104,13 @@ const getTypeStyles = (type: string) => {
             return {
                 badge: "bg-gradient-to-br from-primary to-primary-light text-white shadow-xl",
                 card: "border-primary/30 hover:border-primary/50 bg-primary/5",
-                glow: "group-hover:shadow-[0_0_30px_rgba(2,86,155,0.3)]"
+                glow: "group-hover:shadow-[0_0_30px_rgba(46,184,138,0.3)]"
             };
         case "session":
             return {
                 badge: "bg-gradient-to-br from-secondary to-blue-400 text-white shadow-xl",
                 card: "border-secondary/30 hover:border-secondary/50 bg-secondary/5",
-                glow: "group-hover:shadow-[0_0_30px_rgba(19,185,253,0.2)]"
+                glow: "group-hover:shadow-[0_0_30px_rgba(163,211,249,0.2)]"
             };
         case "workshop":
             return {
@@ -160,19 +160,19 @@ export const AgendaSection = () => {
     const downloadAgenda = () => {
         const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Flutter Guild Connect//Event Agenda//EN
+PRODID:-//TechCommunity Event//Event Agenda//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Flutter Guild Connect Event
-X-WR-TIMEZONE:Asia/Dhaka
-X-WR-CALDESC:Flutter Guild Connect Event Schedule
+X-WR-CALNAME:TechCommunity Event
+X-WR-TIMEZONE:UTC
+X-WR-CALDESC:TechCommunity Event Schedule
 ${agendaItems.map(item => {
-            const eventDate = "20250315";
+            const eventDate = "20260315";
             const startTime = item.time.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
             const endTime = item.endTime.replace(/[: ]/g, '').replace('AM', '').replace('PM', '');
 
             return `BEGIN:VEVENT
-UID:${item.title.replace(/\s+/g, '-').toLowerCase()}@flutterguildconnect.com
+UID:${item.title.replace(/\s+/g, '-').toLowerCase()}@techcommunity-event.com
 DTSTAMP:${eventDate}T${startTime.padStart(6, '0')}00Z
 DTSTART:${eventDate}T${startTime.padStart(6, '0')}00Z
 DTEND:${eventDate}T${endTime.padStart(6, '0')}00Z
@@ -189,7 +189,7 @@ END:VCALENDAR`;
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'flutter-guild-connect-agenda.ics';
+        link.download = 'techcommunity-event-agenda.ics';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -232,7 +232,7 @@ END:VCALENDAR`;
                         Event Agenda
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
-                        A carefully curated day of learning, building, and connecting with the Flutter community
+                        A carefully curated day of learning, building, and connecting with the technology community
                     </p>
 
                     {/* Download Agenda Button with enhanced animation */}
@@ -257,9 +257,9 @@ END:VCALENDAR`;
                 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300
                 border-2 backdrop-blur-sm hover:-translate-y-1
                 ${selectedTrack === track.id
-                  ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
-                  : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
-              }
+                                ? 'bg-gradient-hero text-white border-primary shadow-glow scale-105'
+                                : 'bg-card/60 text-muted-foreground border-border hover:border-primary/30 hover:bg-card hover:text-foreground hover:scale-105'
+                            }
               `}
                             style={{animationDelay: `${idx * 50}ms`}}
                         >
@@ -273,7 +273,7 @@ END:VCALENDAR`;
                     <div className="relative">
                         {/* Animated vertical timeline line */}
                         <div
-                            className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-[0_0_10px_rgba(2,86,155,0.3)] overflow-hidden">
+                            className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-primary rounded-full shadow-[0_0_10px_rgba(46,184,138,0.3)] overflow-hidden">
                             <div
                                 className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent animate-pulse"
                                 style={{animationDuration: "3s"}}/>
@@ -572,7 +572,7 @@ END:VCALENDAR`;
                                             Workshop Tips
                                         </h4>
                                         <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                                            <li>Bring your laptop with Flutter SDK installed</li>
+                                            <li>Bring your laptop with development environment set up</li>
                                             <li>Ensure you have a stable internet connection</li>
                                             <li>Download required packages beforehand</li>
                                             <li>Arrive 10 minutes early for setup</li>

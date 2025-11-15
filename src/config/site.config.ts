@@ -114,53 +114,53 @@ export const siteConfig: SiteConfig = {
     },
 
     // Site metadata
-    name: 'Flutter Guild Connect 2025',
-    description: 'The premier Flutter community event in Bangladesh',
-    url: 'https://flutter-guild.dev', // Update with your actual domain
+    name: 'TechCommunity Event 2026',
+    description: 'The premier technology community event in your region',
+    url: 'https://techcommunity-event.com', // Update with your actual domain
 
     // SEO Configuration
     seo: {
-        title: 'Flutter Guild Connect 2025 | Premier Flutter Event in Bangladesh',
-        description: 'Join Flutter developers, Google experts, and industry leaders for a day of learning, networking, and community building at Flutter Guild Connect 2025.',
+        title: 'TechCommunity Event 2026 | Premier Tech Event',
+        description: 'Join developers, experts, and industry leaders for a day of learning, networking, and community building at TechCommunity Event 2026.',
         keywords: [
-            'Flutter',
-            'FlutterGuild',
-            'Flutter Bangladesh',
-            'Flutter Conference',
+            'Tech',
+            'Technology',
+            'TechCommunity',
+            'Tech Conference',
+            'Software Development',
+            'Innovation',
+            'Web Development',
             'Mobile Development',
-            'Cross-platform',
-            'Dart',
-            'Google Flutter',
             'Tech Event',
             'Developer Conference',
         ],
         ogImage: '/og-image.jpg', // Create this image (1200x630px)
         twitterCard: 'summary_large_image',
-        twitterCreator: '@flutterguild', // Update with your Twitter handle
+        twitterCreator: '@techcommunity', // Update with your Twitter handle
     },
 
     // Social media links
     social: {
-        twitter: 'https://twitter.com/flutterguild',
-        facebook: 'https://facebook.com/flutterguild',
-        linkedin: 'https://linkedin.com/company/flutter-guild',
-        instagram: 'https://instagram.com/flutterguild',
-        youtube: 'https://youtube.com/@flutterguild',
-        github: 'https://github.com/flutter-guild',
-        discord: 'https://discord.gg/flutterguild',
+        twitter: 'https://twitter.com/techcommunity',
+        facebook: 'https://facebook.com/techcommunity',
+        linkedin: 'https://linkedin.com/company/techcommunity',
+        instagram: 'https://instagram.com/techcommunity',
+        youtube: 'https://youtube.com/@techcommunity',
+        github: 'https://github.com/techcommunity',
+        discord: 'https://discord.gg/techcommunity',
     },
 
     // Analytics (optional - add your tracking IDs)
     analytics: {
         // googleAnalyticsId: 'G-XXXXXXXXXX',
         // facebookPixelId: 'XXXXXXXXXX',
-        // plausibleDomain: 'flutter-guild.dev',
+        // plausibleDomain: 'techcommunity-event.com',
     },
 
     // Contact information
     contact: {
-        email: 'hello@flutter-guild.dev',
-        phone: '+880 1XXX-XXXXXX', // Update with actual contact
+        email: 'hello@techcommunity-event.com',
+        phone: '+1 555-123-4567', // Update with actual contact
     },
 
     // Feature flags

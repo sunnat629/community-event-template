@@ -47,7 +47,7 @@ export const SponsorsLiteSection = () => {
                         Partners & Sponsors
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Empowering the Flutter community in Bangladesh together
+                        Empowering the technology community together
                     </p>
                 </div>
 
@@ -109,7 +109,7 @@ export const SponsorsLiteSection = () => {
                         className="glass-card rounded-3xl p-8 sm:p-12 border-2 border-border/50 hover:border-primary/30 transition-all duration-500 max-w-4xl mx-auto hover:scale-[1.02] hover:shadow-2xl">
                         <h3 className="text-3xl font-bold mb-4">Become a Sponsor</h3>
                         <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                            Join us in building Bangladesh's Flutter community. Multiple sponsorship tiers
+                            Join us in building a thriving technology community. Multiple sponsorship tiers
                             available with exclusive benefits and brand visibility.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

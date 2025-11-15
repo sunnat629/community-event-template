@@ -33,7 +33,7 @@ export const OrganizersSection = () => {
                         Organized By
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Brought to you by passionate Flutter community leaders
+                        Brought to you by passionate technology community leaders
                     </p>
                 </div>
 
@@ -256,7 +256,7 @@ export const OrganizersSection = () => {
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"/>
 
                                         <div className="relative z-10 text-center">
-                                            {/* Avatar with Flutter-themed glow effect */}
+                                            {/* Avatar with theme glow effect */}
                                             <div className="relative inline-block mb-4">
                                                 <div
                                                     className="absolute inset-0 bg-gradient-hero rounded-full blur-md opacity-50 animate-pulse"/>
@@ -399,7 +399,7 @@ export const OrganizersSection = () => {
                         <>
                             <DialogHeader>
                                 <div className="flex flex-col items-center text-center mb-6">
-                                    {/* Member avatar with Flutter-themed glow effect */}
+                                    {/* Member avatar with themed glow effect */}
                                     <div className="relative mb-6">
                                         <div
                                             className="absolute inset-0 bg-gradient-hero rounded-full blur-xl opacity-50 animate-pulse"/>

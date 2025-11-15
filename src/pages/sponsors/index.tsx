@@ -29,7 +29,7 @@ export default function SponsorsPage() {
                             Become a Sponsor
                         </h2>
                         <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                            Join us in building Bangladesh's Flutter community. Multiple sponsorship tiers
+                            Join us in building Bangladesh's technology community. Multiple sponsorship tiers
                             available with exclusive benefits and brand visibility opportunities.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

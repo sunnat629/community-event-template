@@ -21,32 +21,32 @@ export interface Organizer {
 
 // Main Organizer - displayed prominently
 export const mainOrganizer: Organizer = {
-    name: "Sunnat629 Labs",
-    description: "Innovation lab focused on empowering developers and building cutting-edge mobile solutions with Flutter.",
+    name: "TechCommunity",
+    description: "Innovation lab focused on empowering developers and building cutting-edge technology solutions across various platforms.",
     logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=200&fit=crop", // Replace with actual logo
     social: {
-        website: "https://sunnat629labs.com",
-        facebook: "https://facebook.com/sunnat629labs",
-        twitter: "https://twitter.com/sunnat629labs",
-        linkedin: "https://linkedin.com/company/sunnat629labs",
-        github: "https://github.com/sunnat629",
-        instagram: "https://instagram.com/sunnat629labs"
+        website: "https://techcommunity.com",
+        facebook: "https://facebook.com/techcommunity",
+        twitter: "https://twitter.com/techcommunity",
+        linkedin: "https://linkedin.com/company/techcommunity",
+        github: "https://github.com/techcommunity",
+        instagram: "https://instagram.com/techcommunity"
     }
 };
 
 // Co-Organizers - displayed with slightly smaller cards
 export const coOrganizers: Organizer[] = [
     {
-        name: "Flutter Bangladesh",
-        description: "Bangladesh's largest Flutter community, connecting thousands of developers across the country.",
+        name: "Web Developers Association",
+        description: "A leading community of web professionals, connecting thousands of developers across the country.",
         logo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=200&fit=crop", // Replace with actual logo
         social: {
-            website: "https://flutterbangladesh.com",
-            facebook: "https://facebook.com/flutterbangladesh",
-            twitter: "https://twitter.com/flutterbangladesh",
-            linkedin: "https://linkedin.com/company/flutter-bangladesh",
-            youtube: "https://youtube.com/@flutterbangladesh",
-            github: "https://github.com/flutter-bangladesh"
+            website: "https://webdevelopers.org",
+            facebook: "https://facebook.com/webdevelopers",
+            twitter: "https://twitter.com/webdevelopers",
+            linkedin: "https://linkedin.com/company/web-developers-association",
+            youtube: "https://youtube.com/@webdevelopers",
+            github: "https://github.com/webdevelopers"
         }
     }
 ];

@@ -113,7 +113,7 @@ export default function VenuePage() {
                                 <Mail className="w-5 h-5 text-primary mt-1 flex-shrink-0"/>
                                 <div>
                                     <p className="font-semibold mb-1">Email</p>
-                                    <p className="text-muted-foreground">venue@flutterguild.com</p>
+                                    <p className="text-muted-foreground">example@example.dev</p>
                                 </div>
                             </div>
 

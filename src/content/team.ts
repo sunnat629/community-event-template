@@ -15,7 +15,7 @@ export interface TeamMember {
 }
 
 // ============================================================================
-// 👥 TEAM MEMBERS
+// ud83dudc65 TEAM MEMBERS
 // ============================================================================
 // Add your organizing team members here
 //
@@ -34,7 +34,7 @@ export interface TeamMember {
 //   tier: "organizer" // or "committee" or "volunteer"
 // }
 //
-// ⚠️ IMPORTANT: Only add REAL team members - no mock data!
+// u26a0ufe0f IMPORTANT: Only add REAL team members - no mock data!
 // ============================================================================
 export const teamMembers: TeamMember[] = [
     {
@@ -42,7 +42,7 @@ export const teamMembers: TeamMember[] = [
         role: "Lead Organizer",
         title: "Founder & Event Director",
         image: "https://cdn.jsdelivr.net/gh/sunnat629Labs/site-images@main/mohi.png",
-        bio: "Passionate Flutter advocate and community organizer with experience building tech events and open-source projects. Founder of Sunnat629 Labs.",
+        bio: "Passionate technology advocate and community organizer with experience building tech events and open-source projects. Founder of TechCommunity.",
         social: {
             twitter: "https://twitter.com/sunnat629",
             linkedin: "https://linkedin.com/in/sunnat629",
