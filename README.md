@@ -180,7 +180,7 @@ You can also use direct URLs to test modes:
 #### Test Pro Mode (Multi-page):
 
 ```
-https://templates.sunnat629labs.com/demo/pro
+https://your-domain.com/demo/pro
 ```
 
 Enables Pro mode and redirects to home page with navigation
@@ -188,7 +188,7 @@ Enables Pro mode and redirects to home page with navigation
 #### Test Lite Mode (Single-page):
 
 ```
-https://templates.sunnat629labs.com/demo/lite
+https://your-domain.com/demo/lite
 ```
 
 Enables Lite mode and redirects to single-page layout
@@ -378,27 +378,97 @@ Or use the **interactive mode toggle button** in the bottom-right corner!
 
 ---
 
-## 📦 Deploy
+## 📦 Hosting & Deployment
 
-### Vercel (Recommended)
+### Flexibility by Design
+
+This template generates **standard static files** that can be hosted anywhere - giving you complete freedom and control
+over your deployment strategy:
+
+- ✅ **No vendor lock-in**
+- ✅ **No external dependencies**
+- ✅ **No proprietary platforms required**
+- ✅ **Full control over your infrastructure**
+
+### Deployment Options
+
+#### Any Static Hosting
 
 ```bash
-npm i -g vercel
-vercel
+# Build the project
+npm run build
+
+# The 'dist' folder contains all static files
+# Upload these files to any web server or static hosting service:
+# - AWS S3 + CloudFront
+# - DigitalOcean App Platform
+# - Firebase Hosting
+# - Cloudflare Pages
+# - Any standard web hosting
 ```
 
-### Netlify
+#### GitHub Pages
 
 ```bash
+# Build the project
 npm run build
-# Deploy the 'dist' folder
+
+# Deploy 'dist' folder to gh-pages branch
+npm run deploy  # If you've set up gh-pages deployment
 ```
 
-### GitHub Pages
+#### Self-Hosted Options
 
 ```bash
+# For Apache/Nginx servers
 npm run build
-# Deploy 'dist' to gh-pages branch
+# Copy contents of 'dist' to your web server's public directory
+```
+
+#### Local Preview
+
+```bash
+# For local preview with production build
+npm run build
+npm run preview  # Serves the built files locally
+```
+
+### SPA Routing Configuration
+
+This template uses client-side routing. For proper SPA behavior with direct URL access, we've included ready-to-use
+configuration files:
+
+- **Apache**: Copy `.htaccess.example` to `.htaccess` in your production build
+- **Nginx**: Use `nginx.conf.example` as a template for your server configuration
+
+These files include:
+
+- SPA routing (redirecting 404s to index.html)
+- Proper MIME types
+- Performance optimizations (compression, caching)
+- Security headers
+
+Basic configuration snippets:
+
+**Apache (.htaccess)**
+
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+```
+
+**Nginx**
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
 ```
 
 ---

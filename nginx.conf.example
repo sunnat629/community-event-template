@@ -1,0 +1,54 @@
+# Nginx configuration for SPA routing
+# For use with the Community Event Template
+
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /var/www/html;  # Path to your dist folder
+
+    # Gzip Settings
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript font/ttf font/otf image/svg+xml;
+
+    # Brotli Settings (if available)
+    brotli on;
+    brotli_comp_level 6;
+    brotli_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript font/ttf font/otf image/svg+xml;
+
+    # Static assets caching
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf)$ {
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000";
+        try_files $uri =404;
+    }
+
+    # SPA routing - Serve index.html for any path not found
+    location / {
+        try_files $uri $uri/ /index.html;
+        add_header Cache-Control "no-cache, must-revalidate";
+    }
+
+    # Security headers
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    
+    # HTTPS Redirect (uncomment when using SSL)
+    # listen 443 ssl http2;
+    # ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+    # ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
+    # include /etc/letsencrypt/options-ssl-nginx.conf;
+    # ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# HTTP to HTTPS redirect (uncomment when using SSL)
+#server {
+#    listen 80;
+#    server_name your-domain.com;
+#    return 301 https://$host$request_uri;
+#}

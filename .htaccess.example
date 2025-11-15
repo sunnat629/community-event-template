@@ -1,0 +1,91 @@
+# Apache Configuration File for SPA Routing
+# Copy this to the root directory of your deployed site (.htaccess)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Don't rewrite files or directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Rewrite everything else to index.html to allow HTML5 pushstate routing
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Serve resources with the proper media types
+<IfModule mod_mime.c>
+  # JavaScript
+  AddType application/javascript js mjs
+  
+  # Media files
+  AddType image/svg+xml svg svgz
+  AddType image/webp webp
+  
+  # Fonts
+  AddType font/woff woff
+  AddType font/woff2 woff2
+  AddType application/vnd.ms-fontobject eot
+  AddType font/ttf ttf
+  AddType font/collection ttc
+  AddType font/otf otf
+</IfModule>
+
+# Enable GZIP compression for faster page loads
+<IfModule mod_deflate.c>
+  # Force compression for mangled headers
+  <IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    </IfModule>
+  </IfModule>
+
+  # Compress all output labeled with one of the following media types
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE "application/javascript" \
+                                  "application/json" \
+                                  "application/manifest+json" \
+                                  "application/x-web-app-manifest+json" \
+                                  "text/css" \
+                                  "text/html" \
+                                  "text/javascript" \
+                                  "text/plain" \
+                                  "text/xml" \
+                                  "font/ttf" \
+                                  "font/otf" \
+                                  "font/woff" \
+                                  "font/woff2" \
+                                  "application/vnd.ms-fontobject" \
+                                  "image/svg+xml"
+  </IfModule>
+</IfModule>
+
+# Cache assets for better performance
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+  ExpiresByType text/css                              "access plus 1 year"
+
+  # JavaScript
+  ExpiresByType application/javascript                "access plus 1 year"
+
+  # Media files
+  ExpiresByType image/jpg                             "access plus 1 year"
+  ExpiresByType image/jpeg                            "access plus 1 year"
+  ExpiresByType image/gif                             "access plus 1 year"
+  ExpiresByType image/png                             "access plus 1 year"
+  ExpiresByType image/webp                            "access plus 1 year"
+  ExpiresByType image/svg+xml                         "access plus 1 year"
+  ExpiresByType image/x-icon                          "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/ttf                             "access plus 1 year"
+  ExpiresByType font/otf                             "access plus 1 year"
+  ExpiresByType font/woff                            "access plus 1 year"
+  ExpiresByType font/woff2                           "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject        "access plus 1 year"
+</IfModule>
