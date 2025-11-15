@@ -30,6 +30,30 @@ and modern design.
 
 ---
 
+## 📸 Screenshots
+
+### Desktop View
+
+<div align="center">
+  <img src="path/to/your/desktop-screenshot.png" alt="Desktop View of Community Event Template" width="800" />
+  <p><i>Desktop View - Pro Mode with full navigation</i></p>
+</div>
+
+### Mobile View
+
+<div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+  <div>
+    <img src="path/to/your/mobile-screenshot-1.png" alt="Mobile View - Home Screen" width="250" />
+    <p><i>Home Screen</i></p>
+  </div>
+  <div>
+    <img src="path/to/your/mobile-screenshot-2.png" alt="Mobile View - Agenda" width="250" />
+    <p><i>Agenda View</i></p>
+  </div>
+</div>
+
+---
+
 ## ✨ Features
 
 ### 🎨 **Beautiful & Modern Design**
@@ -146,11 +170,11 @@ All content is managed through simple TypeScript files in `src/content/`:
 
 ```typescript
 export const siteConfig = {
-  eventTitle: "Your Event 2026",
-  eventYear: 2026,
-  city: "Your City",
-  country: "Your Country",
-  // ... more settings
+    eventTitle: "Your Event 2026",
+    eventYear: 2026,
+    city: "Your City",
+    country: "Your Country",
+    // ... more settings
 };
 ```
 
@@ -158,20 +182,20 @@ export const siteConfig = {
 
 ```typescript
 export const featuredSpeakers: Speaker[] = [
-  {
-    name: "Speaker Name",
-    title: "Job Title",
-    company: "Company",
-    topic: "Talk Title",
-    image: "https://your-cdn.com/photo.jpg",
-    bio: "Biography...",
-    social: {
-      twitter: "...",
-      linkedin: "...",
-      email: "..."
-    },
-    featured: true
-  }
+    {
+        name: "Speaker Name",
+        title: "Job Title",
+        company: "Company",
+        topic: "Talk Title",
+        image: "https://your-cdn.com/photo.jpg",
+        bio: "Biography...",
+        social: {
+            twitter: "...",
+            linkedin: "...",
+            email: "..."
+        },
+        featured: true
+    }
 ];
 ```
 
@@ -179,17 +203,17 @@ export const featuredSpeakers: Speaker[] = [
 
 ```typescript
 export const partners: Partner[] = [
-  {
-    name: "Company Name",
-    slug: generateSlug("Company Name"),
-    role: "Gold Sponsor",
-    tier: "gold", // platinum, gold, silver, bronze
-    shortDescription: "Short description",
-    description: "Full description",
-    logo: "https://your-cdn.com/logo.png",
-    icon: Building2,
-    website: "https://company.com"
-  }
+    {
+        name: "Company Name",
+        slug: generateSlug("Company Name"),
+        role: "Gold Sponsor",
+        tier: "gold", // platinum, gold, silver, bronze
+        shortDescription: "Short description",
+        description: "Full description",
+        logo: "https://your-cdn.com/logo.png",
+        icon: Building2,
+        website: "https://company.com"
+    }
 ];
 ```
 
@@ -197,19 +221,19 @@ export const partners: Partner[] = [
 
 ```typescript
 export const agendaItems: AgendaItem[] = [
-  {
-    time: "10:00 AM",
-    endTime: "11:00 AM",
-    title: "Session Title",
-    description: "Description",
-    speaker: "Speaker Name",
-    icon: Code,
-    type: "session", // keynote, session, workshop, panel, break
-    track: "technical", // all, technical, workshop
-    duration: "60 min",
-    location: "Main Hall",
-    day: 1
-  }
+    {
+        time: "10:00 AM",
+        endTime: "11:00 AM",
+        title: "Session Title",
+        description: "Description",
+        speaker: "Speaker Name",
+        icon: Code,
+        type: "session", // keynote, session, workshop, panel, break
+        track: "technical", // all, technical, workshop
+        duration: "60 min",
+        location: "Main Hall",
+        day: 1
+    }
 ];
 ```
 
@@ -217,15 +241,15 @@ export const agendaItems: AgendaItem[] = [
 
 ```typescript
 export const teamMembers: TeamMember[] = [
-  {
-    name: "Team Member",
-    role: "Lead Organizer",
-    title: "Event Director",
-    image: "https://your-cdn.com/photo.jpg",
-    bio: "Biography...",
-    social: { /* ... */ },
-    tier: "organizer" // organizer, committee, volunteer
-  }
+    {
+        name: "Team Member",
+        role: "Lead Organizer",
+        title: "Event Director",
+        image: "https://your-cdn.com/photo.jpg",
+        bio: "Biography...",
+        social: { /* ... */},
+        tier: "organizer" // organizer, committee, volunteer
+    }
 ];
 ```
 
@@ -233,13 +257,13 @@ export const teamMembers: TeamMember[] = [
 
 ```typescript
 export const eventDetails = {
-  venue: {
-    city: "Your City, Country",
-    location: "Venue Name",
-    address: "Full Address",
-    capacity: "500 people",
-    // ... more details
-  }
+    venue: {
+        city: "Your City, Country",
+        location: "Venue Name",
+        address: "Full Address",
+        capacity: "500 people",
+        // ... more details
+    }
 };
 ```
 
@@ -253,9 +277,9 @@ Edit `src/index.css`:
 
 ```css
 :root {
-  --primary: 159 59% 46%; /* Mint Green (HSL) */
-  --secondary: 207 90% 81%; /* Sky Blue */
-  --accent: 320 85% 55%; /* Your accent color */
+    --primary: 159 59% 46%; /* Mint Green (HSL) */
+    --secondary: 207 90% 81%; /* Sky Blue */
+    --accent: 320 85% 55%; /* Your accent color */
 }
 ```
 
@@ -267,10 +291,16 @@ Toggle sections in `src/config/layout.config.ts`:
 
 ```typescript
 {
-  id: "speakers",
-  order: 4,
-  theme: "light",
-  enabled: true // Set to false to hide
+    id: "speakers",
+        order
+:
+    4,
+        theme
+:
+    "light",
+        enabled
+:
+    true // Set to false to hide
 }
 ```
 
@@ -280,8 +310,8 @@ Edit `src/config/site.config.ts`:
 
 ```typescript
 eventMode: {
-  mode: 'pro', // 'lite' or 'pro'
-  // ... settings
+    mode: 'pro', // 'lite' or 'pro'
+    // ... settings
 }
 ```
 
