@@ -390,6 +390,28 @@ npm run build
 We welcome contributions from the community! Whether it's fixing bugs, adding features, improving documentation, or
 sharing ideas, your help is appreciated.
 
+### 📚 Important Documentation for Contributors
+
+Before contributing, please review these key documents:
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines and development setup
+- **[Future Development Plan](docs/FUTURE_PLAN.md)** - Roadmap for new features and themes
+- **[Theme System Architecture](docs/THEME_SYSTEM_ARCHITECTURE.md)** - Technical details about the theme system
+
+### 🎨 Looking to Contribute a Theme?
+
+We're actively seeking contributors to help create themes for different tech platforms! Check out
+our [Future Development Plan](docs/FUTURE_PLAN.md) to see which themes are needed:
+
+**High Priority:**
+
+- iOS Theme
+- AI/ML Theme
+- QA/Testing Theme
+- Cloud/DevOps Theme
+
+See the [Theme Contribution Guide](CONTRIBUTING.md#theme-contribution-checklist) for detailed instructions.
+
 ### Ways to Contribute
 
 - **Star the Repository** ⭐ - Show your support
@@ -405,6 +427,19 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 <a href="https://github.com/sunnat629/community-event-template/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=sunnat629/community-event-template" />
 </a>
+
+---
+
+## 🗺️ Roadmap
+
+Want to see what's coming next? Check out our [Future Development Plan](docs/FUTURE_PLAN.md) to learn about:
+
+- 🎨 Planned themes (iOS, AI/ML, QA, Cloud, Unity)
+- 🔧 Upcoming features (Theme Builder, i18n, Analytics)
+- 🏗️ Architecture improvements (React Context theme system)
+- 📅 Timeline and milestones
+
+**Current Focus:** React Context-based theme system for runtime theme switching
 
 ---
 
