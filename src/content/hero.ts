@@ -47,7 +47,7 @@ export const getHeroContent = (): HeroContent => {
         ],
         buttons: [
             {
-                text: "Register Now",
+                text: "Contribute on GitHub",
                 variant: "hero",
                 isPrimary: true
             },

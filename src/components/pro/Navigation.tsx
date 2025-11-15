@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import {Menu, X, Home, Users, Calendar, Award, MapPin, UsersRound} from "lucide-react";
+import {Menu, X, Home, Users, Calendar, Award, MapPin, UsersRound, Github, Star, GitFork} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
 import {siteConfig} from "@/content";
@@ -12,6 +12,9 @@ import {siteConfig} from "@/content";
 export const Navigation = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
+
+    // GitHub repo URL
+    const githubUrl = "https://github.com/sunnat629/community-event-template";
 
     // Navigation items
     const navItems = [
@@ -92,12 +95,19 @@ export const Navigation = () => {
 
                     {/* CTA Button - Desktop */}
                     <div className="hidden md:block">
-                        <Button
-                            size="sm"
-                            className="bg-gradient-hero text-white hover:shadow-glow"
-                        >
-                            Register Now
-                        </Button>
+                        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                            <Button
+                                size="sm"
+                                className="bg-gradient-hero text-white hover:shadow-glow flex items-center gap-2"
+                            >
+                                <Github className="w-4 h-4"/>
+                                Contribute
+                                <div className="flex items-center ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full">
+                                    <Star className="w-3 h-3 mr-1" fill="currentColor"/>
+                                    <GitFork className="w-3 h-3 ml-1"/>
+                                </div>
+                            </Button>
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -143,12 +153,15 @@ export const Navigation = () => {
 
                         {/* Mobile CTA */}
                         <div className="pt-4 border-t border-border mt-4">
-                            <Button
-                                className="w-full bg-gradient-hero text-white hover:shadow-glow"
-                                size="lg"
-                            >
-                                Register Now
-                            </Button>
+                            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="w-full">
+                                <Button
+                                    className="w-full bg-gradient-hero text-white hover:shadow-glow flex items-center justify-center gap-2"
+                                    size="lg"
+                                >
+                                    <Github className="w-5 h-5"/>
+                                    Contribute on GitHub
+                                </Button>
+                            </a>
                         </div>
                     </div>
                 </div>
