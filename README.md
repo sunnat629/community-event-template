@@ -9,7 +9,24 @@
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-**Created by [Sunnat629 Labs](https://sunnat629labs.com)** | Innovation lab empowering developers worldwide 🚀
+**Created by [TechCommunity](https://techcommunity-event.com)** | Empowering tech communities worldwide 🚀
+
+---
+
+## 🌟 Introducing Community Event Template
+
+A complete, ready-to-use template for creating beautiful websites for tech community events of any size. Perfect for
+meetups, conferences, workshops, and hackathons. Designed to be easily customizable with a focus on developer experience
+and modern design.
+
+### 🎉 Why Use This Template?
+
+- **Complete Solution**: Everything you need for an event website in one place
+- **No Design Skills Required**: Professional design out of the box
+- **Customizable**: Easy to adapt to your community brand
+- **Fast Setup**: Be live in minutes, not days
+- **SEO Optimized**: Built with search engines in mind
+- **Open Source**: Free to use and modify
 
 ---
 
@@ -44,6 +61,7 @@
 - 50-200 attendees
 
 #### 🚀 **Pro Mode** - Built for conferences
+
 - Dedicated pages for speakers, agenda, sponsors
 - Individual detail pages
 - Multi-day, multi-track support
@@ -125,6 +143,7 @@ In development (`npm run dev`), the debug button is visible in the bottom-right 
 All content is managed through simple TypeScript files in `src/content/`:
 
 ### 1️⃣ **Site Configuration** (`siteConfig.ts`)
+
 ```typescript
 export const siteConfig = {
   eventTitle: "Your Event 2026",
@@ -136,6 +155,7 @@ export const siteConfig = {
 ```
 
 ### 2️⃣ **Speakers** (`speakers.ts`)
+
 ```typescript
 export const featuredSpeakers: Speaker[] = [
   {
@@ -156,6 +176,7 @@ export const featuredSpeakers: Speaker[] = [
 ```
 
 ### 3️⃣ **Sponsors** (`partners.ts`)
+
 ```typescript
 export const partners: Partner[] = [
   {
@@ -173,6 +194,7 @@ export const partners: Partner[] = [
 ```
 
 ### 4️⃣ **Agenda** (`agenda.ts`)
+
 ```typescript
 export const agendaItems: AgendaItem[] = [
   {
@@ -192,6 +214,7 @@ export const agendaItems: AgendaItem[] = [
 ```
 
 ### 5️⃣ **Team** (`team.ts`)
+
 ```typescript
 export const teamMembers: TeamMember[] = [
   {
@@ -207,13 +230,14 @@ export const teamMembers: TeamMember[] = [
 ```
 
 ### 6️⃣ **Venue** (`eventDetails.ts`)
+
 ```typescript
 export const eventDetails = {
   venue: {
-    city: "Dhaka, Bangladesh",
-    location: "To Be Announced",
-    address: "Dhaka, Bangladesh",
-    capacity: "TBA",
+    city: "Your City, Country",
+    location: "Venue Name",
+    address: "Full Address",
+    capacity: "500 people",
     // ... more details
   }
 };
@@ -229,11 +253,13 @@ Edit `src/index.css`:
 
 ```css
 :root {
-  --primary: 210 100% 31%; /* Your primary color (HSL) */
-  --secondary: 192 100% 53%; /* Your secondary color */
+  --primary: 159 59% 46%; /* Mint Green (HSL) */
+  --secondary: 207 90% 81%; /* Sky Blue */
   --accent: 320 85% 55%; /* Your accent color */
 }
 ```
+
+You can use any HSL color values to completely change the look and feel of the site.
 
 ### Enable/Disable Sections
 
@@ -283,30 +309,34 @@ eventMode: {
 
 ## 🌍 Perfect For
 
-- 🦋 **Flutter Communities** - Meetups, workshops, conferences
-- ⚛️ **React Communities** - User groups, conferences
-- 🔷 **Kotlin Communities** - KotlinConf, developer events
-- 🤖 **Android Communities** - Mobile dev meetups
-- 🐍 **Python Communities** - PyCon, PyData events
-- 🟩 **Vue/Angular/Any Tech Community** - Easily customizable!
+- 🌐 **Web Development Communities** - Meetups, conferences, hackathons
+- 📱 **Mobile Dev Communities** - Android, iOS, cross-platform events
+- 🤖 **AI/ML Communities** - AI conferences, hackathons
+- 🎮 **Game Dev Communities** - Game jams, showcases
+- 🧪 **DevOps & QA Communities** - Testing conferences, CI/CD workshops
+- 🔐 **Cybersecurity Communities** - Security conferences, CTF events
+- 👥 **Any Technology Community** - Highly adaptable for all tech groups!
 
 ---
 
 ## 📦 Deploy
 
 ### Vercel (Recommended)
+
 ```bash
 npm i -g vercel
 vercel
 ```
 
 ### Netlify
+
 ```bash
 npm run build
 # Deploy the 'dist' folder
 ```
 
 ### GitHub Pages
+
 ```bash
 npm run build
 # Deploy 'dist' to gh-pages branch
@@ -316,33 +346,42 @@ npm run build
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+We welcome contributions from the community! Whether it's fixing bugs, adding features, improving documentation, or
+sharing ideas, your help is appreciated.
 
-**Quick start:**
+### Ways to Contribute
 
-```bash
-git checkout -b feature/your-feature
-git commit -m "Add your feature"
-git push origin feature/your-feature
-# Open a Pull Request
-```
+- **Star the Repository** ⭐ - Show your support
+- **Fork and Create a Pull Request** - Add new features or fix bugs
+- **Report Issues** - Help us identify bugs and areas for improvement
+- **Suggest Features** - Share your ideas for making the template better
+- **Share the Template** - Help other tech communities discover this resource
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+### Join Our Contributors
+
+<a href="https://github.com/sunnat629/community-event-template/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sunnat629/community-event-template" />
+</a>
 
 ---
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Attribution
 
-**Created by [Sunnat629 Labs](https://sunnat629labs.com)**
+Created and maintained by [Mohi Us Sunnat](https://github.com/sunnat629).
 
 If you use this template:
+
 - ✅ Keep the footer attribution intact
 - ✅ Star this repository ⭐
-- ✅ Share your event with us!
+- ✅ Share your event website with us!
 
 ---
 
@@ -357,8 +396,9 @@ If you use this template:
 
 ## 📧 Contact
 
-**Sunnat629 Labs**
-- 🌐 Website: [sunnat629labs.com](https://sunnat629labs.com)
+**Mohi Us Sunnat**
+
+- 🌐 GitHub: [@sunnat629](https://github.com/sunnat629)
 - 🐦 Twitter: [@sunnat629](https://twitter.com/sunnat629)
 - 💼 LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
 - 📧 Email: me@sunnat629.dev
