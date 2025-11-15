@@ -150,12 +150,32 @@ npm run build
 
 ---
 
-## 🎨 Demo & Testing
+## 🎨 Demo & Mode Switching
+
+### 🎯 Interactive Mode Toggle (Available in Production!)
+
+We've made the mode toggle button **available in production** so you can easily explore both Lite and Pro modes!
+
+Look for the **floating button in the bottom-right corner** of the screen:
+
+- **In Development**: Shows "DEV" badge
+- **In Production**: Shows "DEMO" badge
+
+#### Using the Mode Toggle:
+
+1. **Click the Mode Toggle button** in the bottom-right corner
+2. **Switch between**:
+    - 🎈 **Lite Mode** - Single-page layout for small events
+    - 🚀 **Pro Mode** - Multi-page layout for conferences
+3. **Configure Pro Mode** (when in Pro mode):
+    - Set event days (1, 2, or 3 days)
+    - Set parallel tracks (1, 2, or 3 tracks)
+    - Toggle Android theme
+4. **Changes apply instantly** - Page reloads to show new configuration
 
 ### Production Demo Routes
 
-The debug toggle button is **hidden in production** to keep the live site clean. To test different modes on the
-production site:
+You can also use direct URLs to test modes:
 
 #### Test Pro Mode (Multi-page):
 
@@ -172,10 +192,6 @@ https://templates.sunnat629labs.com/demo/lite
 ```
 
 Enables Lite mode and redirects to single-page layout
-
-#### Development Mode:
-
-In development (`npm run dev`), the debug button is visible in the bottom-right corner for easy mode switching.
 
 ---
 
@@ -264,7 +280,7 @@ export const teamMembers: TeamMember[] = [
         title: "Event Director",
         image: "https://your-cdn.com/photo.jpg",
         bio: "Biography...",
-        social: { /* ... */},
+        social: { /* ... */ },
         tier: "organizer" // organizer, committee, volunteer
     }
 ];
@@ -309,15 +325,9 @@ Toggle sections in `src/config/layout.config.ts`:
 ```typescript
 {
     id: "speakers",
-        order
-:
-    4,
-        theme
-:
-    "light",
-        enabled
-:
-    true // Set to false to hide
+    order: 4,
+    theme: "light",
+    enabled: true // Set to false to hide
 }
 ```
 
@@ -331,6 +341,8 @@ eventMode: {
     // ... settings
 }
 ```
+
+Or use the **interactive mode toggle button** in the bottom-right corner!
 
 ---
 
@@ -388,6 +400,42 @@ npm run build
 npm run build
 # Deploy 'dist' to gh-pages branch
 ```
+
+---
+
+## 🔒 Security & Privacy
+
+### ✅ No Third-Party Tracking
+
+This template is **privacy-first** with:
+
+- ❌ No Google Analytics by default
+- ❌ No tracking pixels
+- ❌ No hidden data collection
+- ✅ Optional analytics (you control what to add)
+- ✅ All dependencies are open-source and trusted
+
+### 🛡️ Safe for Open Source
+
+- All API keys use environment variables (`.env`)
+- `.env` files are gitignored by default
+- No hardcoded secrets in the codebase
+- Example configuration provided in `.env.example`
+
+### 🔑 Environment Variables
+
+If you need third-party services, add them via `.env`:
+
+```bash
+# Copy the example file
+cp .env.example .env
+
+# Add your keys (these stay private)
+VITE_GOOGLE_MAPS_API_KEY=your_key_here
+VITE_GA_ID=your_analytics_id
+```
+
+**Never commit `.env` files to version control!**
 
 ---
 

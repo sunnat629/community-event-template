@@ -12,15 +12,15 @@ import {
 import {Badge} from "@/components/ui/badge";
 
 /**
- * Mode Toggle Component - DEV ONLY
- * Allows switching between lite and pro modes for testing
+ * Mode Toggle Component - Always Available
+ * Allows switching between lite and pro modes for testing and demonstration
  * Also controls event configuration (days, tracks) and theme
  *
- * NOTE: This component is HIDDEN in production builds
- * To test Pro mode in production, visit: /demo/pro
+ * NOTE: This component is now VISIBLE in production to showcase both modes
+ * Perfect for open-source demos where users can explore different configurations
  */
 export const ModeToggle = () => {
-    // Hide in production builds
+    // Show in both development and production for demo purposes
     const isDevelopment = import.meta.env.DEV;
 
     const [currentMode, setCurrentMode] = useState<'lite' | 'pro'>(() => {
@@ -84,10 +84,8 @@ export const ModeToggle = () => {
         window.location.reload(); // Reload to apply theme changes
     };
 
-    // Don't render in production
-    if (!isDevelopment) {
-        return null;
-    }
+    // Now always render - removed production hiding for open-source demo
+    // Users can explore both Lite and Pro modes freely
 
     return (
         <div className="fixed bottom-4 right-4 z-50">
@@ -106,7 +104,7 @@ export const ModeToggle = () => {
                   variant={currentMode === 'lite' ? 'secondary' : 'default'}
                   className="ml-2"
               >
-                  DEV
+                  {isDevelopment ? 'DEV' : 'DEMO'}
               </Badge>
           </Button>
         </DropdownMenuTrigger>
@@ -237,7 +235,9 @@ export const ModeToggle = () => {
             <DropdownMenuSeparator/>
 
             <div className="p-2 text-xs text-muted-foreground text-center">
-                🧪 This toggle is for development & testing only
+                {isDevelopment
+                    ? '🧪 Development mode - Test all configurations'
+                    : '✨ Try switching modes to see the differences!'}
             </div>
         </DropdownMenuContent>
       </DropdownMenu>
