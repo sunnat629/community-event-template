@@ -309,9 +309,15 @@ Toggle sections in `src/config/layout.config.ts`:
 ```typescript
 {
     id: "speakers",
-    order: 4,
-    theme: "light",
-    enabled: true // Set to false to hide
+        order
+:
+    4,
+        theme
+:
+    "light",
+        enabled
+:
+    true // Set to false to hide
 }
 ```
 
