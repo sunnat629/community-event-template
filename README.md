@@ -1,4 +1,4 @@
-# ud83cudfaf Community Event Template
+# 🎯 Community Event Template
 
 > **A professional, production-ready event website template built with React + TypeScript + Tailwind CSS**
 
@@ -9,17 +9,17 @@
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-**Created by [TechCommunity](https://techcommunity-event.com)** | Empowering tech communities worldwide ud83dude80
+**Created by [TechCommunity](https://techcommunity-event.com)** | Empowering tech communities worldwide 🚀
 
 ---
 
-## ud83cudf1f Introducing Community Event Template
+## 🌟 Introducing Community Event Template
 
 A complete, ready-to-use template for creating beautiful websites for tech community events of any size. Perfect for
 meetups, conferences, workshops, and hackathons. Designed to be easily customizable with a focus on developer experience
 and modern design.
 
-### ud83cudf89 Why Use This Template?
+### 🎉 Why Use This Template?
 
 - **Complete Solution**: Everything you need for an event website in one place
 - **No Design Skills Required**: Professional design out of the box
@@ -30,17 +30,17 @@ and modern design.
 
 ---
 
-## u2728 Features
+## ✨ Features
 
-### ud83cudfa8 **Beautiful & Modern Design**
+### 🎨 **Beautiful & Modern Design**
 
-- u2705 Stunning gradient hero sections with animated backgrounds
-- u2705 Glassmorphism effects and smooth animations
-- u2705 Auto-rotating carousels for speakers and sponsors
-- u2705 Professional cards with hover effects
-- u2705 Fully responsive (mobile-first design)
+- ✅ Stunning gradient hero sections with animated backgrounds
+- ✅ Glassmorphism effects and smooth animations
+- ✅ Auto-rotating carousels for speakers and sponsors
+- ✅ Professional cards with hover effects
+- ✅ Fully responsive (mobile-first design)
 
-### ud83dudccb **Complete Event Sections**
+### 📋 **Complete Event Sections**
 
 - **Hero** - Eye-catching landing with CTA buttons
 - **About** - Event overview with highlights
@@ -51,23 +51,23 @@ and modern design.
 - **Team** - Organizing team showcase
 - **Footer** - Complete with attribution
 
-### ud83dude80 **Two Modes for Any Event Size**
+### 🚀 **Two Modes for Any Event Size**
 
-#### ud83cudf88 **Lite Mode** - Perfect for small events
+#### 🎈 **Lite Mode** - Perfect for small events
 
 - Single-page scrolling experience
 - 5-10 speakers, single day
 - Fast setup and deployment
 - 50-200 attendees
 
-#### ud83dude80 **Pro Mode** - Built for conferences
+#### 🚀 **Pro Mode** - Built for conferences
 
 - Dedicated pages for speakers, agenda, sponsors
 - Individual detail pages
 - Multi-day, multi-track support
 - 200+ attendees
 
-### u26a1 **Developer Experience**
+### ⚡ **Developer Experience**
 
 - **Vite 7** - Lightning-fast builds (< 2 seconds)
 - **TypeScript** - Full type safety
@@ -77,7 +77,7 @@ and modern design.
 
 ---
 
-## ud83dude80 Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 
@@ -98,7 +98,7 @@ npm install
 npm run dev
 ```
 
-Visit **http://localhost:5173** to see your site! ud83cudf89
+Visit **http://localhost:5173** to see your site! 🎉
 
 ### Build for Production
 
@@ -109,7 +109,7 @@ npm run build
 
 ---
 
-## ud83cudfa8 Demo & Testing
+## 🎨 Demo & Testing
 
 ### Production Demo Routes
 
@@ -138,11 +138,11 @@ In development (`npm run dev`), the debug button is visible in the bottom-right 
 
 ---
 
-## ud83dudcdd Content Management
+## 📝 Content Management
 
 All content is managed through simple TypeScript files in `src/content/`:
 
-### 1ufe0fu20e3 **Site Configuration** (`siteConfig.ts`)
+### 1️⃣ **Site Configuration** (`siteConfig.ts`)
 
 ```typescript
 export const siteConfig = {
@@ -154,7 +154,7 @@ export const siteConfig = {
 };
 ```
 
-### 2ufe0fu20e3 **Speakers** (`speakers.ts`)
+### 2️⃣ **Speakers** (`speakers.ts`)
 
 ```typescript
 export const featuredSpeakers: Speaker[] = [
@@ -175,7 +175,7 @@ export const featuredSpeakers: Speaker[] = [
 ];
 ```
 
-### 3ufe0fu20e3 **Sponsors** (`partners.ts`)
+### 3️⃣ **Sponsors** (`partners.ts`)
 
 ```typescript
 export const partners: Partner[] = [
@@ -193,7 +193,7 @@ export const partners: Partner[] = [
 ];
 ```
 
-### 4ufe0fu20e3 **Agenda** (`agenda.ts`)
+### 4️⃣ **Agenda** (`agenda.ts`)
 
 ```typescript
 export const agendaItems: AgendaItem[] = [
@@ -213,7 +213,7 @@ export const agendaItems: AgendaItem[] = [
 ];
 ```
 
-### 5ufe0fu20e3 **Team** (`team.ts`)
+### 5️⃣ **Team** (`team.ts`)
 
 ```typescript
 export const teamMembers: TeamMember[] = [
@@ -229,7 +229,7 @@ export const teamMembers: TeamMember[] = [
 ];
 ```
 
-### 6ufe0fu20e3 **Venue** (`eventDetails.ts`)
+### 6️⃣ **Venue** (`eventDetails.ts`)
 
 ```typescript
 export const eventDetails = {
@@ -245,7 +245,7 @@ export const eventDetails = {
 
 ---
 
-## ud83cudfa8 Customization
+## 🎨 Customization
 
 ### Change Theme Colors
 
@@ -287,39 +287,39 @@ eventMode: {
 
 ---
 
-## ud83dudcca Performance & SEO
+## 📊 Performance & SEO
 
 ### Build Performance
 
 ```
-u2713 Built in 2.39s
-u2713 Bundle: 427 kB (gzipped: 112 kB)
-u2713 Zero errors
+✓ Built in 2.39s
+✓ Bundle: 427 kB (gzipped: 112 kB)
+✓ Zero errors
 ```
 
 ### SEO Features
 
-- u2705 **sitemap.xml** - All pages indexed
-- u2705 **robots.txt** - Search engine optimized
-- u2705 **JSON-LD structured data** - Rich snippets
-- u2705 **Meta tags** - Complete OG and Twitter cards
-- u2705 **Mobile-friendly** - Responsive design
+- ✅ **sitemap.xml** - All pages indexed
+- ✅ **robots.txt** - Search engine optimized
+- ✅ **JSON-LD structured data** - Rich snippets
+- ✅ **Meta tags** - Complete OG and Twitter cards
+- ✅ **Mobile-friendly** - Responsive design
 
 ---
 
-## ud83cudf0d Perfect For
+## 🌍 Perfect For
 
-- ud83cudf10 **Web Development Communities** - Meetups, conferences, hackathons
-- ud83dudcf1 **Mobile Dev Communities** - Android, iOS, cross-platform events
-- ud83eudd16 **AI/ML Communities** - AI conferences, hackathons
-- ud83cudfae **Game Dev Communities** - Game jams, showcases
-- ud83euddea **DevOps & QA Communities** - Testing conferences, CI/CD workshops
-- ud83dudd10 **Cybersecurity Communities** - Security conferences, CTF events
-- ud83dudc65 **Any Technology Community** - Highly adaptable for all tech groups!
+- 🌐 **Web Development Communities** - Meetups, conferences, hackathons
+- 📱 **Mobile Dev Communities** - Android, iOS, cross-platform events
+- 🤖 **AI/ML Communities** - AI conferences, hackathons
+- 🎮 **Game Dev Communities** - Game jams, showcases
+- 🧪 **DevOps & QA Communities** - Testing conferences, CI/CD workshops
+- 🔐 **Cybersecurity Communities** - Security conferences, CTF events
+- 👥 **Any Technology Community** - Highly adaptable for all tech groups!
 
 ---
 
-## ud83dudce6 Deploy
+## 📦 Deploy
 
 ### Vercel (Recommended)
 
@@ -344,14 +344,14 @@ npm run build
 
 ---
 
-## ud83eudd1d Contributing
+## 🤝 Contributing
 
 We welcome contributions from the community! Whether it's fixing bugs, adding features, improving documentation, or
 sharing ideas, your help is appreciated.
 
 ### Ways to Contribute
 
-- **Star the Repository** u2b50 - Show your support
+- **Star the Repository** ⭐ - Show your support
 - **Fork and Create a Pull Request** - Add new features or fix bugs
 - **Report Issues** - Help us identify bugs and areas for improvement
 - **Suggest Features** - Share your ideas for making the template better
@@ -367,31 +367,31 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## ud83dudcc4 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## ud83dude4f Attribution
+## 🙏 Attribution
 
 Created and maintained by [Mohi Us Sunnat](https://github.com/sunnat629).
 
 If you use this template:
 
-- u2705 Keep the footer attribution intact
-- u2705 Star this repository u2b50
-- u2705 Share your event website with us!
+- ✅ Keep the footer attribution intact
+- ✅ Star this repository ⭐
+- ✅ Share your event website with us!
 
 ---
 
-## ud83dudc96 Support
+## 💖 Support
 
-- u2b50 **Star this repo** if you find it helpful
-- ud83dudc1b **Report bugs** via [Issues](https://github.com/sunnat629/community-event-template/issues)
-- ud83dudca1 **Suggest features** via [Discussions](https://github.com/sunnat629/community-event-template/discussions)
-- ud83dudc26 **Share** on social media
-- u2615 **Buy me a coffee** - [buymeacoffee.com/sunnat629](https://buymeacoffee.com/sunnat629)
+- ⭐ **Star this repo** if you find it helpful
+- 🐛 **Report bugs** via [Issues](https://github.com/sunnat629/community-event-template/issues)
+- 💡 **Suggest features** via [Discussions](https://github.com/sunnat629/community-event-template/discussions)
+- 🐦 **Share** on social media
+- ☕ **Buy me a coffee** - [buymeacoffee.com/sunnat629](https://buymeacoffee.com/sunnat629)
 
 <a href="https://buymeacoffee.com/sunnat629" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px">
@@ -399,23 +399,23 @@ If you use this template:
 
 ---
 
-## ud83dudce7 Contact
+## 📧 Contact
 
 **Mohi Us Sunnat**
 
-- ud83cudf10 GitHub: [@sunnat629](https://github.com/sunnat629)
-- ud83dudc26 Twitter: [@sunnat629](https://twitter.com/sunnat629)
-- ud83dudcbc LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
-- ud83dudce7 Email: me@sunnat629.dev
+- 🌐 GitHub: [@sunnat629](https://github.com/sunnat629)
+- 🐦 Twitter: [@sunnat629](https://twitter.com/sunnat629)
+- 📼 LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
+- 📧 Email: me@sunnat629.dev
 
 ---
 
 <div align="center">
 
-**Made with u2764ufe0f for tech communities worldwide**
+**Made with ❤️ for tech communities worldwide**
 
 [Report Bug](https://github.com/sunnat629/community-event-template/issues)
-u00b7 [Request Feature](https://github.com/sunnat629/community-event-template/issues)
-u00b7 [Star u2b50](https://github.com/sunnat629/community-event-template)
+· [Request Feature](https://github.com/sunnat629/community-event-template/issues)
+· [Star ⭐](https://github.com/sunnat629/community-event-template)
 
 </div>
