@@ -35,7 +35,7 @@ and modern design.
 ### Desktop View
 
 <div align="center">
-  <img src="path/to/your/desktop-screenshot.png" alt="Desktop View of Community Event Template" width="800" />
+  <img src="./screenshots/Screenshot 2025-11-15 at 11.42.11.png" alt="Desktop View of Community Event Template" width="800" />
   <p><i>Desktop View - Pro Mode with full navigation</i></p>
 </div>
 
@@ -43,13 +43,36 @@ and modern design.
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
   <div>
-    <img src="path/to/your/mobile-screenshot-1.png" alt="Mobile View - Home Screen" width="250" />
+    <img src="./screenshots/Screenshot 2025-11-15 at 11.45.14.png" alt="Mobile View - Home Screen" width="250" />
     <p><i>Home Screen</i></p>
   </div>
   <div>
-    <img src="path/to/your/mobile-screenshot-2.png" alt="Mobile View - Agenda" width="250" />
+    <img src="./screenshots/Screenshot 2025-11-15 at 11.45.31.png" alt="Mobile View - Agenda" width="250" />
     <p><i>Agenda View</i></p>
   </div>
+</div>
+
+### Feature Showcase
+
+<div align="center" style="margin-top: 30px;">
+  <div style="display: inline-block; margin: 10px;">
+    <img src="./screenshots/Screenshot 2025-11-15 at 11.42.32.png" alt="Speaker Showcase" width="400" />
+    <p><i>Speaker Showcase with Carousel</i></p>
+  </div>
+  <div style="display: inline-block; margin: 10px;">
+    <img src="./screenshots/Screenshot 2025-11-15 at 11.43.01.png" alt="Agenda Timeline" width="400" />
+    <p><i>Interactive Agenda Timeline</i></p>
+  </div>
+</div>
+
+<div align="center" style="margin-top: 20px;">
+  <img src="./screenshots/Screenshot 2025-11-15 at 11.44.56.png" alt="Sponsors Section" width="800" />
+  <p><i>Sponsors Section with Tiered Display</i></p>
+</div>
+
+<div align="center" style="margin-top: 20px;">
+  <img src="./screenshots/Screenshot 2025-11-15 at 11.54.41.png" alt="Dark Mode" width="800" />
+  <p><i>Dark Mode Support</i></p>
 </div>
 
 ---
