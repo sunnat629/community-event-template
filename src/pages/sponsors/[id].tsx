@@ -365,7 +365,7 @@ export default function SponsorDetailPage() {
                         >
                             <h3 className="font-bold text-xl mb-2">Interested in Sponsoring?</h3>
                             <p className="text-white/90 mb-4 text-sm">
-                                Join us in supporting the Flutter community
+                                Join us in supporting the tech community
                             </p>
                             <Button
                                 variant="secondary"

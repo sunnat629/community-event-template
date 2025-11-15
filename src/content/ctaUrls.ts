@@ -13,15 +13,15 @@ export const ctaUrls = {
     // Sponsorship
     becomeASponsor: "#sponsor",
     viewSponsorPackage: "#sponsor-package",
-    contactSponsorshipTeam: "mailto:sponsors@flutterguild.com",
+    contactSponsorshipTeam: "mailto:sponsors@techcommunity-event.com",
 
     // Volunteering
     becomeAVolunteer: "#volunteer",
 
     // Social media & community
-    joinCommunity: "https://discord.gg/flutter-bangladesh",
-    twitter: "https://twitter.com/flutterbangladesh",
-    linkedin: "https://linkedin.com/company/flutter-bangladesh",
+    joinCommunity: "https://discord.gg/techcommunity",
+    twitter: "https://twitter.com/techcommunity",
+    linkedin: "https://linkedin.com/company/techcommunity",
 
     // Additional resources
     viewAgenda: "#agenda",
