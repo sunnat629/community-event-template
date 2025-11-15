@@ -1,4 +1,4 @@
-# 🎯 Community Event Template
+# ud83cudfaf Community Event Template
 
 > **A professional, production-ready event website template built with React + TypeScript + Tailwind CSS**
 
@@ -9,17 +9,17 @@
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-**Created by [TechCommunity](https://techcommunity-event.com)** | Empowering tech communities worldwide 🚀
+**Created by [Sunnat629 Labs](https://github.com/sunnat629)** | Empowering tech communities worldwide ud83dude80
 
 ---
 
-## 🌟 Introducing Community Event Template
+## ud83cudf1f Introducing Community Event Template
 
 A complete, ready-to-use template for creating beautiful websites for tech community events of any size. Perfect for
 meetups, conferences, workshops, and hackathons. Designed to be easily customizable with a focus on developer experience
 and modern design.
 
-### 🎉 Why Use This Template?
+### ud83cudf89 Why Use This Template?
 
 - **Complete Solution**: Everything you need for an event website in one place
 - **No Design Skills Required**: Professional design out of the box
@@ -30,7 +30,7 @@ and modern design.
 
 ---
 
-## 📸 Screenshots
+## ud83dudcf8 Screenshots
 
 ### Desktop View
 
@@ -41,15 +41,9 @@ and modern design.
 
 ### Mobile View
 
-<div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-  <div>
-    <img src="./screenshots/Screenshot 2025-11-15 at 11.45.14.png" alt="Mobile View - Home Screen" width="250" />
-    <p><i>Home Screen</i></p>
-  </div>
-  <div>
-    <img src="./screenshots/Screenshot 2025-11-15 at 11.45.31.png" alt="Mobile View - Agenda" width="250" />
-    <p><i>Agenda View</i></p>
-  </div>
+<div align="center" style="margin-top: 20px;">
+  <img src="./screenshots/Screenshot 2025-11-15 at 11.45.14.png" alt="Mobile View - Home Screen" width="800" />
+  <p><i>Responsive Mobile Experience</i></p>
 </div>
 
 ### Feature Showcase
@@ -77,17 +71,17 @@ and modern design.
 
 ---
 
-## ✨ Features
+## u2728 Features
 
-### 🎨 **Beautiful & Modern Design**
+### ud83cudfa8 **Beautiful & Modern Design**
 
-- ✅ Stunning gradient hero sections with animated backgrounds
-- ✅ Glassmorphism effects and smooth animations
-- ✅ Auto-rotating carousels for speakers and sponsors
-- ✅ Professional cards with hover effects
-- ✅ Fully responsive (mobile-first design)
+- u2705 Stunning gradient hero sections with animated backgrounds
+- u2705 Glassmorphism effects and smooth animations
+- u2705 Auto-rotating carousels for speakers and sponsors
+- u2705 Professional cards with hover effects
+- u2705 Fully responsive (mobile-first design)
 
-### 📋 **Complete Event Sections**
+### ud83dudccb **Complete Event Sections**
 
 - **Hero** - Eye-catching landing with CTA buttons
 - **About** - Event overview with highlights
@@ -98,23 +92,23 @@ and modern design.
 - **Team** - Organizing team showcase
 - **Footer** - Complete with attribution
 
-### 🚀 **Two Modes for Any Event Size**
+### ud83dude80 **Two Modes for Any Event Size**
 
-#### 🎈 **Lite Mode** - Perfect for small events
+#### ud83cudf88 **Lite Mode** - Perfect for small events
 
 - Single-page scrolling experience
 - 5-10 speakers, single day
 - Fast setup and deployment
 - 50-200 attendees
 
-#### 🚀 **Pro Mode** - Built for conferences
+#### ud83dude80 **Pro Mode** - Built for conferences
 
 - Dedicated pages for speakers, agenda, sponsors
 - Individual detail pages
 - Multi-day, multi-track support
 - 200+ attendees
 
-### ⚡ **Developer Experience**
+### u26a1 **Developer Experience**
 
 - **Vite 7** - Lightning-fast builds (< 2 seconds)
 - **TypeScript** - Full type safety
@@ -124,7 +118,7 @@ and modern design.
 
 ---
 
-## 🚀 Quick Start
+## ud83dude80 Quick Start
 
 ### Prerequisites
 
@@ -145,7 +139,7 @@ npm install
 npm run dev
 ```
 
-Visit **http://localhost:5173** to see your site! 🎉
+Visit **http://localhost:5173** to see your site! ud83cudf89
 
 ### Build for Production
 
@@ -156,7 +150,7 @@ npm run build
 
 ---
 
-## 🎨 Demo & Testing
+## ud83cudfa8 Demo & Testing
 
 ### Production Demo Routes
 
@@ -185,11 +179,11 @@ In development (`npm run dev`), the debug button is visible in the bottom-right 
 
 ---
 
-## 📝 Content Management
+## ud83dudcdd Content Management
 
 All content is managed through simple TypeScript files in `src/content/`:
 
-### 1️⃣ **Site Configuration** (`siteConfig.ts`)
+### 1ufe0fu20e3 **Site Configuration** (`siteConfig.ts`)
 
 ```typescript
 export const siteConfig = {
@@ -201,7 +195,7 @@ export const siteConfig = {
 };
 ```
 
-### 2️⃣ **Speakers** (`speakers.ts`)
+### 2ufe0fu20e3 **Speakers** (`speakers.ts`)
 
 ```typescript
 export const featuredSpeakers: Speaker[] = [
@@ -222,7 +216,7 @@ export const featuredSpeakers: Speaker[] = [
 ];
 ```
 
-### 3️⃣ **Sponsors** (`partners.ts`)
+### 3ufe0fu20e3 **Sponsors** (`partners.ts`)
 
 ```typescript
 export const partners: Partner[] = [
@@ -240,7 +234,7 @@ export const partners: Partner[] = [
 ];
 ```
 
-### 4️⃣ **Agenda** (`agenda.ts`)
+### 4ufe0fu20e3 **Agenda** (`agenda.ts`)
 
 ```typescript
 export const agendaItems: AgendaItem[] = [
@@ -260,7 +254,7 @@ export const agendaItems: AgendaItem[] = [
 ];
 ```
 
-### 5️⃣ **Team** (`team.ts`)
+### 5ufe0fu20e3 **Team** (`team.ts`)
 
 ```typescript
 export const teamMembers: TeamMember[] = [
@@ -276,7 +270,7 @@ export const teamMembers: TeamMember[] = [
 ];
 ```
 
-### 6️⃣ **Venue** (`eventDetails.ts`)
+### 6ufe0fu20e3 **Venue** (`eventDetails.ts`)
 
 ```typescript
 export const eventDetails = {
@@ -292,7 +286,7 @@ export const eventDetails = {
 
 ---
 
-## 🎨 Customization
+## ud83cudfa8 Customization
 
 ### Change Theme Colors
 
@@ -315,15 +309,9 @@ Toggle sections in `src/config/layout.config.ts`:
 ```typescript
 {
     id: "speakers",
-        order
-:
-    4,
-        theme
-:
-    "light",
-        enabled
-:
-    true // Set to false to hide
+    order: 4,
+    theme: "light",
+    enabled: true // Set to false to hide
 }
 ```
 
@@ -340,39 +328,39 @@ eventMode: {
 
 ---
 
-## 📊 Performance & SEO
+## ud83dudcca Performance & SEO
 
 ### Build Performance
 
 ```
-✓ Built in 2.39s
-✓ Bundle: 427 kB (gzipped: 112 kB)
-✓ Zero errors
+u2713 Built in 2.39s
+u2713 Bundle: 427 kB (gzipped: 112 kB)
+u2713 Zero errors
 ```
 
 ### SEO Features
 
-- ✅ **sitemap.xml** - All pages indexed
-- ✅ **robots.txt** - Search engine optimized
-- ✅ **JSON-LD structured data** - Rich snippets
-- ✅ **Meta tags** - Complete OG and Twitter cards
-- ✅ **Mobile-friendly** - Responsive design
+- u2705 **sitemap.xml** - All pages indexed
+- u2705 **robots.txt** - Search engine optimized
+- u2705 **JSON-LD structured data** - Rich snippets
+- u2705 **Meta tags** - Complete OG and Twitter cards
+- u2705 **Mobile-friendly** - Responsive design
 
 ---
 
-## 🌍 Perfect For
+## ud83cudf0d Perfect For
 
-- 🌐 **Web Development Communities** - Meetups, conferences, hackathons
-- 📱 **Mobile Dev Communities** - Android, iOS, cross-platform events
-- 🤖 **AI/ML Communities** - AI conferences, hackathons
-- 🎮 **Game Dev Communities** - Game jams, showcases
-- 🧪 **DevOps & QA Communities** - Testing conferences, CI/CD workshops
-- 🔐 **Cybersecurity Communities** - Security conferences, CTF events
-- 👥 **Any Technology Community** - Highly adaptable for all tech groups!
+- ud83cudf10 **Web Development Communities** - Meetups, conferences, hackathons
+- ud83dudcf1 **Mobile Dev Communities** - Android, iOS, cross-platform events
+- ud83eudd16 **AI/ML Communities** - AI conferences, hackathons
+- ud83cudfae **Game Dev Communities** - Game jams, showcases
+- ud83euddea **DevOps & QA Communities** - Testing conferences, CI/CD workshops
+- ud83dudd10 **Cybersecurity Communities** - Security conferences, CTF events
+- ud83dudc65 **Any Technology Community** - Highly adaptable for all tech groups!
 
 ---
 
-## 📦 Deploy
+## ud83dudce6 Deploy
 
 ### Vercel (Recommended)
 
@@ -397,14 +385,14 @@ npm run build
 
 ---
 
-## 🤝 Contributing
+## ud83eudd1d Contributing
 
 We welcome contributions from the community! Whether it's fixing bugs, adding features, improving documentation, or
 sharing ideas, your help is appreciated.
 
 ### Ways to Contribute
 
-- **Star the Repository** ⭐ - Show your support
+- **Star the Repository** u2b50 - Show your support
 - **Fork and Create a Pull Request** - Add new features or fix bugs
 - **Report Issues** - Help us identify bugs and areas for improvement
 - **Suggest Features** - Share your ideas for making the template better
@@ -420,31 +408,31 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## 📄 License
+## ud83dudcc4 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Attribution
+## ud83dude4f Attribution
 
-Created and maintained by [Mohi Us Sunnat](https://github.com/sunnat629).
+Created and maintained by [Sunnat629 Labs](https://github.com/sunnat629).
 
 If you use this template:
 
-- ✅ Keep the footer attribution intact
-- ✅ Star this repository ⭐
-- ✅ Share your event website with us!
+- u2705 Keep the footer attribution intact
+- u2705 Star this repository u2b50
+- u2705 Share your event website with us!
 
 ---
 
-## 💖 Support
+## ud83dudc96 Support
 
-- ⭐ **Star this repo** if you find it helpful
-- 🐛 **Report bugs** via [Issues](https://github.com/sunnat629/community-event-template/issues)
-- 💡 **Suggest features** via [Discussions](https://github.com/sunnat629/community-event-template/discussions)
-- 🐦 **Share** on social media
-- ☕ **Buy me a coffee** - [buymeacoffee.com/sunnat629](https://buymeacoffee.com/sunnat629)
+- u2b50 **Star this repo** if you find it helpful
+- ud83dudc1b **Report bugs** via [Issues](https://github.com/sunnat629/community-event-template/issues)
+- ud83dudca1 **Suggest features** via [Discussions](https://github.com/sunnat629/community-event-template/discussions)
+- ud83dudc26 **Share** on social media
+- u2615 **Buy me a coffee** - [buymeacoffee.com/sunnat629](https://buymeacoffee.com/sunnat629)
 
 <a href="https://buymeacoffee.com/sunnat629" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px">
@@ -452,23 +440,23 @@ If you use this template:
 
 ---
 
-## 📧 Contact
+## ud83dudce7 Contact
 
-**Mohi Us Sunnat**
+**Sunnat629 Labs**
 
-- 🌐 GitHub: [@sunnat629](https://github.com/sunnat629)
-- 🐦 Twitter: [@sunnat629](https://twitter.com/sunnat629)
-- 📼 LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
-- 📧 Email: me@sunnat629.dev
+- ud83cudf10 GitHub: [@sunnat629](https://github.com/sunnat629)
+- ud83dudc26 Twitter: [@sunnat629](https://twitter.com/sunnat629)
+- ud83dudcfc LinkedIn: [in/sunnat629](https://linkedin.com/in/sunnat629)
+- ud83dudce7 Email: me@sunnat629.dev
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for tech communities worldwide**
+**Made with u2764ufe0f by Sunnat629 Labs for tech communities worldwide**
 
 [Report Bug](https://github.com/sunnat629/community-event-template/issues)
-· [Request Feature](https://github.com/sunnat629/community-event-template/issues)
-· [Star ⭐](https://github.com/sunnat629/community-event-template)
+u00b7 [Request Feature](https://github.com/sunnat629/community-event-template/issues)
+u00b7 [Star u2b50](https://github.com/sunnat629/community-event-template)
 
 </div>
